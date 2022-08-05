@@ -22,6 +22,7 @@ functions:
     guards: [ (!initialized) ]
     body: |
       AllegroFlare::Shader::initialize();
+      initialized = true;
       return;
 
 

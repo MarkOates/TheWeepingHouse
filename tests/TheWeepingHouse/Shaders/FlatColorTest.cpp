@@ -72,7 +72,7 @@ TEST_F(TheWeepingHouse_Shaders_FlatColorTest, initialize__works_without_blowing_
 }
 
 
-TEST_F(TheWeepingHouse_Shaders_FlatColorTest, DISABLED__activate__works_without_blowing_up)
+TEST_F(TheWeepingHouse_Shaders_FlatColorTest, activate__works_without_blowing_up)
 {
    TheWeepingHouse::Shaders::FlatColor flat_color_shader;
 

@@ -32,6 +32,7 @@ void FlatColor::initialize()
          throw std::runtime_error(error_message.str());
       }
    AllegroFlare::Shader::initialize();
+   initialized = true;
    return;
 }
 
