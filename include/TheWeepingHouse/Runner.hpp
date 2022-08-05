@@ -19,6 +19,7 @@ namespace TheWeepingHouse
    class Runner : public AllegroFlare::Screens::Base
    {
    private:
+      std::string mode;
       AllegroFlare::Frameworks::Full* framework;
       AllegroFlare::EventEmitter* event_emitter;
       AllegroFlare::Screens::Storyboard* opening_logos_storyboard_screen;
@@ -26,15 +27,16 @@ namespace TheWeepingHouse
       AllegroFlare::Screens::PauseScreen pause_screen;
       AllegroFlare::Prototypes::FixedRoom2D::Screen gameplay_screen;
       AllegroFlare::Screens::Storyboard* credits_screen;
-      AllegroFlare::Color global_ambient_color;
+      AllegroFlare::Color room_shader_color;
       TheWeepingHouse::Shaders::Multiply room_shader;
       bool initialized;
 
    public:
-      Runner(AllegroFlare::Frameworks::Full* framework=nullptr, AllegroFlare::EventEmitter* event_emitter=nullptr, AllegroFlare::Color global_ambient_color=AllegroFlare::Color::White);
+      Runner(std::string mode="production", AllegroFlare::Frameworks::Full* framework=nullptr, AllegroFlare::EventEmitter* event_emitter=nullptr, AllegroFlare::Color room_shader_color=AllegroFlare::Color::White);
       virtual ~Runner();
 
       void initialize();
+      void start_new_game();
       virtual void game_event_func(AllegroFlare::GameEvent* ev=nullptr) override;
       static void run(std::string mode="production");
    };

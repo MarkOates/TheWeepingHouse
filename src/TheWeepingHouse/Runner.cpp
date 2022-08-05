@@ -14,8 +14,9 @@ namespace TheWeepingHouse
 {
 
 
-Runner::Runner(AllegroFlare::Frameworks::Full* framework, AllegroFlare::EventEmitter* event_emitter, AllegroFlare::Color global_ambient_color)
+Runner::Runner(std::string mode, AllegroFlare::Frameworks::Full* framework, AllegroFlare::EventEmitter* event_emitter, AllegroFlare::Color room_shader_color)
    : AllegroFlare::Screens::Base("Runner")
+   , mode(mode)
    , framework(framework)
    , event_emitter(event_emitter)
    , opening_logos_storyboard_screen(nullptr)
@@ -23,7 +24,7 @@ Runner::Runner(AllegroFlare::Frameworks::Full* framework, AllegroFlare::EventEmi
    , pause_screen({})
    , gameplay_screen({})
    , credits_screen(nullptr)
-   , global_ambient_color(global_ambient_color)
+   , room_shader_color(room_shader_color)
    , room_shader({})
    , initialized(false)
 {
@@ -97,7 +98,7 @@ void Runner::initialize()
    title_screen.set_copyright_text_color(AllegroFlare::Color(AllegroFlare::Color::LightSkyBlue, 0.4).to_al());
    title_screen.set_copyright_font_size(-26);
    title_screen.set_menu_options({
-      { "Start New Game", "start_gameplay_screen" },
+      { "Start New Game", "start_new_game" },
       { "Credits", "start_credits_screen" },
       { "Quit", "exit_game" },
    });
@@ -129,14 +130,14 @@ void Runner::initialize()
    gameplay_screen.set_event_emitter(&event_emitter);
    gameplay_screen.set_audio_controller(&audio_controller);
    gameplay_screen.initialize();
-   AllegroFlare::Prototypes::FixedRoom2D::Configuration configuration =
-      TheWeepingHouse::Configurations::Primary::build(
-         &bitmap_bin,
-         &font_bin,
-         &event_emitter,
-         &gameplay_screen.get_fixed_room_2d_ref().get_entity_collection_helper_ref()
-      );
-   gameplay_screen.load_game_configuration_and_start(configuration);
+   //AllegroFlare::Prototypes::FixedRoom2D::Configuration configuration =
+      //TheWeepingHouse::Configurations::Primary::build(
+         //&bitmap_bin,
+         //&font_bin,
+         //&event_emitter,
+         //&gameplay_screen.get_fixed_room_2d_ref().get_entity_collection_helper_ref()
+      //);
+   //gameplay_screen.load_game_configuration_and_start(configuration);
    framework->register_screen("gameplay_screen", &gameplay_screen);
 
 
@@ -158,6 +159,29 @@ void Runner::initialize()
    //primary_shader.initialize();
    //primary_shader.activate();
    //primary_shader.set_tint(global_ambient_color.to_al());
+   return;
+}
+
+void Runner::start_new_game()
+{
+   AllegroFlare::FontBin &font_bin = framework->get_font_bin_ref();
+   AllegroFlare::BitmapBin &bitmap_bin = framework->get_bitmap_bin_ref();
+   AllegroFlare::SampleBin &sample_bin = framework->get_sample_bin_ref();
+   AllegroFlare::ModelBin &model_bin = framework->get_model_bin_ref();
+   AllegroFlare::EventEmitter &event_emitter = framework->get_event_emitter_ref();
+   AllegroFlare::AudioController &audio_controller = framework->get_audio_controller_ref();
+
+   AllegroFlare::Prototypes::FixedRoom2D::Configuration configuration =
+      TheWeepingHouse::Configurations::Primary::build(
+         &bitmap_bin,
+         &font_bin,
+         &event_emitter,
+         &gameplay_screen.get_fixed_room_2d_ref().get_entity_collection_helper_ref()
+      );
+   gameplay_screen.load_game_configuration_and_start(configuration);
+
+   framework->activate_screen("opening_storyboard_screen"); // <-- probably will want to add this
+   framework->activate_screen("gameplay_screen");
    return;
 }
 
@@ -184,9 +208,10 @@ void Runner::game_event_func(AllegroFlare::GameEvent* ev)
       //primary_shader.activate();
       //primary_shader.set_tint(global_ambient_color.to_al());
 
-      event_emitter->emit_game_event(AllegroFlare::GameEvent("start_gameplay_screen"));
+      //event_emitter->emit_game_event(AllegroFlare::GameEvent("start_new_game"));
+      //event_emitter->emit_game_event(AllegroFlare::GameEvent("start_gameplay_screen"));
       // FOR FULL GAMEPLAY
-      //event_emitter->emit_game_event(AllegroFlare::GameEvent("start_opening_logos_storyboard_screen"));
+      event_emitter->emit_game_event(AllegroFlare::GameEvent("start_opening_logos_storyboard_screen"));
    }
    if (event_name == "start_opening_logos_storyboard_screen")
    {
@@ -201,17 +226,14 @@ void Runner::game_event_func(AllegroFlare::GameEvent* ev)
    {
       framework->activate_screen("credits_screen");
    }
-   if (event_name == "start_gameplay_screen")
-   {
-      framework->activate_screen("gameplay_screen");
-   }
-   //if (event_name == "start_new_game")
+   //if (event_name == "start_gameplay_screen")
    //{
-      //AllegroFlare::Prototypes::FixedRoom2D::Configuration configuration = GameConfigurations::First::build();
-      //gameplay_screen.load_game_configuration_and_start(configuration);
-      //framework->activate_screen("opening_storyboard_screen"); // <-- probably will want to add this
       //framework->activate_screen("gameplay_screen");
    //}
+   if (event_name == "start_new_game")
+   {
+      start_new_game();
+   }
    if (event_name == "finished_credits_screen")
    {
       framework->activate_screen("title_screen");
@@ -251,7 +273,7 @@ void Runner::run(std::string mode)
       model_bin.set_full_path("/Users/markoates/Repos/tins_22_prep/bin/programs/data/models");
    }
 
-   Runner runner(&framework, &framework.get_event_emitter_ref());
+   Runner runner(mode, &framework, &framework.get_event_emitter_ref());
    runner.initialize();
    framework.register_screen("runner", &runner);
 
