@@ -86,8 +86,9 @@ TEST_F(TheWeepingHouse_Shaders_MultiplyTest, when_active__renders_the_image_with
    TheWeepingHouse::Shaders::Multiply flat_color_shader;
    flat_color_shader.initialize();
 
-   ALLEGRO_COLOR color = al_color_name("green");
+   ALLEGRO_COLOR color = al_color_name("midnightblue");
    flat_color_shader.set_tint(color);
+   //flat_color_shader.set_tint_intensity(0.5);
    flat_color_shader.activate();
 
    al_init_image_addon();

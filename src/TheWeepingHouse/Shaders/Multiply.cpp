@@ -77,8 +77,6 @@ void Multiply::activate()
 
 void Multiply::set_values_to_activated_shader()
 {
-   std::cout << "TheWeepingHouse::Shaders::activate" << std::endl;
-   //std::cout << "Activating shader" << std::endl;
    set_vec3("tint", tint.r, tint.g, tint.b);
    set_float("tint_intensity", tint_intensity);
    return;
@@ -117,15 +115,15 @@ std::string Multiply::obtain_fragment_source()
      {
         vec4 tmp = texture2D(al_tex, varying_texcoord);
         float inverse_tint_intensity = 1.0 - tint_intensity;
-        tmp.r = (tmp.r * inverse_tint_intensity + tint.r * tint_intensity) * tmp.a;
-        tmp.g = (tmp.g * inverse_tint_intensity + tint.g * tint_intensity) * tmp.a;
-        tmp.b = (tmp.b * inverse_tint_intensity + tint.b * tint_intensity) * tmp.a;
-        tmp.a = tmp.a;
-        //gl_FragColor = tmp * tint;
-        //tmp.r = (tmp.r * tint.r);
-        //tmp.g = (tmp.g * tint.g); //inverse_tint_intensity + tint.g * tint_intensity) * tmp.a;
-        //tmp.b = (tmp.b * tint.b); //inverse_tint_intensity + tint.b * tint_intensity) * tmp.a;
+        //tmp.r = (tmp.r * inverse_tint_intensity + tint.r * tint_intensity) * tmp.a;
+        //tmp.g = (tmp.g * inverse_tint_intensity + tint.g * tint_intensity) * tmp.a;
+        //tmp.b = (tmp.b * inverse_tint_intensity + tint.b * tint_intensity) * tmp.a;
         //tmp.a = tmp.a;
+        //gl_FragColor = tmp * tint;
+        tmp.r = (tmp.r * tint.r);
+        tmp.g = (tmp.g * tint.g); //inverse_tint_intensity + tint.g * tint_intensity) * tmp.a;
+        tmp.b = (tmp.b * tint.b); //inverse_tint_intensity + tint.b * tint_intensity) * tmp.a;
+        tmp.a = tmp.a;
 
         gl_FragColor = tmp;
      }

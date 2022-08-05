@@ -64,7 +64,7 @@ void Runner::initialize()
    // setup the shader
    TheWeepingHouse::Shaders::Multiply *multiply_shader = new TheWeepingHouse::Shaders::Multiply();
    multiply_shader->initialize();
-   room_shader_color = AllegroFlare::Color::Yellow;
+   room_shader_color = AllegroFlare::Color(0.7, 0.7, 0.78, 1.0);
    multiply_shader->set_tint(room_shader_color.to_al());
    multiply_shader->set_tint_intensity(0.5);
    room_shader = multiply_shader;
