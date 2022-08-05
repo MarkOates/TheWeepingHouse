@@ -18,7 +18,7 @@ namespace TheWeepingHouse
       ~EntityFactory();
 
       AllegroFlare::Prototypes::FixedRoom2D::Entities::Base* create_background(std::string bitmap_image_identifier="[unset-bitmap_identifier]", std::string on_interact_script_name="[unset-on_interact_script_name]");
-      AllegroFlare::Prototypes::FixedRoom2D::Entities::Base* create_entity(std::string bitmap_image_identifier="[unset-bitmap_identifier]", float x=1920/2, float y=1080/2, float scale=1.0f, std::string name="[unset-name]", std::string on_interact_script_name="[unset-on_interact_script_name]", float align_x=0.5f, float align_y=1.0f);
+      AllegroFlare::Prototypes::FixedRoom2D::Entities::Base* create_entity(std::string bitmap_image_identifier="[unset-bitmap_identifier]", float x=1920/2, float y=1080/2, float scale=1.0f, std::string name="[unset-name]", std::string on_interact_script_name="[unset-on_interact_script_name]", float align_x=0.5f, float align_y=1.0f, bool hidden=false);
    };
 }
 

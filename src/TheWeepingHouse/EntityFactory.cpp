@@ -37,7 +37,7 @@ AllegroFlare::Prototypes::FixedRoom2D::Entities::Base* EntityFactory::create_bac
    return result;
 }
 
-AllegroFlare::Prototypes::FixedRoom2D::Entities::Base* EntityFactory::create_entity(std::string bitmap_image_identifier, float x, float y, float scale, std::string name, std::string on_interact_script_name, float align_x, float align_y)
+AllegroFlare::Prototypes::FixedRoom2D::Entities::Base* EntityFactory::create_entity(std::string bitmap_image_identifier, float x, float y, float scale, std::string name, std::string on_interact_script_name, float align_x, float align_y, bool hidden)
 {
    if (!(bitmap_bin))
       {
@@ -52,6 +52,7 @@ AllegroFlare::Prototypes::FixedRoom2D::Entities::Base* EntityFactory::create_ent
 
    AllegroFlare::Placement2D &placement = result->get_placement_ref();
    result->set_on_cursor_interact_script_name(on_interact_script_name);
+   result->set_hidden(hidden);
 
    placement.position = {x, y};
    placement.scale = {scale, scale};

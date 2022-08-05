@@ -27,7 +27,7 @@ functions:
       result->set_cursor_insights_are_hidden(true);
       return result;
 
-      
+
   - name: create_entity
     type: AllegroFlare::Prototypes::FixedRoom2D::Entities::Base*
     parameters:
@@ -55,6 +55,9 @@ functions:
       - name: align_y
         type: float
         default_argument: 1.0f
+      - name: hidden
+        type: bool
+        default_argument: false
     guards: [ bitmap_bin ]
     body: |
       ALLEGRO_BITMAP* bitmap = bitmap_bin->auto_get(bitmap_image_identifier);
@@ -64,6 +67,7 @@ functions:
 
       AllegroFlare::Placement2D &placement = result->get_placement_ref();
       result->set_on_cursor_interact_script_name(on_interact_script_name);
+      result->set_hidden(hidden);
 
       placement.position = {x, y};
       placement.scale = {scale, scale};
