@@ -12,7 +12,7 @@ TEST(TheWeepingHouse_Configurations_PrimaryTest, can_be_created_without_blowing_
 
 #include <TheWeepingHouse/Runner.hpp>
 
-TEST(TheWeepingHouse_RunnerTest, run__runs_the_program)
+TEST(TheWeepingHouse_Configurations_PrimaryTest, INTERACTIVE__works_in_the_primary_program)
 {
    TheWeepingHouse::Runner runner;
    runner.run("test");
