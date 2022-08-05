@@ -10,7 +10,7 @@
 #include <AllegroFlare/Screens/PauseScreen.hpp>
 #include <AllegroFlare/Screens/Storyboard.hpp>
 #include <AllegroFlare/Screens/TitleScreen.hpp>
-#include <TheWeepingHouse/Shaders/Multiply.hpp>
+#include <AllegroFlare/Shader.hpp>
 #include <string>
 
 
@@ -28,7 +28,7 @@ namespace TheWeepingHouse
       AllegroFlare::Prototypes::FixedRoom2D::Screen gameplay_screen;
       AllegroFlare::Screens::Storyboard* credits_screen;
       AllegroFlare::Color room_shader_color;
-      TheWeepingHouse::Shaders::Multiply room_shader;
+      AllegroFlare::Shader* room_shader;
       bool initialized;
 
    public:

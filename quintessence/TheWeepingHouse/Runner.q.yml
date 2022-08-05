@@ -50,8 +50,8 @@ properties:
     constructor_arg: true
 
   - name: room_shader
-    type: TheWeepingHouse::Shaders::Multiply
-    init_with: '{}'
+    type: AllegroFlare::Shader*
+    init_with: nullptr
 
   - name: initialized
     type: bool
@@ -71,6 +71,16 @@ functions:
       AllegroFlare::ModelBin &model_bin = framework->get_model_bin_ref();
       AllegroFlare::EventEmitter &event_emitter = framework->get_event_emitter_ref();
       AllegroFlare::AudioController &audio_controller = framework->get_audio_controller_ref();
+
+
+
+      // setup the shader
+      TheWeepingHouse::Shaders::Multiply *multiply_shader = new TheWeepingHouse::Shaders::Multiply();
+      multiply_shader->initialize();
+      room_shader_color = AllegroFlare::Color::Yellow;
+      multiply_shader->set_tint(room_shader_color.to_al());
+      multiply_shader->set_tint_intensity(0.5);
+      room_shader = multiply_shader;
 
 
       // setup our helper factories
@@ -135,7 +145,7 @@ functions:
       gameplay_screen.set_font_bin(&font_bin);
       gameplay_screen.set_event_emitter(&event_emitter);
       gameplay_screen.set_audio_controller(&audio_controller);
-      gameplay_screen.get_fixed_room_2d_ref().set_room_shader(&room_shader);
+      gameplay_screen.get_fixed_room_2d_ref().set_room_shader(room_shader);
       gameplay_screen.initialize();
       framework->register_screen("gameplay_screen", &gameplay_screen);
 
@@ -157,17 +167,12 @@ functions:
 
 
 
-      // setup the shader
-      room_shader.initialize();
-      room_shader_color = AllegroFlare::Color::Green;
-      room_shader.set_tint(room_shader_color.to_al());
-
-
       return;
     body_dependency_symbols:
       - AllegroFlare::Prototypes::FixedRoom2D::Configuration
       - TheWeepingHouse::Configurations::Primary
       - AllegroFlare::StoryboardFactory
+      - TheWeepingHouse::Shaders::Multiply
 
 
   - name: start_new_game
@@ -312,6 +317,8 @@ dependencies:
     headers: [ AllegroFlare/Prototypes/FixedRoom2D/FixedRoom2D.hpp ]
   - symbol: AllegroFlare::EventEmitter*
     headers: [ AllegroFlare/EventEmitter.hpp ]
+  - symbol: AllegroFlare::Shader*
+    headers: [ AllegroFlare/Shader.hpp ]
   - symbol: AllegroFlare::Color
     headers: [ AllegroFlare/Color.hpp ]
   - symbol: AllegroFlare::GameEvent*

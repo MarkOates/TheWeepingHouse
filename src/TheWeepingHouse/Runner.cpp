@@ -4,6 +4,7 @@
 #include <AllegroFlare/Prototypes/FixedRoom2D/Configuration.hpp>
 #include <TheWeepingHouse/Configurations/Primary.hpp>
 #include <AllegroFlare/StoryboardFactory.hpp>
+#include <TheWeepingHouse/Shaders/Multiply.hpp>
 #include <stdexcept>
 #include <sstream>
 #include <stdexcept>
@@ -25,7 +26,7 @@ Runner::Runner(std::string mode, AllegroFlare::Frameworks::Full* framework, Alle
    , gameplay_screen({})
    , credits_screen(nullptr)
    , room_shader_color(room_shader_color)
-   , room_shader({})
+   , room_shader(nullptr)
    , initialized(false)
 {
 }
@@ -57,6 +58,16 @@ void Runner::initialize()
    AllegroFlare::ModelBin &model_bin = framework->get_model_bin_ref();
    AllegroFlare::EventEmitter &event_emitter = framework->get_event_emitter_ref();
    AllegroFlare::AudioController &audio_controller = framework->get_audio_controller_ref();
+
+
+
+   // setup the shader
+   TheWeepingHouse::Shaders::Multiply *multiply_shader = new TheWeepingHouse::Shaders::Multiply();
+   multiply_shader->initialize();
+   room_shader_color = AllegroFlare::Color::Yellow;
+   multiply_shader->set_tint(room_shader_color.to_al());
+   multiply_shader->set_tint_intensity(0.5);
+   room_shader = multiply_shader;
 
 
    // setup our helper factories
@@ -121,7 +132,7 @@ void Runner::initialize()
    gameplay_screen.set_font_bin(&font_bin);
    gameplay_screen.set_event_emitter(&event_emitter);
    gameplay_screen.set_audio_controller(&audio_controller);
-   gameplay_screen.get_fixed_room_2d_ref().set_room_shader(&room_shader);
+   gameplay_screen.get_fixed_room_2d_ref().set_room_shader(room_shader);
    gameplay_screen.initialize();
    framework->register_screen("gameplay_screen", &gameplay_screen);
 
@@ -141,12 +152,6 @@ void Runner::initialize()
    credits_screen->set_game_event_name_to_emit_after_completing("finished_credits_screen");
    framework->register_screen("credits_screen", credits_screen);
 
-
-
-   // setup the shader
-   room_shader.initialize();
-   room_shader_color = AllegroFlare::Color::Green;
-   room_shader.set_tint(room_shader_color.to_al());
 
 
    return;

@@ -36,6 +36,7 @@
   ],
   "AllegroFlare/Shader": [
     "TheWeepingHouse/Configurations/Primary",
+    "TheWeepingHouse/Runner",
     "TheWeepingHouse/Shaders/FlatColor",
     "TheWeepingHouse/Shaders/Multiply"
   ],

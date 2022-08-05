@@ -181,7 +181,7 @@ table td
 </tr>
 <tr>
   <td class="property">room_shader</td>
-  <td class="property">TheWeepingHouse::Shaders::Multiply</td>
+  <td class="property">AllegroFlare::Shader*</td>
 </tr>
 <tr>
   <td class="property">initialized</td>
@@ -232,6 +232,9 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::EventEmitter*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/EventEmitter.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Shader*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Shader.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Color&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Color.hpp&quot;]}</td>
@@ -304,6 +307,14 @@ table td
   <td class="property">initialized</td>
   <td class="property">bool</td>
 </tr>
+<tr>
+  <td class="property">tint</td>
+  <td class="property">ALLEGRO_COLOR</td>
+</tr>
+<tr>
+  <td class="property">tint_intensity</td>
+  <td class="property">float</td>
+</tr>
     </table>
      <table>
 <tr>
@@ -313,10 +324,7 @@ table td
   <td class="method">activate()</td>
 </tr>
 <tr>
-  <td class="method">set_tint(1)</td>
-</tr>
-<tr>
-  <td class="method">set_tint_intensity(1)</td>
+  <td class="private_method">set_values_to_activated_shader()</td>
 </tr>
 <tr>
   <td class="private_method">obtain_vertex_source()</td>
@@ -375,6 +383,7 @@ table td
   ],
   "AllegroFlare/Shader": [
     "TheWeepingHouse/Configurations/Primary",
+    "TheWeepingHouse/Runner",
     "TheWeepingHouse/Shaders/FlatColor",
     "TheWeepingHouse/Shaders/Multiply"
   ],

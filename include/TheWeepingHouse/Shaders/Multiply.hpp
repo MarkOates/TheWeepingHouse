@@ -14,15 +14,20 @@ namespace TheWeepingHouse
       {
       private:
          bool initialized;
+         ALLEGRO_COLOR tint;
+         float tint_intensity;
 
       public:
          Multiply();
-         ~Multiply();
+         virtual ~Multiply();
 
+         void set_tint(ALLEGRO_COLOR tint);
+         void set_tint_intensity(float tint_intensity);
+         ALLEGRO_COLOR get_tint();
+         float get_tint_intensity();
          void initialize();
-         void activate();
-         void set_tint(ALLEGRO_COLOR flat_color={});
-         void set_tint_intensity(float tint_intensity=1.0f);
+         virtual void activate() override;
+         void set_values_to_activated_shader();
          static std::string obtain_vertex_source();
          static std::string obtain_fragment_source();
       };

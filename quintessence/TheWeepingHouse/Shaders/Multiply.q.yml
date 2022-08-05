@@ -13,6 +13,18 @@ properties:
     type: bool
     init_with: false
 
+  - name: tint
+    type: ALLEGRO_COLOR
+    init_with: ALLEGRO_COLOR{1, 1, 1, 1}
+    getter: true
+    setter: true
+
+  - name: tint_intensity
+    type: float
+    init_with: 1.0f
+    getter: true
+    setter: true
+
 
 functions:
 
@@ -28,34 +40,29 @@ functions:
 
   - name: activate
     type: void
+    virtual: true
+    override: true
     body: |
       if (!initialized)
       {
-         throw std::runtime_error("[TheWeepingHouse::Shaders::FlatColor] Attempting to activate() "
+         throw std::runtime_error("[TheWeepingHouse::Shaders::Multiply] Attempting to activate() "
                                   "shader before it has been initialized");
       }
       AllegroFlare::Shader::activate();
+      set_values_to_activated_shader();
       return;
 
 
-  - name: set_tint
-    parameters:
-      - name: flat_color
-        type: ALLEGRO_COLOR
-        default_argument: "{}"
+  - name: set_values_to_activated_shader
+    private: true
     body: |
-      Shader::set_vec4("tint", flat_color.r, flat_color.g, flat_color.b, flat_color.a);
+      std::cout << "TheWeepingHouse::Shaders::activate" << std::endl;
+      //std::cout << "Activating shader" << std::endl;
+      set_vec3("tint", tint.r, tint.g, tint.b);
+      set_float("tint_intensity", tint_intensity);
       return;
-
-
-  - name: set_tint_intensity
-    parameters:
-      - name: tint_intensity
-        type: float
-        default_argument: 1.0f
-    body: |
-      Shader::set_float("tint_intensity", tint_intensity);
-      return;
+    body_dependency_symbols:
+      - std::cout
 
 
   - name: obtain_vertex_source
@@ -89,7 +96,7 @@ functions:
       static const std::string source = R"DELIM(
         uniform sampler2D al_tex;
         uniform float tint_intensity;
-        uniform vec4 tint;
+        uniform vec3 tint;
         varying vec4 varying_color;
         varying vec2 varying_texcoord;
 
@@ -97,15 +104,15 @@ functions:
         {
            vec4 tmp = texture2D(al_tex, varying_texcoord);
            float inverse_tint_intensity = 1.0 - tint_intensity;
-           //tmp.r = (tmp.r * inverse_tint_intensity + tint.r * tint_intensity) * tmp.a;
-           //tmp.g = (tmp.g * inverse_tint_intensity + tint.g * tint_intensity) * tmp.a;
-           //tmp.b = (tmp.b * inverse_tint_intensity + tint.b * tint_intensity) * tmp.a;
-           //tmp.a = tmp.a;
-           //gl_FragColor = tmp * tint;
            tmp.r = (tmp.r * inverse_tint_intensity + tint.r * tint_intensity) * tmp.a;
            tmp.g = (tmp.g * inverse_tint_intensity + tint.g * tint_intensity) * tmp.a;
            tmp.b = (tmp.b * inverse_tint_intensity + tint.b * tint_intensity) * tmp.a;
            tmp.a = tmp.a;
+           //gl_FragColor = tmp * tint;
+           //tmp.r = (tmp.r * tint.r);
+           //tmp.g = (tmp.g * tint.g); //inverse_tint_intensity + tint.g * tint_intensity) * tmp.a;
+           //tmp.b = (tmp.b * tint.b); //inverse_tint_intensity + tint.b * tint_intensity) * tmp.a;
+           //tmp.a = tmp.a;
 
            gl_FragColor = tmp;
         }

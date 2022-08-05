@@ -3,6 +3,7 @@
 #include <TheWeepingHouse/Shaders/Multiply.hpp>
 #include <stdexcept>
 #include <sstream>
+#include <iostream>
 
 
 namespace TheWeepingHouse
@@ -14,12 +15,38 @@ namespace Shaders
 Multiply::Multiply()
    : AllegroFlare::Shader(obtain_vertex_source(), obtain_fragment_source())
    , initialized(false)
+   , tint(ALLEGRO_COLOR{1, 1, 1, 1})
+   , tint_intensity(1.0f)
 {
 }
 
 
 Multiply::~Multiply()
 {
+}
+
+
+void Multiply::set_tint(ALLEGRO_COLOR tint)
+{
+   this->tint = tint;
+}
+
+
+void Multiply::set_tint_intensity(float tint_intensity)
+{
+   this->tint_intensity = tint_intensity;
+}
+
+
+ALLEGRO_COLOR Multiply::get_tint()
+{
+   return tint;
+}
+
+
+float Multiply::get_tint_intensity()
+{
+   return tint_intensity;
 }
 
 
@@ -40,22 +67,20 @@ void Multiply::activate()
 {
    if (!initialized)
    {
-      throw std::runtime_error("[TheWeepingHouse::Shaders::FlatColor] Attempting to activate() "
+      throw std::runtime_error("[TheWeepingHouse::Shaders::Multiply] Attempting to activate() "
                                "shader before it has been initialized");
    }
    AllegroFlare::Shader::activate();
+   set_values_to_activated_shader();
    return;
 }
 
-void Multiply::set_tint(ALLEGRO_COLOR flat_color)
+void Multiply::set_values_to_activated_shader()
 {
-   Shader::set_vec4("tint", flat_color.r, flat_color.g, flat_color.b, flat_color.a);
-   return;
-}
-
-void Multiply::set_tint_intensity(float tint_intensity)
-{
-   Shader::set_float("tint_intensity", tint_intensity);
+   std::cout << "TheWeepingHouse::Shaders::activate" << std::endl;
+   //std::cout << "Activating shader" << std::endl;
+   set_vec3("tint", tint.r, tint.g, tint.b);
+   set_float("tint_intensity", tint_intensity);
    return;
 }
 
@@ -84,7 +109,7 @@ std::string Multiply::obtain_fragment_source()
    static const std::string source = R"DELIM(
      uniform sampler2D al_tex;
      uniform float tint_intensity;
-     uniform vec4 tint;
+     uniform vec3 tint;
      varying vec4 varying_color;
      varying vec2 varying_texcoord;
 
@@ -92,15 +117,15 @@ std::string Multiply::obtain_fragment_source()
      {
         vec4 tmp = texture2D(al_tex, varying_texcoord);
         float inverse_tint_intensity = 1.0 - tint_intensity;
-        //tmp.r = (tmp.r * inverse_tint_intensity + tint.r * tint_intensity) * tmp.a;
-        //tmp.g = (tmp.g * inverse_tint_intensity + tint.g * tint_intensity) * tmp.a;
-        //tmp.b = (tmp.b * inverse_tint_intensity + tint.b * tint_intensity) * tmp.a;
-        //tmp.a = tmp.a;
-        //gl_FragColor = tmp * tint;
         tmp.r = (tmp.r * inverse_tint_intensity + tint.r * tint_intensity) * tmp.a;
         tmp.g = (tmp.g * inverse_tint_intensity + tint.g * tint_intensity) * tmp.a;
         tmp.b = (tmp.b * inverse_tint_intensity + tint.b * tint_intensity) * tmp.a;
         tmp.a = tmp.a;
+        //gl_FragColor = tmp * tint;
+        //tmp.r = (tmp.r * tint.r);
+        //tmp.g = (tmp.g * tint.g); //inverse_tint_intensity + tint.g * tint_intensity) * tmp.a;
+        //tmp.b = (tmp.b * tint.b); //inverse_tint_intensity + tint.b * tint_intensity) * tmp.a;
+        //tmp.a = tmp.a;
 
         gl_FragColor = tmp;
      }
