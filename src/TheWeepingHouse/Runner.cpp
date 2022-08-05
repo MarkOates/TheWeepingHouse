@@ -1,20 +1,13 @@
 
 
 #include <TheWeepingHouse/Runner.hpp>
-#include <stdexcept>
-#include <sstream>
-#include <stdexcept>
-#include <sstream>
-#include <AllegroFlare/Frameworks/Full.hpp>
-#include <AllegroFlare/Screens/TitleScreen.hpp>
-#include <AllegroFlare/Screens/PauseScreen.hpp>
-#include <AllegroFlare/Screens/GameWonScreen.hpp>
-#include <AllegroFlare/Screens/Storyboard.hpp>
-#include <AllegroFlare/StoryboardFactory.hpp>
-#include <AllegroFlare/Prototypes/FixedRoom2D/Screen.hpp>
 #include <AllegroFlare/Prototypes/FixedRoom2D/Configuration.hpp>
 #include <TheWeepingHouse/Configurations/Primary.hpp>
-#include <AllegroFlare/Color.hpp>
+#include <AllegroFlare/StoryboardFactory.hpp>
+#include <stdexcept>
+#include <sstream>
+#include <stdexcept>
+#include <sstream>
 
 
 namespace TheWeepingHouse
@@ -29,6 +22,7 @@ Runner::Runner(AllegroFlare::Frameworks::Full* framework, AllegroFlare::EventEmi
    , title_screen({})
    , pause_screen({})
    , gameplay_screen({})
+   , credits_screen(nullptr)
    , global_ambient_color(global_ambient_color)
    , room_shader({})
    , initialized(false)
@@ -146,6 +140,20 @@ void Runner::initialize()
    framework->register_screen("gameplay_screen", &gameplay_screen);
 
 
+   // setup the credits screen
+   credits_screen = storyboard_factory.create_advancing_text_storyboard_screen({
+         "Thank you to amarillion for running TINS.",
+         "Thanks to all the members of allegro.cc for their participation in the community, "
+            "which had a huge impact in my development as a programmer.",
+         "Thank you to Elias and SiegeLord for their continued dedication to Allegro.",
+         "Thank you to Matthew Leverton for creating allegro.cc",
+         "Thank you to Shawn Hargreaves for creating the first version of Allegro in the 90s.",
+         "And thank you for playing.",
+      });
+   credits_screen->set_event_emitter(&event_emitter);
+   credits_screen->set_game_event_name_to_emit_after_completing("finished_credits_screen");
+   framework->register_screen("credits_screen", credits_screen);
+
 
    //primary_shader.initialize();
    //primary_shader.activate();
@@ -230,13 +238,10 @@ void Runner::run(std::string mode)
    framework.disable_escape_key_will_shutdown();
    framework.initialize();
 
-   // setup the bin paths
    AllegroFlare::FontBin &font_bin = framework.get_font_bin_ref();
    AllegroFlare::BitmapBin &bitmap_bin = framework.get_bitmap_bin_ref();
    AllegroFlare::SampleBin &sample_bin = framework.get_sample_bin_ref();
    AllegroFlare::ModelBin &model_bin = framework.get_model_bin_ref();
-   AllegroFlare::EventEmitter &event_emitter = framework.get_event_emitter_ref();
-   AllegroFlare::AudioController &audio_controller = framework.get_audio_controller_ref();
 
    if (mode == "test")
    {
@@ -246,122 +251,11 @@ void Runner::run(std::string mode)
       model_bin.set_full_path("/Users/markoates/Repos/tins_22_prep/bin/programs/data/models");
    }
 
-
-
-   // setup this instance of the runner screen
-   Runner runner(
-      &framework,
-      &framework.get_event_emitter_ref()
-   );
+   Runner runner(&framework, &framework.get_event_emitter_ref());
    runner.initialize();
    framework.register_screen("runner", &runner);
 
-
-
-   AllegroFlare::StoryboardFactory storyboard_factory(&font_bin, &framework.get_event_emitter_ref());
-
-
-
-   // Setup the opening logo storyboards
-   //AllegroFlare::Screens::Storyboard *opening_logos_storyboard_screen =
-      //storyboard_factory.create_images_storyboard_screen({
-         //bitmap_bin["allegro5-logo-gray-med.png"],
-         //bitmap_bin["allegro-flare-alt-logo-01-med.png"],
-         //bitmap_bin["tinslogo06.gif"],
-         //nullptr,
-      //});
-   //opening_logos_storyboard_screen->set_game_event_name_to_emit_after_completing("start_title_screen");
-   //framework.register_screen("opening_logos_storyboard_screen", opening_logos_storyboard_screen);
-
-
-
-   // pre-load the audio controller
-   //audio_controller.set_and_load_sound_effect_elements({
-     //{ "menu-click-01.wav", { "menu-click-01.wav", false } },
-   //});
-   //audio_controller.set_and_load_music_track_elements({
-     //{ "file_example_OOG_1MG.ogg", { "file_example_OOG_1MG.ogg", true } },
-   //});
-
-
-
-   // setup the title screen
-   //AllegroFlare::Screens::TitleScreen title_screen;
-   //title_screen.set_font_bin(&framework.get_font_bin_ref());
-   //title_screen.set_bitmap_bin(&framework.get_bitmap_bin_ref());
-   //title_screen.set_title_text("");
-   ////title_screen.set_title_bitmap_name("tins4-logo-01.png");
-   //title_screen.set_background_bitmap_name("logo-02.png");
-   //title_screen.set_event_emitter(&framework.get_event_emitter_ref());
-   //title_screen.set_font_name("Inter-Medium.ttf");
-   //title_screen.set_menu_font_size(-40);
-   //title_screen.set_menu_position_y(1080/32*19);
-   //title_screen.set_copyright_text("Copyright 2022 - Mark Oates\nCLUBCATT Games - www.clubcatt.com\n");
-   //title_screen.set_copyright_text_color(AllegroFlare::Color(AllegroFlare::Color::LightSkyBlue, 0.4).to_al());
-   //title_screen.set_copyright_font_size(-26);
-   //title_screen.set_menu_options({
-      //{ "Start New Game", "start_gameplay_screen" },
-      //{ "Credits", "start_credits_screen" },
-      //{ "Quit", "exit_game" },
-   //});
-   //framework.register_screen("title_screen", &title_screen);
-
-
-
-   // setup the pause screen
-   //AllegroFlare::Screens::PauseScreen pause_screen;
-   //pause_screen.set_font_bin(&framework.get_font_bin_ref());
-   //pause_screen.set_bitmap_bin(&framework.get_bitmap_bin_ref());
-   //pause_screen.set_event_emitter(&framework.get_event_emitter_ref());
-   //pause_screen.set_menu_options({
-      //{ "Resume", "unpause_game" },
-      //{ "Quit", "start_title_screen" },
-   //});
-   //framework.register_screen("pause_screen", &pause_screen);
-
-
-
-   // setup the gameplay screen
-   //AllegroFlare::Prototypes::FixedRoom2D::Screen gameplay_screen(
-      //&bitmap_bin,
-      //&font_bin,
-      //&event_emitter,
-      //&audio_controller
-   //);
-   //gameplay_screen.initialize();
-   //AllegroFlare::Prototypes::FixedRoom2D::Configuration configuration =
-      //TheWeepingHouse::Configurations::Primary::build(
-         //&bitmap_bin,
-         //&font_bin,
-         //&event_emitter,
-         //&gameplay_screen.get_fixed_room_2d_ref().get_entity_collection_helper_ref()
-      //);
-   //gameplay_screen.load_game_configuration_and_start(configuration);
-   //framework.register_screen("gameplay_screen", &gameplay_screen);
-
-
-
-   // setup the credits screen
-   AllegroFlare::Screens::Storyboard *credits_screen = storyboard_factory.create_advancing_text_storyboard_screen({
-         "Thank you to amarillion for running TINS.",
-         "Thanks to all the members of allegro.cc for their participation in the community, "
-            "which had a huge impact in my development as a programmer.",
-         "Thank you to Elias and SiegeLord for their continued dedication to Allegro.",
-         "Thank you to Matthew Leverton for creating allegro.cc",
-         "Thank you to Shawn Hargreaves for creating the first version of Allegro in the 90s.",
-         "And thank you for playing.",
-      });
-   credits_screen->set_event_emitter(&framework.get_event_emitter_ref());
-   credits_screen->set_game_event_name_to_emit_after_completing("finished_credits_screen");
-   framework.register_screen("credits_screen", credits_screen);
-
-
-
    framework.run_loop();
-
-
-   //framework.unregister_screen(&storyboard_player_screen);
-
 
    return;
 }
