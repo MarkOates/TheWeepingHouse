@@ -31,7 +31,7 @@ void FlatColor::initialize()
          error_message << "FlatColor" << "::" << "initialize" << ": error: " << "guard \"(!initialized)\" not met";
          throw std::runtime_error(error_message.str());
       }
-   TheWeepingHouse::Shaders::FlatColor::initialize();
+   AllegroFlare::Shader::initialize();
    return;
 }
 
