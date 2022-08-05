@@ -80,10 +80,17 @@
   "TheWeepingHouse/Configurations/Primary": [
     "TheWeepingHouse/Runner"
   ],
-  "AllegroFlare/Shader": [
+  "ALLEGRO_COLOR": [
+    "TheWeepingHouse/Runner",
     "TheWeepingHouse/Shaders/FlatColor"
   ],
-  "ALLEGRO_COLOR": [
+  "TheWeepingHouse/Shaders/FlatColor": [
+    "TheWeepingHouse/Runner"
+  ],
+  "TheWeepingHouse/Shaders/Multiply": [
+    "TheWeepingHouse/Runner"
+  ],
+  "AllegroFlare/Shader": [
     "TheWeepingHouse/Shaders/FlatColor"
   ]
 }

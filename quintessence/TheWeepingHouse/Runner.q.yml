@@ -19,6 +19,15 @@ properties:
     init_with: nullptr
     constructor_arg: true
 
+  - name: global_ambient_color
+    type: AllegroFlare::Color
+    init_with: AllegroFlare::Color::White
+    constructor_arg: true
+
+  - name: primary_shader
+    type: TheWeepingHouse::Shaders::Multiply
+    init_with: '{}'
+
 
 functions:
 
@@ -36,6 +45,10 @@ functions:
 
       if (event_name == "initialize")
       {
+         primary_shader.initialize();
+         primary_shader.activate();
+         primary_shader.set_tint(global_ambient_color.to_al());
+
          event_emitter->emit_game_event(AllegroFlare::GameEvent("start_gameplay_screen"));
          // FOR FULL GAMEPLAY
          //event_emitter->emit_game_event(AllegroFlare::GameEvent("start_opening_logos_storyboard_screen"));
@@ -267,4 +280,13 @@ dependencies:
     headers: [ TheWeepingHouse/Configurations/Primary.hpp ]
   - symbol: AllegroFlare::Prototypes::FixedRoom2D::Configuration
     headers: [ AllegroFlare/Prototypes/FixedRoom2D/Configuration.hpp ]
+  - symbol: ALLEGRO_COLOR
+    headers: [ allegro5/allegro.h ]
+  - symbol: TheWeepingHouse::Shaders::FlatColor
+    headers: [ TheWeepingHouse/Shaders/FlatColor.hpp ]
+  - symbol: TheWeepingHouse::Shaders::Multiply
+    headers: [ TheWeepingHouse/Shaders/Multiply.hpp ]
+  - symbol: AllegroFlare::Color
+    headers: [ AllegroFlare::Color.hpp ]
+
 

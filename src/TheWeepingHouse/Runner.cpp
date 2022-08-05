@@ -19,10 +19,12 @@ namespace TheWeepingHouse
 {
 
 
-Runner::Runner(AllegroFlare::Frameworks::Full* framework, AllegroFlare::EventEmitter* event_emitter)
+Runner::Runner(AllegroFlare::Frameworks::Full* framework, AllegroFlare::EventEmitter* event_emitter, AllegroFlare::Color global_ambient_color)
    : AllegroFlare::Screens::Base("Runner")
    , framework(framework)
    , event_emitter(event_emitter)
+   , global_ambient_color(global_ambient_color)
+   , primary_shader({})
 {
 }
 
@@ -50,6 +52,10 @@ void Runner::game_event_func(AllegroFlare::GameEvent* ev)
 
    if (event_name == "initialize")
    {
+      primary_shader.initialize();
+      primary_shader.activate();
+      primary_shader.set_tint(global_ambient_color.to_al());
+
       event_emitter->emit_game_event(AllegroFlare::GameEvent("start_gameplay_screen"));
       // FOR FULL GAMEPLAY
       //event_emitter->emit_game_event(AllegroFlare::GameEvent("start_opening_logos_storyboard_screen"));

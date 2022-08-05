@@ -147,6 +147,14 @@ table td
   <td class="property">event_emitter</td>
   <td class="property">AllegroFlare::EventEmitter*</td>
 </tr>
+<tr>
+  <td class="property">global_ambient_color</td>
+  <td class="property">ALLEGRO_COLOR</td>
+</tr>
+<tr>
+  <td class="property">primary_shader</td>
+  <td class="property">TheWeepingHouse::Shaders::Multiply</td>
+</tr>
     </table>
      <table>
 <tr>
@@ -198,6 +206,15 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Prototypes::FixedRoom2D::Configuration&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Prototypes/FixedRoom2D/Configuration.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_COLOR&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;TheWeepingHouse::Shaders::FlatColor&quot;, &quot;headers&quot;=&gt;[&quot;TheWeepingHouse/Shaders/FlatColor.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;TheWeepingHouse::Shaders::Multiply&quot;, &quot;headers&quot;=&gt;[&quot;TheWeepingHouse/Shaders/Multiply.hpp&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -322,10 +339,17 @@ table td
   "TheWeepingHouse/Configurations/Primary": [
     "TheWeepingHouse/Runner"
   ],
-  "AllegroFlare/Shader": [
+  "ALLEGRO_COLOR": [
+    "TheWeepingHouse/Runner",
     "TheWeepingHouse/Shaders/FlatColor"
   ],
-  "ALLEGRO_COLOR": [
+  "TheWeepingHouse/Shaders/FlatColor": [
+    "TheWeepingHouse/Runner"
+  ],
+  "TheWeepingHouse/Shaders/Multiply": [
+    "TheWeepingHouse/Runner"
+  ],
+  "AllegroFlare/Shader": [
     "TheWeepingHouse/Shaders/FlatColor"
   ]
 }
