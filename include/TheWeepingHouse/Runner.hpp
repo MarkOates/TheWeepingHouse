@@ -5,7 +5,11 @@
 #include <AllegroFlare/EventEmitter.hpp>
 #include <AllegroFlare/Frameworks/Full.hpp>
 #include <AllegroFlare/GameEvent.hpp>
+#include <AllegroFlare/Prototypes/FixedRoom2D/Screen.hpp>
 #include <AllegroFlare/Screens/Base.hpp>
+#include <AllegroFlare/Screens/PauseScreen.hpp>
+#include <AllegroFlare/Screens/Storyboard.hpp>
+#include <AllegroFlare/Screens/TitleScreen.hpp>
 #include <TheWeepingHouse/Shaders/Multiply.hpp>
 #include <string>
 
@@ -17,13 +21,19 @@ namespace TheWeepingHouse
    private:
       AllegroFlare::Frameworks::Full* framework;
       AllegroFlare::EventEmitter* event_emitter;
+      AllegroFlare::Screens::Storyboard* opening_logos_storyboard_screen;
+      AllegroFlare::Screens::TitleScreen title_screen;
+      AllegroFlare::Screens::PauseScreen pause_screen;
+      AllegroFlare::Prototypes::FixedRoom2D::Screen gameplay_screen;
       AllegroFlare::Color global_ambient_color;
-      TheWeepingHouse::Shaders::Multiply primary_shader;
+      TheWeepingHouse::Shaders::Multiply room_shader;
+      bool initialized;
 
    public:
       Runner(AllegroFlare::Frameworks::Full* framework=nullptr, AllegroFlare::EventEmitter* event_emitter=nullptr, AllegroFlare::Color global_ambient_color=AllegroFlare::Color::White);
       virtual ~Runner();
 
+      void initialize();
       virtual void game_event_func(AllegroFlare::GameEvent* ev=nullptr) override;
       static void run(std::string mode="production");
    };
