@@ -3,8 +3,6 @@
 #include <TheWeepingHouse/EntityFactory.hpp>
 #include <stdexcept>
 #include <sstream>
-#include <stdexcept>
-#include <sstream>
 
 
 namespace TheWeepingHouse
@@ -22,18 +20,7 @@ EntityFactory::~EntityFactory()
 }
 
 
-AllegroFlare::Prototypes::FixedRoom2D::Entities::Base* EntityFactory::create_chair_entity(float x, float y)
-{
-   if (!(bitmap_bin))
-      {
-         std::stringstream error_message;
-         error_message << "EntityFactory" << "::" << "create_chair_entity" << ": error: " << "guard \"bitmap_bin\" not met";
-         throw std::runtime_error(error_message.str());
-      }
-   return create_entity("wooden-chair-png-transparent-image-pngpix-0.png", x, y, 0.1, "chair");
-}
-
-AllegroFlare::Prototypes::FixedRoom2D::Entities::Base* EntityFactory::create_entity(std::string bitmap_image_identifier, float x, float y, float scale, std::string name, std::string on_interact_script_name)
+AllegroFlare::Prototypes::FixedRoom2D::Entities::Base* EntityFactory::create_entity(std::string bitmap_image_identifier, float x, float y, float scale, std::string name, std::string on_interact_script_name, float align_x, float align_y)
 {
    if (!(bitmap_bin))
       {
@@ -51,7 +38,7 @@ AllegroFlare::Prototypes::FixedRoom2D::Entities::Base* EntityFactory::create_ent
 
    placement.position = {x, y};
    placement.scale = {scale, scale};
-   placement.align = {0.5, 1.0};
+   placement.align = {align_x, align_y};
    if (bitmap) placement.size = {(float)al_get_bitmap_width(bitmap), (float)al_get_bitmap_height(bitmap)};
 
    result->set("name", name);

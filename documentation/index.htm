@@ -50,6 +50,7 @@ table td
 <h1>TOC</h1>
 <ul>
   <li><a href="#quintessence/TheWeepingHouse/Configurations/Primary.q.yml">quintessence/TheWeepingHouse/Configurations/Primary.q.yml</a></li>
+  <li><a href="#quintessence/TheWeepingHouse/EntityFactory.q.yml">quintessence/TheWeepingHouse/EntityFactory.q.yml</a></li>
   <li><a href="#quintessence/TheWeepingHouse/Runner.q.yml">quintessence/TheWeepingHouse/Runner.q.yml</a></li>
 </ul>
 <h1>Components</h1>
@@ -102,6 +103,30 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Prototypes::FixedRoom2D::Configuration&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Prototypes/FixedRoom2D/Configuration.hpp&quot;]}</td>
+</tr>
+    </table>
+  </div>
+</ul>
+<ul>
+  <div class="component">
+    <h3 id="quintessence/TheWeepingHouse/EntityFactory.q.yml">quintessence/TheWeepingHouse/EntityFactory.q.yml</h3>
+     <table>
+<tr>
+  <td class="property">bitmap_bin</td>
+  <td class="property">AllegroFlare::BitmapBin*</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="method">create_entity(8)</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::BitmapBin*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/BitmapBin.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Prototypes::FixedRoom2D::Entities::Base*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Prototypes/FixedRoom2D/Entities/Base.hpp&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -201,7 +226,8 @@ table td
     "TheWeepingHouse/Configurations/Primary"
   ],
   "AllegroFlare/BitmapBin": [
-    "TheWeepingHouse/Configurations/Primary"
+    "TheWeepingHouse/Configurations/Primary",
+    "TheWeepingHouse/EntityFactory"
   ],
   "AllegroFlare/EventEmitter": [
     "TheWeepingHouse/Configurations/Primary",
@@ -216,6 +242,9 @@ table td
   "AllegroFlare/Prototypes/FixedRoom2D/Configuration": [
     "TheWeepingHouse/Configurations/Primary",
     "TheWeepingHouse/Runner"
+  ],
+  "AllegroFlare/Prototypes/FixedRoom2D/Entities/Base": [
+    "TheWeepingHouse/EntityFactory"
   ],
   "AllegroFlare/Screens/Base": [
     "TheWeepingHouse/Runner"

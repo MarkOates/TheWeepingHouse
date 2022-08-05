@@ -10,20 +10,6 @@ properties:
 functions:
 
 
-  - name: create_chair_entity
-    type: AllegroFlare::Prototypes::FixedRoom2D::Entities::Base*
-    parameters:
-      - name: x
-        type: float
-        default_argument: 1920/2
-      - name: y
-        type: float
-        default_argument: 1080/2
-    guards: [ bitmap_bin ]
-    body: |
-      return create_entity("wooden-chair-png-transparent-image-pngpix-0.png", x, y, 0.1, "chair");
-
-
   - name: create_entity
     type: AllegroFlare::Prototypes::FixedRoom2D::Entities::Base*
     parameters:
@@ -45,6 +31,12 @@ functions:
       - name: on_interact_script_name
         type: std::string
         default_argument: '"[unset-on_interact_script_name]"'
+      - name: align_x
+        type: float
+        default_argument: 0.5f
+      - name: align_y
+        type: float
+        default_argument: 1.0f
     guards: [ bitmap_bin ]
     body: |
       ALLEGRO_BITMAP* bitmap = bitmap_bin->auto_get(bitmap_image_identifier);
@@ -57,7 +49,7 @@ functions:
 
       placement.position = {x, y};
       placement.scale = {scale, scale};
-      placement.align = {0.5, 1.0};
+      placement.align = {align_x, align_y};
       if (bitmap) placement.size = {(float)al_get_bitmap_width(bitmap), (float)al_get_bitmap_height(bitmap)};
 
       result->set("name", name);

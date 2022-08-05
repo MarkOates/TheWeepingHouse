@@ -24,7 +24,8 @@
     "TheWeepingHouse/Configurations/Primary"
   ],
   "AllegroFlare/BitmapBin": [
-    "TheWeepingHouse/Configurations/Primary"
+    "TheWeepingHouse/Configurations/Primary",
+    "TheWeepingHouse/EntityFactory"
   ],
   "AllegroFlare/EventEmitter": [
     "TheWeepingHouse/Configurations/Primary",
@@ -39,6 +40,9 @@
   "AllegroFlare/Prototypes/FixedRoom2D/Configuration": [
     "TheWeepingHouse/Configurations/Primary",
     "TheWeepingHouse/Runner"
+  ],
+  "AllegroFlare/Prototypes/FixedRoom2D/Entities/Base": [
+    "TheWeepingHouse/EntityFactory"
   ],
   "AllegroFlare/Screens/Base": [
     "TheWeepingHouse/Runner"
