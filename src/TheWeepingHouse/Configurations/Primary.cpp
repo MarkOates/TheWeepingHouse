@@ -1,7 +1,7 @@
 
 
 #include <TheWeepingHouse/Configurations/Primary.hpp>
-#include <AllegroFlare/Prototypes/FixedRoom2D/EntityFactory.hpp>
+#include <TheWeepingHouse/EntityFactory.hpp>
 #include <AllegroFlare/Prototypes/FixedRoom2D/RoomFactory.hpp>
 #include <stdexcept>
 #include <sstream>
@@ -65,7 +65,7 @@ AllegroFlare::Prototypes::FixedRoom2D::Configuration Primary::build(AllegroFlare
    std::string &starting_in_room_identifier = result.get_starting_in_room_identifier_ref();
 
 
-   AllegroFlare::Prototypes::FixedRoom2D::EntityFactory entity_factory(bitmap_bin);
+   TheWeepingHouse::EntityFactory entity_factory(bitmap_bin);
    AllegroFlare::Prototypes::FixedRoom2D::RoomFactory room_factory(
       bitmap_bin, font_bin, event_emitter, entity_collection_helper__this_is_a_hack
    );

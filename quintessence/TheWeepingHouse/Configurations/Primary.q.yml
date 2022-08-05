@@ -39,7 +39,7 @@ functions:
       std::string &starting_in_room_identifier = result.get_starting_in_room_identifier_ref();
 
 
-      AllegroFlare::Prototypes::FixedRoom2D::EntityFactory entity_factory(bitmap_bin);
+      TheWeepingHouse::EntityFactory entity_factory(bitmap_bin);
       AllegroFlare::Prototypes::FixedRoom2D::RoomFactory room_factory(
          bitmap_bin, font_bin, event_emitter, entity_collection_helper__this_is_a_hack
       );
@@ -106,7 +106,7 @@ functions:
        
       return result;
     body_dependency_symbols:
-      - AllegroFlare::Prototypes::FixedRoom2D::EntityFactory
+      - TheWeepingHouse::EntityFactory
       - AllegroFlare::Prototypes::FixedRoom2D::RoomFactory
 
 
@@ -125,8 +125,8 @@ dependencies:
     headers: [ map, AllegroFlare/Prototypes/FixedRoom2D/Script.hpp ]
   - symbol: std::map<std::string, std::string>*
     headers: [ map, string ]
-  - symbol: AllegroFlare::Prototypes::FixedRoom2D::EntityFactory
-    headers: [ AllegroFlare/Prototypes/FixedRoom2D/EntityFactory.hpp ]
+  - symbol: TheWeepingHouse::EntityFactory
+    headers: [ TheWeepingHouse/EntityFactory.hpp ]
   - symbol: AllegroFlare::Prototypes::FixedRoom2D::RoomFactory
     headers: [ AllegroFlare/Prototypes/FixedRoom2D/RoomFactory.hpp ]
   - symbol: AllegroFlare::BitmapBin*
