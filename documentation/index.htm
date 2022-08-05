@@ -206,13 +206,35 @@ table td
   <div class="component">
     <h3 id="quintessence/TheWeepingHouse/Shaders/FlatColor.q.yml">quintessence/TheWeepingHouse/Shaders/FlatColor.q.yml</h3>
      <table>
-    </table>
-     <table>
 <tr>
-  <td class="method">run()</td>
+  <td class="property">initialized</td>
+  <td class="property">bool</td>
 </tr>
     </table>
      <table>
+<tr>
+  <td class="method">initialize()</td>
+</tr>
+<tr>
+  <td class="method">activate()</td>
+</tr>
+<tr>
+  <td class="method">set_flat_color(1)</td>
+</tr>
+<tr>
+  <td class="private_method">obtain_vertex_source()</td>
+</tr>
+<tr>
+  <td class="private_method">obtain_fragment_source()</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Shader&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Shader.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_COLOR&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
+</tr>
     </table>
   </div>
 </ul>
@@ -299,6 +321,12 @@ table td
   ],
   "TheWeepingHouse/Configurations/Primary": [
     "TheWeepingHouse/Runner"
+  ],
+  "AllegroFlare/Shader": [
+    "TheWeepingHouse/Shaders/FlatColor"
+  ],
+  "ALLEGRO_COLOR": [
+    "TheWeepingHouse/Shaders/FlatColor"
   ]
 }
 </pre>
