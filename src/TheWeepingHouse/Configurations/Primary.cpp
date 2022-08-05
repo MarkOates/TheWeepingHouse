@@ -82,10 +82,8 @@ AllegroFlare::Prototypes::FixedRoom2D::Configuration Primary::build(AllegroFlare
    };
 
    entity_dictionary = {
-      { "front_hall_bg", entity_factory.create_entity("room_0.png",
-            1920/2, 1080, 1.0, "Background", "observe_front_hall") },
-      { "main_hall_bg", entity_factory.create_entity("room_1.png",
-            1920/2, 1080, 1.0, "Background", "observe_main_hall") },
+      { "front_hall_bg", entity_factory.create_background("room_0.png", "observe_front_hall") },
+      { "main_hall_bg", entity_factory.create_background("room_1.png", "observe_main_hall") },
       { "door1", entity_factory.create_entity(
             "download-door-png-transparent-image-and-clipart-3.png", 1400, 800, 0.85, "Door 1", "observe_door1") },
       { "door2", entity_factory.create_entity(

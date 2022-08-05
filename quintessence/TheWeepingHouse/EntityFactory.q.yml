@@ -10,6 +10,20 @@ properties:
 functions:
 
 
+  - name: create_background
+    type: AllegroFlare::Prototypes::FixedRoom2D::Entities::Base*
+    parameters:
+      - name: bitmap_image_identifier
+        type: std::string
+        default_argument: '"[unset-bitmap_identifier]"'
+      - name: on_interact_script_name
+        type: std::string
+        default_argument: '"[unset-on_interact_script_name]"'
+    guards: [ bitmap_bin ]
+    body: |
+      return create_entity(bitmap_image_identifier, 0, 0, 1.0, "background", on_interact_script_name, 0, 0);
+
+      
   - name: create_entity
     type: AllegroFlare::Prototypes::FixedRoom2D::Entities::Base*
     parameters:
