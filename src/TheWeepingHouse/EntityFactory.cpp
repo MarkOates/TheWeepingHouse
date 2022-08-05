@@ -30,7 +30,11 @@ AllegroFlare::Prototypes::FixedRoom2D::Entities::Base* EntityFactory::create_bac
          error_message << "EntityFactory" << "::" << "create_background" << ": error: " << "guard \"bitmap_bin\" not met";
          throw std::runtime_error(error_message.str());
       }
-   return create_entity(bitmap_image_identifier, 0, 0, 1.0, "background", on_interact_script_name, 0, 0);
+   AllegroFlare::Prototypes::FixedRoom2D::Entities::Base* result = create_entity(
+      bitmap_image_identifier, 0, 0, 1.0, "background", on_interact_script_name, 0, 0
+   );
+   result->set_cursor_insights_are_hidden(true);
+   return result;
 }
 
 AllegroFlare::Prototypes::FixedRoom2D::Entities::Base* EntityFactory::create_entity(std::string bitmap_image_identifier, float x, float y, float scale, std::string name, std::string on_interact_script_name, float align_x, float align_y)

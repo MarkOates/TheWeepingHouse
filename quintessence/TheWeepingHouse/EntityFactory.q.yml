@@ -21,7 +21,11 @@ functions:
         default_argument: '"[unset-on_interact_script_name]"'
     guards: [ bitmap_bin ]
     body: |
-      return create_entity(bitmap_image_identifier, 0, 0, 1.0, "background", on_interact_script_name, 0, 0);
+      AllegroFlare::Prototypes::FixedRoom2D::Entities::Base* result = create_entity(
+         bitmap_image_identifier, 0, 0, 1.0, "background", on_interact_script_name, 0, 0
+      );
+      result->set_cursor_insights_are_hidden(true);
+      return result;
 
       
   - name: create_entity
