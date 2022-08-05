@@ -50,7 +50,12 @@ void Multiply::activate()
 void Multiply::set_tint(ALLEGRO_COLOR flat_color)
 {
    Shader::set_vec4("tint", flat_color.r, flat_color.g, flat_color.b, flat_color.a);
-   Shader::set_float("tint_intensity", 1.0);
+   return;
+}
+
+void Multiply::set_tint_intensity(float tint_intensity)
+{
+   Shader::set_float("tint_intensity", tint_intensity);
    return;
 }
 
@@ -86,12 +91,18 @@ std::string Multiply::obtain_fragment_source()
      void main()
      {
         vec4 tmp = texture2D(al_tex, varying_texcoord);
-        //float inverse_tint_intensity = 1.0 - tint_intensity;
+        float inverse_tint_intensity = 1.0 - tint_intensity;
         //tmp.r = (tmp.r * inverse_tint_intensity + tint.r * tint_intensity) * tmp.a;
         //tmp.g = (tmp.g * inverse_tint_intensity + tint.g * tint_intensity) * tmp.a;
         //tmp.b = (tmp.b * inverse_tint_intensity + tint.b * tint_intensity) * tmp.a;
         //tmp.a = tmp.a;
-        gl_FragColor = tmp * tint;
+        //gl_FragColor = tmp * tint;
+        tmp.r = (tmp.r * inverse_tint_intensity + tint.r * tint_intensity) * tmp.a;
+        tmp.g = (tmp.g * inverse_tint_intensity + tint.g * tint_intensity) * tmp.a;
+        tmp.b = (tmp.b * inverse_tint_intensity + tint.b * tint_intensity) * tmp.a;
+        tmp.a = tmp.a;
+
+        gl_FragColor = tmp;
      }
    )DELIM";
    return source;

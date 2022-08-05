@@ -133,6 +133,8 @@ dependencies:
     headers: [ AllegroFlare/EventEmitter.hpp ]
   - symbol: AllegroFlare::FontBin*
     headers: [ AllegroFlare/FontBin.hpp ]
+  - symbol: AllegroFlare::Shader*
+    headers: [ AllegroFlare/Shader.hpp ]
   - symbol: AllegroFlare::Prototypes::FixedRoom2D::EntityCollectionHelper*
     headers: [ AllegroFlare/Prototypes/FixedRoom2D/EntityCollectionHelper.hpp ]
   - symbol: AllegroFlare::Prototypes::FixedRoom2D::Configuration

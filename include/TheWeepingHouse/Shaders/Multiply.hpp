@@ -10,7 +10,7 @@ namespace TheWeepingHouse
 {
    namespace Shaders
    {
-      class Multiply : private AllegroFlare::Shader
+      class Multiply : public AllegroFlare::Shader
       {
       private:
          bool initialized;
@@ -22,6 +22,7 @@ namespace TheWeepingHouse
          void initialize();
          void activate();
          void set_tint(ALLEGRO_COLOR flat_color={});
+         void set_tint_intensity(float tint_intensity=1.0f);
          static std::string obtain_vertex_source();
          static std::string obtain_fragment_source();
       };

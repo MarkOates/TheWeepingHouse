@@ -84,7 +84,6 @@ void Runner::initialize()
 
 
    // setup the title screen
-   //AllegroFlare::Screens::TitleScreen title_screen;
    title_screen.set_font_bin(&font_bin);
    title_screen.set_bitmap_bin(&bitmap_bin);
    title_screen.set_title_text("");
@@ -106,7 +105,6 @@ void Runner::initialize()
 
 
    // setup the pause screen
-   //AllegroFlare::Screens::PauseScreen pause_screen;
    pause_screen.set_font_bin(&font_bin);
    pause_screen.set_bitmap_bin(&bitmap_bin);
    pause_screen.set_event_emitter(&event_emitter);
@@ -119,26 +117,14 @@ void Runner::initialize()
 
 
    // setup the gameplay screen
-   //AllegroFlare::Prototypes::FixedRoom2D::Screen gameplay_screen(
-      //&bitmap_bin,
-      //&font_bin,
-      //&event_emitter,
-      //&audio_controller
-   //);
    gameplay_screen.set_bitmap_bin(&bitmap_bin);
    gameplay_screen.set_font_bin(&font_bin);
    gameplay_screen.set_event_emitter(&event_emitter);
    gameplay_screen.set_audio_controller(&audio_controller);
+   gameplay_screen.get_fixed_room_2d_ref().set_room_shader(&room_shader);
    gameplay_screen.initialize();
-   //AllegroFlare::Prototypes::FixedRoom2D::Configuration configuration =
-      //TheWeepingHouse::Configurations::Primary::build(
-         //&bitmap_bin,
-         //&font_bin,
-         //&event_emitter,
-         //&gameplay_screen.get_fixed_room_2d_ref().get_entity_collection_helper_ref()
-      //);
-   //gameplay_screen.load_game_configuration_and_start(configuration);
    framework->register_screen("gameplay_screen", &gameplay_screen);
+
 
 
    // setup the credits screen
@@ -156,9 +142,13 @@ void Runner::initialize()
    framework->register_screen("credits_screen", credits_screen);
 
 
-   //primary_shader.initialize();
-   //primary_shader.activate();
-   //primary_shader.set_tint(global_ambient_color.to_al());
+
+   // setup the shader
+   room_shader.initialize();
+   room_shader_color = AllegroFlare::Color::Green;
+   room_shader.set_tint(room_shader_color.to_al());
+
+
    return;
 }
 
@@ -203,15 +193,14 @@ void Runner::game_event_func(AllegroFlare::GameEvent* ev)
 
    if (event_name == "initialize")
    {
-      //initialize();
-      //primary_shader.initialize();
-      //primary_shader.activate();
-      //primary_shader.set_tint(global_ambient_color.to_al());
-
-      //event_emitter->emit_game_event(AllegroFlare::GameEvent("start_new_game"));
-      //event_emitter->emit_game_event(AllegroFlare::GameEvent("start_gameplay_screen"));
-      // FOR FULL GAMEPLAY
-      event_emitter->emit_game_event(AllegroFlare::GameEvent("start_opening_logos_storyboard_screen"));
+      if (mode == "production")
+      {
+         event_emitter->emit_game_event(AllegroFlare::GameEvent("start_opening_logos_storyboard_screen"));
+      }
+      else
+      {
+         event_emitter->emit_game_event(AllegroFlare::GameEvent("start_new_game"));
+      }
    }
    if (event_name == "start_opening_logos_storyboard_screen")
    {

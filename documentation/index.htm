@@ -53,6 +53,7 @@ table td
   <li><a href="#quintessence/TheWeepingHouse/EntityFactory.q.yml">quintessence/TheWeepingHouse/EntityFactory.q.yml</a></li>
   <li><a href="#quintessence/TheWeepingHouse/Runner.q.yml">quintessence/TheWeepingHouse/Runner.q.yml</a></li>
   <li><a href="#quintessence/TheWeepingHouse/Shaders/FlatColor.q.yml">quintessence/TheWeepingHouse/Shaders/FlatColor.q.yml</a></li>
+  <li><a href="#quintessence/TheWeepingHouse/Shaders/Multiply.q.yml">quintessence/TheWeepingHouse/Shaders/Multiply.q.yml</a></li>
 </ul>
 <h1>Components</h1>
 <ul>
@@ -100,6 +101,9 @@ table td
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FontBin*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FontBin.hpp&quot;]}</td>
 </tr>
 <tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Shader*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Shader.hpp&quot;]}</td>
+</tr>
+<tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Prototypes::FixedRoom2D::EntityCollectionHelper*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Prototypes/FixedRoom2D/EntityCollectionHelper.hpp&quot;]}</td>
 </tr>
 <tr>
@@ -140,6 +144,10 @@ table td
     <h3 id="quintessence/TheWeepingHouse/Runner.q.yml">quintessence/TheWeepingHouse/Runner.q.yml</h3>
      <table>
 <tr>
+  <td class="property">mode</td>
+  <td class="property">std::string</td>
+</tr>
+<tr>
   <td class="property">framework</td>
   <td class="property">AllegroFlare::Frameworks::Full*</td>
 </tr>
@@ -148,15 +156,45 @@ table td
   <td class="property">AllegroFlare::EventEmitter*</td>
 </tr>
 <tr>
-  <td class="property">global_ambient_color</td>
-  <td class="property">ALLEGRO_COLOR</td>
+  <td class="property">opening_logos_storyboard_screen</td>
+  <td class="property">AllegroFlare::Screens::Storyboard*</td>
 </tr>
 <tr>
-  <td class="property">primary_shader</td>
+  <td class="property">title_screen</td>
+  <td class="property">AllegroFlare::Screens::TitleScreen</td>
+</tr>
+<tr>
+  <td class="property">pause_screen</td>
+  <td class="property">AllegroFlare::Screens::PauseScreen</td>
+</tr>
+<tr>
+  <td class="property">gameplay_screen</td>
+  <td class="property">AllegroFlare::Prototypes::FixedRoom2D::Screen</td>
+</tr>
+<tr>
+  <td class="property">credits_screen</td>
+  <td class="property">AllegroFlare::Screens::Storyboard*</td>
+</tr>
+<tr>
+  <td class="property">room_shader_color</td>
+  <td class="property">AllegroFlare::Color</td>
+</tr>
+<tr>
+  <td class="property">room_shader</td>
   <td class="property">TheWeepingHouse::Shaders::Multiply</td>
+</tr>
+<tr>
+  <td class="property">initialized</td>
+  <td class="property">bool</td>
 </tr>
     </table>
      <table>
+<tr>
+  <td class="method">initialize()</td>
+</tr>
+<tr>
+  <td class="method">start_new_game()</td>
+</tr>
 <tr>
   <td class="method">game_event_func(1)</td>
 </tr>
@@ -178,7 +216,7 @@ table td
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Screens::PauseScreen&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Screens/PauseScreen.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Screens::Storyboard&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Screens/Storyboard.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Screens::Storyboard*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Screens/Storyboard.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::StoryboardFactory&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/StoryboardFactory.hpp&quot;]}</td>
@@ -216,6 +254,9 @@ table td
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;TheWeepingHouse::Shaders::Multiply&quot;, &quot;headers&quot;=&gt;[&quot;TheWeepingHouse/Shaders/Multiply.hpp&quot;]}</td>
 </tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Color&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Color.hpp&quot;]}</td>
+</tr>
     </table>
   </div>
 </ul>
@@ -237,6 +278,45 @@ table td
 </tr>
 <tr>
   <td class="method">set_flat_color(1)</td>
+</tr>
+<tr>
+  <td class="private_method">obtain_vertex_source()</td>
+</tr>
+<tr>
+  <td class="private_method">obtain_fragment_source()</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Shader&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Shader.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_COLOR&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
+</tr>
+    </table>
+  </div>
+</ul>
+<ul>
+  <div class="component">
+    <h3 id="quintessence/TheWeepingHouse/Shaders/Multiply.q.yml">quintessence/TheWeepingHouse/Shaders/Multiply.q.yml</h3>
+     <table>
+<tr>
+  <td class="property">initialized</td>
+  <td class="property">bool</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="method">initialize()</td>
+</tr>
+<tr>
+  <td class="method">activate()</td>
+</tr>
+<tr>
+  <td class="method">set_tint(1)</td>
+</tr>
+<tr>
+  <td class="method">set_tint_intensity(1)</td>
 </tr>
 <tr>
   <td class="private_method">obtain_vertex_source()</td>
@@ -293,6 +373,11 @@ table td
   "AllegroFlare/FontBin": [
     "TheWeepingHouse/Configurations/Primary"
   ],
+  "AllegroFlare/Shader": [
+    "TheWeepingHouse/Configurations/Primary",
+    "TheWeepingHouse/Shaders/FlatColor",
+    "TheWeepingHouse/Shaders/Multiply"
+  ],
   "AllegroFlare/Prototypes/FixedRoom2D/EntityCollectionHelper": [
     "TheWeepingHouse/Configurations/Primary"
   ],
@@ -331,6 +416,7 @@ table td
     "TheWeepingHouse/Runner"
   ],
   "AllegroFlare/Color": [
+    "TheWeepingHouse/Runner",
     "TheWeepingHouse/Runner"
   ],
   "AllegroFlare/GameEvent": [
@@ -341,16 +427,14 @@ table td
   ],
   "ALLEGRO_COLOR": [
     "TheWeepingHouse/Runner",
-    "TheWeepingHouse/Shaders/FlatColor"
+    "TheWeepingHouse/Shaders/FlatColor",
+    "TheWeepingHouse/Shaders/Multiply"
   ],
   "TheWeepingHouse/Shaders/FlatColor": [
     "TheWeepingHouse/Runner"
   ],
   "TheWeepingHouse/Shaders/Multiply": [
     "TheWeepingHouse/Runner"
-  ],
-  "AllegroFlare/Shader": [
-    "TheWeepingHouse/Shaders/FlatColor"
   ]
 }
 </pre>
