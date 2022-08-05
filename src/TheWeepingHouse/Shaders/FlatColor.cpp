@@ -1,7 +1,8 @@
 
 
 #include <TheWeepingHouse/Shaders/FlatColor.hpp>
-
+#include <stdexcept>
+#include <sstream>
 
 
 namespace TheWeepingHouse
@@ -11,7 +12,7 @@ namespace Shaders
 
 
 FlatColor::FlatColor()
-   : LabyrinthOfLore::Shader::Base(obtain_vertex_source(), obtain_fragment_source())
+   : AllegroFlare::Shader(obtain_vertex_source(), obtain_fragment_source())
    , initialized(false)
 {
 }
@@ -24,20 +25,32 @@ FlatColor::~FlatColor()
 
 void FlatColor::initialize()
 {
-   if (!initialized) LabyrinthOfLore::Shader::Base::initialize();
-   initialized = true;
+   if (!((!initialized)))
+      {
+         std::stringstream error_message;
+         error_message << "FlatColor" << "::" << "initialize" << ": error: " << "guard \"(!initialized)\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   TheWeepingHouse::Shaders::FlatColor::initialize();
+   return;
 }
 
 void FlatColor::activate()
 {
-   if (!initialized) throw std::runtime_error("[LabyrinthOfLore::Shader::FlatColor] Attempting to activate() shader before it has been initialized");
-   LabyrinthOfLore::Shader::Base::activate();
+   if (!initialized)
+   {
+      throw std::runtime_error("[TheWeepingHouse::Shaders::FlatColor] Attempting to activate() "
+                               "shader before it has been initialized");
+   }
+   AllegroFlare::Shader::activate();
+   return;
 }
 
 void FlatColor::set_flat_color(ALLEGRO_COLOR flat_color)
 {
    Shader::set_vec3("tint", flat_color.r, flat_color.g, flat_color.b);
    Shader::set_float("tint_intensity", 1.0);
+   return;
 }
 
 std::string FlatColor::obtain_vertex_source()

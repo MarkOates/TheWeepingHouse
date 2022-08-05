@@ -8,18 +8,18 @@
    catch (...) { FAIL() << "Expected " # raised_exception_type; }
 
 
-#include <LabyrinthOfLore/Shader/FlatColor.hpp>
+#include <TheWeepingHouse/Shaders/FlatColor.hpp>
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_color.h>
-#include <allegro_flare/placement2d.h>
+#include <AllegroFlare/Placement2D.hpp>
 
 
-class LabyrinthOfLore_Shader_FlatColorTest : public ::testing::Test
+class TheWeepingHouse_Shaders_FlatColorTest : public ::testing::Test
 {
 protected:
    ALLEGRO_DISPLAY *display;
 
-   LabyrinthOfLore_Shader_FlatColorTest()
+   TheWeepingHouse_Shaders_FlatColorTest()
       : display(nullptr)
    {
    }
@@ -32,7 +32,7 @@ protected:
       al_set_new_display_flags(ALLEGRO_OPENGL | ALLEGRO_PROGRAMMABLE_PIPELINE);
       ASSERT_EQ(ALLEGRO_OPENGL, al_get_new_display_flags() & ALLEGRO_OPENGL);
       ASSERT_EQ(ALLEGRO_PROGRAMMABLE_PIPELINE, al_get_new_display_flags() & ALLEGRO_PROGRAMMABLE_PIPELINE);
-      ALLEGRO_DISPLAY *display = al_create_display(800, 600);
+      ALLEGRO_DISPLAY *display = al_create_display(1920, 1080);
       ASSERT_NE(nullptr, display);
    }
 
@@ -49,48 +49,48 @@ protected:
 };
 
 
-TEST_F(LabyrinthOfLore_Shader_FlatColorTest, can_be_created_without_blowing_up)
+TEST_F(TheWeepingHouse_Shaders_FlatColorTest, can_be_created_without_blowing_up)
 {
-   LabyrinthOfLore::Shader::FlatColor flat_color_shader;
+   TheWeepingHouse::Shaders::FlatColor flat_color_shader;
    SUCCEED();
 }
 
 
-TEST_F(LabyrinthOfLore_Shader_FlatColorTest, activate__before_being_initialized_raises_an_exception)
+TEST_F(TheWeepingHouse_Shaders_FlatColorTest, activate__before_being_initialized_raises_an_exception)
 {
-   LabyrinthOfLore::Shader::FlatColor flat_color_shader;
-   std::string expected_error_message = "[LabyrinthOfLore::Shader::FlatColor] Attempting to activate() shader before it has been initialized";
+   TheWeepingHouse::Shaders::FlatColor flat_color_shader;
+   std::string expected_error_message = "[TheWeepingHouse::Shaders::FlatColor] Attempting to activate() shader before it has been initialized";
    ASSERT_THROW_WITH_MESSAGE(flat_color_shader.activate(), std::runtime_error, expected_error_message);
 }
 
 
-TEST_F(LabyrinthOfLore_Shader_FlatColorTest, initialize__works_without_blowing_up)
+TEST_F(TheWeepingHouse_Shaders_FlatColorTest, initialize__works_without_blowing_up)
 {
-   LabyrinthOfLore::Shader::FlatColor flat_color_shader;
+   TheWeepingHouse::Shaders::FlatColor flat_color_shader;
    flat_color_shader.initialize();
    SUCCEED();
 }
 
 
-TEST_F(LabyrinthOfLore_Shader_FlatColorTest, activate__works_without_blowing_up)
+TEST_F(TheWeepingHouse_Shaders_FlatColorTest, activate__works_without_blowing_up)
 {
-   LabyrinthOfLore::Shader::FlatColor flat_color_shader;
+   TheWeepingHouse::Shaders::FlatColor flat_color_shader;
 
    flat_color_shader.initialize();
    flat_color_shader.activate();
 }
 
 
-TEST_F(LabyrinthOfLore_Shader_FlatColorTest, when_active__renders_the_image_with_the_flat_color)
+TEST_F(TheWeepingHouse_Shaders_FlatColorTest, DISABLED__when_active__renders_the_image_with_the_flat_color)
 {
-   LabyrinthOfLore::Shader::FlatColor flat_color_shader;
+   TheWeepingHouse::Shaders::FlatColor flat_color_shader;
 
    flat_color_shader.initialize();
    flat_color_shader.activate();
 
    al_init_image_addon();
 
-   ALLEGRO_BITMAP *test_image = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/billboarding_tester_sprite.png");
+   ALLEGRO_BITMAP *test_image = al_load_bitmap("/Users/markoates/Repos/TheWeepingHouse/bin/programs/data/bitmaps/billboarding_tester_sprite.png");
    ASSERT_NE(nullptr, test_image);
 
 
@@ -101,7 +101,7 @@ TEST_F(LabyrinthOfLore_Shader_FlatColorTest, when_active__renders_the_image_with
    ALLEGRO_DISPLAY *current_display = al_get_current_display();
    ASSERT_NE(nullptr, current_display);
 
-   allegro_flare::placement2d place(
+   AllegroFlare::Placement2D place(
          al_get_display_width(current_display)/2,
          al_get_display_height(current_display)/2,
          al_get_bitmap_width(test_image),
@@ -120,7 +120,7 @@ TEST_F(LabyrinthOfLore_Shader_FlatColorTest, when_active__renders_the_image_with
    ASSERT_EQ(color.b, actual_color.b);
    ASSERT_EQ(color.a, actual_color.a);
 
-   std::string tmp_path = "/Users/markoates/Repos/LabyrinthOfLore/tmp/";
+   std::string tmp_path = "/Users/markoates/Repos/TheWeepingHouse/tmp/";
    std::string output_image_full_filename = tmp_path + "when_activated__renders_bitmaps_with_a_solid_tinted_overlay.png";
    ASSERT_EQ(true, al_save_bitmap(output_image_full_filename.c_str(), al_get_backbuffer(current_display)));
 }

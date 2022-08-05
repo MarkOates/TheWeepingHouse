@@ -1,22 +1,42 @@
 parent_classes:
-  - class: LabyrinthOfLore::Shader::Base
+
+
+  - class: AllegroFlare::Shader
     scope: private
     init_with: "obtain_vertex_source(), obtain_fragment_source()"
+
+
 properties:
+
+
   - name: initialized
     type: bool
     init_with: false
+
+
 functions:
+
+
   - name: initialize
     type: void
+    guards: [ (!initialized) ]
     body: |
-      if (!initialized) LabyrinthOfLore::Shader::Base::initialize();
-      initialized = true;
+      TheWeepingHouse::Shaders::FlatColor::initialize();
+      return;
+
+
   - name: activate
     type: void
     body: |
-      if (!initialized) throw std::runtime_error("[LabyrinthOfLore::Shader::FlatColor] Attempting to activate() shader before it has been initialized");
-      LabyrinthOfLore::Shader::Base::activate();
+      if (!initialized)
+      {
+         throw std::runtime_error("[TheWeepingHouse::Shaders::FlatColor] Attempting to activate() "
+                                  "shader before it has been initialized");
+      }
+      AllegroFlare::Shader::activate();
+      return;
+
+
   - name: set_flat_color
     parameters:
       - name: flat_color
@@ -25,6 +45,9 @@ functions:
     body: |
       Shader::set_vec3("tint", flat_color.r, flat_color.g, flat_color.b);
       Shader::set_float("tint_intensity", 1.0);
+      return;
+
+
   - name: obtain_vertex_source
     type: std::string
     static: true
@@ -46,6 +69,8 @@ functions:
         }
       )DELIM";
       return source;
+
+
   - name: obtain_fragment_source
     type: std::string
     static: true
@@ -70,8 +95,13 @@ functions:
         }
       )DELIM";
       return source;
+
+
 dependencies:
-  - symbol: LabyrinthOfLore::Shader::Base
-    headers: [ LabyrinthOfLore/Shader/Base.hpp ]
+
+
+  - symbol: AllegroFlare::Shader
+    headers: [ AllegroFlare/Shader.hpp ]
   - symbol: ALLEGRO_COLOR
     headers: [ allegro5/allegro.h ]
+
