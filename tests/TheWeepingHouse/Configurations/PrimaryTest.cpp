@@ -10,10 +10,13 @@ TEST(TheWeepingHouse_Configurations_PrimaryTest, can_be_created_without_blowing_
 }
 
 
-TEST(TheWeepingHouse_Configurations_PrimaryTest, run__returns_the_expected_response)
+#include <TheWeepingHouse/Runner.hpp>
+
+TEST(TheWeepingHouse_RunnerTest, run__runs_the_program)
 {
-   TheWeepingHouse::Configurations::Primary primary;
-   std::string expected_string = "Hello World!";
-   EXPECT_EQ(expected_string, primary.run());
+   TheWeepingHouse::Runner runner;
+   runner.run("test");
+   SUCCEED();
 }
+
 

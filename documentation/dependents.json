@@ -1,2 +1,79 @@
 {
+  "AllegroFlare/Inventory": [
+    "TheWeepingHouse/Configurations/Primary"
+  ],
+  "AllegroFlare/InventoryIndex": [
+    "TheWeepingHouse/Configurations/Primary"
+  ],
+  "std/map<std/string, AllegroFlare/Prototypes/FixedRoom2D/Entities/Base>": [
+    "TheWeepingHouse/Configurations/Primary"
+  ],
+  "std/map<std/string, AllegroFlare/Prototypes/FixedRoom2D/Room>": [
+    "TheWeepingHouse/Configurations/Primary"
+  ],
+  "std/map<std/string, AllegroFlare/Prototypes/FixedRoom2D/Script>": [
+    "TheWeepingHouse/Configurations/Primary"
+  ],
+  "std/map<std/string, std/string>": [
+    "TheWeepingHouse/Configurations/Primary"
+  ],
+  "AllegroFlare/Prototypes/FixedRoom2D/EntityFactory": [
+    "TheWeepingHouse/Configurations/Primary"
+  ],
+  "AllegroFlare/Prototypes/FixedRoom2D/RoomFactory": [
+    "TheWeepingHouse/Configurations/Primary"
+  ],
+  "AllegroFlare/BitmapBin": [
+    "TheWeepingHouse/Configurations/Primary"
+  ],
+  "AllegroFlare/EventEmitter": [
+    "TheWeepingHouse/Configurations/Primary",
+    "TheWeepingHouse/Runner"
+  ],
+  "AllegroFlare/FontBin": [
+    "TheWeepingHouse/Configurations/Primary"
+  ],
+  "AllegroFlare/Prototypes/FixedRoom2D/EntityCollectionHelper": [
+    "TheWeepingHouse/Configurations/Primary"
+  ],
+  "AllegroFlare/Prototypes/FixedRoom2D/Configuration": [
+    "TheWeepingHouse/Configurations/Primary",
+    "TheWeepingHouse/Runner"
+  ],
+  "AllegroFlare/Screens/Base": [
+    "TheWeepingHouse/Runner"
+  ],
+  "AllegroFlare/Frameworks/Full": [
+    "TheWeepingHouse/Runner"
+  ],
+  "AllegroFlare/Screens/TitleScreen": [
+    "TheWeepingHouse/Runner"
+  ],
+  "AllegroFlare/Screens/PauseScreen": [
+    "TheWeepingHouse/Runner"
+  ],
+  "AllegroFlare/Screens/Storyboard": [
+    "TheWeepingHouse/Runner"
+  ],
+  "AllegroFlare/StoryboardFactory": [
+    "TheWeepingHouse/Runner"
+  ],
+  "AllegroFlare/Screens/GameWonScreen": [
+    "TheWeepingHouse/Runner"
+  ],
+  "AllegroFlare/Prototypes/FixedRoom2D/Screen": [
+    "TheWeepingHouse/Runner"
+  ],
+  "AllegroFlare/Prototypes/FixedRoom2D/FixedRoom2D": [
+    "TheWeepingHouse/Runner"
+  ],
+  "AllegroFlare/Color": [
+    "TheWeepingHouse/Runner"
+  ],
+  "AllegroFlare/GameEvent": [
+    "TheWeepingHouse/Runner"
+  ],
+  "TheWeepingHouse/Configurations/Primary": [
+    "TheWeepingHouse/Runner"
+  ]
 }

@@ -10,10 +10,11 @@ TEST(TheWeepingHouse_RunnerTest, can_be_created_without_blowing_up)
 }
 
 
-TEST(TheWeepingHouse_RunnerTest, run__returns_the_expected_response)
+TEST(TheWeepingHouse_RunnerTest, run__runs_the_program)
 {
    TheWeepingHouse::Runner runner;
-   std::string expected_string = "Hello World!";
-   EXPECT_EQ(expected_string, runner.run());
+   runner.run("test");
+   SUCCEED();
 }
+
 
