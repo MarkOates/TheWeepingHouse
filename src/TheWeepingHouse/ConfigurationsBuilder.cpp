@@ -115,6 +115,10 @@ AllegroFlare::Prototypes::FixedRoom2D::Configuration ConfigurationsBuilder::buil
       }
    if (built) return result_configuration;
 
+   you_build();
+   built = true;
+   return result_configuration;
+
 
    const std::string FRONT_PORCH = "front_porch";
    const std::string FRONT_HALLWAY = "front_hallway";
