@@ -48,6 +48,7 @@ namespace TheWeepingHouse
       std::map<std::string, AllegroFlare::Prototypes::FixedRoom2D::Room*>& get_room_dictionary();
       std::map<std::string, std::string>& get_entity_room_associations();
       std::map<std::string, AllegroFlare::Prototypes::FixedRoom2D::Script>& get_script_dictionary();
+      void you_build();
       AllegroFlare::Prototypes::FixedRoom2D::Configuration get_result_configuration();
       void set_start_room(std::string room_name="[unset-room_name]");
       AllegroFlare::Prototypes::FixedRoom2D::Configuration build();

@@ -83,30 +83,8 @@ properties:
 functions:
 
 
-  - name: get_result_configuration
-    type: AllegroFlare::Prototypes::FixedRoom2D::Configuration
-    guards: [ built ]
+  - name: you_build
     body: |
-      return result_configuration;
-
-
-  - name: set_start_room
-    parameters:
-      - name: room_name
-        type: std::string
-        default_argument: '"[unset-room_name]"'
-    body: |
-      starting_in_room_identifier = room_name;
-      return;
-
-
-  - name: build
-    type: AllegroFlare::Prototypes::FixedRoom2D::Configuration
-    guards: [ bitmap_bin, font_bin, event_emitter, entity_collection_helper__this_is_a_hack ]
-    body: |
-      if (built) return result_configuration;
-
-
 
       const std::string FRONT_PORCH = "front_porch";
       const std::string FRONT_HALLWAY = "front_hallway";
@@ -178,9 +156,33 @@ functions:
 
 
       starting_in_room_identifier = FRONT_PORCH;
+      return;
 
+
+  - name: get_result_configuration
+    type: AllegroFlare::Prototypes::FixedRoom2D::Configuration
+    guards: [ built ]
+    body: |
+      return result_configuration;
+
+
+  - name: set_start_room
+    parameters:
+      - name: room_name
+        type: std::string
+        default_argument: '"[unset-room_name]"'
+    body: |
+      starting_in_room_identifier = room_name;
+      return;
+
+
+  - name: build
+    type: AllegroFlare::Prototypes::FixedRoom2D::Configuration
+    guards: [ bitmap_bin, font_bin, event_emitter, entity_collection_helper__this_is_a_hack ]
+    body: |
+      if (built) return result_configuration;
+      you_build();
       built = true;
-
       return result_configuration;
 
 

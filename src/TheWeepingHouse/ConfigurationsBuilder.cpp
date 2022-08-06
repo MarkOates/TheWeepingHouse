@@ -73,52 +73,8 @@ std::map<std::string, AllegroFlare::Prototypes::FixedRoom2D::Script>& Configurat
 }
 
 
-AllegroFlare::Prototypes::FixedRoom2D::Configuration ConfigurationsBuilder::get_result_configuration()
+void ConfigurationsBuilder::you_build()
 {
-   if (!(built))
-      {
-         std::stringstream error_message;
-         error_message << "ConfigurationsBuilder" << "::" << "get_result_configuration" << ": error: " << "guard \"built\" not met";
-         throw std::runtime_error(error_message.str());
-      }
-   return result_configuration;
-}
-
-void ConfigurationsBuilder::set_start_room(std::string room_name)
-{
-   starting_in_room_identifier = room_name;
-   return;
-}
-
-AllegroFlare::Prototypes::FixedRoom2D::Configuration ConfigurationsBuilder::build()
-{
-   if (!(bitmap_bin))
-      {
-         std::stringstream error_message;
-         error_message << "ConfigurationsBuilder" << "::" << "build" << ": error: " << "guard \"bitmap_bin\" not met";
-         throw std::runtime_error(error_message.str());
-      }
-   if (!(font_bin))
-      {
-         std::stringstream error_message;
-         error_message << "ConfigurationsBuilder" << "::" << "build" << ": error: " << "guard \"font_bin\" not met";
-         throw std::runtime_error(error_message.str());
-      }
-   if (!(event_emitter))
-      {
-         std::stringstream error_message;
-         error_message << "ConfigurationsBuilder" << "::" << "build" << ": error: " << "guard \"event_emitter\" not met";
-         throw std::runtime_error(error_message.str());
-      }
-   if (!(entity_collection_helper__this_is_a_hack))
-      {
-         std::stringstream error_message;
-         error_message << "ConfigurationsBuilder" << "::" << "build" << ": error: " << "guard \"entity_collection_helper__this_is_a_hack\" not met";
-         throw std::runtime_error(error_message.str());
-      }
-   if (built) return result_configuration;
-
-
 
    const std::string FRONT_PORCH = "front_porch";
    const std::string FRONT_HALLWAY = "front_hallway";
@@ -190,9 +146,55 @@ AllegroFlare::Prototypes::FixedRoom2D::Configuration ConfigurationsBuilder::buil
 
 
    starting_in_room_identifier = FRONT_PORCH;
+   return;
+}
 
+AllegroFlare::Prototypes::FixedRoom2D::Configuration ConfigurationsBuilder::get_result_configuration()
+{
+   if (!(built))
+      {
+         std::stringstream error_message;
+         error_message << "ConfigurationsBuilder" << "::" << "get_result_configuration" << ": error: " << "guard \"built\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   return result_configuration;
+}
+
+void ConfigurationsBuilder::set_start_room(std::string room_name)
+{
+   starting_in_room_identifier = room_name;
+   return;
+}
+
+AllegroFlare::Prototypes::FixedRoom2D::Configuration ConfigurationsBuilder::build()
+{
+   if (!(bitmap_bin))
+      {
+         std::stringstream error_message;
+         error_message << "ConfigurationsBuilder" << "::" << "build" << ": error: " << "guard \"bitmap_bin\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   if (!(font_bin))
+      {
+         std::stringstream error_message;
+         error_message << "ConfigurationsBuilder" << "::" << "build" << ": error: " << "guard \"font_bin\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   if (!(event_emitter))
+      {
+         std::stringstream error_message;
+         error_message << "ConfigurationsBuilder" << "::" << "build" << ": error: " << "guard \"event_emitter\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   if (!(entity_collection_helper__this_is_a_hack))
+      {
+         std::stringstream error_message;
+         error_message << "ConfigurationsBuilder" << "::" << "build" << ": error: " << "guard \"entity_collection_helper__this_is_a_hack\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   if (built) return result_configuration;
+   you_build();
    built = true;
-
    return result_configuration;
 }
 
