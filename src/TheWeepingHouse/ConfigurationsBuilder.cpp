@@ -3,7 +3,6 @@
 #include <TheWeepingHouse/ConfigurationsBuilder.hpp>
 #include <stdexcept>
 #include <sstream>
-#include <TheWeepingHouse/EntityFactory.hpp>
 #include <stdexcept>
 #include <sstream>
 #include <stdexcept>
@@ -38,6 +37,7 @@ ConfigurationsBuilder::ConfigurationsBuilder(AllegroFlare::BitmapBin* bitmap_bin
    , script_dictionary(result_configuration.get_script_dictionary_ref())
    , starting_in_room_identifier(result_configuration.get_starting_in_room_identifier_ref())
    , room_factory(bitmap_bin, font_bin, event_emitter, entity_collection_helper__this_is_a_hack)
+   , entity_factory(bitmap_bin)
 {
 }
 
@@ -99,7 +99,7 @@ AllegroFlare::Prototypes::FixedRoom2D::Configuration ConfigurationsBuilder::buil
 
 
 
-   TheWeepingHouse::EntityFactory entity_factory(bitmap_bin);
+   //TheWeepingHouse::EntityFactory entity_factory(bitmap_bin);
    entity_factory.set_hide_hitspots(true);
 
 
@@ -205,7 +205,18 @@ bool ConfigurationsBuilder::assemble_room(std::string name, std::string backgrou
          error_message << "ConfigurationsBuilder" << "::" << "assemble_room" << ": error: " << "guard \"(!room_exists(name))\" not met";
          throw std::runtime_error(error_message.str());
       }
-   //room_dictionary[name] = room_factory.create_room();
+   std::string generated_script_name = "observe_" + name;
+   std::string generated_background_entity_name = name + "_bg";
+   std::string expected_background_bitmap_name = "room_" + name;
+
+   // create the room
+   room_dictionary[name] = room_factory.create_room();
+
+   // create the background entity
+   // TODO: check if it exists first
+   entity_dictionary[generated_background_entity_name] = 
+      entity_factory.create_background(expected_background_bitmap_name, generated_script_name);
+
    return true;
 }
 
@@ -217,6 +228,11 @@ bool ConfigurationsBuilder::room_exists(std::string room_name)
 bool ConfigurationsBuilder::script_exists(std::string script_name)
 {
    return (script_dictionary.count(script_name) > 0);
+}
+
+bool ConfigurationsBuilder::entity_exists(std::string entity_name)
+{
+   return (entity_dictionary.count(entity_name) > 0);
 }
 
 void ConfigurationsBuilder::set_font_bin(AllegroFlare::FontBin* font_bin)
@@ -241,6 +257,7 @@ void ConfigurationsBuilder::set_bitmap_bin(AllegroFlare::BitmapBin* bitmap_bin)
          throw std::runtime_error(error_message.str());
       }
    room_factory.set_bitmap_bin(bitmap_bin);
+   entity_factory.set_bitmap_bin(bitmap_bin);
    this->bitmap_bin = bitmap_bin;
    return;
 }

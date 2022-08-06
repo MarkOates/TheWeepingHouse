@@ -91,3 +91,19 @@ TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH
 }
 
 
+TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH_ASSEMBLED_configurations_builder,
+   entity_exists__will_return_true_if_the_entity_is_present)
+{
+   configurations_builder.build();
+   EXPECT_EQ(true, configurations_builder.entity_exists("front_patio_bg"));
+}
+
+
+TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH_ASSEMBLED_configurations_builder,
+   entity_exists__will_return_false_if_the_entity_is_not_present)
+{
+   configurations_builder.build();
+   EXPECT_EQ(false, configurations_builder.entity_exists("an-entity-that-does-not-exist"));
+}
+
+

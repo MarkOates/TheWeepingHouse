@@ -20,6 +20,7 @@ namespace TheWeepingHouse
       EntityFactory(AllegroFlare::BitmapBin* bitmap_bin=nullptr);
       ~EntityFactory();
 
+      void set_bitmap_bin(AllegroFlare::BitmapBin* bitmap_bin);
       void set_hide_hitspots(bool hide_hitspots);
       bool get_hide_hitspots();
       AllegroFlare::Prototypes::FixedRoom2D::Entities::Base* create_background(std::string bitmap_image_identifier="[unset-bitmap_identifier]", std::string on_interact_script_name="[unset-on_interact_script_name]");

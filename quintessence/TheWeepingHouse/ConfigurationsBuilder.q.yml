@@ -71,6 +71,11 @@ properties:
     type: AllegroFlare::Prototypes::FixedRoom2D::RoomFactory
     init_with: 'bitmap_bin, font_bin, event_emitter, entity_collection_helper__this_is_a_hack'
 
+  - name: entity_factory
+    type: TheWeepingHouse::EntityFactory
+    init_with: 'bitmap_bin'
+
+
 functions:
 
 
@@ -100,7 +105,7 @@ functions:
 
 
 
-      TheWeepingHouse::EntityFactory entity_factory(bitmap_bin);
+      //TheWeepingHouse::EntityFactory entity_factory(bitmap_bin);
       entity_factory.set_hide_hitspots(true);
 
 
@@ -196,8 +201,6 @@ functions:
       built = true;
 
       return result_configuration;
-    body_dependency_symbols:
-      - TheWeepingHouse::EntityFactory
 
 
   - name: assemble_room
@@ -214,7 +217,18 @@ functions:
         default_argument: '"[unset-background_bitmap_identifier]"'
     guards: [ (!room_exists(name)) ]
     body: |
-      //room_dictionary[name] = room_factory.create_room();
+      std::string generated_script_name = "observe_" + name;
+      std::string generated_background_entity_name = name + "_bg";
+      std::string expected_background_bitmap_name = "room_" + name;
+
+      // create the room
+      room_dictionary[name] = room_factory.create_room();
+
+      // create the background entity
+      // TODO: check if it exists first
+      entity_dictionary[generated_background_entity_name] = 
+         entity_factory.create_background(expected_background_bitmap_name, generated_script_name);
+
       return true;
 
 
@@ -238,6 +252,16 @@ functions:
       return (script_dictionary.count(script_name) > 0);
 
 
+  - name: entity_exists
+    type: bool
+    parameters:
+      - name: entity_name
+        type: std::string
+        default_argument: '"[unset-entity_name]"'
+    body: |
+      return (entity_dictionary.count(entity_name) > 0);
+
+
   - name: set_font_bin
     parameters:
       - name: font_bin
@@ -258,6 +282,7 @@ functions:
     guards: [ (!built) ]
     body: |
       room_factory.set_bitmap_bin(bitmap_bin);
+      entity_factory.set_bitmap_bin(bitmap_bin);
       this->bitmap_bin = bitmap_bin;
       return;
 

@@ -29,6 +29,12 @@ EntityFactory::~EntityFactory()
 }
 
 
+void EntityFactory::set_bitmap_bin(AllegroFlare::BitmapBin* bitmap_bin)
+{
+   this->bitmap_bin = bitmap_bin;
+}
+
+
 void EntityFactory::set_hide_hitspots(bool hide_hitspots)
 {
    this->hide_hitspots = hide_hitspots;
