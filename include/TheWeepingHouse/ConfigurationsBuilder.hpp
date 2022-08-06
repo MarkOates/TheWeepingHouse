@@ -15,6 +15,7 @@
 #include <TheWeepingHouse/EntityFactory.hpp>
 #include <map>
 #include <string>
+#include <vector>
 
 
 namespace TheWeepingHouse
@@ -41,16 +42,17 @@ namespace TheWeepingHouse
 
    public:
       ConfigurationsBuilder(AllegroFlare::BitmapBin* bitmap_bin=nullptr, AllegroFlare::FontBin* font_bin=nullptr, AllegroFlare::EventEmitter* event_emitter=nullptr, AllegroFlare::Prototypes::FixedRoom2D::EntityCollectionHelper* entity_collection_helper__this_is_a_hack=nullptr);
-      virtual ~ConfigurationsBuilder();
+      ~ConfigurationsBuilder();
 
       std::map<std::string, AllegroFlare::Prototypes::FixedRoom2D::Entities::Base*>& get_entity_dictionary();
       std::map<std::string, AllegroFlare::Prototypes::FixedRoom2D::Room*>& get_room_dictionary();
       std::map<std::string, std::string>& get_entity_room_associations();
       std::map<std::string, AllegroFlare::Prototypes::FixedRoom2D::Script>& get_script_dictionary();
       AllegroFlare::Prototypes::FixedRoom2D::Configuration get_result_configuration();
-      virtual void you_build();
+      void set_start_room(std::string room_name="[unset-room_name]");
       AllegroFlare::Prototypes::FixedRoom2D::Configuration build();
       bool assemble_room(std::string room_name="[unset-room_name]", std::string observe_script_text="[unset-background_bitmap_identifier]");
+      void add_script(std::string script_name="[unset-script_name]", std::vector<std::string> script_lines={"[unset-script_lines]"});
       bool room_exists(std::string room_name="[unset-room_name]");
       bool script_exists(std::string script_name="[unset-script_name]");
       bool entity_exists(std::string entity_name="[unset-entity_name]");

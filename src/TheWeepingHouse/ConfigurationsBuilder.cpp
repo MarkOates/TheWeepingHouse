@@ -15,6 +15,8 @@
 #include <sstream>
 #include <stdexcept>
 #include <sstream>
+#include <stdexcept>
+#include <sstream>
 
 
 namespace TheWeepingHouse
@@ -82,8 +84,9 @@ AllegroFlare::Prototypes::FixedRoom2D::Configuration ConfigurationsBuilder::get_
    return result_configuration;
 }
 
-void ConfigurationsBuilder::you_build()
+void ConfigurationsBuilder::set_start_room(std::string room_name)
 {
+   starting_in_room_identifier = room_name;
    return;
 }
 
@@ -115,9 +118,6 @@ AllegroFlare::Prototypes::FixedRoom2D::Configuration ConfigurationsBuilder::buil
       }
    if (built) return result_configuration;
 
-   you_build();
-   built = true;
-   return result_configuration;
 
 
    const std::string FRONT_PORCH = "front_porch";
@@ -191,8 +191,6 @@ AllegroFlare::Prototypes::FixedRoom2D::Configuration ConfigurationsBuilder::buil
 
    starting_in_room_identifier = FRONT_PORCH;
 
-   you_build();
-    
    built = true;
 
    return result_configuration;
@@ -229,6 +227,18 @@ bool ConfigurationsBuilder::assemble_room(std::string room_name, std::string obs
       AllegroFlare::Prototypes::FixedRoom2D::Script({ "DIALOG: " + observe_script_text });
 
    return true;
+}
+
+void ConfigurationsBuilder::add_script(std::string script_name, std::vector<std::string> script_lines)
+{
+   if (!((!script_exists(script_name))))
+      {
+         std::stringstream error_message;
+         error_message << "ConfigurationsBuilder" << "::" << "add_script" << ": error: " << "guard \"(!script_exists(script_name))\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   script_dictionary[script_name] = AllegroFlare::Prototypes::FixedRoom2D::Script(script_lines);
+   return;
 }
 
 bool ConfigurationsBuilder::room_exists(std::string room_name)

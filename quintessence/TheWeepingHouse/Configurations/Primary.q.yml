@@ -10,9 +10,8 @@ functions:
 
 
   - name: you_build
-    virtual: true
-    override: true
     body: |
+      // this class is mute
       return;
 
 

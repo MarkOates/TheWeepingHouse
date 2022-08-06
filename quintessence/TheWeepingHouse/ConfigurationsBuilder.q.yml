@@ -90,9 +90,13 @@ functions:
       return result_configuration;
 
 
-  - name: you_build
-    virtual: true
+  - name: set_start_room
+    parameters:
+      - name: room_name
+        type: std::string
+        default_argument: '"[unset-room_name]"'
     body: |
+      starting_in_room_identifier = room_name;
       return;
 
 
@@ -102,9 +106,6 @@ functions:
     body: |
       if (built) return result_configuration;
 
-      you_build();
-      built = true;
-      return result_configuration;
 
 
       const std::string FRONT_PORCH = "front_porch";
@@ -178,8 +179,6 @@ functions:
 
       starting_in_room_identifier = FRONT_PORCH;
 
-      you_build();
-       
       built = true;
 
       return result_configuration;
@@ -219,6 +218,20 @@ functions:
          AllegroFlare::Prototypes::FixedRoom2D::Script({ "DIALOG: " + observe_script_text });
      
       return true;
+
+
+  - name: add_script
+    parameters:
+      - name: script_name
+        type: std::string
+        default_argument: '"[unset-script_name]"'
+      - name: script_lines
+        type: std::vector<std::string>
+        default_argument: '{"[unset-script_lines]"}'
+    guards: [ (!script_exists(script_name)) ]
+    body: |
+      script_dictionary[script_name] = AllegroFlare::Prototypes::FixedRoom2D::Script(script_lines);
+      return;
 
 
   - name: room_exists

@@ -14,9 +14,9 @@ namespace TheWeepingHouse
 
       public:
          Primary();
-         virtual ~Primary();
+         ~Primary();
 
-         virtual void you_build() override;
+         void you_build();
       };
    }
 }
