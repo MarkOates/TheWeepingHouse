@@ -3,14 +3,23 @@
 
 #include <TheWeepingHouse/ConfigurationsBuilder.hpp>
 
+#include <AllegroFlare/Testing/WithAllegroRenderingFixture.hpp>
 
-TEST(TheWeepingHouse_ConfigurationsBuilderTest, can_be_created_without_blowing_up)
+
+class TheWeepingHouse_ConfigurationsBuilderTest : public ::testing::Test{};
+
+class TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest
+   : public AllegroFlare::Testing::WithAllegroRenderingFixture{};
+
+
+
+TEST_F(TheWeepingHouse_ConfigurationsBuilderTest, can_be_created_without_blowing_up)
 {
    TheWeepingHouse::ConfigurationsBuilder configurations_builder;
 }
 
 
-TEST(TheWeepingHouse_ConfigurationsBuilderTest, build__will_not_blow_up)
+TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest, DISABLED__build__will_not_blow_up)
 {
    AllegroFlare::BitmapBin bitmap_bin;
    AllegroFlare::FontBin font_bin;
