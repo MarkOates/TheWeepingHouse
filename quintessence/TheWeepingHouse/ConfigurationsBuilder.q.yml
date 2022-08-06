@@ -99,14 +99,11 @@ functions:
 
 
       const std::string FRONT_PORCH = "front_porch";
-
-
-
-      //const std::string FRONT_PORCH = "front_porch";
       const std::string FRONT_HALLWAY = "front_hallway";
       const std::string MAIN_HALLWAY = "main_hallway";
       const std::string FIRST_FLOOR_STORAGE_ROOM = "first_floor_storage_room";
       const std::string BACK_PORCH = "back_porch";
+
 
       const std::string FRONT_PORCH_DOOR = "front_porch_door";
 
@@ -123,19 +120,17 @@ functions:
       af_inventory.add_item(3);
 
       room_dictionary = {
-         //{ FRONT_PORCH, room_factory.create_room() },
-         { FRONT_HALLWAY, room_factory.create_room() },
-         { MAIN_HALLWAY, room_factory.create_room() },
-         { FIRST_FLOOR_STORAGE_ROOM, room_factory.create_room() },
-         { BACK_PORCH, room_factory.create_room() },
+         //{ FRONT_HALLWAY, room_factory.create_room() },
+         //{ MAIN_HALLWAY, room_factory.create_room() },
+         //{ FIRST_FLOOR_STORAGE_ROOM, room_factory.create_room() },
+         //{ BACK_PORCH, room_factory.create_room() },
       };
 
       entity_dictionary = {
-         //{ "front_porch_bg", entity_factory.create_background("room_2.png", "observe_front_porch") },
          //{ "front_hallway_bg", entity_factory.create_background("room_0.png", "observe_front_hallway") },
-         { "main_hallway_bg", entity_factory.create_background("room_1.png", "observe_main_hallway") },
-         { "first_floor_storage_room_bg", entity_factory.create_background("room_3.png", "observe_first_floor_storage_room") },
-         { "back_porch_bg", entity_factory.create_background("room_4.png", "observe_back_porch") },
+         //{ "main_hallway_bg", entity_factory.create_background("room_1.png", "observe_main_hallway") },
+         //{ "first_floor_storage_room_bg", entity_factory.create_background("room_3.png", "observe_first_floor_storage_room") },
+         //{ "back_porch_bg", entity_factory.create_background("room_4.png", "observe_back_porch") },
 
          { "door1", entity_factory.create_rectangle_hitspot(1725, 440, 60, 350, "Door 1", "observe_door1") },
          { "door2", entity_factory.create_rectangle_hitspot(115, 440, 60, 350, "Door 2", "observe_door2") },
@@ -147,16 +142,16 @@ functions:
          //{ "front_porch_bg", FRONT_PORCH },
          { FRONT_PORCH_DOOR, FRONT_PORCH },
 
-         { "front_hallway_bg", FRONT_HALLWAY },
+         //{ "front_hallway_bg", FRONT_HALLWAY },
          { "door1", FRONT_HALLWAY },
          { "wall_art", FRONT_HALLWAY },
 
-         { "main_hallway_bg", MAIN_HALLWAY },
+         //{ "main_hallway_bg", MAIN_HALLWAY },
          { "door2", MAIN_HALLWAY },
 
-         { "first_floor_storage_room_bg", FIRST_FLOOR_STORAGE_ROOM },
+         //{ "first_floor_storage_room_bg", FIRST_FLOOR_STORAGE_ROOM },
 
-         { "back_porch_bg", BACK_PORCH },
+         //{ "back_porch_bg", BACK_PORCH },
       };
 
 
@@ -164,18 +159,18 @@ functions:
          //{ "observe_front_porch", AllegroFlare::Prototypes::FixedRoom2D::Script({
          //      "DIALOG: What a nice place... but it doesn't look very invnting.  I'd better see if I can get inside."
          //})},
-         { "observe_front_hallway", AllegroFlare::Prototypes::FixedRoom2D::Script({
-               "DIALOG: This is a pretty dark room. | It's kinda hard to see anything, to be honest."
-         })},
-         { "observe_main_hallway", AllegroFlare::Prototypes::FixedRoom2D::Script({
-               "DIALOG: This is a pretty dark room. | It's kinda hard to see anything, to be honest."
-         })},
-         { "observe_first_floor_storage_room", AllegroFlare::Prototypes::FixedRoom2D::Script({
-               "DIALOG: A little storage room.  Looks like some boxes are in here."
-         })},
-         { "observe_back_porch", AllegroFlare::Prototypes::FixedRoom2D::Script({
-               "DIALOG: It sure is nice to have a place out of the rain for now."
-         })},
+         //{ "observe_front_hallway", AllegroFlare::Prototypes::FixedRoom2D::Script({
+               //"DIALOG: This is a pretty dark room. | It's kinda hard to see anything, to be honest."
+         //})},
+         //{ "observe_main_hallway", AllegroFlare::Prototypes::FixedRoom2D::Script({
+               //"DIALOG: This is a pretty dark room. | It's kinda hard to see anything, to be honest."
+         //})},
+         //{ "observe_first_floor_storage_room", AllegroFlare::Prototypes::FixedRoom2D::Script({
+               //"DIALOG: A little storage room.  Looks like some boxes are in here."
+         //})},
+         //{ "observe_back_porch", AllegroFlare::Prototypes::FixedRoom2D::Script({
+               //"DIALOG: It sure is nice to have a place out of the rain for now."
+         //})},
 
 
          { "observe_front_porch_door", AllegroFlare::Prototypes::FixedRoom2D::Script({
@@ -201,6 +196,11 @@ functions:
 
       assemble_room(FRONT_PORCH, "What a nice place... but it doesn't look very invnting.  "
                                  "I'd better see if I can get inside.");
+      assemble_room(FRONT_HALLWAY, "This is a pretty dark room. | I'd better see if I can get inside.");
+      assemble_room(MAIN_HALLWAY, "This is a pretty dark room. | It's kinda hard to see anything, to be honest.");
+      assemble_room(FIRST_FLOOR_STORAGE_ROOM, "Looks like a little room for storage.  There are some boxes here.");
+      assemble_room(BACK_PORCH, "It sure is nice to have a place out of hte rain for now.");
+
 
 
       //const std::string FRONT_PORCH = "front_porch";

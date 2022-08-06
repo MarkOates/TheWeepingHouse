@@ -188,18 +188,31 @@ functions:
       AllegroFlare::EventEmitter &event_emitter = framework->get_event_emitter_ref();
       AllegroFlare::AudioController &audio_controller = framework->get_audio_controller_ref();
 
-      AllegroFlare::Prototypes::FixedRoom2D::Configuration configuration =
-         TheWeepingHouse::Configurations::Primary::build(
-            &bitmap_bin,
-            &font_bin,
-            &event_emitter,
-            &gameplay_screen.get_fixed_room_2d_ref().get_entity_collection_helper_ref()
-         );
+      AllegroFlare::Prototypes::FixedRoom2D::Configuration configuration = get_configuration();
+
       gameplay_screen.load_game_configuration_and_start(configuration);
 
       framework->activate_screen("opening_storyboard_screen"); // <-- probably will want to add this
       framework->activate_screen("gameplay_screen");
       return;
+
+
+  - name: get_configuration
+    type: AllegroFlare::Prototypes::FixedRoom2D::Configuration
+    body: |
+      AllegroFlare::FontBin &font_bin = framework->get_font_bin_ref();
+      AllegroFlare::BitmapBin &bitmap_bin = framework->get_bitmap_bin_ref();
+      AllegroFlare::SampleBin &sample_bin = framework->get_sample_bin_ref();
+      AllegroFlare::ModelBin &model_bin = framework->get_model_bin_ref();
+      AllegroFlare::EventEmitter &event_emitter = framework->get_event_emitter_ref();
+      AllegroFlare::AudioController &audio_controller = framework->get_audio_controller_ref();
+
+      return TheWeepingHouse::Configurations::Primary::build(
+            &bitmap_bin,
+            &font_bin,
+            &event_emitter,
+            &gameplay_screen.get_fixed_room_2d_ref().get_entity_collection_helper_ref()
+         );
 
 
   - name: game_event_func
@@ -339,5 +352,7 @@ dependencies:
     headers: [ TheWeepingHouse/Shaders/Multiply.hpp ]
   - symbol: AllegroFlare::Color
     headers: [ AllegroFlare/Color.hpp ]
+  - symbol: TheWeepingHouse::ConfigurationsBuilder
+    headers: [ TheWeepingHouse/ConfigurationsBuilder.hpp ]
 
 

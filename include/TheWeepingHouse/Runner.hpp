@@ -5,6 +5,7 @@
 #include <AllegroFlare/EventEmitter.hpp>
 #include <AllegroFlare/Frameworks/Full.hpp>
 #include <AllegroFlare/GameEvent.hpp>
+#include <AllegroFlare/Prototypes/FixedRoom2D/Configuration.hpp>
 #include <AllegroFlare/Prototypes/FixedRoom2D/Screen.hpp>
 #include <AllegroFlare/Screens/Base.hpp>
 #include <AllegroFlare/Screens/PauseScreen.hpp>
@@ -37,6 +38,7 @@ namespace TheWeepingHouse
 
       void initialize();
       void start_new_game();
+      AllegroFlare::Prototypes::FixedRoom2D::Configuration get_configuration();
       virtual void game_event_func(AllegroFlare::GameEvent* ev=nullptr) override;
       static void run(std::string mode="production");
    };
