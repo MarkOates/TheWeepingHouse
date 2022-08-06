@@ -116,8 +116,24 @@ TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH
 {
    AllegroFlare::BitmapBin &bitmap_bin = get_bitmap_bin_ref();
    bitmap_bin.set_full_path(TEST_FIXTURE_BITMAPS_FOLDER);
+
    configurations_builder.assemble_room("my_test_room_name", "This is a test room");
-   EXPECT_EQ(true, configurations_builder.room_exists("my_test_room_name"));
+
+   // creates a room
+   ASSERT_EQ(true, configurations_builder.room_exists("my_test_room_name"));
+   EXPECT_NE(nullptr, configurations_builder.get_room_dictionary()["my_test_room_name"]);
+
+   // creates a background
+   ASSERT_EQ(true, configurations_builder.entity_exists("my_test_room_name_bg"));
+   EXPECT_NE(nullptr, configurations_builder.get_entity_dictionary()["my_test_room_name_bg"]);
+
+   // creates an "observe_..." script for the background
+   ASSERT_EQ(true, configurations_builder.script_exists("observe_my_test_room_name"));
+   ASSERT_EQ(1, configurations_builder.get_script_dictionary()["observe_my_test_room_name"].get_lines().size());
+   EXPECT_EQ(
+      "DIALOG: This is a test room",
+      configurations_builder.get_script_dictionary()["observe_my_test_room_name"].get_lines()[0]
+   );
 }
 
 

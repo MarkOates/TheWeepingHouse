@@ -50,18 +50,22 @@ properties:
   - name: entity_dictionary
     type: std::map<std::string, AllegroFlare::Prototypes::FixedRoom2D::Entities::Base*>&
     init_with: result_configuration.get_entity_dictionary_ref()
+    getter: true
 
   - name: room_dictionary
     type: std::map<std::string, AllegroFlare::Prototypes::FixedRoom2D::Room*>&
     init_with: result_configuration.get_room_dictionary_ref()
+    getter: true
 
   - name: entity_room_associations
     type: std::map<std::string, std::string>&
     init_with: result_configuration.get_entity_room_associations_ref()
+    getter: true
 
   - name: script_dictionary
     type: std::map<std::string, AllegroFlare::Prototypes::FixedRoom2D::Script>&
     init_with: result_configuration.get_script_dictionary_ref()
+    getter: true
 
   - name: starting_in_room_identifier
     type: std::string

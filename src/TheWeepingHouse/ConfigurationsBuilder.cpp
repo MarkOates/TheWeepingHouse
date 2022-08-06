@@ -47,6 +47,30 @@ ConfigurationsBuilder::~ConfigurationsBuilder()
 }
 
 
+std::map<std::string, AllegroFlare::Prototypes::FixedRoom2D::Entities::Base*>& ConfigurationsBuilder::get_entity_dictionary()
+{
+   return entity_dictionary;
+}
+
+
+std::map<std::string, AllegroFlare::Prototypes::FixedRoom2D::Room*>& ConfigurationsBuilder::get_room_dictionary()
+{
+   return room_dictionary;
+}
+
+
+std::map<std::string, std::string>& ConfigurationsBuilder::get_entity_room_associations()
+{
+   return entity_room_associations;
+}
+
+
+std::map<std::string, AllegroFlare::Prototypes::FixedRoom2D::Script>& ConfigurationsBuilder::get_script_dictionary()
+{
+   return script_dictionary;
+}
+
+
 AllegroFlare::Prototypes::FixedRoom2D::Configuration ConfigurationsBuilder::get_result_configuration()
 {
    if (!(built))
