@@ -158,7 +158,7 @@ TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH
 TEST(TheWeepingHouse_ConfigurationsBuilder_Test, INTERACTIVE__works_in_the_runner)
 {
    TheWeepingHouse::Runner runner;
-   //runner.run("test");
+   runner.run("test");
    SUCCEED();
 }
 

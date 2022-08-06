@@ -108,15 +108,6 @@ functions:
       af_inventory.add_item(3);
 
 
-      // fill the entity dictionary
-      entity_dictionary = {
-         { "door1", entity_factory.create_rectangle_hitspot(1725, 440, 60, 350, "Door 1", "observe_door1") },
-         { "door2", entity_factory.create_rectangle_hitspot(115, 440, 60, 350, "Door 2", "observe_door2") },
-         { FRONT_PORCH_DOOR, entity_factory.create_rectangle_hitspot(1725, 440, 60, 350, "Door 2", "observe_front_porch_door") },
-         { "wall_art", entity_factory.create_ellipse_hitspot(1150, 450, 60, 60, "Wall Art", "observe_wall_art") },
-      };
-
-
       // add the associations
       entity_room_associations = {
          { FRONT_PORCH_DOOR, FRONT_PORCH },
@@ -157,6 +148,17 @@ functions:
       assemble_room(MAIN_HALLWAY, "This is a pretty dark room. | It's kinda hard to see anything, to be honest.");
       assemble_room(FIRST_FLOOR_STORAGE_ROOM, "Looks like a little room for storage.  There are some boxes here.");
       assemble_room(BACK_PORCH, "It sure is nice to have a place out of hte rain for now.");
+
+
+
+      entity_dictionary["door1"] =
+         entity_factory.create_rectangle_hitspot(1725, 440, 60, 350, "Door 1", "observe_door1");
+      entity_dictionary["door2"] =
+         entity_factory.create_rectangle_hitspot(115, 440, 60, 350, "Door 2", "observe_door2");
+      entity_dictionary[FRONT_PORCH_DOOR] =
+         entity_factory.create_rectangle_hitspot(1725, 440, 60, 350, "Door 2", "observe_front_porch_door");
+      entity_dictionary["wall_art"] =
+         entity_factory.create_ellipse_hitspot(1150, 450, 60, 60, "Wall Art", "observe_wall_art");
 
 
 
