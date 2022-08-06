@@ -197,7 +197,7 @@ AllegroFlare::Prototypes::FixedRoom2D::Configuration ConfigurationsBuilder::buil
    return result_configuration;
 }
 
-bool ConfigurationsBuilder::assemble_room(std::string room_name, std::string background_bitmap_identifier, std::string observe_script_text)
+bool ConfigurationsBuilder::assemble_room(std::string room_name, std::string observe_script_text)
 {
    if (!((!room_exists(room_name))))
       {
@@ -207,7 +207,7 @@ bool ConfigurationsBuilder::assemble_room(std::string room_name, std::string bac
       }
    std::string generated_script_name = "observe_" + room_name;
    std::string generated_background_entity_name = room_name + "_bg";
-   std::string expected_background_bitmap_name = "room_" + room_name;
+   std::string expected_background_bitmap_name = "room_" + room_name + ".png";
 
    // create the room
    room_dictionary[room_name] = room_factory.create_room();

@@ -209,9 +209,6 @@ functions:
       - name: room_name
         type: std::string
         default_argument: '"[unset-room_name]"'
-      - name: background_bitmap_identifier
-        type: std::string
-        default_argument: '"[unset-background_bitmap_identifier]"'
       - name: observe_script_text
         type: std::string
         default_argument: '"[unset-background_bitmap_identifier]"'
@@ -219,7 +216,7 @@ functions:
     body: |
       std::string generated_script_name = "observe_" + room_name;
       std::string generated_background_entity_name = room_name + "_bg";
-      std::string expected_background_bitmap_name = "room_" + room_name;
+      std::string expected_background_bitmap_name = "room_" + room_name + ".png";
 
       // create the room
       room_dictionary[room_name] = room_factory.create_room();

@@ -45,7 +45,7 @@ namespace TheWeepingHouse
 
       AllegroFlare::Prototypes::FixedRoom2D::Configuration get_result_configuration();
       AllegroFlare::Prototypes::FixedRoom2D::Configuration build();
-      bool assemble_room(std::string room_name="[unset-room_name]", std::string background_bitmap_identifier="[unset-background_bitmap_identifier]", std::string observe_script_text="[unset-background_bitmap_identifier]");
+      bool assemble_room(std::string room_name="[unset-room_name]", std::string observe_script_text="[unset-background_bitmap_identifier]");
       bool room_exists(std::string room_name="[unset-room_name]");
       bool script_exists(std::string script_name="[unset-script_name]");
       bool entity_exists(std::string entity_name="[unset-entity_name]");

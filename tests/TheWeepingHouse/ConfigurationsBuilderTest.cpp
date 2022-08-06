@@ -6,11 +6,15 @@
 #include <AllegroFlare/Testing/WithAllegroRenderingFixture.hpp>
 
 #ifdef _WIN32
-#define TEST_FIXTURE_FONTS_FOLDER "/msys64/home/Mark/Repos/TheWeepingHouse/bin/programs/data/fonts/"
-#define TEST_FIXTURE_BITMAPS_FOLDER "/msys64/home/Mark/Repos/TheWeepingHouse/bin/programs/data/bitmaps/"
+#define TEST_FIXTURE_FONTS_FOLDER "/msys64/home/Mark/Repos/TheWeepingHouse/tests/test_fixtures/"
+#define TEST_FIXTURE_BITMAPS_FOLDER "/msys64/home/Mark/Repos/TheWeepingHouse/tests/test_fixtures/"
+#define PRODUCTION_FONTS_FOLDER "/msys64/home/Mark/Repos/TheWeepingHouse/bin/programs/data/fonts/"
+#define PRODUCTION_BITMAPS_FOLDER "/msys64/home/Mark/Repos/TheWeepingHouse/bin/programs/data/bitmaps/"
 #else
-#define TEST_FIXTURE_FONTS_FOLDER "/Users/markoates/Repos/TheWeepingHouse/bin/programs/data/fonts/"
-#define TEST_FIXTURE_BITMAPS_FOLDER "/Users/markoates/Repos/TheWeepingHouse/bin/programs/data/bitmaps/"
+#define TEST_FIXTURE_FONTS_FOLDER "/Users/markoates/Repos/TheWeepingHouse/tests/test_fixtures/"
+#define TEST_FIXTURE_BITMAPS_FOLDER "/Users/markoates/Repos/TheWeepingHouse/tests/test_fixtures/"
+#define PRODUCTION_FONTS_FOLDER "/Users/markoates/Repos/TheWeepingHouse/bin/programs/data/fonts/"
+#define PRODUCTION_BITMAPS_FOLDER "/Users/markoates/Repos/TheWeepingHouse/bin/programs/data/bitmaps/"
 #endif
 
 
@@ -35,8 +39,8 @@ private:
       AllegroFlare::EventEmitter event_emitter;
       AllegroFlare::Prototypes::FixedRoom2D::EntityCollectionHelper entity_collection_helper__this_is_a_hack;
 
-      bitmap_bin.set_full_path(TEST_FIXTURE_BITMAPS_FOLDER);
-      font_bin.set_full_path(TEST_FIXTURE_FONTS_FOLDER);
+      bitmap_bin.set_full_path(PRODUCTION_BITMAPS_FOLDER);
+      font_bin.set_full_path(PRODUCTION_FONTS_FOLDER);
 
       configurations_builder.set_bitmap_bin(&bitmap_bin);
       configurations_builder.set_font_bin(&font_bin);
@@ -104,6 +108,16 @@ TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH
 {
    configurations_builder.build();
    EXPECT_EQ(false, configurations_builder.entity_exists("an-entity-that-does-not-exist"));
+}
+
+
+TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH_ASSEMBLED_configurations_builder,
+   assemble_room__will_add_a_room_to_the_configuration_with_the_expected_properties)
+{
+   AllegroFlare::BitmapBin &bitmap_bin = get_bitmap_bin_ref();
+   bitmap_bin.set_full_path(TEST_FIXTURE_BITMAPS_FOLDER);
+   configurations_builder.assemble_room("my_test_room_name", "This is a test room");
+   EXPECT_EQ(true, configurations_builder.room_exists("my_test_room_name"));
 }
 
 
