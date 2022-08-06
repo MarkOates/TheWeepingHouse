@@ -206,7 +206,6 @@ bool ConfigurationsBuilder::assemble_room(std::string name, std::string backgrou
          throw std::runtime_error(error_message.str());
       }
    //room_dictionary[name] = room_factory.create_room();
-
    return true;
 }
 

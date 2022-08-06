@@ -215,7 +215,6 @@ functions:
     guards: [ (!room_exists(name)) ]
     body: |
       //room_dictionary[name] = room_factory.create_room();
-      
       return true;
 
 
@@ -228,7 +227,6 @@ functions:
     body: |
       return (room_dictionary.count(name) > 0);
 
-    init_with: 'bitmap_bin, font_bin, event_emitter, entity_collection_helper__this_is_a_hack'
 
   - name: set_font_bin
     parameters:
