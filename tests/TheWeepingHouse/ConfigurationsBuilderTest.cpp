@@ -67,7 +67,7 @@ TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH
    room_exists__will_return_true_if_the_room_exists)
 {
    configurations_builder.build();
-   EXPECT_EQ(true, configurations_builder.room_exists("front_patio"));
+   EXPECT_EQ(true, configurations_builder.room_exists("front_porch"));
 }
 
 
@@ -83,7 +83,7 @@ TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH
    script_exists__will_return_true_if_the_script_is_present)
 {
    configurations_builder.build();
-   EXPECT_EQ(true, configurations_builder.script_exists("observe_front_patio_door"));
+   EXPECT_EQ(true, configurations_builder.script_exists("observe_front_porch_door"));
 }
 
 
@@ -99,7 +99,7 @@ TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH
    entity_exists__will_return_true_if_the_entity_is_present)
 {
    configurations_builder.build();
-   EXPECT_EQ(true, configurations_builder.entity_exists("front_patio_bg"));
+   EXPECT_EQ(true, configurations_builder.entity_exists("front_porch_bg"));
 }
 
 
