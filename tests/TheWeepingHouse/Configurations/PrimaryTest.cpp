@@ -1,7 +1,7 @@
 
 #include <gtest/gtest.h>
 
-#include <TheWeepingHouse/ConfigurationsBuilder.hpp>
+#include <TheWeepingHouse/Configurations/Primary.hpp>
 
 #include <AllegroFlare/Testing/WithAllegroRenderingFixture.hpp>
 
@@ -18,16 +18,16 @@
 #endif
 
 
-class TheWeepingHouse_ConfigurationsBuilderTest : public ::testing::Test{};
+class TheWeepingHouse_Configurations_PrimaryTest : public ::testing::Test{};
 
-class TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest
+class TheWeepingHouse_Configurations_PrimaryWithAllegroRenderingFixtureTest
    : public AllegroFlare::Testing::WithAllegroRenderingFixture{};
 
-class TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH_ASSEMBLED_configurations_builder
+class TheWeepingHouse_Configurations_PrimaryWithAllegroRenderingFixtureTest_WITH_ASSEMBLED_configurations_builder
    : public AllegroFlare::Testing::WithAllegroRenderingFixture
 {
 public:
-   TheWeepingHouse::ConfigurationsBuilder configurations_builder;
+   TheWeepingHouse::Configurations::Primary configurations_builder;
 
 private:
    virtual void SetUp() override
@@ -50,20 +50,20 @@ private:
 };
 
 
-TEST_F(TheWeepingHouse_ConfigurationsBuilderTest, can_be_created_without_blowing_up)
+TEST_F(TheWeepingHouse_Configurations_PrimaryTest, can_be_created_without_blowing_up)
 {
-   TheWeepingHouse::ConfigurationsBuilder configurations_builder;
+   TheWeepingHouse::Configurations::Primary configurations_builder;
 }
 
 
-TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH_ASSEMBLED_configurations_builder,
+TEST_F(TheWeepingHouse_Configurations_PrimaryWithAllegroRenderingFixtureTest_WITH_ASSEMBLED_configurations_builder,
    build__will_not_blow_up)
 {
    configurations_builder.build();
 }
 
 
-TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH_ASSEMBLED_configurations_builder,
+TEST_F(TheWeepingHouse_Configurations_PrimaryWithAllegroRenderingFixtureTest_WITH_ASSEMBLED_configurations_builder,
    room_exists__will_return_true_if_the_room_exists)
 {
    configurations_builder.build();
@@ -71,7 +71,7 @@ TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH
 }
 
 
-TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH_ASSEMBLED_configurations_builder,
+TEST_F(TheWeepingHouse_Configurations_PrimaryWithAllegroRenderingFixtureTest_WITH_ASSEMBLED_configurations_builder,
    room_exists__will_return_false_if_the_room_does_not_exist)
 {
    configurations_builder.build();
@@ -79,7 +79,7 @@ TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH
 }
 
 
-TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH_ASSEMBLED_configurations_builder,
+TEST_F(TheWeepingHouse_Configurations_PrimaryWithAllegroRenderingFixtureTest_WITH_ASSEMBLED_configurations_builder,
    script_exists__will_return_true_if_the_script_is_present)
 {
    configurations_builder.build();
@@ -87,7 +87,7 @@ TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH
 }
 
 
-TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH_ASSEMBLED_configurations_builder,
+TEST_F(TheWeepingHouse_Configurations_PrimaryWithAllegroRenderingFixtureTest_WITH_ASSEMBLED_configurations_builder,
    script_exists__will_return_false_if_the_script_is_not_present)
 {
    configurations_builder.build();
@@ -95,7 +95,7 @@ TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH
 }
 
 
-TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH_ASSEMBLED_configurations_builder,
+TEST_F(TheWeepingHouse_Configurations_PrimaryWithAllegroRenderingFixtureTest_WITH_ASSEMBLED_configurations_builder,
    entity_exists__will_return_true_if_the_entity_is_present)
 {
    configurations_builder.build();
@@ -103,7 +103,7 @@ TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH
 }
 
 
-TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH_ASSEMBLED_configurations_builder,
+TEST_F(TheWeepingHouse_Configurations_PrimaryWithAllegroRenderingFixtureTest_WITH_ASSEMBLED_configurations_builder,
    entity_exists__will_return_false_if_the_entity_is_not_present)
 {
    configurations_builder.build();
@@ -111,7 +111,7 @@ TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH
 }
 
 
-TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH_ASSEMBLED_configurations_builder,
+TEST_F(TheWeepingHouse_Configurations_PrimaryWithAllegroRenderingFixtureTest_WITH_ASSEMBLED_configurations_builder,
    assemble_room__will_add_a_room_to_the_configuration_with_the_expected_properties)
 {
    AllegroFlare::BitmapBin &bitmap_bin = get_bitmap_bin_ref();
@@ -140,7 +140,7 @@ TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH
 }
 
 
-TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH_ASSEMBLED_configurations_builder,
+TEST_F(TheWeepingHouse_Configurations_PrimaryWithAllegroRenderingFixtureTest_WITH_ASSEMBLED_configurations_builder,
    the_production_configuration_has_the_expected_elements)
 {
    AllegroFlare::Prototypes::FixedRoom2D::Configuration configuration = configurations_builder.build();
@@ -153,10 +153,10 @@ TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH
 
 #include <TheWeepingHouse/Runner.hpp>
 
-TEST(TheWeepingHouse_ConfigurationsBuilder_Test, INTERACTIVE__works_in_the_runner)
-{
-   TheWeepingHouse::Runner runner;
+//TEST(TheWeepingHouse_Configurations_PrimaryTest, INTERACTIVE__works_in_the_runner)
+//{
+   //TheWeepingHouse::Runner runner;
    //runner.run("test");
-   SUCCEED();
-}
+   //SUCCEED();
+//}
 

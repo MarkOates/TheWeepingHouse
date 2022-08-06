@@ -66,15 +66,15 @@ TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH
 TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH_ASSEMBLED_configurations_builder,
    room_exists__will_return_true_if_the_room_exists)
 {
-   configurations_builder.build();
-   EXPECT_EQ(true, configurations_builder.room_exists("front_porch"));
+   // TODO: do not use "assemble_room" for this test
+   configurations_builder.assemble_room("my_test_room_name", "This is a test room");
+   EXPECT_EQ(true, configurations_builder.room_exists("my_test_room_name"));
 }
 
 
 TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH_ASSEMBLED_configurations_builder,
    room_exists__will_return_false_if_the_room_does_not_exist)
 {
-   configurations_builder.build();
    EXPECT_EQ(false, configurations_builder.room_exists("a-room-that-does-not-exist"));
 }
 
@@ -82,15 +82,15 @@ TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH
 TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH_ASSEMBLED_configurations_builder,
    script_exists__will_return_true_if_the_script_is_present)
 {
-   configurations_builder.build();
-   EXPECT_EQ(true, configurations_builder.script_exists("observe_front_porch_door"));
+   // TODO: do not use "assemble_room" for this test
+   configurations_builder.assemble_room("my_test_room_name", "This is a test room");
+   EXPECT_EQ(true, configurations_builder.script_exists("observe_my_test_room_name"));
 }
 
 
 TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH_ASSEMBLED_configurations_builder,
    script_exists__will_return_false_if_the_script_is_not_present)
 {
-   configurations_builder.build();
    EXPECT_EQ(false, configurations_builder.script_exists("a-script-that-does-not-exist"));
 }
 
@@ -98,15 +98,15 @@ TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH
 TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH_ASSEMBLED_configurations_builder,
    entity_exists__will_return_true_if_the_entity_is_present)
 {
-   configurations_builder.build();
-   EXPECT_EQ(true, configurations_builder.entity_exists("front_porch_bg"));
+   // TODO: do not use "assemble_room" for this test
+   configurations_builder.assemble_room("my_test_room_name", "This is a test room");
+   EXPECT_EQ(true, configurations_builder.entity_exists("my_test_room_name_bg"));
 }
 
 
 TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH_ASSEMBLED_configurations_builder,
    entity_exists__will_return_false_if_the_entity_is_not_present)
 {
-   configurations_builder.build();
    EXPECT_EQ(false, configurations_builder.entity_exists("an-entity-that-does-not-exist"));
 }
 
