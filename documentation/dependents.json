@@ -79,6 +79,9 @@
   "std/map<std/string, std/string>&": [
     "TheWeepingHouse/ConfigurationsBuilder"
   ],
+  "std/string&": [
+    "TheWeepingHouse/ConfigurationsBuilder"
+  ],
   "AllegroFlare/Prototypes/FixedRoom2D/Entities/Base": [
     "TheWeepingHouse/EntityFactory"
   ],

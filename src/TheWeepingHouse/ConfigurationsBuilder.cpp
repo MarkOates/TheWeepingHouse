@@ -109,7 +109,6 @@ AllegroFlare::Prototypes::FixedRoom2D::Configuration ConfigurationsBuilder::buil
          throw std::runtime_error(error_message.str());
       }
    if (built) return result_configuration;
-   built = true;
 
 
    const std::string FRONT_PORCH = "front_porch";
@@ -222,7 +221,7 @@ AllegroFlare::Prototypes::FixedRoom2D::Configuration ConfigurationsBuilder::buil
    //const std::string MAIN_HALLWAY = "main_hallway";
    //const std::string FIRST_FLOOR_STORAGE_ROOM = "first_floor_storage_room";
    //const std::string BACK_PORCH = "back_porch";
-   starting_in_room_identifier = FRONT_PORCH;
+   starting_in_room_identifier = FRONT_HALLWAY;
     
    built = true;
 

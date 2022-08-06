@@ -174,7 +174,7 @@ table td
 </tr>
 <tr>
   <td class="property">starting_in_room_identifier</td>
-  <td class="property">std::string</td>
+  <td class="property">std::string&amp;</td>
 </tr>
 <tr>
   <td class="property">room_factory</td>
@@ -238,6 +238,9 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::map&lt;std::string, std::string&gt;&amp;&quot;, &quot;headers&quot;=&gt;[&quot;map&quot;, &quot;string&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::string&amp;&quot;, &quot;headers&quot;=&gt;[&quot;string&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Inventory*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Inventory.hpp&quot;]}</td>
@@ -623,6 +626,9 @@ table td
     "TheWeepingHouse/ConfigurationsBuilder"
   ],
   "std/map<std/string, std/string>&": [
+    "TheWeepingHouse/ConfigurationsBuilder"
+  ],
+  "std/string&": [
     "TheWeepingHouse/ConfigurationsBuilder"
   ],
   "AllegroFlare/Prototypes/FixedRoom2D/Entities/Base": [

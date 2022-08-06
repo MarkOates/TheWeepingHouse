@@ -35,7 +35,7 @@ namespace TheWeepingHouse
       std::map<std::string, AllegroFlare::Prototypes::FixedRoom2D::Room*>& room_dictionary;
       std::map<std::string, std::string>& entity_room_associations;
       std::map<std::string, AllegroFlare::Prototypes::FixedRoom2D::Script>& script_dictionary;
-      std::string starting_in_room_identifier;
+      std::string& starting_in_room_identifier;
       AllegroFlare::Prototypes::FixedRoom2D::RoomFactory room_factory;
       TheWeepingHouse::EntityFactory entity_factory;
 

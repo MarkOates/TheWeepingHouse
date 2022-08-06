@@ -68,7 +68,7 @@ properties:
     getter: true
 
   - name: starting_in_room_identifier
-    type: std::string
+    type: std::string&
     init_with: result_configuration.get_starting_in_room_identifier_ref()
 
   - name: room_factory
@@ -95,7 +95,6 @@ functions:
     guards: [ bitmap_bin, font_bin, event_emitter, entity_collection_helper__this_is_a_hack ]
     body: |
       if (built) return result_configuration;
-      built = true;
 
 
       const std::string FRONT_PORCH = "front_porch";
@@ -208,7 +207,7 @@ functions:
       //const std::string MAIN_HALLWAY = "main_hallway";
       //const std::string FIRST_FLOOR_STORAGE_ROOM = "first_floor_storage_room";
       //const std::string BACK_PORCH = "back_porch";
-      starting_in_room_identifier = FRONT_PORCH;
+      starting_in_room_identifier = FRONT_HALLWAY;
        
       built = true;
 
@@ -358,6 +357,8 @@ dependencies:
     headers: [ map, AllegroFlare/Prototypes/FixedRoom2D/Script.hpp ]
   - symbol: std::map<std::string, std::string>&
     headers: [ map, string ]
+  - symbol: std::string&
+    headers: [ string ]
   - symbol: AllegroFlare::Inventory*
     headers: [ AllegroFlare/Inventory.hpp ]
   - symbol: AllegroFlare::InventoryIndex*

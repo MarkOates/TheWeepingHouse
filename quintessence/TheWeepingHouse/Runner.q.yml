@@ -188,7 +188,7 @@ functions:
       AllegroFlare::EventEmitter &event_emitter = framework->get_event_emitter_ref();
       AllegroFlare::AudioController &audio_controller = framework->get_audio_controller_ref();
 
-      AllegroFlare::Prototypes::FixedRoom2D::Configuration configuration = get_configuration();
+      AllegroFlare::Prototypes::FixedRoom2D::Configuration configuration = get_builder_configuration();
 
       gameplay_screen.load_game_configuration_and_start(configuration);
 
