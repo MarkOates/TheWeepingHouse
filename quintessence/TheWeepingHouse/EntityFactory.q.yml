@@ -17,6 +17,8 @@ properties:
   - name: hide_hitspots
     type: bool
     init_with: false
+    getter: true
+    setter: true
 
 
 functions:

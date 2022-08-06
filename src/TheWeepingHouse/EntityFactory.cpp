@@ -29,6 +29,18 @@ EntityFactory::~EntityFactory()
 }
 
 
+void EntityFactory::set_hide_hitspots(bool hide_hitspots)
+{
+   this->hide_hitspots = hide_hitspots;
+}
+
+
+bool EntityFactory::get_hide_hitspots()
+{
+   return hide_hitspots;
+}
+
+
 AllegroFlare::Prototypes::FixedRoom2D::Entities::Base* EntityFactory::create_background(std::string bitmap_image_identifier, std::string on_interact_script_name)
 {
    if (!(bitmap_bin))

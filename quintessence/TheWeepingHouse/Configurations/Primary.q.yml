@@ -40,6 +40,8 @@ functions:
 
 
       TheWeepingHouse::EntityFactory entity_factory(bitmap_bin);
+      entity_factory.set_hide_hitspots(true);
+
       AllegroFlare::Prototypes::FixedRoom2D::RoomFactory room_factory(
          bitmap_bin, font_bin, event_emitter, entity_collection_helper__this_is_a_hack
       );
@@ -60,6 +62,7 @@ functions:
          { "main_hall_bg", entity_factory.create_background("room_1.png", "observe_main_hall") },
          { "door1", entity_factory.create_rectangle_hitspot(1725, 440, 60, 350, "Door 1", "observe_door1") },
          { "door2", entity_factory.create_rectangle_hitspot(115, 440, 60, 350, "Door 2", "observe_door2") },
+         { "wall_art", entity_factory.create_ellipse_hitspot(1150, 450, 60, 60, "Wall Art", "observe_wall_art") },
       };
 
       entity_room_associations = {
@@ -69,6 +72,7 @@ functions:
          { "door2", "study" },
          //{ "chair", "front_hall" },
          { "table", "front_hall" },
+         { "wall_art", "front_hall" },
          { "keys", "front_hall" },
       };
 
@@ -96,9 +100,12 @@ functions:
          { "observe_table", AllegroFlare::Prototypes::FixedRoom2D::Script({
                "DIALOG: Hmm. Interesting, there's a key on this table."
          })},
+         { "observe_wall_art", AllegroFlare::Prototypes::FixedRoom2D::Script({
+               "DIALOG: That's some interesting art on the wall.  I wonder what it's for.",
+         })},
       };
 
-      starting_in_room_identifier = "study";
+      starting_in_room_identifier = "front_hall";
        
       return result;
     body_dependency_symbols:
