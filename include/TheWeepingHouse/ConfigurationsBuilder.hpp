@@ -53,6 +53,7 @@ namespace TheWeepingHouse
       bool room_exists(std::string room_name="[unset-room_name]");
       bool script_exists(std::string script_name="[unset-script_name]");
       bool entity_exists(std::string entity_name="[unset-entity_name]");
+      bool entity_room_association_exists(std::string entity_name="[unset-entity_name]", std::string room_name="[unset-entity_name]");
       void set_font_bin(AllegroFlare::FontBin* font_bin=nullptr);
       void set_bitmap_bin(AllegroFlare::BitmapBin* bitmap_bin=nullptr);
       void set_event_emitter(AllegroFlare::EventEmitter* event_emitter=nullptr);

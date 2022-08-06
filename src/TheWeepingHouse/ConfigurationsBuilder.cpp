@@ -269,6 +269,11 @@ bool ConfigurationsBuilder::entity_exists(std::string entity_name)
    return (entity_dictionary.count(entity_name) > 0);
 }
 
+bool ConfigurationsBuilder::entity_room_association_exists(std::string entity_name, std::string room_name)
+{
+   return (entity_room_associations.count(entity_name) > 0) && entity_room_associations[entity_name] == room_name;
+}
+
 void ConfigurationsBuilder::set_font_bin(AllegroFlare::FontBin* font_bin)
 {
    if (!((!built)))

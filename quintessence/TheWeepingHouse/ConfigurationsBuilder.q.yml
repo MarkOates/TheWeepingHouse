@@ -273,6 +273,19 @@ functions:
       return (entity_dictionary.count(entity_name) > 0);
 
 
+  - name: entity_room_association_exists
+    type: bool
+    parameters:
+      - name: entity_name
+        type: std::string
+        default_argument: '"[unset-entity_name]"'
+      - name: room_name
+        type: std::string
+        default_argument: '"[unset-entity_name]"'
+    body: |
+      return (entity_room_associations.count(entity_name) > 0) && entity_room_associations[entity_name] == room_name;
+
+
   - name: set_font_bin
     parameters:
       - name: font_bin

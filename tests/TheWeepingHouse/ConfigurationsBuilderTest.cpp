@@ -134,6 +134,9 @@ TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH
       "DIALOG: This is a test room",
       configurations_builder.get_script_dictionary()["observe_my_test_room_name"].get_lines()[0]
    );
+
+   // an association exists for the background entity and the room
+   EXPECT_EQ(true, configurations_builder.entity_room_association_exists("my_test_room_name_bg", "my_test_room_name"));
 }
 
 
