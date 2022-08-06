@@ -197,25 +197,35 @@ AllegroFlare::Prototypes::FixedRoom2D::Configuration ConfigurationsBuilder::buil
    return result_configuration;
 }
 
-bool ConfigurationsBuilder::assemble_room(std::string name, std::string background_bitmap_identifier, std::string observe_script_text)
+bool ConfigurationsBuilder::assemble_room(std::string room_name, std::string background_bitmap_identifier, std::string observe_script_text)
 {
-   if (!((!room_exists(name))))
+   if (!((!room_exists(room_name))))
       {
          std::stringstream error_message;
-         error_message << "ConfigurationsBuilder" << "::" << "assemble_room" << ": error: " << "guard \"(!room_exists(name))\" not met";
+         error_message << "ConfigurationsBuilder" << "::" << "assemble_room" << ": error: " << "guard \"(!room_exists(room_name))\" not met";
          throw std::runtime_error(error_message.str());
       }
-   std::string generated_script_name = "observe_" + name;
-   std::string generated_background_entity_name = name + "_bg";
-   std::string expected_background_bitmap_name = "room_" + name;
+   std::string generated_script_name = "observe_" + room_name;
+   std::string generated_background_entity_name = room_name + "_bg";
+   std::string expected_background_bitmap_name = "room_" + room_name;
 
    // create the room
-   room_dictionary[name] = room_factory.create_room();
+   room_dictionary[room_name] = room_factory.create_room();
 
    // create the background entity
    // TODO: check if it exists first
    entity_dictionary[generated_background_entity_name] = 
       entity_factory.create_background(expected_background_bitmap_name, generated_script_name);
+
+   // add the association for the background entity and the room
+   // TODO: check if an association already exists for this entity
+   entity_room_associations[generated_background_entity_name] = room_name;
+
+   // create the "observe" script for the background entity
+   // TODO: check if the script already exists
+   // TODO: validate that the observe_script_text contains no newlines
+   script_dictionary[generated_script_name] =
+      AllegroFlare::Prototypes::FixedRoom2D::Script({ "DIALOG: " + observe_script_text });
 
    return true;
 }
