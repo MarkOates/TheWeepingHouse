@@ -94,7 +94,7 @@ void ConfigurationsBuilder::you_build()
 
 
    // configs
-   starting_in_room_identifier = FRONT_PORCH;
+   starting_in_room_identifier = FRONT_HALLWAY;
    entity_factory.set_hide_hitspots(false);
 
 
@@ -106,44 +106,67 @@ void ConfigurationsBuilder::you_build()
 
 
 
-   // add the scripts
+   // FRONT PORCH
+
+   assemble_room(FRONT_PORCH, "What a nice place... but it doesn't look very invnting.  "
+                              "I'd better see if I can get inside.");
+
+   add_hitspot_to_room(FRONT_PORCH,
+      FRONT_PORCH_DOOR, 1600, 460, 90, 270, "Front porch door", "observe_front_porch_door");
+
    add_script("observe_front_porch_door", {
       "DIALOG: Oh wow, it's unlocked.  I'm going inside.",
       "ENTER_ROOM: " + FRONT_HALLWAY,
    });
+
+
+
+   // FRONT HALLWAY
+
+   assemble_room(FRONT_HALLWAY, "This is a pretty dark room. | I'd better see if I can get inside.");
+
+   add_hitspot_to_room(FRONT_HALLWAY,
+      DOOR1, 1725, 440, 60, 350, "Door 1", "observe_door1");
+   add_ellipse_hitspot_to_room(FRONT_HALLWAY,
+      WALL_ART, 1150, 450, 60, 60, "Wall Art", "observe_wall_art");
+
    add_script("observe_door1", {
       "DIALOG: Just a regular door. | I'm going to step through it.",
       "ENTER_ROOM: " + MAIN_HALLWAY,
-   });
-   add_script("observe_door2", {
-       "DIALOG: A regular door. | I'll go in.",
-      "ENTER_ROOM: " + FRONT_HALLWAY,
-   });
-   add_script("collect_keys", {
-     "COLLECT: keys"
    });
    add_script("observe_wall_art", {
       "DIALOG: That's some interesting art on the wall.  I wonder what it's for.",
    });
 
 
-   assemble_room(FRONT_PORCH, "What a nice place... but it doesn't look very invnting.  "
-                              "I'd better see if I can get inside.");
-   assemble_room(FRONT_HALLWAY, "This is a pretty dark room. | I'd better see if I can get inside.");
+
+   // MAIN HALLWAY
+
    assemble_room(MAIN_HALLWAY, "This is a pretty dark room. | It's kinda hard to see anything, to be honest.");
-   assemble_room(FIRST_FLOOR_STORAGE_ROOM, "Looks like a little room for storage.  There are some boxes here.");
-   assemble_room(BACK_PORCH, "It sure is nice to have a place out of hte rain for now.");
 
-
-
-   add_hitspot_to_room(FRONT_PORCH,
-      FRONT_PORCH_DOOR, 1600, 460, 90, 270, "Front porch door", "observe_front_porch_door");
-   add_hitspot_to_room(FRONT_HALLWAY,
-      DOOR1, 1725, 440, 60, 350, "Door 1", "observe_door1");
-   add_ellipse_hitspot_to_room(FRONT_HALLWAY,
-      WALL_ART, 1150, 450, 60, 60, "Wall Art", "observe_wall_art");
    add_hitspot_to_room(MAIN_HALLWAY,
       DOOR2, 115, 440, 60, 350, "Door 2", "observe_door2");
+
+   add_script("observe_door2", {
+       "DIALOG: A regular door. | I'll go in.",
+      "ENTER_ROOM: " + FRONT_HALLWAY,
+   });
+
+
+
+   // FIRST FLOOR STORAGE ROOM
+
+   assemble_room(FIRST_FLOOR_STORAGE_ROOM, "Looks like a little room for storage.  There are some boxes here.");
+
+   // Does nothing for now
+   //add_script("collect_keys", {
+     //"COLLECT: keys"
+   //});
+
+
+   // BACK PORCH
+
+   assemble_room(BACK_PORCH, "It sure is nice to have a place out of hte rain for now.");
 
 
 
