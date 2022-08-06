@@ -88,6 +88,7 @@ void ConfigurationsBuilder::you_build()
 
    // entities
    const std::string FRONT_PORCH_DOOR = "front_porch_door";
+   const std::string BACK_PORCH_DOOR = "back_porch_door";
    const std::string DOOR1 = "door1";
    const std::string DOOR2 = "door2";
    const std::string WALL_ART = "wall_art";
@@ -166,8 +167,19 @@ void ConfigurationsBuilder::you_build()
 
    // BACK PORCH
 
-   assemble_room(BACK_PORCH, "It sure is nice to have a place out of hte rain for now.");
+   assemble_room(BACK_PORCH, "It sure is nice to have a place out of the rain for now.");
 
+   add_hitspot_to_room(BACK_PORCH,
+      BACK_PORCH_DOOR, 230, 450, 80, 290, "Back porch door", "observe_back_porch_door");
+
+   add_script("observe_back_porch_door", {
+      "DIALOG: A regular door. | I'll go in.",
+      "ENTER_ROOM: " + FIRST_FLOOR_STORAGE_ROOM,
+   });
+
+
+
+   starting_in_room_identifier = BACK_PORCH;
 
 
    return;
