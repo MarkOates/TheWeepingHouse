@@ -1,6 +1,8 @@
 
 
 #include <TheWeepingHouse/ConfigurationsBuilder.hpp>
+#include <stdexcept>
+#include <sstream>
 #include <TheWeepingHouse/EntityFactory.hpp>
 #include <AllegroFlare/Prototypes/FixedRoom2D/RoomFactory.hpp>
 #include <stdexcept>
@@ -24,7 +26,7 @@ ConfigurationsBuilder::ConfigurationsBuilder(AllegroFlare::BitmapBin* bitmap_bin
    , font_bin(font_bin)
    , event_emitter(event_emitter)
    , entity_collection_helper__this_is_a_hack(entity_collection_helper__this_is_a_hack)
-   , configuration()
+   , result_configuration()
    , built(false)
 {
 }
@@ -35,11 +37,16 @@ ConfigurationsBuilder::~ConfigurationsBuilder()
 }
 
 
-AllegroFlare::Prototypes::FixedRoom2D::Configuration ConfigurationsBuilder::get_configuration()
+AllegroFlare::Prototypes::FixedRoom2D::Configuration ConfigurationsBuilder::get_result_configuration()
 {
-   return configuration;
+   if (!(built))
+      {
+         std::stringstream error_message;
+         error_message << "ConfigurationsBuilder" << "::" << "get_result_configuration" << ": error: " << "guard \"built\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   return result_configuration;
 }
-
 
 AllegroFlare::Prototypes::FixedRoom2D::Configuration ConfigurationsBuilder::build()
 {
@@ -67,7 +74,7 @@ AllegroFlare::Prototypes::FixedRoom2D::Configuration ConfigurationsBuilder::buil
          error_message << "ConfigurationsBuilder" << "::" << "build" << ": error: " << "guard \"entity_collection_helper__this_is_a_hack\" not met";
          throw std::runtime_error(error_message.str());
       }
-   if (built) return configuration;
+   if (built) return result_configuration;
    built = true;
 
 
@@ -80,7 +87,7 @@ AllegroFlare::Prototypes::FixedRoom2D::Configuration ConfigurationsBuilder::buil
 
    const std::string FRONT_PATIO_DOOR = "front_patio_door";
 
-   AllegroFlare::Prototypes::FixedRoom2D::Configuration &result = configuration;
+   AllegroFlare::Prototypes::FixedRoom2D::Configuration &result = result_configuration;
 
    AllegroFlare::InventoryIndex &inventory_index = result.get_inventory_index_ref();
    AllegroFlare::Inventory &af_inventory = result.get_af_inventory_ref();

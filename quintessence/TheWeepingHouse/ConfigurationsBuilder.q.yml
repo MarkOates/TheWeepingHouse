@@ -25,10 +25,11 @@ properties:
     constructor_arg: true
     setter: false
 
-  - name: configuration
+  - name: result_configuration
     type: AllegroFlare::Prototypes::FixedRoom2D::Configuration
     init_with: ''
-    getter: true
+    getter: explicit
+    setter: false
 
   - name: built
     type: bool
@@ -38,11 +39,18 @@ properties:
 functions:
 
 
+  - name: get_result_configuration
+    type: AllegroFlare::Prototypes::FixedRoom2D::Configuration
+    guards: [ built ]
+    body: |
+      return result_configuration;
+
+
   - name: build
     type: AllegroFlare::Prototypes::FixedRoom2D::Configuration
     guards: [ bitmap_bin, font_bin, event_emitter, entity_collection_helper__this_is_a_hack ]
     body: |
-      if (built) return configuration;
+      if (built) return result_configuration;
       built = true;
 
 
@@ -55,7 +63,7 @@ functions:
 
       const std::string FRONT_PATIO_DOOR = "front_patio_door";
 
-      AllegroFlare::Prototypes::FixedRoom2D::Configuration &result = configuration;
+      AllegroFlare::Prototypes::FixedRoom2D::Configuration &result = result_configuration;
 
       AllegroFlare::InventoryIndex &inventory_index = result.get_inventory_index_ref();
       AllegroFlare::Inventory &af_inventory = result.get_af_inventory_ref();
