@@ -88,7 +88,7 @@ functions:
                "ENTER_ROOM: study",
          })},
          { "observe_door2", AllegroFlare::Prototypes::FixedRoom2D::Script({
-               "DIALOG: A regular door. | I'll to in.",
+               "DIALOG: A regular door. | I'll go in.",
                "ENTER_ROOM: front_hall",
          })},
          { "signal_hello", AllegroFlare::Prototypes::FixedRoom2D::Script({
