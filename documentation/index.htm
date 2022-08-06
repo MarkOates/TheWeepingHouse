@@ -144,6 +144,38 @@ table td
   <td class="property">built</td>
   <td class="property">bool</td>
 </tr>
+<tr>
+  <td class="property">inventory_index</td>
+  <td class="property">AllegroFlare::InventoryIndex&amp;</td>
+</tr>
+<tr>
+  <td class="property">af_inventory</td>
+  <td class="property">AllegroFlare::Inventory&amp;</td>
+</tr>
+<tr>
+  <td class="property">flags</td>
+  <td class="property">AllegroFlare::Inventory&amp;</td>
+</tr>
+<tr>
+  <td class="property">entity_dictionary</td>
+  <td class="property">std::map&lt;std::string, AllegroFlare::Prototypes::FixedRoom2D::Entities::Base*&gt;&amp;</td>
+</tr>
+<tr>
+  <td class="property">room_dictionary</td>
+  <td class="property">std::map&lt;std::string, AllegroFlare::Prototypes::FixedRoom2D::Room*&gt;&amp;</td>
+</tr>
+<tr>
+  <td class="property">entity_room_associations</td>
+  <td class="property">std::map&lt;std::string, std::string&gt;&amp;</td>
+</tr>
+<tr>
+  <td class="property">script_dictionary</td>
+  <td class="property">std::map&lt;std::string, AllegroFlare::Prototypes::FixedRoom2D::Script&gt;&amp;</td>
+</tr>
+<tr>
+  <td class="property">starting_in_room_identifier</td>
+  <td class="property">std::string</td>
+</tr>
     </table>
      <table>
 <tr>
@@ -154,6 +186,9 @@ table td
 </tr>
 <tr>
   <td class="method">assemble_room(3)</td>
+</tr>
+<tr>
+  <td class="method">room_exists(1)</td>
 </tr>
 <tr>
   <td class="method">set_font_bin(1)</td>
@@ -169,6 +204,24 @@ table td
 </tr>
     </table>
      <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::InventoryIndex&amp;&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/InventoryIndex.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Inventory&amp;&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Inventory.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::map&lt;std::string, AllegroFlare::Prototypes::FixedRoom2D::Entities::Base*&gt;&amp;&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Prototypes/FixedRoom2D/Entities/Base.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::map&lt;std::string, AllegroFlare::Prototypes::FixedRoom2D::Room*&gt;&amp;&quot;, &quot;headers&quot;=&gt;[&quot;map&quot;, &quot;string&quot;, &quot;AllegroFlare/Prototypes/FixedRoom2D/Room.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::map&lt;std::string, AllegroFlare::Prototypes::FixedRoom2D::Script&gt;&amp;&quot;, &quot;headers&quot;=&gt;[&quot;map&quot;, &quot;AllegroFlare/Prototypes/FixedRoom2D/Script.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::map&lt;std::string, std::string&gt;&amp;&quot;, &quot;headers&quot;=&gt;[&quot;map&quot;, &quot;string&quot;]}</td>
+</tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Inventory*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Inventory.hpp&quot;]}</td>
 </tr>
@@ -527,6 +580,24 @@ table td
     "TheWeepingHouse/Configurations/Primary",
     "TheWeepingHouse/ConfigurationsBuilder",
     "TheWeepingHouse/Runner"
+  ],
+  "AllegroFlare/InventoryIndex&": [
+    "TheWeepingHouse/ConfigurationsBuilder"
+  ],
+  "AllegroFlare/Inventory&": [
+    "TheWeepingHouse/ConfigurationsBuilder"
+  ],
+  "std/map<std/string, AllegroFlare/Prototypes/FixedRoom2D/Entities/Base>&": [
+    "TheWeepingHouse/ConfigurationsBuilder"
+  ],
+  "std/map<std/string, AllegroFlare/Prototypes/FixedRoom2D/Room>&": [
+    "TheWeepingHouse/ConfigurationsBuilder"
+  ],
+  "std/map<std/string, AllegroFlare/Prototypes/FixedRoom2D/Script>&": [
+    "TheWeepingHouse/ConfigurationsBuilder"
+  ],
+  "std/map<std/string, std/string>&": [
+    "TheWeepingHouse/ConfigurationsBuilder"
   ],
   "AllegroFlare/Prototypes/FixedRoom2D/Entities/Base": [
     "TheWeepingHouse/EntityFactory"

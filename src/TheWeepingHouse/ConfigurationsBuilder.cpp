@@ -28,6 +28,14 @@ ConfigurationsBuilder::ConfigurationsBuilder(AllegroFlare::BitmapBin* bitmap_bin
    , entity_collection_helper__this_is_a_hack(entity_collection_helper__this_is_a_hack)
    , result_configuration()
    , built(false)
+   , inventory_index(result_configuration.get_inventory_index_ref())
+   , af_inventory(result_configuration.get_af_inventory_ref())
+   , flags(result_configuration.get_flags_ref())
+   , entity_dictionary(result_configuration.get_entity_dictionary_ref())
+   , room_dictionary(result_configuration.get_room_dictionary_ref())
+   , entity_room_associations(result_configuration.get_entity_room_associations_ref())
+   , script_dictionary(result_configuration.get_script_dictionary_ref())
+   , starting_in_room_identifier(result_configuration.get_starting_in_room_identifier_ref())
 {
 }
 
@@ -211,6 +219,12 @@ bool ConfigurationsBuilder::assemble_room(std::string name, std::string backgrou
    //room_dictionary[FRONT_PATIO] = room_factory.create_room();
 
    return true;
+}
+
+bool ConfigurationsBuilder::room_exists(std::string name)
+{
+   // TODO
+   return false;
 }
 
 void ConfigurationsBuilder::set_font_bin(AllegroFlare::FontBin* font_bin)
