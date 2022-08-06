@@ -6,6 +6,18 @@ properties:
     init_with: nullptr
     constructor_arg: true
 
+  - name: hitspot_rectangle_bitmap_identifier
+    type: std::string
+    init_with: '"hitspot_rectangle_1x1.png"'
+
+  - name: hitspot_circle_bitmap_identifier
+    type: std::string
+    init_with: '"hitspot_circle_100x100.png"'
+
+  - name: hide_hitspots
+    type: bool
+    init_with: false
+
 
 functions:
 
@@ -25,6 +37,92 @@ functions:
          bitmap_image_identifier, 0, 0, 1.0, "background", on_interact_script_name, 0, 0
       );
       result->set_cursor_insights_are_hidden(true);
+      return result;
+
+
+  - name: create_rectangle_hitspot
+    type: AllegroFlare::Prototypes::FixedRoom2D::Entities::Base*
+    parameters:
+      - name: x
+        type: float
+        default_argument: 1920/2
+      - name: y
+        type: float
+        default_argument: 1080/2
+      - name: w
+        type: float
+        default_argument: 100
+      - name: h
+        type: float
+        default_argument: 100
+      - name: name
+        type: std::string
+        default_argument: '"[unset-name]"'
+      - name: on_interact_script_name
+        type: std::string
+        default_argument: '"[unset-on_interact_script_name]"'
+    guards: [ bitmap_bin ]
+    body: |
+      ALLEGRO_BITMAP* bitmap = bitmap_bin->auto_get(hitspot_rectangle_bitmap_identifier);
+
+      AllegroFlare::Prototypes::FixedRoom2D::Entities::Base* result = new
+         AllegroFlare::Prototypes::FixedRoom2D::Entities::Base(bitmap);
+
+      AllegroFlare::Placement2D &placement = result->get_placement_ref();
+      result->set_on_cursor_interact_script_name(on_interact_script_name);
+      result->set_hidden(hide_hitspots);
+
+      placement.position = {x, y};
+      placement.scale = {w, h};
+      placement.align = {0, 0};
+
+      result->set("name", name);
+      result->set("is_hitspot", true);
+
+      return result;
+
+
+  - name: create_ellipse_hitspot
+    type: AllegroFlare::Prototypes::FixedRoom2D::Entities::Base*
+    parameters:
+      - name: center_x
+        type: float
+        default_argument: 1920/2
+      - name: center_y
+        type: float
+        default_argument: 1080/2
+      - name: w
+        type: float
+        default_argument: 100
+      - name: h
+        type: float
+        default_argument: 100
+      - name: name
+        type: std::string
+        default_argument: '"[unset-name]"'
+      - name: on_interact_script_name
+        type: std::string
+        default_argument: '"[unset-on_interact_script_name]"'
+    guards: [ bitmap_bin ]
+    body: |
+      ALLEGRO_BITMAP* bitmap = bitmap_bin->auto_get(hitspot_circle_bitmap_identifier);
+      int bitmap_natural_width = al_get_bitmap_width(bitmap);
+      int bitmap_natural_height = al_get_bitmap_height(bitmap);
+
+      AllegroFlare::Prototypes::FixedRoom2D::Entities::Base* result = new
+         AllegroFlare::Prototypes::FixedRoom2D::Entities::Base(bitmap);
+
+      AllegroFlare::Placement2D &placement = result->get_placement_ref();
+      result->set_on_cursor_interact_script_name(on_interact_script_name);
+      result->set_hidden(hide_hitspots);
+
+      placement.position = {center_x, center_y};
+      placement.scale = {bitmap_natural_width / w, bitmap_natural_height / h};
+      placement.align = {0.5, 0.5};
+
+      result->set("name", name);
+      result->set("is_hitspot", true);
+
       return result;
 
 

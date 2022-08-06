@@ -58,16 +58,9 @@ functions:
       entity_dictionary = {
          { "front_hall_bg", entity_factory.create_background("room_0.png", "observe_front_hall") },
          { "main_hall_bg", entity_factory.create_background("room_1.png", "observe_main_hall") },
-         { "door1", entity_factory.create_entity(
-               "download-door-png-transparent-image-and-clipart-3.png", 1775, 800, 0.4, "Door 1", "observe_door1") },
-         { "door2", entity_factory.create_entity(
-               "download-door-png-transparent-image-and-clipart-3.png", 150, 800, 0.4, "Door 2", "observe_door2") },
-         //{ "chair", entity_factory.create_entity(
-         //      "wooden-chair-png-transparent-image-pngpix-0.png", 450, 800, 0.1, "Door 2", "observe_door2") },
+         { "door1", entity_factory.create_rectangle_hitspot(1725, 440, 60, 350, "Door 1", "observe_door1") },
+         { "door2", entity_factory.create_rectangle_hitspot(115, 440, 60, 350, "Door 2", "observe_door2") },
       };
-
-      entity_dictionary["door1"]->set_hidden(true);
-      entity_dictionary["door2"]->set_hidden(true);
 
       entity_room_associations = {
          { "front_hall_bg", "front_hall" },
@@ -105,7 +98,7 @@ functions:
          })},
       };
 
-      starting_in_room_identifier = "front_hall";
+      starting_in_room_identifier = "study";
        
       return result;
     body_dependency_symbols:
