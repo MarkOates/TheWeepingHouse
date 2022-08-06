@@ -88,6 +88,8 @@ AllegroFlare::Prototypes::FixedRoom2D::Configuration Primary::build(AllegroFlare
             "download-door-png-transparent-image-and-clipart-3.png", 1775, 800, 0.4, "Door 1", "observe_door1") },
       { "door2", entity_factory.create_entity(
             "download-door-png-transparent-image-and-clipart-3.png", 150, 800, 0.4, "Door 2", "observe_door2") },
+      //{ "chair", entity_factory.create_entity(
+      //      "wooden-chair-png-transparent-image-pngpix-0.png", 450, 800, 0.1, "Door 2", "observe_door2") },
    };
 
    entity_dictionary["door1"]->set_hidden(true);
@@ -98,7 +100,7 @@ AllegroFlare::Prototypes::FixedRoom2D::Configuration Primary::build(AllegroFlare
       { "main_hall_bg", "study" },
       { "door1", "front_hall" },
       { "door2", "study" },
-      { "chair", "front_hall" },
+      //{ "chair", "front_hall" },
       { "table", "front_hall" },
       { "keys", "front_hall" },
    };
@@ -129,7 +131,7 @@ AllegroFlare::Prototypes::FixedRoom2D::Configuration Primary::build(AllegroFlare
       })},
    };
 
-   starting_in_room_identifier = "study";
+   starting_in_room_identifier = "front_hall";
     
    return result;
 }
