@@ -7,6 +7,7 @@
 #include <TheWeepingHouse/Shaders/Multiply.hpp>
 #include <stdexcept>
 #include <sstream>
+#include <TheWeepingHouse/ConfigurationsBuilder.hpp>
 #include <stdexcept>
 #include <sstream>
 
@@ -194,6 +195,27 @@ AllegroFlare::Prototypes::FixedRoom2D::Configuration Runner::get_configuration()
          &event_emitter,
          &gameplay_screen.get_fixed_room_2d_ref().get_entity_collection_helper_ref()
       );
+}
+
+AllegroFlare::Prototypes::FixedRoom2D::Configuration Runner::get_builder_configuration()
+{
+   AllegroFlare::FontBin &font_bin = framework->get_font_bin_ref();
+   AllegroFlare::BitmapBin &bitmap_bin = framework->get_bitmap_bin_ref();
+   AllegroFlare::SampleBin &sample_bin = framework->get_sample_bin_ref();
+   AllegroFlare::ModelBin &model_bin = framework->get_model_bin_ref();
+   AllegroFlare::EventEmitter &event_emitter = framework->get_event_emitter_ref();
+   AllegroFlare::AudioController &audio_controller = framework->get_audio_controller_ref();
+
+   TheWeepingHouse::ConfigurationsBuilder configurations_builder;
+
+   configurations_builder.set_bitmap_bin(&bitmap_bin);
+   configurations_builder.set_font_bin(&font_bin);
+   configurations_builder.set_event_emitter(&event_emitter);
+   configurations_builder.set_entity_collection_helper__this_is_a_hack(
+      &gameplay_screen.get_fixed_room_2d_ref().get_entity_collection_helper_ref()
+   );
+
+   return configurations_builder.build();
 }
 
 void Runner::game_event_func(AllegroFlare::GameEvent* ev)

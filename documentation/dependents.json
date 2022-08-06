@@ -129,5 +129,8 @@
   ],
   "TheWeepingHouse/Shaders/Multiply": [
     "TheWeepingHouse/Runner"
+  ],
+  "TheWeepingHouse/ConfigurationsBuilder": [
+    "TheWeepingHouse/Runner"
   ]
 }
