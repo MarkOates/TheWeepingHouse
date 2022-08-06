@@ -230,8 +230,7 @@ functions:
         type: std::string
         default_argument: '"[unset-name]"'
     body: |
-      // TODO
-      return false;
+      return (room_dictionary.count(name) > 0);
 
 
   - name: set_font_bin

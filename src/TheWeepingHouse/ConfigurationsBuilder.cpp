@@ -211,8 +211,7 @@ bool ConfigurationsBuilder::assemble_room(std::string name, std::string backgrou
 
 bool ConfigurationsBuilder::room_exists(std::string name)
 {
-   // TODO
-   return false;
+   return (room_dictionary.count(name) > 0);
 }
 
 void ConfigurationsBuilder::set_font_bin(AllegroFlare::FontBin* font_bin)

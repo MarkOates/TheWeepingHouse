@@ -20,7 +20,6 @@ class TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest
    : public AllegroFlare::Testing::WithAllegroRenderingFixture{};
 
 
-
 TEST_F(TheWeepingHouse_ConfigurationsBuilderTest, can_be_created_without_blowing_up)
 {
    TheWeepingHouse::ConfigurationsBuilder configurations_builder;
@@ -44,6 +43,50 @@ TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest, bui
       &entity_collection_helper__this_is_a_hack);
 
    configurations_builder.build();
+}
+
+
+TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest,
+   room_exists__will_return_true_if_the_room_exists)
+{
+   AllegroFlare::BitmapBin &bitmap_bin = get_bitmap_bin_ref();
+   AllegroFlare::FontBin &font_bin = get_font_bin_ref();
+   AllegroFlare::EventEmitter event_emitter;
+   AllegroFlare::Prototypes::FixedRoom2D::EntityCollectionHelper entity_collection_helper__this_is_a_hack;
+
+   bitmap_bin.set_full_path(TEST_FIXTURE_BITMAPS_FOLDER);
+   font_bin.set_full_path(TEST_FIXTURE_FONTS_FOLDER);
+
+   TheWeepingHouse::ConfigurationsBuilder configurations_builder(
+      &bitmap_bin,
+      &font_bin,
+      &event_emitter,
+      &entity_collection_helper__this_is_a_hack);
+
+   configurations_builder.build();
+   EXPECT_EQ(true, configurations_builder.room_exists("front_patio"));
+}
+
+
+TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest,
+   room_exists__will_return_false_if_the_room_exists)
+{
+   AllegroFlare::BitmapBin &bitmap_bin = get_bitmap_bin_ref();
+   AllegroFlare::FontBin &font_bin = get_font_bin_ref();
+   AllegroFlare::EventEmitter event_emitter;
+   AllegroFlare::Prototypes::FixedRoom2D::EntityCollectionHelper entity_collection_helper__this_is_a_hack;
+
+   bitmap_bin.set_full_path(TEST_FIXTURE_BITMAPS_FOLDER);
+   font_bin.set_full_path(TEST_FIXTURE_FONTS_FOLDER);
+
+   TheWeepingHouse::ConfigurationsBuilder configurations_builder(
+      &bitmap_bin,
+      &font_bin,
+      &event_emitter,
+      &entity_collection_helper__this_is_a_hack);
+
+   configurations_builder.build();
+   EXPECT_EQ(false, configurations_builder.room_exists("a-room-that-does-not-exist"));
 }
 
 
