@@ -1,50 +1,64 @@
 {
   "AllegroFlare/Inventory": [
-    "TheWeepingHouse/Configurations/Primary"
+    "TheWeepingHouse/Configurations/Primary",
+    "TheWeepingHouse/ConfigurationsBuilder"
   ],
   "AllegroFlare/InventoryIndex": [
-    "TheWeepingHouse/Configurations/Primary"
+    "TheWeepingHouse/Configurations/Primary",
+    "TheWeepingHouse/ConfigurationsBuilder"
   ],
   "std/map<std/string, AllegroFlare/Prototypes/FixedRoom2D/Entities/Base>": [
-    "TheWeepingHouse/Configurations/Primary"
+    "TheWeepingHouse/Configurations/Primary",
+    "TheWeepingHouse/ConfigurationsBuilder"
   ],
   "std/map<std/string, AllegroFlare/Prototypes/FixedRoom2D/Room>": [
-    "TheWeepingHouse/Configurations/Primary"
+    "TheWeepingHouse/Configurations/Primary",
+    "TheWeepingHouse/ConfigurationsBuilder"
   ],
   "std/map<std/string, AllegroFlare/Prototypes/FixedRoom2D/Script>": [
-    "TheWeepingHouse/Configurations/Primary"
+    "TheWeepingHouse/Configurations/Primary",
+    "TheWeepingHouse/ConfigurationsBuilder"
   ],
   "std/map<std/string, std/string>": [
-    "TheWeepingHouse/Configurations/Primary"
+    "TheWeepingHouse/Configurations/Primary",
+    "TheWeepingHouse/ConfigurationsBuilder"
   ],
   "TheWeepingHouse/EntityFactory": [
-    "TheWeepingHouse/Configurations/Primary"
+    "TheWeepingHouse/Configurations/Primary",
+    "TheWeepingHouse/ConfigurationsBuilder"
   ],
   "AllegroFlare/Prototypes/FixedRoom2D/RoomFactory": [
-    "TheWeepingHouse/Configurations/Primary"
+    "TheWeepingHouse/Configurations/Primary",
+    "TheWeepingHouse/ConfigurationsBuilder"
   ],
   "AllegroFlare/BitmapBin": [
     "TheWeepingHouse/Configurations/Primary",
+    "TheWeepingHouse/ConfigurationsBuilder",
     "TheWeepingHouse/EntityFactory"
   ],
   "AllegroFlare/EventEmitter": [
     "TheWeepingHouse/Configurations/Primary",
+    "TheWeepingHouse/ConfigurationsBuilder",
     "TheWeepingHouse/Runner"
   ],
   "AllegroFlare/FontBin": [
-    "TheWeepingHouse/Configurations/Primary"
+    "TheWeepingHouse/Configurations/Primary",
+    "TheWeepingHouse/ConfigurationsBuilder"
   ],
   "AllegroFlare/Shader": [
     "TheWeepingHouse/Configurations/Primary",
+    "TheWeepingHouse/ConfigurationsBuilder",
     "TheWeepingHouse/Runner",
     "TheWeepingHouse/Shaders/FlatColor",
     "TheWeepingHouse/Shaders/Multiply"
   ],
   "AllegroFlare/Prototypes/FixedRoom2D/EntityCollectionHelper": [
-    "TheWeepingHouse/Configurations/Primary"
+    "TheWeepingHouse/Configurations/Primary",
+    "TheWeepingHouse/ConfigurationsBuilder"
   ],
   "AllegroFlare/Prototypes/FixedRoom2D/Configuration": [
     "TheWeepingHouse/Configurations/Primary",
+    "TheWeepingHouse/ConfigurationsBuilder",
     "TheWeepingHouse/Runner"
   ],
   "AllegroFlare/Prototypes/FixedRoom2D/Entities/Base": [
