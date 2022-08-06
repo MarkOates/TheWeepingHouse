@@ -13,7 +13,6 @@ TEST(TheWeepingHouse_RunnerTest, can_be_created_without_blowing_up)
 TEST(TheWeepingHouse_RunnerTest, run__runs_the_program)
 {
    TheWeepingHouse::Runner runner;
-   //runner.run("test");
    runner.run("test");
    SUCCEED();
 }

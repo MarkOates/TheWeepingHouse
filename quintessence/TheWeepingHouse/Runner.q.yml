@@ -110,13 +110,17 @@ functions:
       // setup the title screen
       title_screen.set_font_bin(&font_bin);
       title_screen.set_bitmap_bin(&bitmap_bin);
-      title_screen.set_title_text("The Weeping House");
-      //title_screen.set_title_bitmap_name("tins4-logo-01.png");
-      //title_screen.set_background_bitmap_name("logo-02.png");
+      title_screen.set_title_text("");
+      //title_screen.set_title_bitmap_name("the_weeping_house_title-02b.png");
+      title_screen.set_background_bitmap_name("the_weeping_house_title-02b.png");
+      //title_screen.set_menu_selector_color(AllegroFlare::Color(0x302e46).to_al());
+      //title_screen.set_menu_selected_text_color(AllegroFlare::Color(0xffffff).to_al());
+      //title_screen.set_menu_text_color(AllegroFlare::Color(0xffffff).to_al());
+      //title_screen.set_font_name("Benne-Regular.ttf");
       title_screen.set_event_emitter(&event_emitter);
-      title_screen.set_font_name("Inter-Medium.ttf");
+      //title_screen.set_font_name("Inter-Medium.ttf");
       title_screen.set_menu_font_size(-40);
-      title_screen.set_menu_position_y(1080/32*19);
+      title_screen.set_menu_position_y(1080/32*19+10);
       title_screen.set_copyright_text("Copyright 2022 - Mark Oates\nCLUBCATT Games - www.clubcatt.com\n");
       title_screen.set_copyright_text_color(AllegroFlare::Color(AllegroFlare::Color::LightSkyBlue, 0.4).to_al());
       title_screen.set_copyright_font_size(-26);
