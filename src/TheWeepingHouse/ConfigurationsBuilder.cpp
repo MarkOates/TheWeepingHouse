@@ -89,7 +89,7 @@ void ConfigurationsBuilder::you_build()
 
 
    // configs
-   starting_in_room_identifier = FRONT_HALLWAY;
+   starting_in_room_identifier = FRONT_PORCH;
    entity_factory.set_hide_hitspots(false);
 
 
@@ -102,7 +102,7 @@ void ConfigurationsBuilder::you_build()
 
    // add the associations
    entity_room_associations = {
-      { FRONT_PORCH_DOOR, FRONT_PORCH },
+      //{ FRONT_PORCH_DOOR, FRONT_PORCH },
 
       { "door1", FRONT_HALLWAY },
       { "wall_art", FRONT_HALLWAY },
@@ -143,12 +143,12 @@ void ConfigurationsBuilder::you_build()
 
 
 
-   //add_hitspot_to_room(FRONT_PORCH,
-      //FRONT_PORCH_DOOR, 1725, 440, 60, 350, "Door 1", "observe_front_porch_door");
+   add_hitspot_to_room(FRONT_PORCH,
+      FRONT_PORCH_DOOR, 1625, 440, 60, 350, "Door 1", "observe_front_porch_door");
 
 
-   entity_dictionary[FRONT_PORCH_DOOR] =
-      entity_factory.create_rectangle_hitspot(1725, 440, 60, 350, "Door 2", "observe_front_porch_door");
+   //entity_dictionary[FRONT_PORCH_DOOR] =
+      //entity_factory.create_rectangle_hitspot(1725, 440, 60, 350, "Door 2", "observe_front_porch_door");
    entity_dictionary["door1"] =
       entity_factory.create_rectangle_hitspot(1725, 440, 60, 350, "Door 1", "observe_door1");
    entity_dictionary["door2"] =

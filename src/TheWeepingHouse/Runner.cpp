@@ -312,7 +312,7 @@ void Runner::run(std::string mode)
 {
    // setup the framework
    AllegroFlare::Frameworks::Full framework;
-   framework.disable_escape_key_will_shutdown();
+   //framework.disable_escape_key_will_shutdown();
    framework.initialize();
 
    AllegroFlare::FontBin &font_bin = framework.get_font_bin_ref();
