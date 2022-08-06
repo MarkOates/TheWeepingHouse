@@ -10,6 +10,7 @@
 #include <AllegroFlare/Prototypes/FixedRoom2D/Entities/Base.hpp>
 #include <AllegroFlare/Prototypes/FixedRoom2D/EntityCollectionHelper.hpp>
 #include <AllegroFlare/Prototypes/FixedRoom2D/Room.hpp>
+#include <AllegroFlare/Prototypes/FixedRoom2D/RoomFactory.hpp>
 #include <AllegroFlare/Prototypes/FixedRoom2D/Script.hpp>
 #include <map>
 #include <string>
@@ -34,6 +35,7 @@ namespace TheWeepingHouse
       std::map<std::string, std::string>& entity_room_associations;
       std::map<std::string, AllegroFlare::Prototypes::FixedRoom2D::Script>& script_dictionary;
       std::string starting_in_room_identifier;
+      AllegroFlare::Prototypes::FixedRoom2D::RoomFactory room_factory;
 
    public:
       ConfigurationsBuilder(AllegroFlare::BitmapBin* bitmap_bin=nullptr, AllegroFlare::FontBin* font_bin=nullptr, AllegroFlare::EventEmitter* event_emitter=nullptr, AllegroFlare::Prototypes::FixedRoom2D::EntityCollectionHelper* entity_collection_helper__this_is_a_hack=nullptr);

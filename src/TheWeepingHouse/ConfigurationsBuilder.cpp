@@ -4,7 +4,8 @@
 #include <stdexcept>
 #include <sstream>
 #include <TheWeepingHouse/EntityFactory.hpp>
-#include <AllegroFlare/Prototypes/FixedRoom2D/RoomFactory.hpp>
+#include <stdexcept>
+#include <sstream>
 #include <stdexcept>
 #include <sstream>
 #include <stdexcept>
@@ -36,6 +37,7 @@ ConfigurationsBuilder::ConfigurationsBuilder(AllegroFlare::BitmapBin* bitmap_bin
    , entity_room_associations(result_configuration.get_entity_room_associations_ref())
    , script_dictionary(result_configuration.get_script_dictionary_ref())
    , starting_in_room_identifier(result_configuration.get_starting_in_room_identifier_ref())
+   , room_factory(bitmap_bin, font_bin, event_emitter, entity_collection_helper__this_is_a_hack)
 {
 }
 
@@ -102,9 +104,9 @@ AllegroFlare::Prototypes::FixedRoom2D::Configuration ConfigurationsBuilder::buil
    TheWeepingHouse::EntityFactory entity_factory(bitmap_bin);
    entity_factory.set_hide_hitspots(true);
 
-   AllegroFlare::Prototypes::FixedRoom2D::RoomFactory room_factory(
-      bitmap_bin, font_bin, event_emitter, entity_collection_helper__this_is_a_hack
-   );
+   //AllegroFlare::Prototypes::FixedRoom2D::RoomFactory room_factory(
+      //bitmap_bin, font_bin, event_emitter, entity_collection_helper__this_is_a_hack
+   //);
 
    inventory_index = AllegroFlare::InventoryIndex::build_placeholder_inventory_index();
 
@@ -202,9 +204,13 @@ AllegroFlare::Prototypes::FixedRoom2D::Configuration ConfigurationsBuilder::buil
 
 bool ConfigurationsBuilder::assemble_room(std::string name, std::string background_bitmap_identifier, std::string observe_script_text)
 {
-   // TODO this function
-   // TODO check if it already exists
-   //room_dictionary[FRONT_PATIO] = room_factory.create_room();
+   if (!((!room_exists(name))))
+      {
+         std::stringstream error_message;
+         error_message << "ConfigurationsBuilder" << "::" << "assemble_room" << ": error: " << "guard \"(!room_exists(name))\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   //room_dictionary[name] = room_factory.create_room();
 
    return true;
 }
@@ -222,6 +228,7 @@ void ConfigurationsBuilder::set_font_bin(AllegroFlare::FontBin* font_bin)
          error_message << "ConfigurationsBuilder" << "::" << "set_font_bin" << ": error: " << "guard \"(!built)\" not met";
          throw std::runtime_error(error_message.str());
       }
+   room_factory.set_font_bin(font_bin);
    this->font_bin = font_bin;
    return;
 }
@@ -234,6 +241,7 @@ void ConfigurationsBuilder::set_bitmap_bin(AllegroFlare::BitmapBin* bitmap_bin)
          error_message << "ConfigurationsBuilder" << "::" << "set_bitmap_bin" << ": error: " << "guard \"(!built)\" not met";
          throw std::runtime_error(error_message.str());
       }
+   room_factory.set_bitmap_bin(bitmap_bin);
    this->bitmap_bin = bitmap_bin;
    return;
 }
@@ -246,6 +254,7 @@ void ConfigurationsBuilder::set_event_emitter(AllegroFlare::EventEmitter* event_
          error_message << "ConfigurationsBuilder" << "::" << "set_event_emitter" << ": error: " << "guard \"(!built)\" not met";
          throw std::runtime_error(error_message.str());
       }
+   room_factory.set_event_emitter(event_emitter);
    this->event_emitter = event_emitter;
    return;
 }
@@ -258,6 +267,7 @@ void ConfigurationsBuilder::set_entity_collection_helper__this_is_a_hack(Allegro
          error_message << "ConfigurationsBuilder" << "::" << "set_entity_collection_helper__this_is_a_hack" << ": error: " << "guard \"(!built)\" not met";
          throw std::runtime_error(error_message.str());
       }
+   room_factory.set_entity_collection_helper(entity_collection_helper__this_is_a_hack);
    this->entity_collection_helper__this_is_a_hack = entity_collection_helper__this_is_a_hack;
    return;
 }

@@ -67,6 +67,9 @@ properties:
     type: std::string
     init_with: result_configuration.get_starting_in_room_identifier_ref()
 
+  - name: room_factory
+    type: AllegroFlare::Prototypes::FixedRoom2D::RoomFactory
+    init_with: 'bitmap_bin, font_bin, event_emitter, entity_collection_helper__this_is_a_hack'
 
 functions:
 
@@ -102,9 +105,9 @@ functions:
       TheWeepingHouse::EntityFactory entity_factory(bitmap_bin);
       entity_factory.set_hide_hitspots(true);
 
-      AllegroFlare::Prototypes::FixedRoom2D::RoomFactory room_factory(
-         bitmap_bin, font_bin, event_emitter, entity_collection_helper__this_is_a_hack
-      );
+      //AllegroFlare::Prototypes::FixedRoom2D::RoomFactory room_factory(
+         //bitmap_bin, font_bin, event_emitter, entity_collection_helper__this_is_a_hack
+      //);
 
       inventory_index = AllegroFlare::InventoryIndex::build_placeholder_inventory_index();
 
@@ -200,7 +203,6 @@ functions:
       return result;
     body_dependency_symbols:
       - TheWeepingHouse::EntityFactory
-      - AllegroFlare::Prototypes::FixedRoom2D::RoomFactory
 
 
   - name: assemble_room
@@ -215,10 +217,9 @@ functions:
       - name: observe_script_text
         type: std::string
         default_argument: '"[unset-background_bitmap_identifier]"'
+    guards: [ (!room_exists(name)) ]
     body: |
-      // TODO this function
-      // TODO check if it already exists
-      //room_dictionary[FRONT_PATIO] = room_factory.create_room();
+      //room_dictionary[name] = room_factory.create_room();
       
       return true;
 
@@ -232,6 +233,7 @@ functions:
     body: |
       return (room_dictionary.count(name) > 0);
 
+    init_with: 'bitmap_bin, font_bin, event_emitter, entity_collection_helper__this_is_a_hack'
 
   - name: set_font_bin
     parameters:
@@ -240,6 +242,7 @@ functions:
         default_argument: nullptr
     guards: [ (!built) ]
     body: |
+      room_factory.set_font_bin(font_bin);
       this->font_bin = font_bin;
       return;
 
@@ -251,6 +254,7 @@ functions:
         default_argument: nullptr
     guards: [ (!built) ]
     body: |
+      room_factory.set_bitmap_bin(bitmap_bin);
       this->bitmap_bin = bitmap_bin;
       return;
 
@@ -262,6 +266,7 @@ functions:
         default_argument: nullptr
     guards: [ (!built) ]
     body: |
+      room_factory.set_event_emitter(event_emitter);
       this->event_emitter = event_emitter;
       return;
 
@@ -273,6 +278,7 @@ functions:
         default_argument: nullptr
     guards: [ (!built) ]
     body: |
+      room_factory.set_entity_collection_helper(entity_collection_helper__this_is_a_hack);
       this->entity_collection_helper__this_is_a_hack = entity_collection_helper__this_is_a_hack;
       return;
 
