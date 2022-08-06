@@ -97,18 +97,6 @@ functions:
 
       AllegroFlare::Prototypes::FixedRoom2D::Configuration &result = result_configuration;
 
-      AllegroFlare::InventoryIndex &inventory_index = result.get_inventory_index_ref();
-      AllegroFlare::Inventory &af_inventory = result.get_af_inventory_ref();
-      AllegroFlare::Inventory &flags = result.get_flags_ref();
-      std::map<std::string, AllegroFlare::Prototypes::FixedRoom2D::Entities::Base*> &entity_dictionary =
-         result.get_entity_dictionary_ref();
-      std::map<std::string, AllegroFlare::Prototypes::FixedRoom2D::Room*> &room_dictionary =
-         result.get_room_dictionary_ref();
-      std::map<std::string, std::string> &entity_room_associations =
-         result.get_entity_room_associations_ref();
-      std::map<std::string, AllegroFlare::Prototypes::FixedRoom2D::Script> &script_dictionary =
-         result.get_script_dictionary_ref();
-      std::string &starting_in_room_identifier = result.get_starting_in_room_identifier_ref();
 
 
       TheWeepingHouse::EntityFactory entity_factory(bitmap_bin);
