@@ -82,6 +82,11 @@ AllegroFlare::Prototypes::FixedRoom2D::Configuration ConfigurationsBuilder::get_
    return result_configuration;
 }
 
+void ConfigurationsBuilder::you_build()
+{
+   return;
+}
+
 AllegroFlare::Prototypes::FixedRoom2D::Configuration ConfigurationsBuilder::build()
 {
    if (!(bitmap_bin))
@@ -181,6 +186,8 @@ AllegroFlare::Prototypes::FixedRoom2D::Configuration ConfigurationsBuilder::buil
 
 
    starting_in_room_identifier = FRONT_PORCH;
+
+   you_build();
     
    built = true;
 

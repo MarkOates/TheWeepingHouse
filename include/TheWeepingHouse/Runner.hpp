@@ -38,6 +38,7 @@ namespace TheWeepingHouse
 
       void initialize();
       void start_new_game();
+      AllegroFlare::Prototypes::FixedRoom2D::Configuration get_initial_configuration();
       AllegroFlare::Prototypes::FixedRoom2D::Configuration get_configuration();
       AllegroFlare::Prototypes::FixedRoom2D::Configuration get_builder_configuration();
       virtual void game_event_func(AllegroFlare::GameEvent* ev=nullptr) override;

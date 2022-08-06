@@ -90,6 +90,12 @@ functions:
       return result_configuration;
 
 
+  - name: you_build
+    virtual: true
+    body: |
+      return;
+
+
   - name: build
     type: AllegroFlare::Prototypes::FixedRoom2D::Configuration
     guards: [ bitmap_bin, font_bin, event_emitter, entity_collection_helper__this_is_a_hack ]
@@ -167,6 +173,8 @@ functions:
 
 
       starting_in_room_identifier = FRONT_PORCH;
+
+      you_build();
        
       built = true;
 
