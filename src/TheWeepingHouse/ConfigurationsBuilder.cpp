@@ -5,6 +5,14 @@
 #include <AllegroFlare/Prototypes/FixedRoom2D/RoomFactory.hpp>
 #include <stdexcept>
 #include <sstream>
+#include <stdexcept>
+#include <sstream>
+#include <stdexcept>
+#include <sstream>
+#include <stdexcept>
+#include <sstream>
+#include <stdexcept>
+#include <sstream>
 
 
 namespace TheWeepingHouse
@@ -61,7 +69,6 @@ AllegroFlare::Prototypes::FixedRoom2D::Configuration ConfigurationsBuilder::buil
       }
    if (built) return configuration;
    built = true;
-   //return configuration;
 
 
 
@@ -197,6 +204,54 @@ bool ConfigurationsBuilder::assemble_room(std::string name, std::string backgrou
    //room_dictionary[FRONT_PATIO] = room_factory.create_room();
 
    return true;
+}
+
+void ConfigurationsBuilder::set_font_bin(AllegroFlare::FontBin* font_bin)
+{
+   if (!((!built)))
+      {
+         std::stringstream error_message;
+         error_message << "ConfigurationsBuilder" << "::" << "set_font_bin" << ": error: " << "guard \"(!built)\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   this->font_bin = font_bin;
+   return;
+}
+
+void ConfigurationsBuilder::set_bitmap_bin(AllegroFlare::BitmapBin* bitmap_bin)
+{
+   if (!((!built)))
+      {
+         std::stringstream error_message;
+         error_message << "ConfigurationsBuilder" << "::" << "set_bitmap_bin" << ": error: " << "guard \"(!built)\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   this->bitmap_bin = bitmap_bin;
+   return;
+}
+
+void ConfigurationsBuilder::set_event_emitter(AllegroFlare::EventEmitter* event_emitter)
+{
+   if (!((!built)))
+      {
+         std::stringstream error_message;
+         error_message << "ConfigurationsBuilder" << "::" << "set_event_emitter" << ": error: " << "guard \"(!built)\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   this->event_emitter = event_emitter;
+   return;
+}
+
+void ConfigurationsBuilder::set_entity_collection_helper__this_is_a_hack(AllegroFlare::Prototypes::FixedRoom2D::EntityCollectionHelper* entity_collection_helper__this_is_a_hack)
+{
+   if (!((!built)))
+      {
+         std::stringstream error_message;
+         error_message << "ConfigurationsBuilder" << "::" << "set_entity_collection_helper__this_is_a_hack" << ": error: " << "guard \"(!built)\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   this->entity_collection_helper__this_is_a_hack = entity_collection_helper__this_is_a_hack;
+   return;
 }
 } // namespace TheWeepingHouse
 

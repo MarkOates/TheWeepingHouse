@@ -5,21 +5,25 @@ properties:
     type: AllegroFlare::BitmapBin*
     init_with: nullptr
     constructor_arg: true
+    setter: false
 
   - name: font_bin
     type: AllegroFlare::FontBin*
     init_with: nullptr
     constructor_arg: true
+    setter: false
 
   - name: event_emitter
     type: AllegroFlare::EventEmitter*
     init_with: nullptr
     constructor_arg: true
+    setter: false
 
   - name: entity_collection_helper__this_is_a_hack
     type: AllegroFlare::Prototypes::FixedRoom2D::EntityCollectionHelper*
     init_with: nullptr
     constructor_arg: true
+    setter: false
 
   - name: configuration
     type: AllegroFlare::Prototypes::FixedRoom2D::Configuration
@@ -40,7 +44,6 @@ functions:
     body: |
       if (built) return configuration;
       built = true;
-      //return configuration;
 
 
 
@@ -190,6 +193,50 @@ functions:
       //room_dictionary[FRONT_PATIO] = room_factory.create_room();
       
       return true;
+
+
+  - name: set_font_bin
+    parameters:
+      - name: font_bin
+        type: AllegroFlare::FontBin*
+        default_argument: nullptr
+    guards: [ (!built) ]
+    body: |
+      this->font_bin = font_bin;
+      return;
+
+
+  - name: set_bitmap_bin
+    parameters:
+      - name: bitmap_bin
+        type: AllegroFlare::BitmapBin*
+        default_argument: nullptr
+    guards: [ (!built) ]
+    body: |
+      this->bitmap_bin = bitmap_bin;
+      return;
+
+
+  - name: set_event_emitter
+    parameters:
+      - name: event_emitter
+        type: AllegroFlare::EventEmitter*
+        default_argument: nullptr
+    guards: [ (!built) ]
+    body: |
+      this->event_emitter = event_emitter;
+      return;
+
+
+  - name: set_entity_collection_helper__this_is_a_hack
+    parameters:
+      - name: entity_collection_helper__this_is_a_hack
+        type: AllegroFlare::Prototypes::FixedRoom2D::EntityCollectionHelper*
+        default_argument: nullptr
+    guards: [ (!built) ]
+    body: |
+      this->entity_collection_helper__this_is_a_hack = entity_collection_helper__this_is_a_hack;
+      return;
 
 
 dependencies:
