@@ -179,7 +179,7 @@ void ConfigurationsBuilder::you_build()
 
 
 
-   starting_in_room_identifier = BACK_PORCH;
+   starting_in_room_identifier = FRONT_PORCH;
 
 
    return;
