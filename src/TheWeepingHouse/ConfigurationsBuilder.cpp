@@ -19,6 +19,8 @@
 #include <sstream>
 #include <stdexcept>
 #include <sstream>
+#include <stdexcept>
+#include <sstream>
 
 
 namespace TheWeepingHouse
@@ -87,6 +89,8 @@ void ConfigurationsBuilder::you_build()
    // entities
    const std::string FRONT_PORCH_DOOR = "front_porch_door";
    const std::string DOOR1 = "door1";
+   const std::string DOOR2 = "door2";
+   const std::string WALL_ART = "wall_art";
 
 
    // configs
@@ -100,16 +104,6 @@ void ConfigurationsBuilder::you_build()
    af_inventory.add_item(4);
    af_inventory.add_item(3);
 
-
-   // add the associations
-   entity_room_associations = {
-      //{ FRONT_PORCH_DOOR, FRONT_PORCH },
-
-      //{ "door1", FRONT_HALLWAY },
-      { "wall_art", FRONT_HALLWAY },
-
-      { "door2", MAIN_HALLWAY },
-   };
 
 
    // add the scripts
@@ -148,16 +142,10 @@ void ConfigurationsBuilder::you_build()
       FRONT_PORCH_DOOR, 1625, 440, 60, 350, "Front porch door", "observe_front_porch_door");
    add_hitspot_to_room(FRONT_HALLWAY,
       DOOR1, 1725, 440, 60, 350, "Door 1", "observe_door1");
-
-
-   //entity_dictionary[FRONT_PORCH_DOOR] =
-      //entity_factory.create_rectangle_hitspot(1725, 440, 60, 350, "Door 2", "observe_front_porch_door");
-   //entity_dictionary["door1"] =
-      //entity_factory.create_rectangle_hitspot(1725, 440, 60, 350, "Door 1", "observe_door1");
-   entity_dictionary["door2"] =
-      entity_factory.create_rectangle_hitspot(115, 440, 60, 350, "Door 2", "observe_door2");
-   entity_dictionary["wall_art"] =
-      entity_factory.create_ellipse_hitspot(1150, 450, 60, 60, "Wall Art", "observe_wall_art");
+   add_ellipse_hitspot_to_room(FRONT_HALLWAY,
+      WALL_ART, 1150, 450, 60, 60, "Wall Art", "observe_wall_art");
+   add_hitspot_to_room(MAIN_HALLWAY,
+      DOOR2, 115, 440, 60, 350, "Door 2", "observe_door2");
 
 
 
@@ -229,6 +217,26 @@ bool ConfigurationsBuilder::add_hitspot_to_room(std::string room_name, std::stri
       }
    entity_dictionary[hitspot_name] =
       entity_factory.create_rectangle_hitspot(x, y, w, h, label, interact_script_name);
+   entity_room_associations[hitspot_name] = room_name;
+   return true;
+}
+
+bool ConfigurationsBuilder::add_ellipse_hitspot_to_room(std::string room_name, std::string hitspot_name, float x, float y, float w, float h, std::string label, std::string interact_script_name)
+{
+   if (!((!entity_exists(hitspot_name))))
+      {
+         std::stringstream error_message;
+         error_message << "ConfigurationsBuilder" << "::" << "add_ellipse_hitspot_to_room" << ": error: " << "guard \"(!entity_exists(hitspot_name))\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   if (!((!entity_room_association_exists(hitspot_name, room_name))))
+      {
+         std::stringstream error_message;
+         error_message << "ConfigurationsBuilder" << "::" << "add_ellipse_hitspot_to_room" << ": error: " << "guard \"(!entity_room_association_exists(hitspot_name, room_name))\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   entity_dictionary[hitspot_name] =
+      entity_factory.create_ellipse_hitspot(x, y, w, h, label, interact_script_name);
    entity_room_associations[hitspot_name] = room_name;
    return true;
 }
