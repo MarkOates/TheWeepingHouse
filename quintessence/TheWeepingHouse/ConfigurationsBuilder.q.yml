@@ -221,11 +221,21 @@ functions:
   - name: room_exists
     type: bool
     parameters:
-      - name: name
+      - name: room_name
         type: std::string
-        default_argument: '"[unset-name]"'
+        default_argument: '"[unset-room_name]"'
     body: |
-      return (room_dictionary.count(name) > 0);
+      return (room_dictionary.count(room_name) > 0);
+
+
+  - name: script_exists
+    type: bool
+    parameters:
+      - name: script_name
+        type: std::string
+        default_argument: '"[unset-script_name]"'
+    body: |
+      return (script_dictionary.count(script_name) > 0);
 
 
   - name: set_font_bin

@@ -209,9 +209,14 @@ bool ConfigurationsBuilder::assemble_room(std::string name, std::string backgrou
    return true;
 }
 
-bool ConfigurationsBuilder::room_exists(std::string name)
+bool ConfigurationsBuilder::room_exists(std::string room_name)
 {
-   return (room_dictionary.count(name) > 0);
+   return (room_dictionary.count(room_name) > 0);
+}
+
+bool ConfigurationsBuilder::script_exists(std::string script_name)
+{
+   return (script_dictionary.count(script_name) > 0);
 }
 
 void ConfigurationsBuilder::set_font_bin(AllegroFlare::FontBin* font_bin)
