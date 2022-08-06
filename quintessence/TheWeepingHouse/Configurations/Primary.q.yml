@@ -201,3 +201,4 @@ dependencies:
   - symbol: AllegroFlare::Prototypes::FixedRoom2D::Configuration
     headers: [ AllegroFlare/Prototypes/FixedRoom2D/Configuration.hpp ]
 
+
