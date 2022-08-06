@@ -16,7 +16,6 @@ namespace TheWeepingHouse
          Primary();
          ~Primary();
 
-         void you_build();
       };
    }
 }

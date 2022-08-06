@@ -75,28 +75,30 @@ std::map<std::string, AllegroFlare::Prototypes::FixedRoom2D::Script>& Configurat
 
 void ConfigurationsBuilder::you_build()
 {
-
+   // rooms
    const std::string FRONT_PORCH = "front_porch";
    const std::string FRONT_HALLWAY = "front_hallway";
    const std::string MAIN_HALLWAY = "main_hallway";
    const std::string FIRST_FLOOR_STORAGE_ROOM = "first_floor_storage_room";
    const std::string BACK_PORCH = "back_porch";
 
-
+   // entities
    const std::string FRONT_PORCH_DOOR = "front_porch_door";
 
 
+   // configs
+   starting_in_room_identifier = FRONT_HALLWAY;
+   entity_factory.set_hide_hitspots(false);
 
-   //TheWeepingHouse::EntityFactory entity_factory(bitmap_bin);
-   entity_factory.set_hide_hitspots(true);
 
-
+   // build the inventory
    inventory_index = AllegroFlare::InventoryIndex::build_placeholder_inventory_index();
-
    af_inventory.add_item(1);
    af_inventory.add_item(4);
    af_inventory.add_item(3);
 
+
+   // fill the entity dictionary
    entity_dictionary = {
       { "door1", entity_factory.create_rectangle_hitspot(1725, 440, 60, 350, "Door 1", "observe_door1") },
       { "door2", entity_factory.create_rectangle_hitspot(115, 440, 60, 350, "Door 2", "observe_door2") },
@@ -104,6 +106,8 @@ void ConfigurationsBuilder::you_build()
       { "wall_art", entity_factory.create_ellipse_hitspot(1150, 450, 60, 60, "Wall Art", "observe_wall_art") },
    };
 
+
+   // add the associations
    entity_room_associations = {
       { FRONT_PORCH_DOOR, FRONT_PORCH },
 
@@ -114,6 +118,7 @@ void ConfigurationsBuilder::you_build()
    };
 
 
+   // add the scripts
    script_dictionary = {
       { "observe_front_porch_door", AllegroFlare::Prototypes::FixedRoom2D::Script({
             "DIALOG: Oh wow, it's unlocked.  I'm going inside.",
@@ -145,7 +150,6 @@ void ConfigurationsBuilder::you_build()
 
 
 
-   starting_in_room_identifier = FRONT_PORCH;
    return;
 }
 

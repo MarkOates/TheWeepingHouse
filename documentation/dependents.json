@@ -58,12 +58,7 @@
   ],
   "AllegroFlare/Prototypes/FixedRoom2D/Configuration": [
     "TheWeepingHouse/Configurations/Initial",
-    "TheWeepingHouse/Configurations/Primary",
     "TheWeepingHouse/ConfigurationsBuilder",
-    "TheWeepingHouse/Runner"
-  ],
-  "TheWeepingHouse/ConfigurationsBuilder": [
-    "TheWeepingHouse/Configurations/Primary",
     "TheWeepingHouse/Runner"
   ],
   "AllegroFlare/InventoryIndex&": [
@@ -139,6 +134,9 @@
     "TheWeepingHouse/Runner"
   ],
   "TheWeepingHouse/Shaders/Multiply": [
+    "TheWeepingHouse/Runner"
+  ],
+  "TheWeepingHouse/ConfigurationsBuilder": [
     "TheWeepingHouse/Runner"
   ]
 }

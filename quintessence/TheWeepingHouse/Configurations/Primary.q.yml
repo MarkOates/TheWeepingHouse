@@ -6,15 +6,6 @@ parent_classes:
     init_with: ''
 
 
-functions:
-
-
-  - name: you_build
-    body: |
-      // this class is mute
-      return;
-
-
 dependencies:
 
 

@@ -144,8 +144,10 @@ TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH
    the_production_configuration_has_the_expected_elements)
 {
    AllegroFlare::Prototypes::FixedRoom2D::Configuration configuration = configurations_builder.build();
-   //EXPECT_EQ(1, configuration.get_room_dictionary().count("front_hallway"));
-   //EXPECT_EQ("front_hallway", configuration.get_starting_in_room_identifier());
+   EXPECT_EQ(1, configuration.get_entity_dictionary().count("front_porch_door"));
+
+   EXPECT_EQ(true, configurations_builder.entity_room_association_exists("front_porch_door", "front_porch"));
+   EXPECT_EQ("front_porch", configuration.get_entity_room_associations()["front_porch_door"]);
 }
 
 
@@ -156,7 +158,7 @@ TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH
 TEST(TheWeepingHouse_ConfigurationsBuilder_Test, INTERACTIVE__works_in_the_runner)
 {
    TheWeepingHouse::Runner runner;
-   runner.run("test");
+   //runner.run("test");
    SUCCEED();
 }
 

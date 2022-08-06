@@ -50,7 +50,6 @@ table td
 <h1>TOC</h1>
 <ul>
   <li><a href="#quintessence/TheWeepingHouse/Configurations/Initial.q.yml">quintessence/TheWeepingHouse/Configurations/Initial.q.yml</a></li>
-  <li><a href="#quintessence/TheWeepingHouse/Configurations/Primary.q.yml">quintessence/TheWeepingHouse/Configurations/Primary.q.yml</a></li>
   <li><a href="#quintessence/TheWeepingHouse/ConfigurationsBuilder.q.yml">quintessence/TheWeepingHouse/ConfigurationsBuilder.q.yml</a></li>
   <li><a href="#quintessence/TheWeepingHouse/EntityFactory.q.yml">quintessence/TheWeepingHouse/EntityFactory.q.yml</a></li>
   <li><a href="#quintessence/TheWeepingHouse/Runner.q.yml">quintessence/TheWeepingHouse/Runner.q.yml</a></li>
@@ -110,26 +109,6 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Prototypes::FixedRoom2D::EntityCollectionHelper*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Prototypes/FixedRoom2D/EntityCollectionHelper.hpp&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Prototypes::FixedRoom2D::Configuration&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Prototypes/FixedRoom2D/Configuration.hpp&quot;]}</td>
-</tr>
-    </table>
-  </div>
-</ul>
-<ul>
-  <div class="component">
-    <h3 id="quintessence/TheWeepingHouse/Configurations/Primary.q.yml">quintessence/TheWeepingHouse/Configurations/Primary.q.yml</h3>
-     <table>
-    </table>
-     <table>
-<tr>
-  <td class="method">you_build()</td>
-</tr>
-    </table>
-     <table>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;TheWeepingHouse::ConfigurationsBuilder&quot;, &quot;headers&quot;=&gt;[&quot;TheWeepingHouse/ConfigurationsBuilder.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Prototypes::FixedRoom2D::Configuration&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Prototypes/FixedRoom2D/Configuration.hpp&quot;]}</td>
@@ -643,12 +622,7 @@ table td
   ],
   "AllegroFlare/Prototypes/FixedRoom2D/Configuration": [
     "TheWeepingHouse/Configurations/Initial",
-    "TheWeepingHouse/Configurations/Primary",
     "TheWeepingHouse/ConfigurationsBuilder",
-    "TheWeepingHouse/Runner"
-  ],
-  "TheWeepingHouse/ConfigurationsBuilder": [
-    "TheWeepingHouse/Configurations/Primary",
     "TheWeepingHouse/Runner"
   ],
   "AllegroFlare/InventoryIndex&": [
@@ -724,6 +698,9 @@ table td
     "TheWeepingHouse/Runner"
   ],
   "TheWeepingHouse/Shaders/Multiply": [
+    "TheWeepingHouse/Runner"
+  ],
+  "TheWeepingHouse/ConfigurationsBuilder": [
     "TheWeepingHouse/Runner"
   ]
 }
