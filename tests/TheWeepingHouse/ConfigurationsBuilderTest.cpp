@@ -19,6 +19,32 @@ class TheWeepingHouse_ConfigurationsBuilderTest : public ::testing::Test{};
 class TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest
    : public AllegroFlare::Testing::WithAllegroRenderingFixture{};
 
+class TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH_ASSEMBLED_configurations_builder
+   : public AllegroFlare::Testing::WithAllegroRenderingFixture
+{
+public:
+   TheWeepingHouse::ConfigurationsBuilder configurations_builder;
+
+private:
+   virtual void SetUp() override
+   {
+      AllegroFlare::Testing::WithAllegroRenderingFixture::SetUp();
+
+      AllegroFlare::BitmapBin &bitmap_bin = get_bitmap_bin_ref();
+      AllegroFlare::FontBin &font_bin = get_font_bin_ref();
+      AllegroFlare::EventEmitter event_emitter;
+      AllegroFlare::Prototypes::FixedRoom2D::EntityCollectionHelper entity_collection_helper__this_is_a_hack;
+
+      bitmap_bin.set_full_path(TEST_FIXTURE_BITMAPS_FOLDER);
+      font_bin.set_full_path(TEST_FIXTURE_FONTS_FOLDER);
+
+      configurations_builder.set_bitmap_bin(&bitmap_bin);
+      configurations_builder.set_font_bin(&font_bin);
+      configurations_builder.set_event_emitter(&event_emitter);
+      configurations_builder.set_entity_collection_helper__this_is_a_hack(&entity_collection_helper__this_is_a_hack);
+   }
+};
+
 
 TEST_F(TheWeepingHouse_ConfigurationsBuilderTest, can_be_created_without_blowing_up)
 {
@@ -87,6 +113,14 @@ TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest,
 
    configurations_builder.build();
    EXPECT_EQ(false, configurations_builder.room_exists("a-room-that-does-not-exist"));
+}
+
+
+TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH_ASSEMBLED_configurations_builder,
+   script_exists__will_return_true_if_the_script_is_present)
+{
+   configurations_builder.build();
+   EXPECT_EQ(true, configurations_builder.script_exists("observe_front_patio_door"));
 }
 
 
