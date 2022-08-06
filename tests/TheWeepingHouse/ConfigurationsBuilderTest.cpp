@@ -68,7 +68,7 @@ TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH
 
 
 TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH_ASSEMBLED_configurations_builder,
-   room_exists__will_return_false_if_the_room_exists)
+   room_exists__will_return_false_if_the_room_does_not_exist)
 {
    configurations_builder.build();
    EXPECT_EQ(false, configurations_builder.room_exists("a-room-that-does-not-exist"));
@@ -80,6 +80,14 @@ TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH
 {
    configurations_builder.build();
    EXPECT_EQ(true, configurations_builder.script_exists("observe_front_patio_door"));
+}
+
+
+TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH_ASSEMBLED_configurations_builder,
+   script_exists__will_return_false_if_the_script_is_not_present)
+{
+   configurations_builder.build();
+   EXPECT_EQ(false, configurations_builder.script_exists("a-script-that-does-not-exist"));
 }
 
 
