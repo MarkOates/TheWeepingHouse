@@ -97,16 +97,11 @@ AllegroFlare::Prototypes::FixedRoom2D::Configuration ConfigurationsBuilder::buil
 
    const std::string FRONT_PATIO_DOOR = "front_patio_door";
 
-   AllegroFlare::Prototypes::FixedRoom2D::Configuration &result = result_configuration;
-
 
 
    TheWeepingHouse::EntityFactory entity_factory(bitmap_bin);
    entity_factory.set_hide_hitspots(true);
 
-   //AllegroFlare::Prototypes::FixedRoom2D::RoomFactory room_factory(
-      //bitmap_bin, font_bin, event_emitter, entity_collection_helper__this_is_a_hack
-   //);
 
    inventory_index = AllegroFlare::InventoryIndex::build_placeholder_inventory_index();
 
@@ -199,7 +194,7 @@ AllegroFlare::Prototypes::FixedRoom2D::Configuration ConfigurationsBuilder::buil
     
    built = true;
 
-   return result;
+   return result_configuration;
 }
 
 bool ConfigurationsBuilder::assemble_room(std::string name, std::string background_bitmap_identifier, std::string observe_script_text)
