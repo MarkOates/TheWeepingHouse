@@ -49,8 +49,11 @@ AllegroFlare::Prototypes::FixedRoom2D::Configuration Primary::build(AllegroFlare
          error_message << "Primary" << "::" << "build" << ": error: " << "guard \"entity_collection_helper__this_is_a_hack\" not met";
          throw std::runtime_error(error_message.str());
       }
-   const std::string MAIN_HALLWAY = "main_hallway";
    const std::string FRONT_PATIO = "front_patio";
+   const std::string FRONT_HALL = "front_hall";
+   const std::string MAIN_HALLWAY = "main_hallway";
+   const std::string FIRST_FLOOR_STORAGE_ROOM = "first_floor_storage_room";
+   const std::string BACK_PORCH = "back_porch";
 
    const std::string FRONT_PATIO_DOOR = "front_patio_door";
 
@@ -84,15 +87,19 @@ AllegroFlare::Prototypes::FixedRoom2D::Configuration Primary::build(AllegroFlare
    af_inventory.add_item(3);
 
    room_dictionary = {
-      { "front_hall", room_factory.create_room() },
-      { "study", room_factory.create_room() },
       { FRONT_PATIO, room_factory.create_room() },
+      { FRONT_HALL, room_factory.create_room() },
+      { MAIN_HALLWAY, room_factory.create_room() },
+      { FIRST_FLOOR_STORAGE_ROOM, room_factory.create_room() },
+      { BACK_PORCH, room_factory.create_room() },
    };
 
    entity_dictionary = {
       { "front_patio_bg", entity_factory.create_background("room_2.png", "observe_front_patio") },
       { "front_hall_bg", entity_factory.create_background("room_0.png", "observe_front_hall") },
       { "main_hallway_bg", entity_factory.create_background("room_1.png", "observe_main_hallway") },
+      { "first_floor_storage_room_bg", entity_factory.create_background("room_3.png", "observe_first_floor_storage_room") },
+      { "back_porch_bg", entity_factory.create_background("room_4.png", "observe_back_porch") },
 
       { "door1", entity_factory.create_rectangle_hitspot(1725, 440, 60, 350, "Door 1", "observe_door1") },
       { "door2", entity_factory.create_rectangle_hitspot(115, 440, 60, 350, "Door 2", "observe_door2") },
@@ -101,26 +108,23 @@ AllegroFlare::Prototypes::FixedRoom2D::Configuration Primary::build(AllegroFlare
    };
 
    entity_room_associations = {
-      { "front_hall_bg", "front_hall" },
-      { "main_hallway_bg", "study" },
-
       { "front_patio_bg", FRONT_PATIO },
       { FRONT_PATIO_DOOR, FRONT_PATIO },
 
-      { "door1", "front_hall" },
-      { "door2", "study" },
-      //{ "chair", "front_hall" },
-      { "table", "front_hall" },
-      { "wall_art", "front_hall" },
-      { "keys", "front_hall" },
+      { "front_hall_bg", FRONT_HALL },
+      { "door1", FRONT_HALL },
+      { "wall_art", FRONT_HALL },
+
       { "main_hallway_bg", MAIN_HALLWAY },
+      { "door2", MAIN_HALLWAY },
+
+      { "first_floor_storage_room_bg", FIRST_FLOOR_STORAGE_ROOM },
+
+      { "back_porch_bg", BACK_PORCH },
    };
 
+
    script_dictionary = {
-      { "observe_front_patio_door", AllegroFlare::Prototypes::FixedRoom2D::Script({
-            "DIALOG: Oh wow, it's unlocked.  I'm going inside.",
-            "ENTER_ROOM: front_hall",
-      })},
       { "observe_front_patio", AllegroFlare::Prototypes::FixedRoom2D::Script({
             "DIALOG: What a nice place... but it doesn't look very invnting.  I'd better see if I can get inside."
       })},
@@ -130,28 +134,39 @@ AllegroFlare::Prototypes::FixedRoom2D::Configuration Primary::build(AllegroFlare
       { "observe_main_hallway", AllegroFlare::Prototypes::FixedRoom2D::Script({
             "DIALOG: This is a pretty dark room. | It's kinda hard to see anything, to be honest."
       })},
+      { "observe_first_floor_storage_room", AllegroFlare::Prototypes::FixedRoom2D::Script({
+            "DIALOG: A little storage room.  Looks like some boxes are in here."
+      })},
+      { "observe_back_porch", AllegroFlare::Prototypes::FixedRoom2D::Script({
+            "DIALOG: It sure is nice to have a place out of the rain for now."
+      })},
+
+
+      { "observe_front_patio_door", AllegroFlare::Prototypes::FixedRoom2D::Script({
+            "DIALOG: Oh wow, it's unlocked.  I'm going inside.",
+            "ENTER_ROOM: " + FRONT_HALL,
+      })},
       { "observe_door1", AllegroFlare::Prototypes::FixedRoom2D::Script({
             "DIALOG: Just a regular door. | I'm going to step through it.",
-            "ENTER_ROOM: study",
+            "ENTER_ROOM: " + MAIN_HALLWAY,
       })},
       { "observe_door2", AllegroFlare::Prototypes::FixedRoom2D::Script({
             "DIALOG: A regular door. | I'll go in.",
-            "ENTER_ROOM: front_hall",
+            "ENTER_ROOM: " + FRONT_HALL,
       })},
-      { "signal_hello", AllegroFlare::Prototypes::FixedRoom2D::Script({
-            "SIGNAL: Hello what's going on?"})
-      },
       { "collect_keys", AllegroFlare::Prototypes::FixedRoom2D::Script({
             "COLLECT: keys"
-      })},
-      { "observe_table", AllegroFlare::Prototypes::FixedRoom2D::Script({
-            "DIALOG: Hmm. Interesting, there's a key on this table."
       })},
       { "observe_wall_art", AllegroFlare::Prototypes::FixedRoom2D::Script({
             "DIALOG: That's some interesting art on the wall.  I wonder what it's for.",
       })},
    };
 
+   //const std::string FRONT_PATIO = "front_patio";
+   //const std::string FRONT_HALL = "front_hall";
+   //const std::string MAIN_HALLWAY = "main_hallway";
+   //const std::string FIRST_FLOOR_STORAGE_ROOM = "first_floor_storage_room";
+   //const std::string BACK_PORCH = "back_porch";
    starting_in_room_identifier = FRONT_PATIO;
     
    return result;
