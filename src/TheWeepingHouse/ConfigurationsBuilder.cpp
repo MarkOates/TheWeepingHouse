@@ -86,10 +86,11 @@ void ConfigurationsBuilder::you_build()
 
    // entities
    const std::string FRONT_PORCH_DOOR = "front_porch_door";
+   const std::string DOOR1 = "door1";
 
 
    // configs
-   starting_in_room_identifier = FRONT_PORCH;
+   starting_in_room_identifier = FRONT_HALLWAY;
    entity_factory.set_hide_hitspots(false);
 
 
@@ -104,7 +105,7 @@ void ConfigurationsBuilder::you_build()
    entity_room_associations = {
       //{ FRONT_PORCH_DOOR, FRONT_PORCH },
 
-      { "door1", FRONT_HALLWAY },
+      //{ "door1", FRONT_HALLWAY },
       { "wall_art", FRONT_HALLWAY },
 
       { "door2", MAIN_HALLWAY },
@@ -144,13 +145,15 @@ void ConfigurationsBuilder::you_build()
 
 
    add_hitspot_to_room(FRONT_PORCH,
-      FRONT_PORCH_DOOR, 1625, 440, 60, 350, "Door 1", "observe_front_porch_door");
+      FRONT_PORCH_DOOR, 1625, 440, 60, 350, "Front porch door", "observe_front_porch_door");
+   add_hitspot_to_room(FRONT_HALLWAY,
+      DOOR1, 1725, 440, 60, 350, "Door 1", "observe_door1");
 
 
    //entity_dictionary[FRONT_PORCH_DOOR] =
       //entity_factory.create_rectangle_hitspot(1725, 440, 60, 350, "Door 2", "observe_front_porch_door");
-   entity_dictionary["door1"] =
-      entity_factory.create_rectangle_hitspot(1725, 440, 60, 350, "Door 1", "observe_door1");
+   //entity_dictionary["door1"] =
+      //entity_factory.create_rectangle_hitspot(1725, 440, 60, 350, "Door 1", "observe_door1");
    entity_dictionary["door2"] =
       entity_factory.create_rectangle_hitspot(115, 440, 60, 350, "Door 2", "observe_door2");
    entity_dictionary["wall_art"] =
