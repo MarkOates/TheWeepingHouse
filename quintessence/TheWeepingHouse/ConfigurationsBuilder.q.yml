@@ -1,0 +1,32 @@
+properties:
+
+
+  - name: configuration
+    type: AllegroFlare::Prototypes::FixedRoom2D::Configuration
+    init_with: ''
+    getter: true
+
+  - name: built
+    type: bool
+    init_with: false
+
+
+functions:
+
+
+  - name: build
+    type: AllegroFlare::Prototypes::FixedRoom2D::Configuration
+    guards: [ (!built) ]
+    body: |
+      if (built) return configuration;
+      built = true;
+      return configuration;
+
+
+dependencies:
+
+
+  - symbol: AllegroFlare::Prototypes::FixedRoom2D::Configuration
+    headers: [ AllegroFlare/Prototypes/FixedRoom2D/Configuration.hpp ]
+
+
