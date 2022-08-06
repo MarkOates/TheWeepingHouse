@@ -94,7 +94,7 @@ void ConfigurationsBuilder::you_build()
 
 
    // configs
-   starting_in_room_identifier = FRONT_HALLWAY;
+   starting_in_room_identifier = FRONT_PORCH;
    entity_factory.set_hide_hitspots(false);
 
 
@@ -107,26 +107,24 @@ void ConfigurationsBuilder::you_build()
 
 
    // add the scripts
-   script_dictionary = {
-      { "observe_front_porch_door", AllegroFlare::Prototypes::FixedRoom2D::Script({
-            "DIALOG: Oh wow, it's unlocked.  I'm going inside.",
-            "ENTER_ROOM: " + FRONT_HALLWAY,
-      })},
-      { "observe_door1", AllegroFlare::Prototypes::FixedRoom2D::Script({
-            "DIALOG: Just a regular door. | I'm going to step through it.",
-            "ENTER_ROOM: " + MAIN_HALLWAY,
-      })},
-      { "observe_door2", AllegroFlare::Prototypes::FixedRoom2D::Script({
-            "DIALOG: A regular door. | I'll go in.",
-            "ENTER_ROOM: " + FRONT_HALLWAY,
-      })},
-      { "collect_keys", AllegroFlare::Prototypes::FixedRoom2D::Script({
-            "COLLECT: keys"
-      })},
-      { "observe_wall_art", AllegroFlare::Prototypes::FixedRoom2D::Script({
-            "DIALOG: That's some interesting art on the wall.  I wonder what it's for.",
-      })},
-   };
+   add_script("observe_front_porch_door", {
+      "DIALOG: Oh wow, it's unlocked.  I'm going inside.",
+      "ENTER_ROOM: " + FRONT_HALLWAY,
+   });
+   add_script("observe_door1", {
+      "DIALOG: Just a regular door. | I'm going to step through it.",
+      "ENTER_ROOM: " + MAIN_HALLWAY,
+   });
+   add_script("observe_door2", {
+       "DIALOG: A regular door. | I'll go in.",
+      "ENTER_ROOM: " + FRONT_HALLWAY,
+   });
+   add_script("collect_keys", {
+     "COLLECT: keys"
+   });
+   add_script("observe_wall_art", {
+      "DIALOG: That's some interesting art on the wall.  I wonder what it's for.",
+   });
 
 
    assemble_room(FRONT_PORCH, "What a nice place... but it doesn't look very invnting.  "
@@ -139,7 +137,7 @@ void ConfigurationsBuilder::you_build()
 
 
    add_hitspot_to_room(FRONT_PORCH,
-      FRONT_PORCH_DOOR, 1625, 440, 60, 350, "Front porch door", "observe_front_porch_door");
+      FRONT_PORCH_DOOR, 1600, 460, 90, 270, "Front porch door", "observe_front_porch_door");
    add_hitspot_to_room(FRONT_HALLWAY,
       DOOR1, 1725, 440, 60, 350, "Door 1", "observe_door1");
    add_ellipse_hitspot_to_room(FRONT_HALLWAY,
