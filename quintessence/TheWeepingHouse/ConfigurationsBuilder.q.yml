@@ -151,12 +151,16 @@ functions:
 
 
 
+      //add_hitspot_to_room(FRONT_PORCH,
+         //FRONT_PORCH_DOOR, 1725, 440, 60, 350, "Door 1", "observe_front_porch_door");
+
+
+      entity_dictionary[FRONT_PORCH_DOOR] =
+         entity_factory.create_rectangle_hitspot(1725, 440, 60, 350, "Door 2", "observe_front_porch_door");
       entity_dictionary["door1"] =
          entity_factory.create_rectangle_hitspot(1725, 440, 60, 350, "Door 1", "observe_door1");
       entity_dictionary["door2"] =
          entity_factory.create_rectangle_hitspot(115, 440, 60, 350, "Door 2", "observe_door2");
-      entity_dictionary[FRONT_PORCH_DOOR] =
-         entity_factory.create_rectangle_hitspot(1725, 440, 60, 350, "Door 2", "observe_front_porch_door");
       entity_dictionary["wall_art"] =
          entity_factory.create_ellipse_hitspot(1150, 450, 60, 60, "Wall Art", "observe_wall_art");
 
@@ -190,6 +194,41 @@ functions:
       you_build();
       built = true;
       return result_configuration;
+
+
+  - name: add_hitspot_to_room
+    type: bool
+    parameters:
+      - name: room_name
+        type: std::string
+        default_argument: '"[unset-room_name]"'
+      - name: hitspot_name
+        type: std::string
+        default_argument: '"[unset-hitspot_name]"'
+      - name: x
+        type: float
+        default_argument: 1920/2
+      - name: y
+        type: float
+        default_argument: 1080/2
+      - name: w
+        type: float
+        default_argument: 100
+      - name: h
+        type: float
+        default_argument: 100
+      - name: label
+        type: std::string
+        default_argument: '"[unset-label]"'
+      - name: interact_script_name
+        type: std::string
+        default_argument: '"[unset-interact_script_name]"'
+    guards: [ (!entity_exists(hitspot_name)), '(!entity_room_association_exists(hitspot_name, room_name))' ]
+    body: |
+      entity_dictionary[hitspot_name] =
+         entity_factory.create_rectangle_hitspot(x, y, w, h, label, interact_script_name);
+      entity_room_associations[hitspot_name] = room_name;
+      return true;
 
 
   - name: assemble_room

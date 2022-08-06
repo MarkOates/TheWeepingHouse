@@ -17,6 +17,8 @@
 #include <sstream>
 #include <stdexcept>
 #include <sstream>
+#include <stdexcept>
+#include <sstream>
 
 
 namespace TheWeepingHouse
@@ -141,12 +143,16 @@ void ConfigurationsBuilder::you_build()
 
 
 
+   //add_hitspot_to_room(FRONT_PORCH,
+      //FRONT_PORCH_DOOR, 1725, 440, 60, 350, "Door 1", "observe_front_porch_door");
+
+
+   entity_dictionary[FRONT_PORCH_DOOR] =
+      entity_factory.create_rectangle_hitspot(1725, 440, 60, 350, "Door 2", "observe_front_porch_door");
    entity_dictionary["door1"] =
       entity_factory.create_rectangle_hitspot(1725, 440, 60, 350, "Door 1", "observe_door1");
    entity_dictionary["door2"] =
       entity_factory.create_rectangle_hitspot(115, 440, 60, 350, "Door 2", "observe_door2");
-   entity_dictionary[FRONT_PORCH_DOOR] =
-      entity_factory.create_rectangle_hitspot(1725, 440, 60, 350, "Door 2", "observe_front_porch_door");
    entity_dictionary["wall_art"] =
       entity_factory.create_ellipse_hitspot(1150, 450, 60, 60, "Wall Art", "observe_wall_art");
 
@@ -202,6 +208,26 @@ AllegroFlare::Prototypes::FixedRoom2D::Configuration ConfigurationsBuilder::buil
    you_build();
    built = true;
    return result_configuration;
+}
+
+bool ConfigurationsBuilder::add_hitspot_to_room(std::string room_name, std::string hitspot_name, float x, float y, float w, float h, std::string label, std::string interact_script_name)
+{
+   if (!((!entity_exists(hitspot_name))))
+      {
+         std::stringstream error_message;
+         error_message << "ConfigurationsBuilder" << "::" << "add_hitspot_to_room" << ": error: " << "guard \"(!entity_exists(hitspot_name))\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   if (!((!entity_room_association_exists(hitspot_name, room_name))))
+      {
+         std::stringstream error_message;
+         error_message << "ConfigurationsBuilder" << "::" << "add_hitspot_to_room" << ": error: " << "guard \"(!entity_room_association_exists(hitspot_name, room_name))\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   entity_dictionary[hitspot_name] =
+      entity_factory.create_rectangle_hitspot(x, y, w, h, label, interact_script_name);
+   entity_room_associations[hitspot_name] = room_name;
+   return true;
 }
 
 bool ConfigurationsBuilder::assemble_room(std::string room_name, std::string observe_script_text)
