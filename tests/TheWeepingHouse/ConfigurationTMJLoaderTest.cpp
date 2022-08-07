@@ -23,8 +23,8 @@ TEST(TheWeepingHouse_ConfigurationTMJLoaderTest, load__does_not_blow_up)
 
 TEST(TheWeepingHouse_ConfigurationTMJLoaderTest, objects__contains_the_extracted_objects)
 {
-   TheWeepingHouse::ConfigurationTMJLoader configuration_tmjloader;
-   //configuration_tmjloader.load();
+   TheWeepingHouse::ConfigurationTMJLoader configuration_tmjloader(TEST_FIXTURE_FILENAME);
+   configuration_tmjloader.load();
    // TODO
    //configuration_tmjloader.get_objects();
    //SUCCEED();

@@ -9,27 +9,22 @@ properties:
   - name: num_columns
     type: int
     init_with: 0
-    getter: explicit
 
   - name: num_rows
     type: int
     init_with: 0
-    getter: explicit
 
   - name: tile_width
     type: int
     init_with: 0
-    getter: explicit
 
   - name: tile_height
     type: int
     init_with: 0
-    getter: explicit
 
   - name: loaded
     type: bool
     init_with: false
-    getter: true
 
 
 functions:
@@ -37,35 +32,47 @@ functions:
 
   - name: load
     type: bool
-    guards: [ (!loaded), TheWeepingHouse::FileExistenceChecker(filename).exists() ]
+    guards: [ (!loaded) ]
     body: |
+      if (!TheWeepingHouse::FileExistenceChecker(filename).exists())
+      {
+         std::cout << "[TheWeepingHouse::ConfigurationTMJLoader::load]: ERROR: "
+                   << "Trying to load the file \"" << filename << "\" but it does not exist."
+                   << std::endl;
+      }
       return true;
     body_dependency_symbols:
+      - std::cout
       - TheWeepingHouse::FileExistenceChecker
 
 
   - name: get_num_columns
     type: int
     guards: [ loaded ]
-    body: return num_columns;
+    body: |
+      return num_columns;
 
 
   - name: get_num_rows
     type: int
     guards: [ loaded ]
-    body: return num_rows;
+    body: |
+      return num_rows;
 
 
   - name: get_tile_width
     type: int
     guards: [ loaded ]
-    body: return tile_width;
+    body: |
+      return tile_width;
 
 
   - name: get_tile_height
     type: int
     guards: [ loaded ]
-    body: return tile_height;
+    body: |
+      return tile_height;
+
 
 
 dependencies:

@@ -20,7 +20,6 @@ namespace TheWeepingHouse
       ConfigurationTMJLoader(std::string filename="filename-not-set.tmj");
       ~ConfigurationTMJLoader();
 
-      bool get_loaded();
       bool load();
       int get_num_columns();
       int get_num_rows();

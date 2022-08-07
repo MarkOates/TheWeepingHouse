@@ -2,6 +2,9 @@
   "nlohmann/json": [
     "TheWeepingHouse/ConfigurationTMJLoader"
   ],
+  "TheWeepingHouse/FileExistenceChecker": [
+    "TheWeepingHouse/ConfigurationTMJLoader"
+  ],
   "AllegroFlare/Inventory": [
     "TheWeepingHouse/Configurations/Initial",
     "TheWeepingHouse/ConfigurationsBuilder"
@@ -87,6 +90,9 @@
   ],
   "AllegroFlare/Prototypes/FixedRoom2D/Entities/Base": [
     "TheWeepingHouse/EntityFactory"
+  ],
+  "std/filesystem/exists": [
+    "TheWeepingHouse/FileExistenceChecker"
   ],
   "AllegroFlare/Screens/Base": [
     "TheWeepingHouse/Runner"
