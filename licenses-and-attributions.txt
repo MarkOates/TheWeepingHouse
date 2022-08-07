@@ -1,0 +1,10 @@
+licenses:
+
+- Embedded fonts under OTF via Google Font
+- Allegro 5 is open source
+- AllegroFlare is MIT
+- JuliusH - rain-on-roof-or-window-nature-sounds-8312 via Pixabay (when in attic)
+- JuliusH - heavy-rain-nature-sounds-8186 (when outside)
+- Pixabay - approaching-thunderstorm-in-small-town-sound-effect-6806 (beginning for finished game)
+- Pixabay - night-in-castlewav-14464 (in basement)
+- space veggies - Pixabay - thunderstorm-25054 (just inside)

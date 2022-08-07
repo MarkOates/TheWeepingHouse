@@ -93,6 +93,8 @@ void Runner::initialize()
      { "menu-click-01.wav", { "menu-click-01.wav", false } },
    });
    audio_controller.set_and_load_music_track_elements({
+     { "rain_on_roof", { "indoor-rain-looped-01.ogg", true } },
+     { "heavy_outdoor_rain", { "heavy-rain-looped-01.ogg", true } },
      { "file_example_OOG_1MG.ogg", { "file_example_OOG_1MG.ogg", true } },
    });
 
@@ -275,7 +277,8 @@ void Runner::game_event_func(AllegroFlare::GameEvent* ev)
    if (event_name == "start_title_screen")
    {
       framework->activate_screen("title_screen");
-      event_emitter->emit_play_music_track_event("file_example_OOG_1MG.ogg");
+      //event_emitter->emit_play_music_track_event("file_example_OOG_1MG.ogg");
+      event_emitter->emit_play_music_track_event("heavy_outdoor_rain");
    }
    if (event_name == "start_credits_screen")
    {

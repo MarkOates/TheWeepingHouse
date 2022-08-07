@@ -136,6 +136,7 @@ void ConfigurationsBuilder::you_build()
       "ENTER_ROOM: " + MAIN_HALLWAY,
    });
    add_script("observe_wall_art", {
+      //"PLAY_MUSIC_TRACK: heavy_outdoor_rain", // <-- WORKS
       "DIALOG: That's some interesting art on the wall.  I wonder what it's for.",
    });
 
