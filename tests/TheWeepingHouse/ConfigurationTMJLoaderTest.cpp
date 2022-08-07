@@ -4,7 +4,7 @@
 #include <TheWeepingHouse/ConfigurationTMJLoader.hpp>
 
 
-#define TEST_FIXTURE_FILENAME "/Users/markoates/Repos/TheWeepingHouse/tests/test_fixtures/main_hallway_elements.tmj"
+#define TEST_FIXTURE_FILENAME "/Users/markoates/Repos/TheWeepingHouse/tests/test_fixtures/test-configuration.tmj"
 
 
 

@@ -52,7 +52,8 @@ bool ConfigurationTMJLoader::load()
                 << std::endl;
    }
 
-   // load and validate the json data to variables
+
+   // load and validate the json
    std::ifstream i(filename);
    nlohmann::json j;
    try
@@ -69,11 +70,42 @@ bool ConfigurationTMJLoader::load()
       throw std::runtime_error(error_message.str());
    }
 
+
+   // extract the dimentions
    num_columns = j["width"]; // get width
    num_rows = j["height"]; // get height
    tile_width = j["tilewidth"]; // get width
    tile_height = j["tileheight"]; // get height
 
+
+   // validate the object layer
+   bool object_tilelayer_type_found = false;
+   nlohmann::json object_tilelayer;
+   for (auto &layer : j["layers"].items())
+   {
+      if (layer.value()["type"] == "objectgroup" && layer.value()["name"] == "primary_object_layer")
+      {
+         object_tilelayer = layer.value();
+         object_tilelayer_type_found = true;
+         break;
+      }
+   }
+   if (!object_tilelayer_type_found)
+   {
+      std::stringstream error_message;
+      error_message << "TMJMeshLoader: error: collision_tilelayer type not found. Expecting a layer of type "
+                    << "\"tilelayer\" that also has a \"name\" property of \"primary_object_layer\". Note that only "
+                    << "the following layers present: \"" << std::endl;
+      int layer_num = 0;
+      for (auto &layer : j["layers"].items())
+      {
+         layer_num++;
+         error_message << "  - layer " << layer_num << ":" << std::endl;
+         error_message << "    - type: \"" << layer.value()["type"] << "\"" << std::endl;
+         error_message << "    - name: \"" << layer.value()["name"] << "\"" << std::endl;
+      }
+      throw std::runtime_error(error_message.str());
+   }
 
    loaded = true;
 
