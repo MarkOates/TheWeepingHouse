@@ -48,6 +48,7 @@ namespace TheWeepingHouse
       std::map<std::string, AllegroFlare::Prototypes::FixedRoom2D::Room*>& get_room_dictionary();
       std::map<std::string, std::string>& get_entity_room_associations();
       std::map<std::string, AllegroFlare::Prototypes::FixedRoom2D::Script>& get_script_dictionary();
+      std::string get_room_name(float x=0, float y=0);
       void build_from_tmj_source(std::string filename="[unset-filename]");
       void you_build();
       void __you_build();

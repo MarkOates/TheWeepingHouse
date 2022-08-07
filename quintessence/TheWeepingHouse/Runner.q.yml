@@ -46,7 +46,7 @@ properties:
 
   - name: room_shader_color
     type: AllegroFlare::Color
-    init_with: AllegroFlare::Color::DodgerBlue
+    init_with: AllegroFlare::Color::White
     constructor_arg: true
 
   - name: room_shader
@@ -77,7 +77,7 @@ functions:
       // setup the shader
       TheWeepingHouse::Shaders::Multiply *multiply_shader = new TheWeepingHouse::Shaders::Multiply();
       multiply_shader->initialize();
-      room_shader_color = AllegroFlare::Color(0.2, 0.2, 0.48, 1.0);
+      //room_shader_color = AllegroFlare::Color(0.2, 0.2, 0.48, 1.0);
       multiply_shader->set_tint(room_shader_color.to_al());
       multiply_shader->set_tint_intensity(0.5);
       room_shader = multiply_shader;

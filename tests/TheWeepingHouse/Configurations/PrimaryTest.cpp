@@ -64,55 +64,7 @@ TEST_F(TheWeepingHouse_Configurations_PrimaryWithAllegroRenderingFixtureTest_WIT
 
 
 TEST_F(TheWeepingHouse_Configurations_PrimaryWithAllegroRenderingFixtureTest_WITH_ASSEMBLED_configurations_builder,
-   room_exists__will_return_true_if_the_room_exists)
-{
-   primary_builder.build();
-   EXPECT_EQ(true, primary_builder.room_exists("front_porch"));
-}
-
-
-TEST_F(TheWeepingHouse_Configurations_PrimaryWithAllegroRenderingFixtureTest_WITH_ASSEMBLED_configurations_builder,
-   room_exists__will_return_false_if_the_room_does_not_exist)
-{
-   primary_builder.build();
-   EXPECT_EQ(false, primary_builder.room_exists("a-room-that-does-not-exist"));
-}
-
-
-TEST_F(TheWeepingHouse_Configurations_PrimaryWithAllegroRenderingFixtureTest_WITH_ASSEMBLED_configurations_builder,
-   script_exists__will_return_true_if_the_script_is_present)
-{
-   primary_builder.build();
-   EXPECT_EQ(true, primary_builder.script_exists("observe_front_porch_door"));
-}
-
-
-TEST_F(TheWeepingHouse_Configurations_PrimaryWithAllegroRenderingFixtureTest_WITH_ASSEMBLED_configurations_builder,
-   script_exists__will_return_false_if_the_script_is_not_present)
-{
-   primary_builder.build();
-   EXPECT_EQ(false, primary_builder.script_exists("a-script-that-does-not-exist"));
-}
-
-
-TEST_F(TheWeepingHouse_Configurations_PrimaryWithAllegroRenderingFixtureTest_WITH_ASSEMBLED_configurations_builder,
-   entity_exists__will_return_true_if_the_entity_is_present)
-{
-   primary_builder.build();
-   EXPECT_EQ(true, primary_builder.entity_exists("front_porch_bg"));
-}
-
-
-TEST_F(TheWeepingHouse_Configurations_PrimaryWithAllegroRenderingFixtureTest_WITH_ASSEMBLED_configurations_builder,
-   entity_exists__will_return_false_if_the_entity_is_not_present)
-{
-   primary_builder.build();
-   EXPECT_EQ(false, primary_builder.entity_exists("an-entity-that-does-not-exist"));
-}
-
-
-TEST_F(TheWeepingHouse_Configurations_PrimaryWithAllegroRenderingFixtureTest_WITH_ASSEMBLED_configurations_builder,
-   assemble_room__will_add_a_room_to_the_configuration_with_the_expected_properties)
+   DISABLED__assemble_room__will_add_a_room_to_the_configuration_with_the_expected_properties)
 {
    AllegroFlare::BitmapBin &bitmap_bin = get_bitmap_bin_ref();
    bitmap_bin.set_full_path(TEST_FIXTURE_BITMAPS_FOLDER);

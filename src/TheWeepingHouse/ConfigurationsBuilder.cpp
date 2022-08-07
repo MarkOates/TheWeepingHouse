@@ -81,16 +81,29 @@ std::map<std::string, AllegroFlare::Prototypes::FixedRoom2D::Script>& Configurat
 }
 
 
+std::string ConfigurationsBuilder::get_room_name(float x, float y)
+{
+   int room_x = (int)(x / 1920.0);
+   int room_y = (int)(y / 1080.0);
+
+   if (room_x == 2 && room_y == 2) return "front_hallway";
+
+   return "UNRECOGNIZED_ROOM_NAME at coordiates";
+}
+
 void ConfigurationsBuilder::build_from_tmj_source(std::string filename)
 {
    TheWeepingHouse::ConfigurationTMJLoader loader(filename);
    loader.load();
 
-   std::string current_room = "front_hallway";
+   //std::string current_room = get_room_name"front_hallway";
    for (auto &object : loader.get_objects())
    {
       //if (object.is_type("")) // an empty type, assume a hitspot
       //{
+         std::string inferred_room_name = get_room_name(object.get_x(), object.get_y());
+         int object_x = (int)(object.get_x()) % 1920;
+         int object_y = (int)(object.get_y()) % 1080;
          std::string object_name = object.get_name();
          std::string script = object.get_script();
          if (script.empty()) script = "DIALOG: hmm... nothing.";
@@ -100,10 +113,10 @@ void ConfigurationsBuilder::build_from_tmj_source(std::string filename)
          std::string script_name = "observe_" + object_name;
 
          add_hitspot_to_room(
-            current_room,
+            inferred_room_name,
             object_name,
-            object.get_x(),
-            object.get_y(),
+            object_x,
+            object_y,
             object.get_w(),
             object.get_h(),
             "NO-LABEL",
@@ -120,7 +133,7 @@ void ConfigurationsBuilder::you_build()
    const std::string FRONT_HALLWAY = "front_hallway";
    assemble_room(FRONT_HALLWAY, "This is a pretty dark room. | I'd better see if I can get inside.");
 
-   std::string tmj_path = "data/configurations/production-configuration-01.tmj";
+   std::string tmj_path = "data/configurations/production-configuration-02.tmj";
    tmj_path = "/Users/markoates/Repos/TheWeepingHouse/bin/programs/" + tmj_path;
 
    build_from_tmj_source(tmj_path);
