@@ -1,0 +1,39 @@
+properties:
+
+
+  - name: name
+    type: std::string
+    init_with: '"[Object::unset-name]"'
+    constructor_arg: true
+    getter: true
+    setter: true
+   
+  - name: x
+    type: float
+    init_with: 0.0
+    constructor_arg: true
+    getter: true
+    setter: true
+
+  - name: y
+    type: float
+    init_with: 0.0
+    constructor_arg: true
+    getter: true
+    setter: true
+
+  - name: w
+    type: float
+    init_with: 0.0
+    constructor_arg: true
+    getter: true
+    setter: true
+
+  - name: h
+    type: float
+    init_with: 0.0
+    constructor_arg: true
+    getter: true
+    setter: true
+
+

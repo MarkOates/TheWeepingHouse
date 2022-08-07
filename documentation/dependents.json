@@ -8,6 +8,9 @@
   "TheWeepingHouse/FileExistenceChecker": [
     "TheWeepingHouse/ConfigurationTMJLoader"
   ],
+  "TheWeepingHouse/ConfigurationTMJLoaderElements/Object": [
+    "TheWeepingHouse/ConfigurationTMJLoader"
+  ],
   "AllegroFlare/Inventory": [
     "TheWeepingHouse/Configurations/Initial",
     "TheWeepingHouse/ConfigurationsBuilder"

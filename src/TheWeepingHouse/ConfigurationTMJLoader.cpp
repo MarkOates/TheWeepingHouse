@@ -5,6 +5,7 @@
 #include <fstream>
 #include <lib/nlohmann/json.hpp>
 #include <TheWeepingHouse/FileExistenceChecker.hpp>
+#include <TheWeepingHouse/ConfigurationTMJLoaderElements/Object.hpp>
 #include <stdexcept>
 #include <sstream>
 #include <stdexcept>
@@ -27,6 +28,7 @@ ConfigurationTMJLoader::ConfigurationTMJLoader(std::string filename)
    , num_rows(0)
    , tile_width(0)
    , tile_height(0)
+   , objects()
    , loaded(false)
 {
 }
@@ -106,6 +108,28 @@ bool ConfigurationTMJLoader::load()
       }
       throw std::runtime_error(error_message.str());
    }
+
+   // TODO validate "objects" property in the object_tilelayer;
+   nlohmann::json objects_as_json = object_tilelayer["objects"]; //.get<std::vector<int>>();
+
+
+   // extract the objects
+   for (auto &object_as_json : objects_as_json.items())
+   {
+      nlohmann::json values = object_as_json.value();
+      TheWeepingHouse::ConfigurationTMJLoaderElements::Object result_object(
+         values["name"].get<std::string>(),
+         values["x"].get<float>(),
+         values["y"].get<float>(),
+         values["width"].get<float>(),
+         values["height"].get<float>()
+      );
+
+      //objects.push_back(result_object);
+   }
+
+
+
 
    loaded = true;
 

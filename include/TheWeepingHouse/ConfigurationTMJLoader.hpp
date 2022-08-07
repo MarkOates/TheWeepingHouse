@@ -1,6 +1,7 @@
 #pragma once
 
 
+#include <TheWeepingHouse/ConfigurationTMJLoaderElements/Object.hpp>
 #include <string>
 
 
@@ -14,6 +15,7 @@ namespace TheWeepingHouse
       int num_rows;
       int tile_width;
       int tile_height;
+      TheWeepingHouse::ConfigurationTMJLoaderElements::Object objects;
       bool loaded;
 
    public:

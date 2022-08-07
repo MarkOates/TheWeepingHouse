@@ -22,6 +22,10 @@ properties:
     type: int
     init_with: 0
 
+  - name: objects
+    type: TheWeepingHouse::ConfigurationTMJLoaderElements::Object
+    init_with: ''
+
   - name: loaded
     type: bool
     init_with: false
@@ -96,6 +100,28 @@ functions:
          throw std::runtime_error(error_message.str());
       }
 
+      // TODO validate "objects" property in the object_tilelayer;
+      nlohmann::json objects_as_json = object_tilelayer["objects"]; //.get<std::vector<int>>();
+
+
+      // extract the objects
+      for (auto &object_as_json : objects_as_json.items())
+      {
+         nlohmann::json values = object_as_json.value();
+         TheWeepingHouse::ConfigurationTMJLoaderElements::Object result_object(
+            values["name"].get<std::string>(),
+            values["x"].get<float>(),
+            values["y"].get<float>(),
+            values["width"].get<float>(),
+            values["height"].get<float>()
+         );
+
+         //objects.push_back(result_object);
+      }
+
+
+
+
       loaded = true;
 
       return true;
@@ -104,6 +130,7 @@ functions:
       - std::ifstream
       - nlohmann::json
       - TheWeepingHouse::FileExistenceChecker
+      - TheWeepingHouse::ConfigurationTMJLoaderElements::Object
 
 
   - name: get_num_columns
@@ -144,5 +171,7 @@ dependencies:
     headers: [ lib/nlohmann/json.hpp ]
   - symbol: TheWeepingHouse::FileExistenceChecker
     headers: [ TheWeepingHouse/FileExistenceChecker.hpp ]
+  - symbol: TheWeepingHouse::ConfigurationTMJLoaderElements::Object
+    headers: [ TheWeepingHouse/ConfigurationTMJLoaderElements/Object.hpp ]
 
 
