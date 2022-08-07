@@ -41,6 +41,12 @@ TEST(TheWeepingHouse_ConfigurationTMJLoaderTest, load__will_extract_the_objects)
       configuration_tmj_loader.get_objects();
 
    ASSERT_EQ(4, objects.size());
+
+   EXPECT_EQ("hitspot", objects[0].get_type());
+   EXPECT_EQ(115, objects[0].get_x());
+   EXPECT_EQ(388, objects[0].get_y());
+   EXPECT_EQ(115, objects[0].get_w());
+   EXPECT_EQ(399, objects[0].get_h());
 }
 
 

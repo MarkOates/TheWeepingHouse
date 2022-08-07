@@ -121,10 +121,11 @@ functions:
          nlohmann::json values = object_as_json.value();
          TheWeepingHouse::ConfigurationTMJLoaderElements::Object result_object(
             values["name"].get<std::string>(),
-            values["x"].get<float>(),
-            values["y"].get<float>(),
-            values["width"].get<float>(),
-            values["height"].get<float>()
+            values["type"].get<std::string>(),
+            (int)values["x"].get<float>(),
+            (int)values["y"].get<float>(),
+            (int)values["width"].get<float>(),
+            (int)values["height"].get<float>()
          );
 
          objects.push_back(result_object);

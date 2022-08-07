@@ -7,6 +7,13 @@ properties:
     constructor_arg: true
     getter: true
     setter: true
+
+  - name: type
+    type: std::string
+    init_with: '"[Object::unset-type]"'
+    constructor_arg: true
+    getter: true
+    setter: true
    
   - name: x
     type: float

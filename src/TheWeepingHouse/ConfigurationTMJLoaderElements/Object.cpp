@@ -10,8 +10,9 @@ namespace ConfigurationTMJLoaderElements
 {
 
 
-Object::Object(std::string name, float x, float y, float w, float h)
+Object::Object(std::string name, std::string type, float x, float y, float w, float h)
    : name(name)
+   , type(type)
    , x(x)
    , y(y)
    , w(w)
@@ -28,6 +29,12 @@ Object::~Object()
 void Object::set_name(std::string name)
 {
    this->name = name;
+}
+
+
+void Object::set_type(std::string type)
+{
+   this->type = type;
 }
 
 
@@ -58,6 +65,12 @@ void Object::set_h(float h)
 std::string Object::get_name()
 {
    return name;
+}
+
+
+std::string Object::get_type()
+{
+   return type;
 }
 
 
