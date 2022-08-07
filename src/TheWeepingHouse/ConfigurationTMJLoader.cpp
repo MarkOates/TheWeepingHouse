@@ -2,6 +2,8 @@
 
 #include <TheWeepingHouse/ConfigurationTMJLoader.hpp>
 #include <iostream>
+#include <fstream>
+#include <lib/nlohmann/json.hpp>
 #include <TheWeepingHouse/FileExistenceChecker.hpp>
 #include <stdexcept>
 #include <sstream>
@@ -49,6 +51,32 @@ bool ConfigurationTMJLoader::load()
                 << "Trying to load the file \"" << filename << "\" but it does not exist."
                 << std::endl;
    }
+
+   // load and validate the json data to variables
+   std::ifstream i(filename);
+   nlohmann::json j;
+   try
+   {
+      i >> j;
+   }
+   catch (const std::exception& e)
+   {
+      i.close();
+      std::stringstream error_message;
+      error_message << "[ConfigurationTMJLoader::load]: ERROR: the file \"" << filename << "\" appears to have"
+                    << " malformed JSON. The following error was thrown by nlohmann::json: \""
+                    << e.what() << "\"";
+      throw std::runtime_error(error_message.str());
+   }
+
+   num_columns = j["width"]; // get width
+   num_rows = j["height"]; // get height
+   tile_width = j["tilewidth"]; // get width
+   tile_height = j["tileheight"]; // get height
+
+
+   loaded = true;
+
    return true;
 }
 

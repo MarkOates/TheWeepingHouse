@@ -1,4 +1,7 @@
 {
+  "std/ifstream": [
+    "TheWeepingHouse/ConfigurationTMJLoader"
+  ],
   "nlohmann/json": [
     "TheWeepingHouse/ConfigurationTMJLoader"
   ],
