@@ -20,8 +20,6 @@
 #include <sstream>
 #include <stdexcept>
 #include <sstream>
-#include <stdexcept>
-#include <sstream>
 #include <sstream>
 #include <vector>
 #include <string>
@@ -86,7 +84,11 @@ std::string ConfigurationsBuilder::get_room_name(float x, float y)
    int room_x = (int)(x / 1920.0);
    int room_y = (int)(y / 1080.0);
 
+   if (room_x == 1 && room_y == 2) return "front_porch";
    if (room_x == 2 && room_y == 2) return "front_hallway";
+   if (room_x == 3 && room_y == 2) return "main_hallway";
+   if (room_x == 4 && room_y == 2) return "first_floor_storage_room";
+   if (room_x == 5 && room_y == 2) return "back_porch";
 
    return "UNRECOGNIZED_ROOM_NAME at coordiates";
 }
@@ -99,6 +101,13 @@ void ConfigurationsBuilder::build_from_tmj_source(std::string filename)
    //std::string current_room = get_room_name"front_hallway";
    for (auto &object : loader.get_objects())
    {
+      if (object.get_name().empty())
+      {
+         std::cout << "[TheWeepingHouse::ConfigurationsBuilder::build_from_tmj_source]: INFO: "
+                   << "found an entity with no name, skipping."
+                   << std::endl;
+         continue;
+      }
       //if (object.is_type("")) // an empty type, assume a hitspot
       //{
          std::string inferred_room_name = get_room_name(object.get_x(), object.get_y());
@@ -110,7 +119,7 @@ void ConfigurationsBuilder::build_from_tmj_source(std::string filename)
 
          std::vector<std::string> script_lines = split(script, '\n');
 
-         std::string script_name = "observe_" + object_name;
+         std::string script_name = inferred_room_name + "/observe_" + object_name;
 
          add_hitspot_to_room(
             inferred_room_name,
@@ -130,8 +139,20 @@ void ConfigurationsBuilder::build_from_tmj_source(std::string filename)
 
 void ConfigurationsBuilder::you_build()
 {
+   // rooms
+   const std::string FRONT_PORCH = "front_porch";
    const std::string FRONT_HALLWAY = "front_hallway";
+   const std::string MAIN_HALLWAY = "main_hallway";
+   const std::string FIRST_FLOOR_STORAGE_ROOM = "first_floor_storage_room";
+   const std::string BACK_PORCH = "back_porch";
+
    assemble_room(FRONT_HALLWAY, "This is a pretty dark room. | I'd better see if I can get inside.");
+   assemble_room(FRONT_PORCH, "What a nice place... but it doesn't look very invnting.  "
+                              "I'd better see if I can get inside.");
+   assemble_room(MAIN_HALLWAY, "This is a pretty dark room. | It's kinda hard to see anything, to be honest.");
+   assemble_room(FIRST_FLOOR_STORAGE_ROOM, "Looks like a little room for storage.  There are some boxes here.");
+   assemble_room(BACK_PORCH, "It sure is nice to have a place out of the rain for now.");
+
 
    std::string tmj_path = "data/configurations/production-configuration-02.tmj";
    tmj_path = "/Users/markoates/Repos/TheWeepingHouse/bin/programs/" + tmj_path;
@@ -381,12 +402,14 @@ bool ConfigurationsBuilder::assemble_room(std::string room_name, std::string obs
 
 void ConfigurationsBuilder::add_script(std::string script_name, std::vector<std::string> script_lines)
 {
-   if (!((!script_exists(script_name))))
-      {
-         std::stringstream error_message;
-         error_message << "ConfigurationsBuilder" << "::" << "add_script" << ": error: " << "guard \"(!script_exists(script_name))\" not met";
-         throw std::runtime_error(error_message.str());
-      }
+   if (script_exists(script_name))
+   {
+      std::stringstream error_message;
+      error_message << "[TheWeepingHouse::ConfigurationsBuilder::add_script]: ERROR: "
+                    << "A script with the name \"" << script_name << "\" already exists."
+                    << std::endl;
+      throw std::runtime_error(error_message.str());
+   }
    script_dictionary[script_name] = AllegroFlare::Prototypes::FixedRoom2D::Script(script_lines);
    return;
 }
