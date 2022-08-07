@@ -84,11 +84,44 @@ std::string ConfigurationsBuilder::get_room_name(float x, float y)
    int room_x = (int)(x / 1920.0);
    int room_y = (int)(y / 1080.0);
 
+   if (room_x == 0 && room_y == 2) return "UNDEF";
    if (room_x == 1 && room_y == 2) return "front_porch";
    if (room_x == 2 && room_y == 2) return "front_hallway";
    if (room_x == 3 && room_y == 2) return "main_hallway";
    if (room_x == 4 && room_y == 2) return "first_floor_storage_room";
    if (room_x == 5 && room_y == 2) return "back_porch";
+   if (room_x == 6 && room_y == 2) return "back_porch_detail";
+
+   if (room_x == 0 && room_y == 1) return "UNDEF";
+   if (room_x == 1 && room_y == 1) return "upstairs_utility_room";
+   if (room_x == 2 && room_y == 1) return "upstairs_stairwell";
+   if (room_x == 3 && room_y == 1) return "upstairs_living_hallway";
+   if (room_x == 4 && room_y == 1) return "master_entry";
+   if (room_x == 5 && room_y == 1) return "UNDEF";
+   if (room_x == 6 && room_y == 1) return "basement";
+
+   if (room_x == 0 && room_y == 0) return "UNDEF";
+   if (room_x == 1 && room_y == 0) return "attic";
+   if (room_x == 2 && room_y == 0) return "girls_room";
+   if (room_x == 3 && room_y == 0) return "boys_room";
+   if (room_x == 4 && room_y == 0) return "master_bedroom";
+   if (room_x == 5 && room_y == 0) return "master_balcony";
+   if (room_x == 6 && room_y == 0) return "UNDER";
+
+
+   // 'upstairs_utility_room':    
+   // 'upstairs_stairwell':      
+   // 'upstairs_living_hallway':
+   // 'master_entry'
+   // 'master_bedroom':           
+   // 'master_balcony':          
+
+   // 'attic'
+   // 'boys_room'
+   // 'girls_room'
+   // 'back_porch_detail'
+   // 'basement'
+
 
    return "UNRECOGNIZED_ROOM_NAME at coordiates";
 }

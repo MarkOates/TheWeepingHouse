@@ -91,6 +91,7 @@ void Runner::initialize()
    // pre-load the audio controller
    audio_controller.set_and_load_sound_effect_elements({
      { "menu-click-01.wav", { "menu-click-01.wav", false } },
+     { "door-locked-hall", { "door-locked-hall-01.ogg", false } },
    });
    audio_controller.set_and_load_music_track_elements({
      { "rain_on_roof", { "indoor-rain-looped-01.ogg", true } },
