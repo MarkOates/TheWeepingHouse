@@ -9,22 +9,33 @@ properties:
   - name: num_columns
     type: int
     init_with: 0
+    getter: explicit
+    setter: false
 
   - name: num_rows
     type: int
     init_with: 0
+    getter: explicit
+    getter: explicit
+    setter: false
 
   - name: tile_width
     type: int
     init_with: 0
+    getter: explicit
+    setter: false
 
   - name: tile_height
     type: int
     init_with: 0
+    getter: explicit
+    setter: false
 
   - name: objects
-    type: TheWeepingHouse::ConfigurationTMJLoaderElements::Object
+    type: std::vector<TheWeepingHouse::ConfigurationTMJLoaderElements::Object>
     init_with: ''
+    getter: explicit
+    setter: false
 
   - name: loaded
     type: bool
@@ -116,7 +127,7 @@ functions:
             values["height"].get<float>()
          );
 
-         //objects.push_back(result_object);
+         objects.push_back(result_object);
       }
 
 
@@ -161,6 +172,13 @@ functions:
       return tile_height;
 
 
+  - name: get_objects
+    type: std::vector<TheWeepingHouse::ConfigurationTMJLoaderElements::Object>
+    guards: [ loaded ]
+    body: |
+      return objects;
+
+
 
 dependencies:
 
@@ -173,5 +191,7 @@ dependencies:
     headers: [ TheWeepingHouse/FileExistenceChecker.hpp ]
   - symbol: TheWeepingHouse::ConfigurationTMJLoaderElements::Object
     headers: [ TheWeepingHouse/ConfigurationTMJLoaderElements/Object.hpp ]
+  - symbol: std::vector<TheWeepingHouse::ConfigurationTMJLoaderElements::Object>
+    headers: [ vector, TheWeepingHouse/ConfigurationTMJLoaderElements/Object.hpp ]
 
 

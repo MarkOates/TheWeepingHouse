@@ -16,6 +16,8 @@
 #include <sstream>
 #include <stdexcept>
 #include <sstream>
+#include <stdexcept>
+#include <sstream>
 
 
 namespace TheWeepingHouse
@@ -125,7 +127,7 @@ bool ConfigurationTMJLoader::load()
          values["height"].get<float>()
       );
 
-      //objects.push_back(result_object);
+      objects.push_back(result_object);
    }
 
 
@@ -178,6 +180,17 @@ int ConfigurationTMJLoader::get_tile_height()
          throw std::runtime_error(error_message.str());
       }
    return tile_height;
+}
+
+std::vector<TheWeepingHouse::ConfigurationTMJLoaderElements::Object> ConfigurationTMJLoader::get_objects()
+{
+   if (!(loaded))
+      {
+         std::stringstream error_message;
+         error_message << "ConfigurationTMJLoader" << "::" << "get_objects" << ": error: " << "guard \"loaded\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   return objects;
 }
 } // namespace TheWeepingHouse
 

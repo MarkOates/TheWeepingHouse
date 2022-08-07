@@ -50,6 +50,7 @@ table td
 <h1>TOC</h1>
 <ul>
   <li><a href="#quintessence/TheWeepingHouse/ConfigurationTMJLoader.q.yml">quintessence/TheWeepingHouse/ConfigurationTMJLoader.q.yml</a></li>
+  <li><a href="#quintessence/TheWeepingHouse/ConfigurationTMJLoaderElements/Object.q.yml">quintessence/TheWeepingHouse/ConfigurationTMJLoaderElements/Object.q.yml</a></li>
   <li><a href="#quintessence/TheWeepingHouse/Configurations/Initial.q.yml">quintessence/TheWeepingHouse/Configurations/Initial.q.yml</a></li>
   <li><a href="#quintessence/TheWeepingHouse/ConfigurationsBuilder.q.yml">quintessence/TheWeepingHouse/ConfigurationsBuilder.q.yml</a></li>
   <li><a href="#quintessence/TheWeepingHouse/EntityFactory.q.yml">quintessence/TheWeepingHouse/EntityFactory.q.yml</a></li>
@@ -85,7 +86,7 @@ table td
 </tr>
 <tr>
   <td class="property">objects</td>
-  <td class="property">TheWeepingHouse::ConfigurationTMJLoaderElements::Object</td>
+  <td class="property">std::vector&lt;TheWeepingHouse::ConfigurationTMJLoaderElements::Object&gt;</td>
 </tr>
 <tr>
   <td class="property">loaded</td>
@@ -108,6 +109,9 @@ table td
 <tr>
   <td class="method">get_tile_height()</td>
 </tr>
+<tr>
+  <td class="method">get_objects()</td>
+</tr>
     </table>
      <table>
 <tr>
@@ -122,6 +126,40 @@ table td
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;TheWeepingHouse::ConfigurationTMJLoaderElements::Object&quot;, &quot;headers&quot;=&gt;[&quot;TheWeepingHouse/ConfigurationTMJLoaderElements/Object.hpp&quot;]}</td>
 </tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;TheWeepingHouse::ConfigurationTMJLoaderElements::Object&gt;&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;TheWeepingHouse/ConfigurationTMJLoaderElements/Object.hpp&quot;]}</td>
+</tr>
+    </table>
+  </div>
+</ul>
+<ul>
+  <div class="component">
+    <h3 id="quintessence/TheWeepingHouse/ConfigurationTMJLoaderElements/Object.q.yml">quintessence/TheWeepingHouse/ConfigurationTMJLoaderElements/Object.q.yml</h3>
+     <table>
+<tr>
+  <td class="property">name</td>
+  <td class="property">std::string</td>
+</tr>
+<tr>
+  <td class="property">x</td>
+  <td class="property">float</td>
+</tr>
+<tr>
+  <td class="property">y</td>
+  <td class="property">float</td>
+</tr>
+<tr>
+  <td class="property">w</td>
+  <td class="property">float</td>
+</tr>
+<tr>
+  <td class="property">h</td>
+  <td class="property">float</td>
+</tr>
+    </table>
+     <table>
+    </table>
+     <table>
     </table>
   </div>
 </ul>
@@ -668,6 +706,9 @@ table td
     "TheWeepingHouse/ConfigurationTMJLoader"
   ],
   "TheWeepingHouse/ConfigurationTMJLoaderElements/Object": [
+    "TheWeepingHouse/ConfigurationTMJLoader"
+  ],
+  "std/vector<TheWeepingHouse/ConfigurationTMJLoaderElements/Object>": [
     "TheWeepingHouse/ConfigurationTMJLoader"
   ],
   "AllegroFlare/Inventory": [

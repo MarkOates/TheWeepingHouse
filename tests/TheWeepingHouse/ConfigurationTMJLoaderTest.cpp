@@ -32,3 +32,15 @@ TEST(TheWeepingHouse_ConfigurationTMJLoaderTest, load__will_extract_the_dimentio
 }
 
 
+TEST(TheWeepingHouse_ConfigurationTMJLoaderTest, load__will_extract_the_objects)
+{
+   TheWeepingHouse::ConfigurationTMJLoader configuration_tmj_loader(TEST_FIXTURE_FILENAME);
+   configuration_tmj_loader.load();
+
+   std::vector<TheWeepingHouse::ConfigurationTMJLoaderElements::Object> objects =
+      configuration_tmj_loader.get_objects();
+
+   ASSERT_EQ(4, objects.size());
+}
+
+

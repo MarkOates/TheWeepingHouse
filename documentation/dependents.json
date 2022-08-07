@@ -11,6 +11,9 @@
   "TheWeepingHouse/ConfigurationTMJLoaderElements/Object": [
     "TheWeepingHouse/ConfigurationTMJLoader"
   ],
+  "std/vector<TheWeepingHouse/ConfigurationTMJLoaderElements/Object>": [
+    "TheWeepingHouse/ConfigurationTMJLoader"
+  ],
   "AllegroFlare/Inventory": [
     "TheWeepingHouse/Configurations/Initial",
     "TheWeepingHouse/ConfigurationsBuilder"

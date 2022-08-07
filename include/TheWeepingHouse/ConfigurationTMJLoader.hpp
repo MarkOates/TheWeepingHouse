@@ -3,6 +3,7 @@
 
 #include <TheWeepingHouse/ConfigurationTMJLoaderElements/Object.hpp>
 #include <string>
+#include <vector>
 
 
 namespace TheWeepingHouse
@@ -15,7 +16,7 @@ namespace TheWeepingHouse
       int num_rows;
       int tile_width;
       int tile_height;
-      TheWeepingHouse::ConfigurationTMJLoaderElements::Object objects;
+      std::vector<TheWeepingHouse::ConfigurationTMJLoaderElements::Object> objects;
       bool loaded;
 
    public:
@@ -27,6 +28,7 @@ namespace TheWeepingHouse
       int get_num_rows();
       int get_tile_width();
       int get_tile_height();
+      std::vector<TheWeepingHouse::ConfigurationTMJLoaderElements::Object> get_objects();
    };
 }
 
