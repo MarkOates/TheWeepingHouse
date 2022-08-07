@@ -117,6 +117,8 @@ void ConfigurationsBuilder::you_build()
 
    add_script("observe_front_porch_door", {
       "DIALOG: Oh wow, it's unlocked.  I'm going inside.",
+      "PLAY_MUSIC_TRACK: rain_on_roof", // <-- WORKS
+      //"PLAY_MUSIC_TRACK: heavy_outdoor_rain", // <-- WORKS
       "ENTER_ROOM: " + FRONT_HALLWAY,
    });
 
@@ -180,7 +182,7 @@ void ConfigurationsBuilder::you_build()
 
 
 
-   starting_in_room_identifier = FRONT_HALLWAY;
+   starting_in_room_identifier = FRONT_PORCH;
 
 
    return;
