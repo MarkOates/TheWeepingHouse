@@ -100,7 +100,7 @@ TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH
 {
    // TODO: do not use "assemble_room" for this test
    configurations_builder.assemble_room("my_test_room_name", "This is a test room");
-   EXPECT_EQ(true, configurations_builder.entity_exists("my_test_room_name_bg"));
+   EXPECT_EQ(true, configurations_builder.entity_exists("my_test_room_name/background"));
 }
 
 
@@ -124,8 +124,8 @@ TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH
    EXPECT_NE(nullptr, configurations_builder.get_room_dictionary()["my_test_room_name"]);
 
    // creates a background
-   ASSERT_EQ(true, configurations_builder.entity_exists("my_test_room_name_bg"));
-   EXPECT_NE(nullptr, configurations_builder.get_entity_dictionary()["my_test_room_name_bg"]);
+   ASSERT_EQ(true, configurations_builder.entity_exists("my_test_room_name/background"));
+   EXPECT_NE(nullptr, configurations_builder.get_entity_dictionary()["my_test_room_name/background"]);
 
    // creates an "observe_..." script for the background
    ASSERT_EQ(true, configurations_builder.script_exists("observe_my_test_room_name"));
@@ -136,7 +136,7 @@ TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH
    );
 
    // an association exists for the background entity and the room
-   EXPECT_EQ(true, configurations_builder.entity_room_association_exists("my_test_room_name_bg", "my_test_room_name"));
+   EXPECT_EQ(true, configurations_builder.entity_room_association_exists("my_test_room_name/background", "my_test_room_name"));
 }
 
 
@@ -144,10 +144,10 @@ TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH
    the_production_configuration_has_the_expected_elements)
 {
    AllegroFlare::Prototypes::FixedRoom2D::Configuration configuration = configurations_builder.build();
-   EXPECT_EQ(1, configuration.get_entity_dictionary().count("front_porch_door"));
+   EXPECT_EQ(1, configuration.get_entity_dictionary().count("front_porch/front_porch_door"));
 
-   EXPECT_EQ(true, configurations_builder.entity_room_association_exists("front_porch_door", "front_porch"));
-   EXPECT_EQ("front_porch", configuration.get_entity_room_associations()["front_porch_door"]);
+   EXPECT_EQ(true, configurations_builder.entity_room_association_exists("front_porch/front_porch_door", "front_porch"));
+   EXPECT_EQ("front_porch", configuration.get_entity_room_associations()["front_porch/front_porch_door"]);
 }
 
 

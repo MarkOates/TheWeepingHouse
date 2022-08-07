@@ -179,7 +179,7 @@ void ConfigurationsBuilder::you_build()
 
 
 
-   starting_in_room_identifier = FRONT_PORCH;
+   starting_in_room_identifier = FRONT_HALLWAY;
 
 
    return;
@@ -248,6 +248,7 @@ bool ConfigurationsBuilder::add_hitspot_to_room(std::string room_name, std::stri
          error_message << "ConfigurationsBuilder" << "::" << "add_hitspot_to_room" << ": error: " << "guard \"(!entity_room_association_exists(hitspot_name, room_name))\" not met";
          throw std::runtime_error(error_message.str());
       }
+   hitspot_name = room_name + "/" + hitspot_name;
    entity_dictionary[hitspot_name] =
       entity_factory.create_rectangle_hitspot(x, y, w, h, label, interact_script_name);
    entity_room_associations[hitspot_name] = room_name;
@@ -268,6 +269,7 @@ bool ConfigurationsBuilder::add_ellipse_hitspot_to_room(std::string room_name, s
          error_message << "ConfigurationsBuilder" << "::" << "add_ellipse_hitspot_to_room" << ": error: " << "guard \"(!entity_room_association_exists(hitspot_name, room_name))\" not met";
          throw std::runtime_error(error_message.str());
       }
+   hitspot_name = room_name + "/" + hitspot_name;
    entity_dictionary[hitspot_name] =
       entity_factory.create_ellipse_hitspot(x, y, w, h, label, interact_script_name);
    entity_room_associations[hitspot_name] = room_name;
@@ -283,8 +285,8 @@ bool ConfigurationsBuilder::assemble_room(std::string room_name, std::string obs
          throw std::runtime_error(error_message.str());
       }
    std::string generated_script_name = "observe_" + room_name;
-   std::string generated_background_entity_name = room_name + "_bg";
-   std::string expected_background_bitmap_name = "room_" + room_name + ".png";
+   std::string generated_background_entity_name = room_name + "/background";
+   std::string expected_background_bitmap_name = "rooms/room_" + room_name + ".png";
 
    // create the room
    room_dictionary[room_name] = room_factory.create_room();

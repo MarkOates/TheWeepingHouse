@@ -33,7 +33,7 @@ namespace TheWeepingHouse
       bool initialized;
 
    public:
-      Runner(std::string mode="production", AllegroFlare::Frameworks::Full* framework=nullptr, AllegroFlare::EventEmitter* event_emitter=nullptr, AllegroFlare::Color room_shader_color=AllegroFlare::Color::White);
+      Runner(std::string mode="production", AllegroFlare::Frameworks::Full* framework=nullptr, AllegroFlare::EventEmitter* event_emitter=nullptr, AllegroFlare::Color room_shader_color=AllegroFlare::Color::DodgerBlue);
       virtual ~Runner();
 
       void initialize();

@@ -185,7 +185,7 @@ functions:
 
 
 
-      starting_in_room_identifier = FRONT_PORCH;
+      starting_in_room_identifier = FRONT_HALLWAY;
 
 
       return;
@@ -247,6 +247,7 @@ functions:
         default_argument: '"[unset-interact_script_name]"'
     guards: [ (!entity_exists(hitspot_name)), '(!entity_room_association_exists(hitspot_name, room_name))' ]
     body: |
+      hitspot_name = room_name + "/" + hitspot_name;
       entity_dictionary[hitspot_name] =
          entity_factory.create_rectangle_hitspot(x, y, w, h, label, interact_script_name);
       entity_room_associations[hitspot_name] = room_name;
@@ -282,6 +283,7 @@ functions:
         default_argument: '"[unset-interact_script_name]"'
     guards: [ (!entity_exists(hitspot_name)), '(!entity_room_association_exists(hitspot_name, room_name))' ]
     body: |
+      hitspot_name = room_name + "/" + hitspot_name;
       entity_dictionary[hitspot_name] =
          entity_factory.create_ellipse_hitspot(x, y, w, h, label, interact_script_name);
       entity_room_associations[hitspot_name] = room_name;
@@ -300,8 +302,8 @@ functions:
     guards: [ (!room_exists(room_name)) ]
     body: |
       std::string generated_script_name = "observe_" + room_name;
-      std::string generated_background_entity_name = room_name + "_bg";
-      std::string expected_background_bitmap_name = "room_" + room_name + ".png";
+      std::string generated_background_entity_name = room_name + "/background";
+      std::string expected_background_bitmap_name = "rooms/room_" + room_name + ".png";
 
       // create the room
       room_dictionary[room_name] = room_factory.create_room();
