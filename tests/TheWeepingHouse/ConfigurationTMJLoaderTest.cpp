@@ -48,6 +48,8 @@ TEST(TheWeepingHouse_ConfigurationTMJLoaderTest, load__will_extract_the_objects)
    EXPECT_EQ(388, objects[0].get_y());
    EXPECT_EQ(115, objects[0].get_w());
    EXPECT_EQ(399, objects[0].get_h());
+   EXPECT_EQ("DIALOG: Will this work?", objects[0].get_script());
+   EXPECT_EQ("observe_front_door", objects[0].get_script_name_to_play());
 }
 
 

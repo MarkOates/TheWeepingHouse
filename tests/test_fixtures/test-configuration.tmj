@@ -35,9 +35,14 @@
                  "name":"front_door",
                  "properties":[
                         {
-                         "name":"script_lines",
+                         "name":"script",
                          "type":"string",
-                         "value":"DIALOG: will this work?"
+                         "value":"DIALOG: Will this work?"
+                        }, 
+                        {
+                         "name":"script_name_to_play",
+                         "type":"string",
+                         "value":"observe_front_door"
                         }],
                  "rotation":0,
                  "type":"hitspot",
@@ -45,17 +50,6 @@
                  "width":115.2,
                  "x":115.2,
                  "y":388.8
-                }, 
-                {
-                 "height":0,
-                 "id":2,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":0,
-                 "y":0
                 }, 
                 {
                  "height":529.2,
@@ -84,6 +78,18 @@
                  "width":153.6,
                  "x":403.2,
                  "y":453.6
+                }, 
+                {
+                 "gid":1,
+                 "height":216,
+                 "id":7,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":192,
+                 "x":806.4,
+                 "y":745.2
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -92,12 +98,16 @@
          "y":0
         }],
  "nextlayerid":5,
- "nextobjectid":7,
+ "nextobjectid":8,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.8.2",
  "tileheight":1080,
- "tilesets":[],
+ "tilesets":[
+        {
+         "firstgid":1,
+         "source":"..\/..\/..\/..\/Desktop\/backgrounds.tsx"
+        }],
  "tilewidth":1920,
  "type":"map",
  "version":"1.8",

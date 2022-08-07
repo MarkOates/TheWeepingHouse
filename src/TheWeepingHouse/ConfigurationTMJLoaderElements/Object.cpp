@@ -10,13 +10,15 @@ namespace ConfigurationTMJLoaderElements
 {
 
 
-Object::Object(std::string name, std::string type, float x, float y, float w, float h)
+Object::Object(std::string name, std::string type, float x, float y, float w, float h, std::string script, std::string script_name_to_play)
    : name(name)
    , type(type)
    , x(x)
    , y(y)
    , w(w)
    , h(h)
+   , script(script)
+   , script_name_to_play(script_name_to_play)
 {
 }
 
@@ -62,6 +64,18 @@ void Object::set_h(float h)
 }
 
 
+void Object::set_script(std::string script)
+{
+   this->script = script;
+}
+
+
+void Object::set_script_name_to_play(std::string script_name_to_play)
+{
+   this->script_name_to_play = script_name_to_play;
+}
+
+
 std::string Object::get_name()
 {
    return name;
@@ -95,6 +109,18 @@ float Object::get_w()
 float Object::get_h()
 {
    return h;
+}
+
+
+std::string Object::get_script()
+{
+   return script;
+}
+
+
+std::string Object::get_script_name_to_play()
+{
+   return script_name_to_play;
 }
 
 

@@ -133,13 +133,22 @@ functions:
          {
             for (auto &custom_property_item : values["properties"].items())
             {
-               //nlohmann::json custom_property = custom_property_item.value();
-               //custom_property.name
-               //cuss
-               
+               nlohmann::json custom_property = custom_property_item.value();
+               std::string custom_property_name = custom_property["name"];
+               std::string custom_property_type = custom_property["type"];
+               std::string custom_property_value = custom_property["value"];
+
+               if (custom_property_name == "script")
+               {
+                  // TODO check type is string
+                  result_object.set_script(custom_property_value);
+               }
+               if (custom_property_name == "script_name_to_play")
+               {
+                  // TODO check type is string
+                  result_object.set_script_name_to_play(custom_property_value);
+               }
             }
-            
-            //result_object.
          }
 
          objects.push_back(result_object);

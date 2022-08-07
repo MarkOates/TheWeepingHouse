@@ -43,4 +43,18 @@ properties:
     getter: true
     setter: true
 
+  - name: script
+    type: std::string
+    init_with: '""'
+    constructor_arg: true
+    getter: true
+    setter: true
+   
+  - name: script_name_to_play
+    type: std::string
+    init_with: '""'
+    constructor_arg: true
+    getter: true
+    setter: true
+   
 

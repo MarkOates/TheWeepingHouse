@@ -10,10 +10,3 @@ TEST(TheWeepingHouse_ConfigurationTMJLoaderElements_ObjectTest, can_be_created_w
 }
 
 
-TEST(TheWeepingHouse_ConfigurationTMJLoaderElements_ObjectTest, run__returns_the_expected_response)
-{
-   TheWeepingHouse::ConfigurationTMJLoaderElements::Object object;
-   std::string expected_string = "Hello World!";
-   EXPECT_EQ(expected_string, object.run());
-}
-
