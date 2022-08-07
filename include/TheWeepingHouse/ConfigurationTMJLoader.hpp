@@ -21,7 +21,7 @@ namespace TheWeepingHouse
       ~ConfigurationTMJLoader();
 
       bool get_loaded();
-      void load();
+      bool load();
       int get_num_columns();
       int get_num_rows();
       int get_tile_width();

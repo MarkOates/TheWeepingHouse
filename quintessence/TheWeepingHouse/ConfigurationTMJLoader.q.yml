@@ -36,8 +36,12 @@ functions:
 
 
   - name: load
+    type: bool
+    guards: [ (!loaded), TheWeepingHouse::FileExistenceChecker(filename).exists() ]
     body: |
-      return;
+      return true;
+    body_dependency_symbols:
+      - TheWeepingHouse::FileExistenceChecker
 
 
   - name: get_num_columns
@@ -69,5 +73,7 @@ dependencies:
 
   - symbol: nlohmann::json
     headers: [ lib/nlohmann/json.hpp ]
+  - symbol: TheWeepingHouse::FileExistenceChecker
+    headers: [ TheWeepingHouse/FileExistenceChecker.hpp ]
 
 

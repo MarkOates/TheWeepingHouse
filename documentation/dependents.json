@@ -1,4 +1,7 @@
 {
+  "nlohmann/json": [
+    "TheWeepingHouse/ConfigurationTMJLoader"
+  ],
   "AllegroFlare/Inventory": [
     "TheWeepingHouse/Configurations/Initial",
     "TheWeepingHouse/ConfigurationsBuilder"

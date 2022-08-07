@@ -1,6 +1,9 @@
 
 
 #include <TheWeepingHouse/ConfigurationTMJLoader.hpp>
+#include <TheWeepingHouse/FileExistenceChecker.hpp>
+#include <stdexcept>
+#include <sstream>
 #include <stdexcept>
 #include <sstream>
 #include <stdexcept>
@@ -37,9 +40,21 @@ bool ConfigurationTMJLoader::get_loaded()
 }
 
 
-void ConfigurationTMJLoader::load()
+bool ConfigurationTMJLoader::load()
 {
-   return;
+   if (!((!loaded)))
+      {
+         std::stringstream error_message;
+         error_message << "ConfigurationTMJLoader" << "::" << "load" << ": error: " << "guard \"(!loaded)\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   if (!(TheWeepingHouse::FileExistenceChecker(filename).exists()))
+      {
+         std::stringstream error_message;
+         error_message << "ConfigurationTMJLoader" << "::" << "load" << ": error: " << "guard \"TheWeepingHouse::FileExistenceChecker(filename).exists()\" not met";
+         throw std::runtime_error(error_message.str());
+      }
+   return true;
 }
 
 int ConfigurationTMJLoader::get_num_columns()
