@@ -1,6 +1,7 @@
 
 
 #include <TheWeepingHouse/ConfigurationsBuilder.hpp>
+#include <TheWeepingHouse/ConfigurationTMJLoader.hpp>
 #include <stdexcept>
 #include <sstream>
 #include <stdexcept>
@@ -21,6 +22,9 @@
 #include <sstream>
 #include <stdexcept>
 #include <sstream>
+#include <sstream>
+#include <vector>
+#include <string>
 
 
 namespace TheWeepingHouse
@@ -77,7 +81,57 @@ std::map<std::string, AllegroFlare::Prototypes::FixedRoom2D::Script>& Configurat
 }
 
 
+void ConfigurationsBuilder::build_from_tmj_source(std::string filename)
+{
+   TheWeepingHouse::ConfigurationTMJLoader loader(filename);
+   loader.load();
+
+   std::string current_room = "front_hallway";
+   for (auto &object : loader.get_objects())
+   {
+      //if (object.is_type("")) // an empty type, assume a hitspot
+      //{
+         std::string object_name = object.get_name();
+         std::string script = object.get_script();
+         if (script.empty()) script = "DIALOG: hmm... nothing.";
+
+         std::vector<std::string> script_lines = split(script, '\n');
+
+         std::string script_name = "observe_" + object_name;
+
+         add_hitspot_to_room(
+            current_room,
+            object_name,
+            object.get_x(),
+            object.get_y(),
+            object.get_w(),
+            object.get_h(),
+            "NO-LABEL",
+            script_name //"" // object.get_script_name_to_play()
+         );
+
+         add_script(script_name, script_lines);
+      //}
+   }
+}
+
 void ConfigurationsBuilder::you_build()
+{
+   const std::string FRONT_HALLWAY = "front_hallway";
+   assemble_room(FRONT_HALLWAY, "This is a pretty dark room. | I'd better see if I can get inside.");
+
+   std::string tmj_path = "data/configurations/production-configuration-01.tmj";
+   tmj_path = "/Users/markoates/Repos/TheWeepingHouse/bin/programs/" + tmj_path;
+
+   build_from_tmj_source(tmj_path);
+
+   starting_in_room_identifier = FRONT_HALLWAY;
+   entity_factory.set_hide_hitspots(false);
+
+   return;
+}
+
+void ConfigurationsBuilder::__you_build()
 {
    // rooms
    const std::string FRONT_PORCH = "front_porch";
@@ -395,6 +449,16 @@ void ConfigurationsBuilder::set_entity_collection_helper__this_is_a_hack(Allegro
    room_factory.set_entity_collection_helper(entity_collection_helper__this_is_a_hack);
    this->entity_collection_helper__this_is_a_hack = entity_collection_helper__this_is_a_hack;
    return;
+}
+
+std::vector<std::string> ConfigurationsBuilder::split(std::string text, char delimiter)
+{
+   std::vector<std::string> elems;
+   auto result = std::back_inserter(elems);
+   std::stringstream ss(text);
+   std::string item;
+   while (std::getline(ss, item, delimiter)) { *(result++) = item; }
+   return elems;
 }
 } // namespace TheWeepingHouse
 

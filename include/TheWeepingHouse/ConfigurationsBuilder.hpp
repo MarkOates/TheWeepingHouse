@@ -48,7 +48,9 @@ namespace TheWeepingHouse
       std::map<std::string, AllegroFlare::Prototypes::FixedRoom2D::Room*>& get_room_dictionary();
       std::map<std::string, std::string>& get_entity_room_associations();
       std::map<std::string, AllegroFlare::Prototypes::FixedRoom2D::Script>& get_script_dictionary();
+      void build_from_tmj_source(std::string filename="[unset-filename]");
       void you_build();
+      void __you_build();
       AllegroFlare::Prototypes::FixedRoom2D::Configuration get_result_configuration();
       void set_start_room(std::string room_name="[unset-room_name]");
       AllegroFlare::Prototypes::FixedRoom2D::Configuration build();
@@ -64,6 +66,7 @@ namespace TheWeepingHouse
       void set_bitmap_bin(AllegroFlare::BitmapBin* bitmap_bin=nullptr);
       void set_event_emitter(AllegroFlare::EventEmitter* event_emitter=nullptr);
       void set_entity_collection_helper__this_is_a_hack(AllegroFlare::Prototypes::FixedRoom2D::EntityCollectionHelper* entity_collection_helper__this_is_a_hack=nullptr);
+      std::vector<std::string> split(std::string text="", char delimiter=' ');
    };
 }
 

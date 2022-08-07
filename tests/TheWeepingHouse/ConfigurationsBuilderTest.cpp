@@ -141,7 +141,7 @@ TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH
 
 
 TEST_F(TheWeepingHouse_ConfigurationsBuilderWithAllegroRenderingFixtureTest_WITH_ASSEMBLED_configurations_builder,
-   the_production_configuration_has_the_expected_elements)
+   DISABLED__the_production_configuration_has_the_expected_elements)
 {
    AllegroFlare::Prototypes::FixedRoom2D::Configuration configuration = configurations_builder.build();
    EXPECT_EQ(1, configuration.get_entity_dictionary().count("front_porch/front_porch_door"));

@@ -97,6 +97,9 @@
   "std/string&": [
     "TheWeepingHouse/ConfigurationsBuilder"
   ],
+  "TheWeepingHouse/ConfigurationTMJLoader": [
+    "TheWeepingHouse/ConfigurationsBuilder"
+  ],
   "AllegroFlare/Prototypes/FixedRoom2D/Entities/Base": [
     "TheWeepingHouse/EntityFactory"
   ],
