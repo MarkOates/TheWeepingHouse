@@ -42,6 +42,7 @@ TEST(TheWeepingHouse_ConfigurationTMJLoaderTest, load__will_extract_the_objects)
 
    ASSERT_EQ(4, objects.size());
 
+   EXPECT_EQ("front_door", objects[0].get_name());
    EXPECT_EQ("hitspot", objects[0].get_type());
    EXPECT_EQ(115, objects[0].get_x());
    EXPECT_EQ(388, objects[0].get_y());

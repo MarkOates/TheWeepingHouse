@@ -126,7 +126,21 @@ functions:
             (int)values["y"].get<float>(),
             (int)values["width"].get<float>(),
             (int)values["height"].get<float>()
+            //(int)values["height"].get<float>()
          );
+
+         if (values.contains("properties"))
+         {
+            for (auto &custom_property_item : values["properties"].items())
+            {
+               //nlohmann::json custom_property = custom_property_item.value();
+               //custom_property.name
+               //cuss
+               
+            }
+            
+            //result_object.
+         }
 
          objects.push_back(result_object);
       }
