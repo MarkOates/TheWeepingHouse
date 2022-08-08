@@ -6,7 +6,8 @@
     "TheWeepingHouse/ConfigurationTMJLoader"
   ],
   "TheWeepingHouse/FileExistenceChecker": [
-    "TheWeepingHouse/ConfigurationTMJLoader"
+    "TheWeepingHouse/ConfigurationTMJLoader",
+    "TheWeepingHouse/ConfigurationsBuilder"
   ],
   "TheWeepingHouse/ConfigurationTMJLoaderElements/Object": [
     "TheWeepingHouse/ConfigurationTMJLoader"

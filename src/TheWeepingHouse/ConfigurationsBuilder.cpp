@@ -2,6 +2,7 @@
 
 #include <TheWeepingHouse/ConfigurationsBuilder.hpp>
 #include <TheWeepingHouse/ConfigurationTMJLoader.hpp>
+#include <TheWeepingHouse/FileExistenceChecker.hpp>
 #include <stdexcept>
 #include <sstream>
 #include <stdexcept>
@@ -224,7 +225,11 @@ void ConfigurationsBuilder::you_build()
 
 
    std::string tmj_path = "data/configurations/production-configuration-02.tmj";
-   tmj_path = "/Users/markoates/Repos/TheWeepingHouse/bin/programs/" + tmj_path;
+   if (!TheWeepingHouse::FileExistenceChecker(tmj_path).exists())
+   {
+      // assume this is a local dev or test version (not running from main), so prefix as a hard-coded path
+      tmj_path = "/Users/markoates/Repos/TheWeepingHouse/bin/programs/" + tmj_path;
+   }
 
    build_from_tmj_source(tmj_path);
 
