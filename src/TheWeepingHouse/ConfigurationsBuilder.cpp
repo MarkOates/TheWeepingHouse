@@ -224,7 +224,7 @@ void ConfigurationsBuilder::you_build()
 
 
 
-   std::string tmj_path = "data/configurations/production-configuration-02.tmj";
+   std::string tmj_path = "data/configurations/production-configuration-03.tmj";
    if (!TheWeepingHouse::FileExistenceChecker(tmj_path).exists())
    {
       // assume this is a local dev or test version (not running from main), so prefix as a hard-coded path
