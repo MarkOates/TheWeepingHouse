@@ -106,7 +106,7 @@ functions:
       // pre-load the audio controller
       audio_controller.set_and_load_sound_effect_elements({
         { "menu-click-01.wav", { "menu-click-01.wav", false } },
-        { "door-locked-hall", { "door-locked-hall-01.ogg", false } },
+        { "door-locked-hall", { "door-locked-hall-03.ogg", false } },
         { "doorbell", { "doorbell-02.ogg", false } },
       });
       audio_controller.set_and_load_music_track_elements({
