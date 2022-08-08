@@ -131,3 +131,14 @@ TEST_F(TheWeepingHouse_Shaders_MultiplyTest, when_active__renders_the_image_with
 }
 
 
+#include <TheWeepingHouse/Runner.hpp>
+
+
+TEST(TheWeepingHouse_RunnerTest, run__runs_the_program)
+{
+   TheWeepingHouse::Runner runner;
+   runner.run("test");
+   SUCCEED();
+}
+
+
