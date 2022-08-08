@@ -2,6 +2,24 @@
 
 After being caught in a rainstorm when your car breaks down, you come upon a mysterious house.  What mysteries are hidden within?
 
+## How to Play
+
+To play, use the arrow keys to move your cursor around the screen (there currently is no mouse support).  When your cursor flashes "inspect", you can press ENTER to get more information.  (Hint: If your cursor does not have "inspect", you can still press ENTER to make an general observation about the world around you.)
+
+When a dialog box is open, press the ENTER key to advance.
+
+While you're in the main gameplay, you can toggle PAUSE by pressing the "P" key.
+
+Press the ESCPAE key once to exit the program entirely.
+
+
+## Additional Info
+
+- There is an inventory screen that you can toggle by pressing the "I" key, though it currently has no use in the game and there are no items that you can pick up.
+- I hope you enjoy discovering each part of the house.
+
+
+
 ## TINS Hackathon
 
 This is my official entry to the [TINS 2022 Hackathon](https://tins.amarillion.org/news).  The [official rules](https://tins.amarillion.org/2022/rules/) were met in the following way:
