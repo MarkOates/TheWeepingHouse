@@ -91,6 +91,7 @@ functions:
       opening_logos_storyboard_screen = storyboard_factory.create_images_storyboard_screen({
             bitmap_bin["allegro5-logo-gray-med.png"],
             bitmap_bin["allegro-flare-alt-logo-01-med.png"],
+            bitmap_bin["clubcatt-med-01.png"],
             bitmap_bin["tinslogo06.gif"],
             nullptr,
          });
@@ -104,7 +105,7 @@ functions:
         { "door-locked-hall", { "door-locked-hall-01.ogg", false } },
       });
       audio_controller.set_and_load_music_track_elements({
-        { "rain_on_roof", { "indoor-rain-looped-01.ogg", true } },
+        { "rain_on_roof", { "indoor-rain-looped-02.ogg", true } },
         { "heavy_outdoor_rain", { "heavy-rain-looped-01.ogg", true } },
         { "file_example_OOG_1MG.ogg", { "file_example_OOG_1MG.ogg", true } },
       });

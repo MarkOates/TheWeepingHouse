@@ -191,6 +191,9 @@ functions:
 
   - name: you_build
     body: |
+      entity_factory.set_hide_hitspots(true);
+      starting_in_room_identifier = "upstairs_utility_room";
+
       // rooms
       const std::string FRONT_PORCH = "front_porch";
       const std::string FRONT_HALLWAY = "front_hallway";
@@ -198,6 +201,8 @@ functions:
       const std::string FIRST_FLOOR_STORAGE_ROOM = "first_floor_storage_room";
       const std::string BACK_PORCH = "back_porch";
 
+
+      // main floor
       assemble_room(FRONT_HALLWAY, "This is a pretty dark room. | I'd better see if I can get inside.");
       assemble_room(FRONT_PORCH, "What a nice place... but it doesn't look very invnting.  "
                                  "I'd better see if I can get inside.");
@@ -206,13 +211,28 @@ functions:
       assemble_room(BACK_PORCH, "It sure is nice to have a place out of the rain for now.");
 
 
+      // upstairs floor
+      assemble_room("upstairs_stairwell", "There's a lot of space here. "
+                                          "is even living here.");
+      assemble_room("upstairs_utility_room", "A utility room. There's a lot of junk in here.");
+      assemble_room("upstairs_living_hallway", "It sure is quiet here. | It doesn't even look like there's anybody "
+                                               "living here.");
+      assemble_room("master_entry", "Woah. That's a big door.");
+      //assemble_room("master_entryway", "Woah. That's a big door.");
+
+
+      // "3rd" floor
+      assemble_room("master_bedroom", "This is a very large room.");
+      assemble_room("master_balcony", "It's still so dark out.");
+
+
+
       std::string tmj_path = "data/configurations/production-configuration-02.tmj";
       tmj_path = "/Users/markoates/Repos/TheWeepingHouse/bin/programs/" + tmj_path;
 
       build_from_tmj_source(tmj_path);
 
-      starting_in_room_identifier = FRONT_HALLWAY;
-      entity_factory.set_hide_hitspots(false);
+      entity_factory.set_hide_hitspots(true);
 
       return;
   
