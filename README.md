@@ -6,10 +6,10 @@ After being caught in a rainstorm when your car breaks down, you come upon a mys
 
 This is my official entry to the [TINS 2022 Hackathon](https://tins.amarillion.org/news).  The [official rules](https://tins.amarillion.org/2022/rules/) were met in the following way:
 
-- **Genre Rule: Water/Wet** - (not yet implemented)
-- **Artistic Rule: You must integrate subliminal messages into your game** - (not yet implemented)
-- **Artistic Rule: Have teleporters in your game** - The game makes generous use of doors, which act as teleporters to the other rooms.  (Otherwise, not yet implemented)
-- **Technical Rule: Implement and use any image post-processing filter** - The game uses a shader as a color filter for the rooms.
+- **Genre Rule: Water/Wet** - The plot centers around you escaping the a rainy thunderstorm.
+- **Artistic Rule: You must integrate subliminal messages into your game** - CLUBCATT logo in the beginning, subltey making you want to by from the store.
+- **Artistic Rule: Have teleporters in your game** - The game makes generous use of doors, which act as teleporters to the other rooms.
+- **Technical Rule: Implement and use any image post-processing filter** - The game uses a shader as a filter to make colors in the rooms richer and more subdued.
 - **Bonus Rule: You may modify or skip a rule if you cleverly use internet memes to explain your reasons** - (not planned)
 
 
