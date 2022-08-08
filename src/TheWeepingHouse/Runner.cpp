@@ -26,6 +26,7 @@ Runner::Runner(std::string mode, AllegroFlare::Frameworks::Full* framework, Alle
    , opening_logos_storyboard_screen(nullptr)
    , title_screen({})
    , pause_screen({})
+   , new_game_intro_storyboard_screen(nullptr)
    , gameplay_screen({})
    , credits_screen(nullptr)
    , room_shader_color(room_shader_color)
@@ -93,6 +94,7 @@ void Runner::initialize()
    audio_controller.set_and_load_sound_effect_elements({
      { "menu-click-01.wav", { "menu-click-01.wav", false } },
      { "door-locked-hall", { "door-locked-hall-01.ogg", false } },
+     { "doorbell", { "doorbell-02.ogg", false } },
    });
    audio_controller.set_and_load_music_track_elements({
      { "rain_on_roof", { "indoor-rain-looped-02.ogg", true } },
@@ -135,6 +137,25 @@ void Runner::initialize()
       { "Quit", "start_title_screen" },
    });
    framework->register_screen("pause_screen", &pause_screen);
+
+
+
+   // setup the intro storyboards screen
+   new_game_intro_storyboard_screen = storyboard_factory.create_advancing_text_storyboard_screen({
+         "I found myself here.",
+         "Stranded in a rainstorm.",
+         "With my car broken down.",
+         "No cell reception.",
+         "Unbelievable.",
+         "This storm is bad, too. They were talking about it on the radio.",
+         "I don't know fif being in the car is even safe.",
+         "I need to find shelter.",
+         "It looks like there's a light just up in the woods.",
+         "Maybe I can find luck there.",
+      });
+   new_game_intro_storyboard_screen->set_event_emitter(&event_emitter);
+   new_game_intro_storyboard_screen->set_game_event_name_to_emit_after_completing("activate_gameplay_screen");
+   framework->register_screen("new_game_intro_storyboard_screen", new_game_intro_storyboard_screen);
 
 
 
@@ -181,8 +202,9 @@ void Runner::start_new_game()
 
    gameplay_screen.load_game_configuration_and_start(configuration);
 
-   framework->activate_screen("opening_storyboard_screen"); // <-- probably will want to add this
-   framework->activate_screen("gameplay_screen");
+   framework->activate_screen("new_game_intro_storyboard_screen"); // <-- probably will want to add this
+   framework->get_event_emitter_ref().emit_play_music_track_event("heavy_outdoor_rain");
+   //framework->activate_screen("gameplay_screen");
    return;
 }
 
@@ -286,10 +308,10 @@ void Runner::game_event_func(AllegroFlare::GameEvent* ev)
    {
       framework->activate_screen("credits_screen");
    }
-   //if (event_name == "start_gameplay_screen")
-   //{
-      //framework->activate_screen("gameplay_screen");
-   //}
+   if (event_name == "activate_gameplay_screen")
+   {
+      framework->activate_screen("gameplay_screen");
+   }
    if (event_name == "start_new_game")
    {
       start_new_game();

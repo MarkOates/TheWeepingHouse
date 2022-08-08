@@ -26,6 +26,7 @@ namespace TheWeepingHouse
       AllegroFlare::Screens::Storyboard* opening_logos_storyboard_screen;
       AllegroFlare::Screens::TitleScreen title_screen;
       AllegroFlare::Screens::PauseScreen pause_screen;
+      AllegroFlare::Screens::Storyboard* new_game_intro_storyboard_screen;
       AllegroFlare::Prototypes::FixedRoom2D::Screen gameplay_screen;
       AllegroFlare::Screens::Storyboard* credits_screen;
       AllegroFlare::Color room_shader_color;

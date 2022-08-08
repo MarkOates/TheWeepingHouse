@@ -192,6 +192,7 @@ functions:
   - name: you_build
     body: |
       entity_factory.set_hide_hitspots(true);
+      //starting_in_room_identifier = "upstairs_utility_room";
       starting_in_room_identifier = "upstairs_utility_room";
 
       // rooms

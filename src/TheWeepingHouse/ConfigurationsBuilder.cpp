@@ -173,6 +173,7 @@ void ConfigurationsBuilder::build_from_tmj_source(std::string filename)
 void ConfigurationsBuilder::you_build()
 {
    entity_factory.set_hide_hitspots(true);
+   //starting_in_room_identifier = "upstairs_utility_room";
    starting_in_room_identifier = "upstairs_utility_room";
 
    // rooms
