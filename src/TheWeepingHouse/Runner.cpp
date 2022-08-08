@@ -97,9 +97,10 @@ void Runner::initialize()
      { "doorbell", { "doorbell-02.ogg", false } },
    });
    audio_controller.set_and_load_music_track_elements({
-     { "rain_on_roof", { "indoor-rain-looped-02.ogg", true } },
+     { "rain_on_roof", { "indoor-rain-looped-03.ogg", true } },
      { "heavy_outdoor_rain", { "heavy-rain-looped-01.ogg", true } },
      { "file_example_OOG_1MG.ogg", { "file_example_OOG_1MG.ogg", true } },
+     { "rain_while_in_basement", { "rain_while_in_basement.ogg", true } },
    });
 
 
