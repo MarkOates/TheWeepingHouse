@@ -173,8 +173,8 @@ void ConfigurationsBuilder::build_from_tmj_source(std::string filename)
 void ConfigurationsBuilder::you_build()
 {
    entity_factory.set_hide_hitspots(true);
+   starting_in_room_identifier = "front_porch";
    //starting_in_room_identifier = "upstairs_utility_room";
-   starting_in_room_identifier = "upstairs_utility_room";
 
    // rooms
    const std::string FRONT_PORCH = "front_porch";
@@ -182,22 +182,27 @@ void ConfigurationsBuilder::you_build()
    const std::string MAIN_HALLWAY = "main_hallway";
    const std::string FIRST_FLOOR_STORAGE_ROOM = "first_floor_storage_room";
    const std::string BACK_PORCH = "back_porch";
+   const std::string BACK_PORCH_DETAIL = "back_porch_detail";
+   const std::string BASEMENT = "basement";
+   const std::string BOYS_ROOM = "boys_room";
+   const std::string GIRLS_ROOM = "girls_room";
+   const std::string ATTIC = "attic";
 
 
    // main floor
-   assemble_room(FRONT_HALLWAY, "This is a pretty dark room. | I'd better see if I can get inside.");
-   assemble_room(FRONT_PORCH, "What a nice place... but it doesn't look very invnting.  "
+   assemble_room(FRONT_HALLWAY, "Hello?  Is anybody home?");
+   assemble_room(FRONT_PORCH, "What a nice place... but it doesn't look very inviting.  "
                               "I'd better see if I can get inside.");
    assemble_room(MAIN_HALLWAY, "This is a pretty dark room. | It's kinda hard to see anything, to be honest.");
    assemble_room(FIRST_FLOOR_STORAGE_ROOM, "Looks like a little room for storage.  There are some boxes here.");
    assemble_room(BACK_PORCH, "It sure is nice to have a place out of the rain for now.");
+   assemble_room(BACK_PORCH_DETAIL, "It sure is nice to have a place out of the rain for now.");
 
 
    // upstairs floor
-   assemble_room("upstairs_stairwell", "There's a lot of space here. "
-                                       "is even living here.");
+   assemble_room("upstairs_stairwell", "There seems to be a lot of space here.");
    assemble_room("upstairs_utility_room", "A utility room. There's a lot of junk in here.");
-   assemble_room("upstairs_living_hallway", "It sure is quiet here. | It doesn't even look like there's anybody "
+   assemble_room("upstairs_living_hallway", "It sure is quiet. | It doesn't even look like there's anybody "
                                             "living here.");
    assemble_room("master_entry", "Woah. That's a big door.");
    //assemble_room("master_entryway", "Woah. That's a big door.");
@@ -206,6 +211,15 @@ void ConfigurationsBuilder::you_build()
    // "3rd" floor
    assemble_room("master_bedroom", "This is a very large room.");
    assemble_room("master_balcony", "It's still so dark out.");
+   assemble_room(BOYS_ROOM, "There's hardly anything in this room. | It feels a bit lonely.");
+   assemble_room(GIRLS_ROOM, "This looks like a kid's room.");
+   assemble_room(ATTIC, "I hope there's no spiders up here.");
+
+
+
+   // "-1" floor
+   assemble_room(BASEMENT, "Ugh. What a dark and drab place. I'm not sure I want to be here.");
+
 
 
 

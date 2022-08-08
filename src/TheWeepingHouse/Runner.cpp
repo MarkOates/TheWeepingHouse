@@ -148,7 +148,7 @@ void Runner::initialize()
          "No cell reception.",
          "Unbelievable.",
          "This storm is bad, too. They were talking about it on the radio.",
-         "I don't know fif being in the car is even safe.",
+         "I don't know if being in the car is even safe.",
          "I need to find shelter.",
          "It looks like there's a light just up in the woods.",
          "Maybe I can find luck there.",
