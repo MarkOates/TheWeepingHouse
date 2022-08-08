@@ -109,7 +109,7 @@ void Runner::initialize()
    title_screen.set_bitmap_bin(&bitmap_bin);
    title_screen.set_title_text("");
    //title_screen.set_title_bitmap_name("the_weeping_house_title-02b.png");
-   title_screen.set_background_bitmap_name("the_weeping_house_title-02b.png");
+   title_screen.set_background_bitmap_name("the_weeping_house_title-02c.png");
    //title_screen.set_menu_selector_color(AllegroFlare::Color(0x302e46).to_al());
    //title_screen.set_menu_selected_text_color(AllegroFlare::Color(0xffffff).to_al());
    //title_screen.set_menu_text_color(AllegroFlare::Color(0xffffff).to_al());
@@ -119,7 +119,7 @@ void Runner::initialize()
    title_screen.set_menu_font_size(-40);
    title_screen.set_menu_position_y(1080/32*19+10);
    title_screen.set_copyright_text("Copyright 2022 - Mark Oates\nCLUBCATT Games - www.clubcatt.com\n");
-   title_screen.set_copyright_text_color(AllegroFlare::Color(AllegroFlare::Color::LightSkyBlue, 0.4).to_al());
+   title_screen.set_copyright_text_color(AllegroFlare::Color(0x72aedd, 0.4).to_al());
    title_screen.set_copyright_font_size(-26);
    title_screen.set_menu_options({
       { "Start New Game", "start_new_game" },
