@@ -69,8 +69,11 @@ void Runner::initialize()
 
    // setup the achievements
    achievements.set_achievements({
-      { "view_the_title", { new AllegroFlare::Achievement("Free Seat at the Concert"), false, false } },
-      { "get_inside", { new AllegroFlare::Achievement("Know One's Own Mind"), false, false } },
+      { "free_seat", { new AllegroFlare::Achievement("Free Seat at the Concert"), false, false } },
+      { "start_the_game", { new AllegroFlare::Achievement("In Da House"), false, false } },
+      { "do_thing", { new AllegroFlare::Achievement("Save the Zoo", "Will unhide when achieved"), false, false } },
+      { "a_hidden_gem2", { new AllegroFlare::Achievement("Hidden Gem", "Will unhide when achieved"), false, true } },
+      { "an_unlocked_gem", { new AllegroFlare::Achievement("Unlocked Hidden Gem", "Will unhide when achieved"), true, true } },
    });
 
 
@@ -339,7 +342,7 @@ void Runner::game_event_func(AllegroFlare::GameEvent* ev)
       event_emitter->emit_play_music_track_event("heavy_outdoor_rain");
 
       // TODO: make this an event_emitter->emit_unlock_achievement_event();
-      event_emitter->emit_event(ALLEGRO_FLARE_EVENT_UNLOCK_ACHIEVEMENT, intptr_t(new std::string("view_the_title")));
+      event_emitter->emit_event(ALLEGRO_FLARE_EVENT_UNLOCK_ACHIEVEMENT, intptr_t(new std::string("free_seat")));
       //event_emitter->emit_unlock_achievement_event("view_the_title");
       //event_emitter->emit_post_unlocked_achievement_notification_event("Take the title");
    }
@@ -350,6 +353,7 @@ void Runner::game_event_func(AllegroFlare::GameEvent* ev)
    if (event_name == "activate_gameplay_screen")
    {
       framework->activate_screen("gameplay_screen");
+      event_emitter->emit_event(ALLEGRO_FLARE_EVENT_UNLOCK_ACHIEVEMENT, intptr_t(new std::string("start_the_game")));
    }
    if (event_name == "start_new_game")
    {
