@@ -29,6 +29,7 @@ Runner::Runner(std::string mode, AllegroFlare::Frameworks::Full* framework, Alle
    , pause_screen({})
    , new_game_intro_storyboard_screen(nullptr)
    , gameplay_screen({})
+   , achievements_screen({})
    , credits_screen(nullptr)
    , room_shader_color(room_shader_color)
    , room_shader(nullptr)
@@ -133,9 +134,19 @@ void Runner::initialize()
    title_screen.set_menu_options({
       { "Start New Game", "start_new_game" },
       { "Credits", "start_credits_screen" },
+      { "Achievements", "start_achievements_screen" },
       { "Quit", "exit_game" },
    });
    framework->register_screen("title_screen", &title_screen);
+
+
+
+   // setup the achievements screen
+   achievements_screen.set_font_bin(&font_bin);
+   achievements_screen.set_event_emitter(&event_emitter);
+   achievements_screen.initialize();
+   framework->register_screen("achievements_screen", &achievements_screen);
+
 
 
    // setup the pause screen
@@ -302,13 +313,17 @@ void Runner::game_event_func(AllegroFlare::GameEvent* ev)
       else
       {
          //event_emitter->emit_game_event(AllegroFlare::GameEvent("start_new_game"));
-         event_emitter->emit_game_event(AllegroFlare::GameEvent("start_opening_logos_storyboard_screen"));
+         event_emitter->emit_game_event(AllegroFlare::GameEvent("start_title_screen"));
       }
    }
    if (event_name == "start_opening_logos_storyboard_screen")
    {
       framework->activate_screen("opening_logos_storyboard_screen");
       //event_emitter->emit_post_unlocked_achievement_notification_event("See the logos");
+   }
+   if (event_name == "start_achievements_screen")
+   {
+      framework->activate_screen("achievements_screen");
    }
    if (event_name == "start_title_screen")
    {

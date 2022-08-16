@@ -163,5 +163,8 @@
   ],
   "TheWeepingHouse/ConfigurationsBuilder": [
     "TheWeepingHouse/Runner"
+  ],
+  "AllegroFlare/Screens/Achievements": [
+    "TheWeepingHouse/Runner"
   ]
 }
