@@ -107,6 +107,9 @@
   "std/filesystem/exists": [
     "TheWeepingHouse/FileExistenceChecker"
   ],
+  "ALLEGRO_FLARE_EVENT_UNLOCK_ACHIEVEMENT": [
+    "TheWeepingHouse/Runner"
+  ],
   "AllegroFlare/Screens/Base": [
     "TheWeepingHouse/Runner"
   ],

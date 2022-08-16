@@ -10,6 +10,7 @@
 #include <TheWeepingHouse/Configurations/Initial.hpp>
 #include <TheWeepingHouse/Configurations/Primary.hpp>
 #include <TheWeepingHouse/ConfigurationsBuilder.hpp>
+#include <AllegroFlare/EventNames.hpp>
 #include <stdexcept>
 #include <sstream>
 
@@ -62,7 +63,14 @@ void Runner::initialize()
    AllegroFlare::ModelBin &model_bin = framework->get_model_bin_ref();
    AllegroFlare::EventEmitter &event_emitter = framework->get_event_emitter_ref();
    AllegroFlare::AudioController &audio_controller = framework->get_audio_controller_ref();
+   AllegroFlare::Achievements &achievements = framework->get_achievements_ref();
 
+
+   // setup the achievements
+   achievements.set_achievements({
+      { "view_the_title", { new AllegroFlare::Achievement("Free Seat at the Concert"), false } },
+      { "get_inside", { new AllegroFlare::Achievement("Know One's Own Mind"), false } },
+   });
 
 
    // setup the shader
@@ -88,6 +96,7 @@ void Runner::initialize()
       });
    opening_logos_storyboard_screen->set_game_event_name_to_emit_after_completing("start_title_screen");
    framework->register_screen("opening_logos_storyboard_screen", opening_logos_storyboard_screen);
+
 
 
    // pre-load the audio controller
@@ -292,18 +301,23 @@ void Runner::game_event_func(AllegroFlare::GameEvent* ev)
       }
       else
       {
-         event_emitter->emit_game_event(AllegroFlare::GameEvent("start_new_game"));
+         //event_emitter->emit_game_event(AllegroFlare::GameEvent("start_new_game"));
+         event_emitter->emit_game_event(AllegroFlare::GameEvent("start_opening_logos_storyboard_screen"));
       }
    }
    if (event_name == "start_opening_logos_storyboard_screen")
    {
       framework->activate_screen("opening_logos_storyboard_screen");
+      //event_emitter->emit_post_unlocked_achievement_notification_event("See the logos");
    }
    if (event_name == "start_title_screen")
    {
       framework->activate_screen("title_screen");
       //event_emitter->emit_play_music_track_event("file_example_OOG_1MG.ogg");
       event_emitter->emit_play_music_track_event("heavy_outdoor_rain");
+      event_emitter->emit_event(ALLEGRO_FLARE_EVENT_UNLOCK_ACHIEVEMENT, intptr_t(new std::string("view_the_title")));
+      //event_emitter->emit_unlock_achievement_event("view_the_title");
+      //event_emitter->emit_post_unlocked_achievement_notification_event("Take the title");
    }
    if (event_name == "start_credits_screen")
    {
@@ -316,6 +330,7 @@ void Runner::game_event_func(AllegroFlare::GameEvent* ev)
    if (event_name == "start_new_game")
    {
       start_new_game();
+      //event_emitter->emit_post_unlocked_achievement_notification_event("Start the game");
    }
    if (event_name == "finished_credits_screen")
    {
