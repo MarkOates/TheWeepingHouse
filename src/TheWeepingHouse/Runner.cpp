@@ -69,8 +69,8 @@ void Runner::initialize()
 
    // setup the achievements
    achievements.set_achievements({
-      { "view_the_title", { new AllegroFlare::Achievement("Free Seat at the Concert"), false } },
-      { "get_inside", { new AllegroFlare::Achievement("Know One's Own Mind"), false } },
+      { "view_the_title", { new AllegroFlare::Achievement("Free Seat at the Concert"), false, false } },
+      { "get_inside", { new AllegroFlare::Achievement("Know One's Own Mind"), false, false } },
    });
 
 
@@ -144,6 +144,7 @@ void Runner::initialize()
    // setup the achievements screen
    achievements_screen.set_font_bin(&font_bin);
    achievements_screen.set_event_emitter(&event_emitter);
+   achievements_screen.set_achievements(&achievements);
    achievements_screen.initialize();
    framework->register_screen("achievements_screen", &achievements_screen);
 
