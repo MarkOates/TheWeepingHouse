@@ -315,6 +315,8 @@ void Runner::game_event_func(AllegroFlare::GameEvent* ev)
       framework->activate_screen("title_screen");
       //event_emitter->emit_play_music_track_event("file_example_OOG_1MG.ogg");
       event_emitter->emit_play_music_track_event("heavy_outdoor_rain");
+
+      // TODO: make this an event_emitter->emit_unlock_achievement_event();
       event_emitter->emit_event(ALLEGRO_FLARE_EVENT_UNLOCK_ACHIEVEMENT, intptr_t(new std::string("view_the_title")));
       //event_emitter->emit_unlock_achievement_event("view_the_title");
       //event_emitter->emit_post_unlocked_achievement_notification_event("Take the title");
