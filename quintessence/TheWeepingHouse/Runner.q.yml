@@ -151,8 +151,8 @@ functions:
       title_screen.set_copyright_font_size(-26);
       title_screen.set_menu_options({
          { "Start New Game", "start_new_game" },
-         { "Credits", "start_credits_screen" },
          { "Achievements", "start_achievements_screen" },
+         { "Credits", "start_credits_screen" },
          { "Quit", "exit_game" },
       });
       framework->register_screen("title_screen", &title_screen);
