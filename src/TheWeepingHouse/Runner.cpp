@@ -303,6 +303,7 @@ void Runner::game_event_func(AllegroFlare::GameEvent* ev)
          throw std::runtime_error(error_message.str());
       }
    std::string event_name = ev->get_type();
+   static std::string screen_before_achievements = "title_screen";
 
    if (event_name == "initialize")
    {
@@ -321,8 +322,13 @@ void Runner::game_event_func(AllegroFlare::GameEvent* ev)
       framework->activate_screen("opening_logos_storyboard_screen");
       //event_emitter->emit_post_unlocked_achievement_notification_event("See the logos");
    }
+   if (event_name == "achievements_screen_finished")
+   {
+      framework->activate_screen(screen_before_achievements);
+   }
    if (event_name == "start_achievements_screen")
    {
+      //screen_before_achievements = 
       framework->activate_screen("achievements_screen");
    }
    if (event_name == "start_title_screen")
