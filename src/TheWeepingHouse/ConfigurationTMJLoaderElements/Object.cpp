@@ -76,49 +76,49 @@ void Object::set_script_name_to_play(std::string script_name_to_play)
 }
 
 
-std::string Object::get_name()
+std::string Object::get_name() const
 {
    return name;
 }
 
 
-std::string Object::get_type()
+std::string Object::get_type() const
 {
    return type;
 }
 
 
-float Object::get_x()
+float Object::get_x() const
 {
    return x;
 }
 
 
-float Object::get_y()
+float Object::get_y() const
 {
    return y;
 }
 
 
-float Object::get_w()
+float Object::get_w() const
 {
    return w;
 }
 
 
-float Object::get_h()
+float Object::get_h() const
 {
    return h;
 }
 
 
-std::string Object::get_script()
+std::string Object::get_script() const
 {
    return script;
 }
 
 
-std::string Object::get_script_name_to_play()
+std::string Object::get_script_name_to_play() const
 {
    return script_name_to_play;
 }

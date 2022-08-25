@@ -41,7 +41,7 @@ void EntityFactory::set_hide_hitspots(bool hide_hitspots)
 }
 
 
-bool EntityFactory::get_hide_hitspots()
+bool EntityFactory::get_hide_hitspots() const
 {
    return hide_hitspots;
 }

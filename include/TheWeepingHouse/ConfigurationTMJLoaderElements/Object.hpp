@@ -32,14 +32,14 @@ namespace TheWeepingHouse
          void set_h(float h);
          void set_script(std::string script);
          void set_script_name_to_play(std::string script_name_to_play);
-         std::string get_name();
-         std::string get_type();
-         float get_x();
-         float get_y();
-         float get_w();
-         float get_h();
-         std::string get_script();
-         std::string get_script_name_to_play();
+         std::string get_name() const;
+         std::string get_type() const;
+         float get_x() const;
+         float get_y() const;
+         float get_w() const;
+         float get_h() const;
+         std::string get_script() const;
+         std::string get_script_name_to_play() const;
       };
    }
 }

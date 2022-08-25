@@ -23,8 +23,8 @@ namespace TheWeepingHouse
 
          void set_tint(ALLEGRO_COLOR tint);
          void set_tint_intensity(float tint_intensity);
-         ALLEGRO_COLOR get_tint();
-         float get_tint_intensity();
+         ALLEGRO_COLOR get_tint() const;
+         float get_tint_intensity() const;
          void initialize();
          virtual void activate() override;
          void set_values_to_activated_shader();

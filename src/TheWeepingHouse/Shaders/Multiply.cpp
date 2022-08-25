@@ -38,13 +38,13 @@ void Multiply::set_tint_intensity(float tint_intensity)
 }
 
 
-ALLEGRO_COLOR Multiply::get_tint()
+ALLEGRO_COLOR Multiply::get_tint() const
 {
    return tint;
 }
 
 
-float Multiply::get_tint_intensity()
+float Multiply::get_tint_intensity() const
 {
    return tint_intensity;
 }

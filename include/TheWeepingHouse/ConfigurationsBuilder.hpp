@@ -44,10 +44,10 @@ namespace TheWeepingHouse
       ConfigurationsBuilder(AllegroFlare::BitmapBin* bitmap_bin=nullptr, AllegroFlare::FontBin* font_bin=nullptr, AllegroFlare::EventEmitter* event_emitter=nullptr, AllegroFlare::Prototypes::FixedRoom2D::EntityCollectionHelper* entity_collection_helper__this_is_a_hack=nullptr);
       ~ConfigurationsBuilder();
 
-      std::map<std::string, AllegroFlare::Prototypes::FixedRoom2D::Entities::Base*>& get_entity_dictionary();
-      std::map<std::string, AllegroFlare::Prototypes::FixedRoom2D::Room*>& get_room_dictionary();
-      std::map<std::string, std::string>& get_entity_room_associations();
-      std::map<std::string, AllegroFlare::Prototypes::FixedRoom2D::Script>& get_script_dictionary();
+      std::map<std::string, AllegroFlare::Prototypes::FixedRoom2D::Entities::Base*>& get_entity_dictionary() const;
+      std::map<std::string, AllegroFlare::Prototypes::FixedRoom2D::Room*>& get_room_dictionary() const;
+      std::map<std::string, std::string>& get_entity_room_associations() const;
+      std::map<std::string, AllegroFlare::Prototypes::FixedRoom2D::Script>& get_script_dictionary() const;
       std::string get_room_name(float x=0, float y=0);
       void build_from_tmj_source(std::string filename="[unset-filename]");
       void you_build();

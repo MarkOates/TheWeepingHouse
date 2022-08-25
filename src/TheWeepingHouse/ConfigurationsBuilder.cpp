@@ -56,25 +56,25 @@ ConfigurationsBuilder::~ConfigurationsBuilder()
 }
 
 
-std::map<std::string, AllegroFlare::Prototypes::FixedRoom2D::Entities::Base*>& ConfigurationsBuilder::get_entity_dictionary()
+std::map<std::string, AllegroFlare::Prototypes::FixedRoom2D::Entities::Base*>& ConfigurationsBuilder::get_entity_dictionary() const
 {
    return entity_dictionary;
 }
 
 
-std::map<std::string, AllegroFlare::Prototypes::FixedRoom2D::Room*>& ConfigurationsBuilder::get_room_dictionary()
+std::map<std::string, AllegroFlare::Prototypes::FixedRoom2D::Room*>& ConfigurationsBuilder::get_room_dictionary() const
 {
    return room_dictionary;
 }
 
 
-std::map<std::string, std::string>& ConfigurationsBuilder::get_entity_room_associations()
+std::map<std::string, std::string>& ConfigurationsBuilder::get_entity_room_associations() const
 {
    return entity_room_associations;
 }
 
 
-std::map<std::string, AllegroFlare::Prototypes::FixedRoom2D::Script>& ConfigurationsBuilder::get_script_dictionary()
+std::map<std::string, AllegroFlare::Prototypes::FixedRoom2D::Script>& ConfigurationsBuilder::get_script_dictionary() const
 {
    return script_dictionary;
 }
