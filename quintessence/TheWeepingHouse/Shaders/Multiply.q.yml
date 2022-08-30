@@ -125,3 +125,13 @@ dependencies:
     headers: [ AllegroFlare/Shader.hpp ]
   - symbol: ALLEGRO_COLOR
     headers: [ allegro5/allegro.h ]
+
+  - symbol: AllegroFlare::BitmapBin
+    headers: [ AllegroFlare/BitmapBin.hpp ]
+  - symbol: AllegroFlare::EventEmitter
+    headers: [ AllegroFlare/EventEmitter.hpp ]
+  - symbol: AllegroFlare::FontBin
+    headers: [ AllegroFlare/FontBin.hpp ]
+  - symbol: AllegroFlare::Prototypes::FixedRoom2D::EntityCollectionHelper
+    headers: [ AllegroFlare/Prototypes/FixedRoom2D/EntityCollectionHelper.hpp ]
+

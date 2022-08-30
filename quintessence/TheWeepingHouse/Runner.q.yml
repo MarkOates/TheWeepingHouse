@@ -489,4 +489,14 @@ dependencies:
   - symbol: AllegroFlare::Screens::Achievements
     headers: [ AllegroFlare/Screens/Achievements.hpp ]
 
+  - symbol: AllegroFlare::EventEmitter
+    headers: [ AllegroFlare/EventEmitter.hpp ]
+  - symbol: AllegroFlare::Frameworks::Full
+    headers: [ AllegroFlare/Frameworks/Full.hpp ]
+  - symbol: AllegroFlare::GameEvent
+    headers: [ AllegroFlare/GameEvent.hpp ]
+  - symbol: AllegroFlare::Screens::Storyboard
+    headers: [ AllegroFlare/Screens/Storyboard.hpp ]
+  - symbol: AllegroFlare::Shader
+    headers: [ AllegroFlare/Shader.hpp ]
 

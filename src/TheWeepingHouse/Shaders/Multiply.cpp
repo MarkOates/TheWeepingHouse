@@ -53,11 +53,11 @@ float Multiply::get_tint_intensity() const
 void Multiply::initialize()
 {
    if (!((!initialized)))
-      {
-         std::stringstream error_message;
-         error_message << "Multiply" << "::" << "initialize" << ": error: " << "guard \"(!initialized)\" not met";
-         throw std::runtime_error(error_message.str());
-      }
+   {
+      std::stringstream error_message;
+      error_message << "Multiply" << "::" << "initialize" << ": error: " << "guard \"(!initialized)\" not met";
+      throw std::runtime_error(error_message.str());
+   }
    AllegroFlare::Shader::initialize();
    initialized = true;
    return;

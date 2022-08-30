@@ -44,11 +44,11 @@ ConfigurationTMJLoader::~ConfigurationTMJLoader()
 bool ConfigurationTMJLoader::load()
 {
    if (!((!loaded)))
-      {
-         std::stringstream error_message;
-         error_message << "ConfigurationTMJLoader" << "::" << "load" << ": error: " << "guard \"(!loaded)\" not met";
-         throw std::runtime_error(error_message.str());
-      }
+   {
+      std::stringstream error_message;
+      error_message << "ConfigurationTMJLoader" << "::" << "load" << ": error: " << "guard \"(!loaded)\" not met";
+      throw std::runtime_error(error_message.str());
+   }
    if (!TheWeepingHouse::FileExistenceChecker(filename).exists())
    {
       std::cout << "[TheWeepingHouse::ConfigurationTMJLoader::load]: ERROR: "
@@ -165,55 +165,55 @@ bool ConfigurationTMJLoader::load()
 int ConfigurationTMJLoader::get_num_columns()
 {
    if (!(loaded))
-      {
-         std::stringstream error_message;
-         error_message << "ConfigurationTMJLoader" << "::" << "get_num_columns" << ": error: " << "guard \"loaded\" not met";
-         throw std::runtime_error(error_message.str());
-      }
+   {
+      std::stringstream error_message;
+      error_message << "ConfigurationTMJLoader" << "::" << "get_num_columns" << ": error: " << "guard \"loaded\" not met";
+      throw std::runtime_error(error_message.str());
+   }
    return num_columns;
 }
 
 int ConfigurationTMJLoader::get_num_rows()
 {
    if (!(loaded))
-      {
-         std::stringstream error_message;
-         error_message << "ConfigurationTMJLoader" << "::" << "get_num_rows" << ": error: " << "guard \"loaded\" not met";
-         throw std::runtime_error(error_message.str());
-      }
+   {
+      std::stringstream error_message;
+      error_message << "ConfigurationTMJLoader" << "::" << "get_num_rows" << ": error: " << "guard \"loaded\" not met";
+      throw std::runtime_error(error_message.str());
+   }
    return num_rows;
 }
 
 int ConfigurationTMJLoader::get_tile_width()
 {
    if (!(loaded))
-      {
-         std::stringstream error_message;
-         error_message << "ConfigurationTMJLoader" << "::" << "get_tile_width" << ": error: " << "guard \"loaded\" not met";
-         throw std::runtime_error(error_message.str());
-      }
+   {
+      std::stringstream error_message;
+      error_message << "ConfigurationTMJLoader" << "::" << "get_tile_width" << ": error: " << "guard \"loaded\" not met";
+      throw std::runtime_error(error_message.str());
+   }
    return tile_width;
 }
 
 int ConfigurationTMJLoader::get_tile_height()
 {
    if (!(loaded))
-      {
-         std::stringstream error_message;
-         error_message << "ConfigurationTMJLoader" << "::" << "get_tile_height" << ": error: " << "guard \"loaded\" not met";
-         throw std::runtime_error(error_message.str());
-      }
+   {
+      std::stringstream error_message;
+      error_message << "ConfigurationTMJLoader" << "::" << "get_tile_height" << ": error: " << "guard \"loaded\" not met";
+      throw std::runtime_error(error_message.str());
+   }
    return tile_height;
 }
 
 std::vector<TheWeepingHouse::ConfigurationTMJLoaderElements::Object> ConfigurationTMJLoader::get_objects()
 {
    if (!(loaded))
-      {
-         std::stringstream error_message;
-         error_message << "ConfigurationTMJLoader" << "::" << "get_objects" << ": error: " << "guard \"loaded\" not met";
-         throw std::runtime_error(error_message.str());
-      }
+   {
+      std::stringstream error_message;
+      error_message << "ConfigurationTMJLoader" << "::" << "get_objects" << ": error: " << "guard \"loaded\" not met";
+      throw std::runtime_error(error_message.str());
+   }
    return objects;
 }
 } // namespace TheWeepingHouse

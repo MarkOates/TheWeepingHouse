@@ -26,29 +26,29 @@ Initial::~Initial()
 AllegroFlare::Prototypes::FixedRoom2D::Configuration Initial::build(AllegroFlare::BitmapBin* bitmap_bin, AllegroFlare::FontBin* font_bin, AllegroFlare::EventEmitter* event_emitter, AllegroFlare::Prototypes::FixedRoom2D::EntityCollectionHelper* entity_collection_helper__this_is_a_hack)
 {
    if (!(bitmap_bin))
-      {
-         std::stringstream error_message;
-         error_message << "Initial" << "::" << "build" << ": error: " << "guard \"bitmap_bin\" not met";
-         throw std::runtime_error(error_message.str());
-      }
+   {
+      std::stringstream error_message;
+      error_message << "Initial" << "::" << "build" << ": error: " << "guard \"bitmap_bin\" not met";
+      throw std::runtime_error(error_message.str());
+   }
    if (!(font_bin))
-      {
-         std::stringstream error_message;
-         error_message << "Initial" << "::" << "build" << ": error: " << "guard \"font_bin\" not met";
-         throw std::runtime_error(error_message.str());
-      }
+   {
+      std::stringstream error_message;
+      error_message << "Initial" << "::" << "build" << ": error: " << "guard \"font_bin\" not met";
+      throw std::runtime_error(error_message.str());
+   }
    if (!(event_emitter))
-      {
-         std::stringstream error_message;
-         error_message << "Initial" << "::" << "build" << ": error: " << "guard \"event_emitter\" not met";
-         throw std::runtime_error(error_message.str());
-      }
+   {
+      std::stringstream error_message;
+      error_message << "Initial" << "::" << "build" << ": error: " << "guard \"event_emitter\" not met";
+      throw std::runtime_error(error_message.str());
+   }
    if (!(entity_collection_helper__this_is_a_hack))
-      {
-         std::stringstream error_message;
-         error_message << "Initial" << "::" << "build" << ": error: " << "guard \"entity_collection_helper__this_is_a_hack\" not met";
-         throw std::runtime_error(error_message.str());
-      }
+   {
+      std::stringstream error_message;
+      error_message << "Initial" << "::" << "build" << ": error: " << "guard \"entity_collection_helper__this_is_a_hack\" not met";
+      throw std::runtime_error(error_message.str());
+   }
    const std::string FRONT_PATIO = "front_patio";
    const std::string FRONT_HALLWAY = "front_hallway";
    const std::string MAIN_HALLWAY = "main_hallway";

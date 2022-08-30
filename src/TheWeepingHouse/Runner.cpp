@@ -46,17 +46,17 @@ Runner::~Runner()
 void Runner::initialize()
 {
    if (!((!initialized)))
-      {
-         std::stringstream error_message;
-         error_message << "Runner" << "::" << "initialize" << ": error: " << "guard \"(!initialized)\" not met";
-         throw std::runtime_error(error_message.str());
-      }
+   {
+      std::stringstream error_message;
+      error_message << "Runner" << "::" << "initialize" << ": error: " << "guard \"(!initialized)\" not met";
+      throw std::runtime_error(error_message.str());
+   }
    if (!(framework))
-      {
-         std::stringstream error_message;
-         error_message << "Runner" << "::" << "initialize" << ": error: " << "guard \"framework\" not met";
-         throw std::runtime_error(error_message.str());
-      }
+   {
+      std::stringstream error_message;
+      error_message << "Runner" << "::" << "initialize" << ": error: " << "guard \"framework\" not met";
+      throw std::runtime_error(error_message.str());
+   }
    // setup the bin paths
    AllegroFlare::FontBin &font_bin = framework->get_font_bin_ref();
    AllegroFlare::BitmapBin &bitmap_bin = framework->get_bitmap_bin_ref();
@@ -295,17 +295,17 @@ AllegroFlare::Prototypes::FixedRoom2D::Configuration Runner::get_builder_configu
 void Runner::game_event_func(AllegroFlare::GameEvent* ev)
 {
    if (!(ev))
-      {
-         std::stringstream error_message;
-         error_message << "Runner" << "::" << "game_event_func" << ": error: " << "guard \"ev\" not met";
-         throw std::runtime_error(error_message.str());
-      }
+   {
+      std::stringstream error_message;
+      error_message << "Runner" << "::" << "game_event_func" << ": error: " << "guard \"ev\" not met";
+      throw std::runtime_error(error_message.str());
+   }
    if (!(event_emitter))
-      {
-         std::stringstream error_message;
-         error_message << "Runner" << "::" << "game_event_func" << ": error: " << "guard \"event_emitter\" not met";
-         throw std::runtime_error(error_message.str());
-      }
+   {
+      std::stringstream error_message;
+      error_message << "Runner" << "::" << "game_event_func" << ": error: " << "guard \"event_emitter\" not met";
+      throw std::runtime_error(error_message.str());
+   }
    std::string event_name = ev->get_type();
    static std::string screen_before_achievements = "title_screen";
 

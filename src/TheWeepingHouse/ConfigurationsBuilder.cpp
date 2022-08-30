@@ -352,11 +352,11 @@ void ConfigurationsBuilder::__you_build()
 AllegroFlare::Prototypes::FixedRoom2D::Configuration ConfigurationsBuilder::get_result_configuration()
 {
    if (!(built))
-      {
-         std::stringstream error_message;
-         error_message << "ConfigurationsBuilder" << "::" << "get_result_configuration" << ": error: " << "guard \"built\" not met";
-         throw std::runtime_error(error_message.str());
-      }
+   {
+      std::stringstream error_message;
+      error_message << "ConfigurationsBuilder" << "::" << "get_result_configuration" << ": error: " << "guard \"built\" not met";
+      throw std::runtime_error(error_message.str());
+   }
    return result_configuration;
 }
 
@@ -369,29 +369,29 @@ void ConfigurationsBuilder::set_start_room(std::string room_name)
 AllegroFlare::Prototypes::FixedRoom2D::Configuration ConfigurationsBuilder::build()
 {
    if (!(bitmap_bin))
-      {
-         std::stringstream error_message;
-         error_message << "ConfigurationsBuilder" << "::" << "build" << ": error: " << "guard \"bitmap_bin\" not met";
-         throw std::runtime_error(error_message.str());
-      }
+   {
+      std::stringstream error_message;
+      error_message << "ConfigurationsBuilder" << "::" << "build" << ": error: " << "guard \"bitmap_bin\" not met";
+      throw std::runtime_error(error_message.str());
+   }
    if (!(font_bin))
-      {
-         std::stringstream error_message;
-         error_message << "ConfigurationsBuilder" << "::" << "build" << ": error: " << "guard \"font_bin\" not met";
-         throw std::runtime_error(error_message.str());
-      }
+   {
+      std::stringstream error_message;
+      error_message << "ConfigurationsBuilder" << "::" << "build" << ": error: " << "guard \"font_bin\" not met";
+      throw std::runtime_error(error_message.str());
+   }
    if (!(event_emitter))
-      {
-         std::stringstream error_message;
-         error_message << "ConfigurationsBuilder" << "::" << "build" << ": error: " << "guard \"event_emitter\" not met";
-         throw std::runtime_error(error_message.str());
-      }
+   {
+      std::stringstream error_message;
+      error_message << "ConfigurationsBuilder" << "::" << "build" << ": error: " << "guard \"event_emitter\" not met";
+      throw std::runtime_error(error_message.str());
+   }
    if (!(entity_collection_helper__this_is_a_hack))
-      {
-         std::stringstream error_message;
-         error_message << "ConfigurationsBuilder" << "::" << "build" << ": error: " << "guard \"entity_collection_helper__this_is_a_hack\" not met";
-         throw std::runtime_error(error_message.str());
-      }
+   {
+      std::stringstream error_message;
+      error_message << "ConfigurationsBuilder" << "::" << "build" << ": error: " << "guard \"entity_collection_helper__this_is_a_hack\" not met";
+      throw std::runtime_error(error_message.str());
+   }
    if (built) return result_configuration;
    you_build();
    built = true;
@@ -401,17 +401,17 @@ AllegroFlare::Prototypes::FixedRoom2D::Configuration ConfigurationsBuilder::buil
 bool ConfigurationsBuilder::add_hitspot_to_room(std::string room_name, std::string hitspot_name, float x, float y, float w, float h, std::string label, std::string interact_script_name)
 {
    if (!((!entity_exists(hitspot_name))))
-      {
-         std::stringstream error_message;
-         error_message << "ConfigurationsBuilder" << "::" << "add_hitspot_to_room" << ": error: " << "guard \"(!entity_exists(hitspot_name))\" not met";
-         throw std::runtime_error(error_message.str());
-      }
+   {
+      std::stringstream error_message;
+      error_message << "ConfigurationsBuilder" << "::" << "add_hitspot_to_room" << ": error: " << "guard \"(!entity_exists(hitspot_name))\" not met";
+      throw std::runtime_error(error_message.str());
+   }
    if (!((!entity_room_association_exists(hitspot_name, room_name))))
-      {
-         std::stringstream error_message;
-         error_message << "ConfigurationsBuilder" << "::" << "add_hitspot_to_room" << ": error: " << "guard \"(!entity_room_association_exists(hitspot_name, room_name))\" not met";
-         throw std::runtime_error(error_message.str());
-      }
+   {
+      std::stringstream error_message;
+      error_message << "ConfigurationsBuilder" << "::" << "add_hitspot_to_room" << ": error: " << "guard \"(!entity_room_association_exists(hitspot_name, room_name))\" not met";
+      throw std::runtime_error(error_message.str());
+   }
    hitspot_name = room_name + "/" + hitspot_name;
    entity_dictionary[hitspot_name] =
       entity_factory.create_rectangle_hitspot(x, y, w, h, label, interact_script_name);
@@ -422,17 +422,17 @@ bool ConfigurationsBuilder::add_hitspot_to_room(std::string room_name, std::stri
 bool ConfigurationsBuilder::add_ellipse_hitspot_to_room(std::string room_name, std::string hitspot_name, float x, float y, float w, float h, std::string label, std::string interact_script_name)
 {
    if (!((!entity_exists(hitspot_name))))
-      {
-         std::stringstream error_message;
-         error_message << "ConfigurationsBuilder" << "::" << "add_ellipse_hitspot_to_room" << ": error: " << "guard \"(!entity_exists(hitspot_name))\" not met";
-         throw std::runtime_error(error_message.str());
-      }
+   {
+      std::stringstream error_message;
+      error_message << "ConfigurationsBuilder" << "::" << "add_ellipse_hitspot_to_room" << ": error: " << "guard \"(!entity_exists(hitspot_name))\" not met";
+      throw std::runtime_error(error_message.str());
+   }
    if (!((!entity_room_association_exists(hitspot_name, room_name))))
-      {
-         std::stringstream error_message;
-         error_message << "ConfigurationsBuilder" << "::" << "add_ellipse_hitspot_to_room" << ": error: " << "guard \"(!entity_room_association_exists(hitspot_name, room_name))\" not met";
-         throw std::runtime_error(error_message.str());
-      }
+   {
+      std::stringstream error_message;
+      error_message << "ConfigurationsBuilder" << "::" << "add_ellipse_hitspot_to_room" << ": error: " << "guard \"(!entity_room_association_exists(hitspot_name, room_name))\" not met";
+      throw std::runtime_error(error_message.str());
+   }
    hitspot_name = room_name + "/" + hitspot_name;
    entity_dictionary[hitspot_name] =
       entity_factory.create_ellipse_hitspot(x, y, w, h, label, interact_script_name);
@@ -443,11 +443,11 @@ bool ConfigurationsBuilder::add_ellipse_hitspot_to_room(std::string room_name, s
 bool ConfigurationsBuilder::assemble_room(std::string room_name, std::string observe_script_text)
 {
    if (!((!room_exists(room_name))))
-      {
-         std::stringstream error_message;
-         error_message << "ConfigurationsBuilder" << "::" << "assemble_room" << ": error: " << "guard \"(!room_exists(room_name))\" not met";
-         throw std::runtime_error(error_message.str());
-      }
+   {
+      std::stringstream error_message;
+      error_message << "ConfigurationsBuilder" << "::" << "assemble_room" << ": error: " << "guard \"(!room_exists(room_name))\" not met";
+      throw std::runtime_error(error_message.str());
+   }
    std::string generated_script_name = "observe_" + room_name;
    std::string generated_background_entity_name = room_name + "/background";
    std::string expected_background_bitmap_name = "rooms/room_" + room_name + ".png";
@@ -510,11 +510,11 @@ bool ConfigurationsBuilder::entity_room_association_exists(std::string entity_na
 void ConfigurationsBuilder::set_font_bin(AllegroFlare::FontBin* font_bin)
 {
    if (!((!built)))
-      {
-         std::stringstream error_message;
-         error_message << "ConfigurationsBuilder" << "::" << "set_font_bin" << ": error: " << "guard \"(!built)\" not met";
-         throw std::runtime_error(error_message.str());
-      }
+   {
+      std::stringstream error_message;
+      error_message << "ConfigurationsBuilder" << "::" << "set_font_bin" << ": error: " << "guard \"(!built)\" not met";
+      throw std::runtime_error(error_message.str());
+   }
    room_factory.set_font_bin(font_bin);
    this->font_bin = font_bin;
    return;
@@ -523,11 +523,11 @@ void ConfigurationsBuilder::set_font_bin(AllegroFlare::FontBin* font_bin)
 void ConfigurationsBuilder::set_bitmap_bin(AllegroFlare::BitmapBin* bitmap_bin)
 {
    if (!((!built)))
-      {
-         std::stringstream error_message;
-         error_message << "ConfigurationsBuilder" << "::" << "set_bitmap_bin" << ": error: " << "guard \"(!built)\" not met";
-         throw std::runtime_error(error_message.str());
-      }
+   {
+      std::stringstream error_message;
+      error_message << "ConfigurationsBuilder" << "::" << "set_bitmap_bin" << ": error: " << "guard \"(!built)\" not met";
+      throw std::runtime_error(error_message.str());
+   }
    room_factory.set_bitmap_bin(bitmap_bin);
    entity_factory.set_bitmap_bin(bitmap_bin);
    this->bitmap_bin = bitmap_bin;
@@ -537,11 +537,11 @@ void ConfigurationsBuilder::set_bitmap_bin(AllegroFlare::BitmapBin* bitmap_bin)
 void ConfigurationsBuilder::set_event_emitter(AllegroFlare::EventEmitter* event_emitter)
 {
    if (!((!built)))
-      {
-         std::stringstream error_message;
-         error_message << "ConfigurationsBuilder" << "::" << "set_event_emitter" << ": error: " << "guard \"(!built)\" not met";
-         throw std::runtime_error(error_message.str());
-      }
+   {
+      std::stringstream error_message;
+      error_message << "ConfigurationsBuilder" << "::" << "set_event_emitter" << ": error: " << "guard \"(!built)\" not met";
+      throw std::runtime_error(error_message.str());
+   }
    room_factory.set_event_emitter(event_emitter);
    this->event_emitter = event_emitter;
    return;
@@ -550,11 +550,11 @@ void ConfigurationsBuilder::set_event_emitter(AllegroFlare::EventEmitter* event_
 void ConfigurationsBuilder::set_entity_collection_helper__this_is_a_hack(AllegroFlare::Prototypes::FixedRoom2D::EntityCollectionHelper* entity_collection_helper__this_is_a_hack)
 {
    if (!((!built)))
-      {
-         std::stringstream error_message;
-         error_message << "ConfigurationsBuilder" << "::" << "set_entity_collection_helper__this_is_a_hack" << ": error: " << "guard \"(!built)\" not met";
-         throw std::runtime_error(error_message.str());
-      }
+   {
+      std::stringstream error_message;
+      error_message << "ConfigurationsBuilder" << "::" << "set_entity_collection_helper__this_is_a_hack" << ": error: " << "guard \"(!built)\" not met";
+      throw std::runtime_error(error_message.str());
+   }
    room_factory.set_entity_collection_helper(entity_collection_helper__this_is_a_hack);
    this->entity_collection_helper__this_is_a_hack = entity_collection_helper__this_is_a_hack;
    return;
