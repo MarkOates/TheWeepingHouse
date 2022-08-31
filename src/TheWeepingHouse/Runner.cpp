@@ -1,18 +1,16 @@
 
 
 #include <TheWeepingHouse/Runner.hpp>
+
+#include <AllegroFlare/EventNames.hpp>
 #include <AllegroFlare/Prototypes/FixedRoom2D/Configuration.hpp>
-#include <TheWeepingHouse/Configurations/Primary.hpp>
 #include <AllegroFlare/StoryboardFactory.hpp>
-#include <TheWeepingHouse/Shaders/Multiply.hpp>
-#include <stdexcept>
-#include <sstream>
 #include <TheWeepingHouse/Configurations/Initial.hpp>
 #include <TheWeepingHouse/Configurations/Primary.hpp>
 #include <TheWeepingHouse/ConfigurationsBuilder.hpp>
-#include <AllegroFlare/EventNames.hpp>
-#include <stdexcept>
+#include <TheWeepingHouse/Shaders/Multiply.hpp>
 #include <sstream>
+#include <stdexcept>
 
 
 namespace TheWeepingHouse
@@ -407,6 +405,8 @@ void Runner::run(std::string mode)
 
    return;
 }
+
+
 } // namespace TheWeepingHouse
 
 

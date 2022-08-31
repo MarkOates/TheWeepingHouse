@@ -1,10 +1,11 @@
 
 
 #include <TheWeepingHouse/Configurations/Initial.hpp>
-#include <TheWeepingHouse/EntityFactory.hpp>
+
 #include <AllegroFlare/Prototypes/FixedRoom2D/RoomFactory.hpp>
-#include <stdexcept>
+#include <TheWeepingHouse/EntityFactory.hpp>
 #include <sstream>
+#include <stdexcept>
 
 
 namespace TheWeepingHouse
@@ -180,6 +181,8 @@ bool Initial::assemble_room(std::string name, std::string background_bitmap_iden
 
    return true;
 }
+
+
 } // namespace Configurations
 } // namespace TheWeepingHouse
 

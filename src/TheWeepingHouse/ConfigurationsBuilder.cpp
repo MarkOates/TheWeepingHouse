@@ -1,28 +1,13 @@
 
 
 #include <TheWeepingHouse/ConfigurationsBuilder.hpp>
+
 #include <TheWeepingHouse/ConfigurationTMJLoader.hpp>
 #include <TheWeepingHouse/FileExistenceChecker.hpp>
-#include <stdexcept>
 #include <sstream>
 #include <stdexcept>
-#include <sstream>
-#include <stdexcept>
-#include <sstream>
-#include <stdexcept>
-#include <sstream>
-#include <stdexcept>
-#include <sstream>
-#include <stdexcept>
-#include <sstream>
-#include <stdexcept>
-#include <sstream>
-#include <stdexcept>
-#include <sstream>
-#include <stdexcept>
-#include <sstream>
-#include <vector>
 #include <string>
+#include <vector>
 
 
 namespace TheWeepingHouse
@@ -568,6 +553,8 @@ std::vector<std::string> ConfigurationsBuilder::split(std::string text, char del
    while (std::getline(ss, item, delimiter)) { *(result++) = item; }
    return elems;
 }
+
+
 } // namespace TheWeepingHouse
 
 

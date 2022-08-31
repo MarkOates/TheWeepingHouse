@@ -1,9 +1,10 @@
 
 
 #include <TheWeepingHouse/Shaders/Multiply.hpp>
-#include <stdexcept>
-#include <sstream>
+
 #include <iostream>
+#include <sstream>
+#include <stdexcept>
 
 
 namespace TheWeepingHouse
@@ -130,6 +131,8 @@ std::string Multiply::obtain_fragment_source()
    )DELIM";
    return source;
 }
+
+
 } // namespace Shaders
 } // namespace TheWeepingHouse
 

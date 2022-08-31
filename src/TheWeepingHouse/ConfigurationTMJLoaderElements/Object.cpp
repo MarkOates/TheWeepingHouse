@@ -4,6 +4,7 @@
 
 
 
+
 namespace TheWeepingHouse
 {
 namespace ConfigurationTMJLoaderElements
@@ -122,6 +123,8 @@ std::string Object::get_script_name_to_play() const
 {
    return script_name_to_play;
 }
+
+
 
 
 } // namespace ConfigurationTMJLoaderElements

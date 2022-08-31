@@ -1,23 +1,14 @@
 
 
 #include <TheWeepingHouse/ConfigurationTMJLoader.hpp>
-#include <iostream>
-#include <fstream>
-#include <lib/nlohmann/json.hpp>
-#include <TheWeepingHouse/FileExistenceChecker.hpp>
+
 #include <TheWeepingHouse/ConfigurationTMJLoaderElements/Object.hpp>
-#include <stdexcept>
+#include <TheWeepingHouse/FileExistenceChecker.hpp>
+#include <fstream>
+#include <iostream>
+#include <lib/nlohmann/json.hpp>
 #include <sstream>
 #include <stdexcept>
-#include <sstream>
-#include <stdexcept>
-#include <sstream>
-#include <stdexcept>
-#include <sstream>
-#include <stdexcept>
-#include <sstream>
-#include <stdexcept>
-#include <sstream>
 
 
 namespace TheWeepingHouse
@@ -216,6 +207,8 @@ std::vector<TheWeepingHouse::ConfigurationTMJLoaderElements::Object> Configurati
    }
    return objects;
 }
+
+
 } // namespace TheWeepingHouse
 
 

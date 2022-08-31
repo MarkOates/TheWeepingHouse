@@ -1,8 +1,9 @@
 
 
 #include <TheWeepingHouse/Shaders/FlatColor.hpp>
-#include <stdexcept>
+
 #include <sstream>
+#include <stdexcept>
 
 
 namespace TheWeepingHouse
@@ -96,6 +97,8 @@ std::string FlatColor::obtain_fragment_source()
    )DELIM";
    return source;
 }
+
+
 } // namespace Shaders
 } // namespace TheWeepingHouse
 

@@ -1,14 +1,9 @@
 
 
 #include <TheWeepingHouse/EntityFactory.hpp>
-#include <stdexcept>
+
 #include <sstream>
 #include <stdexcept>
-#include <sstream>
-#include <stdexcept>
-#include <sstream>
-#include <stdexcept>
-#include <sstream>
 
 
 namespace TheWeepingHouse
@@ -144,6 +139,8 @@ AllegroFlare::Prototypes::FixedRoom2D::Entities::Base* EntityFactory::create_ent
 
    return result;
 }
+
+
 } // namespace TheWeepingHouse
 
 

@@ -4,6 +4,7 @@
 
 
 
+
 namespace TheWeepingHouse
 {
 namespace Configurations
@@ -19,6 +20,8 @@ Primary::Primary()
 Primary::~Primary()
 {
 }
+
+
 
 
 } // namespace Configurations
