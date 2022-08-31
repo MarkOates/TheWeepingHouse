@@ -19,6 +19,9 @@ namespace TheWeepingHouse
       std::vector<TheWeepingHouse::ConfigurationTMJLoaderElements::Object> objects;
       bool loaded;
 
+   protected:
+
+
    public:
       ConfigurationTMJLoader(std::string filename="filename-not-set.tmj");
       ~ConfigurationTMJLoader();

@@ -12,6 +12,9 @@ namespace TheWeepingHouse
       {
       private:
 
+      protected:
+
+
       public:
          Primary();
          ~Primary();

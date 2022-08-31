@@ -20,6 +20,9 @@ namespace TheWeepingHouse
          std::string script;
          std::string script_name_to_play;
 
+      protected:
+
+
       public:
          Object(std::string name="[Object::unset-name]", std::string type="[Object::unset-type]", float x=0.0, float y=0.0, float w=0.0, float h=0.0, std::string script="", std::string script_name_to_play="");
          ~Object();

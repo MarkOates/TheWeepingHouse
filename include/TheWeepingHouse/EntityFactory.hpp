@@ -16,6 +16,9 @@ namespace TheWeepingHouse
       std::string hitspot_circle_bitmap_identifier;
       bool hide_hitspots;
 
+   protected:
+
+
    public:
       EntityFactory(AllegroFlare::BitmapBin* bitmap_bin=nullptr);
       ~EntityFactory();

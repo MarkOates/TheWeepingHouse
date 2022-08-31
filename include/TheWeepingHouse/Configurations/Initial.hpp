@@ -17,6 +17,9 @@ namespace TheWeepingHouse
       {
       private:
 
+      protected:
+
+
       public:
          Initial();
          ~Initial();

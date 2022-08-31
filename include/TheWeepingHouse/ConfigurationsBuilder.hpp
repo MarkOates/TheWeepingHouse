@@ -39,6 +39,10 @@ namespace TheWeepingHouse
       std::string& starting_in_room_identifier;
       AllegroFlare::Prototypes::FixedRoom2D::RoomFactory room_factory;
       TheWeepingHouse::EntityFactory entity_factory;
+      std::vector<std::string> split(std::string text="", char delimiter=' ');
+
+   protected:
+
 
    public:
       ConfigurationsBuilder(AllegroFlare::BitmapBin* bitmap_bin=nullptr, AllegroFlare::FontBin* font_bin=nullptr, AllegroFlare::EventEmitter* event_emitter=nullptr, AllegroFlare::Prototypes::FixedRoom2D::EntityCollectionHelper* entity_collection_helper__this_is_a_hack=nullptr);
@@ -67,7 +71,6 @@ namespace TheWeepingHouse
       void set_bitmap_bin(AllegroFlare::BitmapBin* bitmap_bin=nullptr);
       void set_event_emitter(AllegroFlare::EventEmitter* event_emitter=nullptr);
       void set_entity_collection_helper__this_is_a_hack(AllegroFlare::Prototypes::FixedRoom2D::EntityCollectionHelper* entity_collection_helper__this_is_a_hack=nullptr);
-      std::vector<std::string> split(std::string text="", char delimiter=' ');
    };
 }
 

@@ -16,6 +16,12 @@ namespace TheWeepingHouse
          bool initialized;
          ALLEGRO_COLOR tint;
          float tint_intensity;
+         void set_values_to_activated_shader();
+         static std::string obtain_vertex_source();
+         static std::string obtain_fragment_source();
+
+      protected:
+
 
       public:
          Multiply();
@@ -27,9 +33,6 @@ namespace TheWeepingHouse
          float get_tint_intensity() const;
          void initialize();
          virtual void activate() override;
-         void set_values_to_activated_shader();
-         static std::string obtain_vertex_source();
-         static std::string obtain_fragment_source();
       };
    }
 }

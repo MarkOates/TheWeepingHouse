@@ -11,6 +11,9 @@ namespace TheWeepingHouse
    private:
       std::string filename;
 
+   protected:
+
+
    public:
       FileExistenceChecker(std::string filename="");
       ~FileExistenceChecker();
