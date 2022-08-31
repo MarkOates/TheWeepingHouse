@@ -187,43 +187,10 @@ table td
     </table>
      <table>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Inventory*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Inventory.hpp&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::InventoryIndex*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/InventoryIndex.hpp&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::map&lt;std::string, AllegroFlare::Prototypes::FixedRoom2D::Entities::Base*&gt;*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Prototypes/FixedRoom2D/Entities/Base.hpp&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::map&lt;std::string, AllegroFlare::Prototypes::FixedRoom2D::Room*&gt;*&quot;, &quot;headers&quot;=&gt;[&quot;map&quot;, &quot;string&quot;, &quot;AllegroFlare/Prototypes/FixedRoom2D/Room.hpp&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::map&lt;std::string, AllegroFlare::Prototypes::FixedRoom2D::Script&gt;*&quot;, &quot;headers&quot;=&gt;[&quot;map&quot;, &quot;AllegroFlare/Prototypes/FixedRoom2D/Script.hpp&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::map&lt;std::string, std::string&gt;*&quot;, &quot;headers&quot;=&gt;[&quot;map&quot;, &quot;string&quot;]}</td>
-</tr>
-<tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;TheWeepingHouse::EntityFactory&quot;, &quot;headers&quot;=&gt;[&quot;TheWeepingHouse/EntityFactory.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Prototypes::FixedRoom2D::RoomFactory&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Prototypes/FixedRoom2D/RoomFactory.hpp&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::BitmapBin*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/BitmapBin.hpp&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::EventEmitter*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/EventEmitter.hpp&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FontBin*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FontBin.hpp&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Shader*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Shader.hpp&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Prototypes::FixedRoom2D::EntityCollectionHelper*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Prototypes/FixedRoom2D/EntityCollectionHelper.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Prototypes::FixedRoom2D::Configuration&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Prototypes/FixedRoom2D/Configuration.hpp&quot;]}</td>
@@ -747,26 +714,6 @@ table td
   "TheWeepingHouse/ConfigurationTMJLoaderElements/Object": [
     "TheWeepingHouse/ConfigurationTMJLoader"
   ],
-  "AllegroFlare/Inventory": [
-    "TheWeepingHouse/Configurations/Initial",
-    "TheWeepingHouse/ConfigurationsBuilder"
-  ],
-  "AllegroFlare/InventoryIndex": [
-    "TheWeepingHouse/Configurations/Initial",
-    "TheWeepingHouse/ConfigurationsBuilder"
-  ],
-  "std/map<std/string, AllegroFlare/Prototypes/FixedRoom2D/Entities/Base>": [
-    "TheWeepingHouse/Configurations/Initial"
-  ],
-  "std/map<std/string, AllegroFlare/Prototypes/FixedRoom2D/Room>": [
-    "TheWeepingHouse/Configurations/Initial"
-  ],
-  "std/map<std/string, AllegroFlare/Prototypes/FixedRoom2D/Script>": [
-    "TheWeepingHouse/Configurations/Initial"
-  ],
-  "std/map<std/string, std/string>": [
-    "TheWeepingHouse/Configurations/Initial"
-  ],
   "TheWeepingHouse/EntityFactory": [
     "TheWeepingHouse/Configurations/Initial",
     "TheWeepingHouse/ConfigurationsBuilder"
@@ -775,8 +722,12 @@ table td
     "TheWeepingHouse/Configurations/Initial",
     "TheWeepingHouse/ConfigurationsBuilder"
   ],
-  "AllegroFlare/BitmapBin": [
+  "AllegroFlare/Prototypes/FixedRoom2D/Configuration": [
     "TheWeepingHouse/Configurations/Initial",
+    "TheWeepingHouse/ConfigurationsBuilder",
+    "TheWeepingHouse/Runner"
+  ],
+  "AllegroFlare/BitmapBin": [
     "TheWeepingHouse/Configurations/Initial",
     "TheWeepingHouse/ConfigurationsBuilder",
     "TheWeepingHouse/EntityFactory",
@@ -784,35 +735,27 @@ table td
   ],
   "AllegroFlare/EventEmitter": [
     "TheWeepingHouse/Configurations/Initial",
-    "TheWeepingHouse/Configurations/Initial",
     "TheWeepingHouse/ConfigurationsBuilder",
     "TheWeepingHouse/Runner",
     "TheWeepingHouse/Shaders/Multiply"
   ],
   "AllegroFlare/FontBin": [
     "TheWeepingHouse/Configurations/Initial",
-    "TheWeepingHouse/Configurations/Initial",
     "TheWeepingHouse/ConfigurationsBuilder",
-    "TheWeepingHouse/Shaders/Multiply"
-  ],
-  "AllegroFlare/Shader": [
-    "TheWeepingHouse/Configurations/Initial",
-    "TheWeepingHouse/Runner",
-    "TheWeepingHouse/Shaders/FlatColor",
     "TheWeepingHouse/Shaders/Multiply"
   ],
   "AllegroFlare/Prototypes/FixedRoom2D/EntityCollectionHelper": [
     "TheWeepingHouse/Configurations/Initial",
-    "TheWeepingHouse/Configurations/Initial",
     "TheWeepingHouse/ConfigurationsBuilder",
     "TheWeepingHouse/Shaders/Multiply"
   ],
-  "AllegroFlare/Prototypes/FixedRoom2D/Configuration": [
-    "TheWeepingHouse/Configurations/Initial",
-    "TheWeepingHouse/ConfigurationsBuilder",
-    "TheWeepingHouse/Runner"
-  ],
   "TheWeepingHouse/ConfigurationTMJLoader": [
+    "TheWeepingHouse/ConfigurationsBuilder"
+  ],
+  "AllegroFlare/Inventory": [
+    "TheWeepingHouse/ConfigurationsBuilder"
+  ],
+  "AllegroFlare/InventoryIndex": [
     "TheWeepingHouse/ConfigurationsBuilder"
   ],
   "AllegroFlare/Prototypes/FixedRoom2D/Entities/Base": [
@@ -885,6 +828,11 @@ table td
   ],
   "AllegroFlare/GameEvent": [
     "TheWeepingHouse/Runner"
+  ],
+  "AllegroFlare/Shader": [
+    "TheWeepingHouse/Runner",
+    "TheWeepingHouse/Shaders/FlatColor",
+    "TheWeepingHouse/Shaders/Multiply"
   ]
 }
 </pre>
