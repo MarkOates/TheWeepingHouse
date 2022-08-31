@@ -77,7 +77,6 @@
     "TheWeepingHouse/Configurations/Initial",
     "TheWeepingHouse/ConfigurationsBuilder",
     "TheWeepingHouse/Runner",
-    "TheWeepingHouse/Runner",
     "TheWeepingHouse/Shaders/FlatColor",
     "TheWeepingHouse/Shaders/Multiply"
   ],
@@ -140,10 +139,6 @@
   "AllegroFlare/Screens/Base": [
     "TheWeepingHouse/Runner"
   ],
-  "AllegroFlare/Frameworks/Full": [
-    "TheWeepingHouse/Runner",
-    "TheWeepingHouse/Runner"
-  ],
   "AllegroFlare/Screens/TitleScreen": [
     "TheWeepingHouse/Runner"
   ],
@@ -163,14 +158,7 @@
   "AllegroFlare/Prototypes/FixedRoom2D/Screen": [
     "TheWeepingHouse/Runner"
   ],
-  "AllegroFlare/Prototypes/FixedRoom2D/FixedRoom2D": [
-    "TheWeepingHouse/Runner"
-  ],
   "AllegroFlare/Color": [
-    "TheWeepingHouse/Runner",
-    "TheWeepingHouse/Runner"
-  ],
-  "AllegroFlare/GameEvent": [
     "TheWeepingHouse/Runner",
     "TheWeepingHouse/Runner"
   ],
@@ -195,6 +183,12 @@
     "TheWeepingHouse/Runner"
   ],
   "AllegroFlare/Screens/Achievements": [
+    "TheWeepingHouse/Runner"
+  ],
+  "AllegroFlare/Frameworks/Full": [
+    "TheWeepingHouse/Runner"
+  ],
+  "AllegroFlare/GameEvent": [
     "TheWeepingHouse/Runner"
   ]
 }
