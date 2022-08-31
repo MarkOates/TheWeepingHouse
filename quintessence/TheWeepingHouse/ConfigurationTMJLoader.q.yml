@@ -215,7 +215,5 @@ dependencies:
     headers: [ TheWeepingHouse/FileExistenceChecker.hpp ]
   - symbol: TheWeepingHouse::ConfigurationTMJLoaderElements::Object
     headers: [ TheWeepingHouse/ConfigurationTMJLoaderElements/Object.hpp ]
-  - symbol: std::vector<TheWeepingHouse::ConfigurationTMJLoaderElements::Object>
-    headers: [ vector, TheWeepingHouse/ConfigurationTMJLoaderElements/Object.hpp ]
 
 

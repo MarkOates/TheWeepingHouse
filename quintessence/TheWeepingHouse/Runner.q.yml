@@ -478,7 +478,6 @@ dependencies:
     headers: [ TheWeepingHouse/ConfigurationsBuilder.hpp ]
   - symbol: AllegroFlare::Screens::Achievements
     headers: [ AllegroFlare/Screens/Achievements.hpp ]
-
   - symbol: AllegroFlare::EventEmitter
     headers: [ AllegroFlare/EventEmitter.hpp ]
   - symbol: AllegroFlare::Frameworks::Full

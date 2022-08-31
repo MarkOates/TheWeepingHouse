@@ -125,7 +125,6 @@ dependencies:
     headers: [ AllegroFlare/Shader.hpp ]
   - symbol: ALLEGRO_COLOR
     headers: [ allegro5/allegro.h ]
-
   - symbol: AllegroFlare::BitmapBin
     headers: [ AllegroFlare/BitmapBin.hpp ]
   - symbol: AllegroFlare::EventEmitter

@@ -183,13 +183,9 @@ functions:
 dependencies:
 
 
-  - symbol: AllegroFlare::BitmapBin*
-    headers: [ AllegroFlare/BitmapBin.hpp ]
-  - symbol: AllegroFlare::Prototypes::FixedRoom2D::Entities::Base*
-    headers: [ AllegroFlare/Prototypes/FixedRoom2D/Entities/Base.hpp ]
-
   - symbol: AllegroFlare::BitmapBin
     headers: [ AllegroFlare/BitmapBin.hpp ]
   - symbol: AllegroFlare::Prototypes::FixedRoom2D::Entities::Base
     headers: [ AllegroFlare/Prototypes/FixedRoom2D/Entities/Base.hpp ]
+
 
