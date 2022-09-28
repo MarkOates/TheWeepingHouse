@@ -119,14 +119,8 @@ void Runner::initialize()
    title_screen.set_font_bin(&font_bin);
    title_screen.set_bitmap_bin(&bitmap_bin);
    title_screen.set_title_text("");
-   //title_screen.set_title_bitmap_name("the_weeping_house_title-02b.png");
    title_screen.set_background_bitmap_name("the_weeping_house_title-02c.png");
-   //title_screen.set_menu_selector_color(AllegroFlare::Color(0x302e46).to_al());
-   //title_screen.set_menu_selected_text_color(AllegroFlare::Color(0xffffff).to_al());
-   //title_screen.set_menu_text_color(AllegroFlare::Color(0xffffff).to_al());
-   //title_screen.set_font_name("Benne-Regular.ttf");
    title_screen.set_event_emitter(&event_emitter);
-   //title_screen.set_font_name("Inter-Medium.ttf");
    title_screen.set_menu_font_size(-40);
    title_screen.set_menu_position_y(1080/32*19+10);
    title_screen.set_copyright_text("Copyright 2022 - Mark Oates\nCLUBCATT Games - www.clubcatt.com\n");
@@ -186,7 +180,6 @@ void Runner::initialize()
    gameplay_screen.set_bitmap_bin(&bitmap_bin);
    gameplay_screen.set_font_bin(&font_bin);
    gameplay_screen.set_event_emitter(&event_emitter);
-   gameplay_screen.set_audio_controller(&audio_controller);
    gameplay_screen.get_fixed_room_2d_ref().set_room_shader(room_shader);
    gameplay_screen.initialize();
    framework->register_screen("gameplay_screen", &gameplay_screen);
