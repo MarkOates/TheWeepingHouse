@@ -335,9 +335,6 @@ void Runner::game_event_func(AllegroFlare::GameEvent* ev)
    {
       // TODO: set character name
       event_emitter->emit_game_event(AllegroFlare::GameEvent("start_new_game"));
-      std::cout << "AAAAAAAAAAAAAA" << std::endl;
-      //framework->activate_screen("new_game_intro_storyboard_screen"); // <-- probably will want to add this
-      //framework->get_event_emitter_ref().emit_play_music_track_event("heavy_outdoor_rain");
    }
    if (event_name == "start_opening_logos_storyboard_screen")
    {
