@@ -27,6 +27,7 @@ Runner::Runner(std::string mode, AllegroFlare::Frameworks::Full* framework, Alle
    , pause_screen({})
    , new_game_intro_storyboard_screen(nullptr)
    , gameplay_screen({})
+   , character_name_input_screen({})
    , achievements_screen({})
    , credits_screen(nullptr)
    , room_shader_color(room_shader_color)
@@ -127,7 +128,7 @@ void Runner::initialize()
    title_screen.set_copyright_text_color(AllegroFlare::Color(0x72aedd, 0.4).to_al());
    title_screen.set_copyright_font_size(-26);
    title_screen.set_menu_options({
-      { "Start New Game", "start_new_game" },
+      { "Start New Game", "start_name_your_character_screen" },
       { "Achievements", "start_achievements_screen" },
       { "Credits", "start_credits_screen" },
       { "Quit", "exit_game" },
@@ -154,6 +155,17 @@ void Runner::initialize()
       { "Quit", "start_title_screen" },
    });
    framework->register_screen("pause_screen", &pause_screen);
+
+
+
+   // setup the name your character screen
+   AllegroFlare::Screens::CharacterNameInput *character_name_input_screen =
+      new AllegroFlare::Screens::CharacterNameInput;
+   character_name_input_screen->set_font_bin(&font_bin);
+   character_name_input_screen->set_event_emitter(&event_emitter);
+   character_name_input_screen->set_event_to_emit_on_pressing_ok_key("set_character_name_and_start_intro_storyboard");
+   character_name_input_screen->initialize();
+   framework->register_screen("character_name_input_screen", character_name_input_screen);
 
 
 
@@ -218,9 +230,8 @@ void Runner::start_new_game()
 
    gameplay_screen.load_game_configuration_and_start(configuration);
 
-   framework->activate_screen("new_game_intro_storyboard_screen"); // <-- probably will want to add this
+   framework->activate_screen("new_game_intro_storyboard_screen");
    framework->get_event_emitter_ref().emit_play_music_track_event("heavy_outdoor_rain");
-   //framework->activate_screen("gameplay_screen");
    return;
 }
 
@@ -300,6 +311,8 @@ void Runner::game_event_func(AllegroFlare::GameEvent* ev)
    std::string event_name = ev->get_type();
    static std::string screen_before_achievements = "title_screen";
 
+   std::cout << "EVENT_EMITTED: \"" << event_name << "\"" << std::endl;
+
    if (event_name == "initialize")
    {
       if (mode == "production")
@@ -311,6 +324,20 @@ void Runner::game_event_func(AllegroFlare::GameEvent* ev)
          //event_emitter->emit_game_event(AllegroFlare::GameEvent("start_new_game"));
          event_emitter->emit_game_event(AllegroFlare::GameEvent("start_title_screen"));
       }
+   }
+   if (event_name == "start_name_your_character_screen")
+   {
+      framework->activate_screen("character_name_input_screen");
+      //std::cout << "AAAAAAAAAA" << std::endl;
+      //event_emitter->emit_post_unlocked_achievement_notification_event("See the logos");
+   }
+   if (event_name == "set_character_name_and_start_intro_storyboard")
+   {
+      // TODO: set character name
+      event_emitter->emit_game_event(AllegroFlare::GameEvent("start_new_game"));
+      std::cout << "AAAAAAAAAAAAAA" << std::endl;
+      //framework->activate_screen("new_game_intro_storyboard_screen"); // <-- probably will want to add this
+      //framework->get_event_emitter_ref().emit_play_music_track_event("heavy_outdoor_rain");
    }
    if (event_name == "start_opening_logos_storyboard_screen")
    {
@@ -348,6 +375,7 @@ void Runner::game_event_func(AllegroFlare::GameEvent* ev)
    }
    if (event_name == "start_new_game")
    {
+      std::cout << "BBBBBBBBBBBB" << std::endl;
       start_new_game();
       //event_emitter->emit_post_unlocked_achievement_notification_event("Start the game");
    }

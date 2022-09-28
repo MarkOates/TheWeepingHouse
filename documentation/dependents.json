@@ -131,5 +131,8 @@
     "TheWeepingHouse/Runner",
     "TheWeepingHouse/Shaders/FlatColor",
     "TheWeepingHouse/Shaders/Multiply"
+  ],
+  "AllegroFlare/Screens/CharacterNameInput": [
+    "TheWeepingHouse/Runner"
   ]
 }
