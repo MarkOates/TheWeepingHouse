@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include <AllegroFlare/Shader.hpp>
+#include <AllegroFlare/Shaders/Base.hpp>
 #include <allegro5/allegro.h>
 #include <string>
 
@@ -10,7 +10,7 @@ namespace TheWeepingHouse
 {
    namespace Shaders
    {
-      class FlatColor : private AllegroFlare::Shader
+      class FlatColor : private AllegroFlare::Shaders::Base
       {
       private:
          bool initialized;

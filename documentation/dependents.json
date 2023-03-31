@@ -127,7 +127,7 @@
   "AllegroFlare/GameEvent": [
     "TheWeepingHouse/Runner"
   ],
-  "AllegroFlare/Shader": [
+  "AllegroFlare/Shaders/Base": [
     "TheWeepingHouse/Runner",
     "TheWeepingHouse/Shaders/FlatColor",
     "TheWeepingHouse/Shaders/Multiply"

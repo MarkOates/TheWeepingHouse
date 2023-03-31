@@ -14,7 +14,7 @@ namespace Shaders
 
 
 FlatColor::FlatColor()
-   : AllegroFlare::Shader(obtain_vertex_source(), obtain_fragment_source())
+   : AllegroFlare::Shaders::Base("TheWeepingHouse/Shaders/FlatColor", obtain_vertex_source(), obtain_fragment_source())
    , initialized(false)
 {
 }
@@ -34,7 +34,7 @@ void FlatColor::initialize()
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
       throw std::runtime_error("FlatColor::initialize: error: guard \"(!initialized)\" not met");
    }
-   AllegroFlare::Shader::initialize();
+   AllegroFlare::Shaders::Base::initialize(); // NOTE: Not sure if this is the preferred way to do this
    initialized = true;
    return;
 }
@@ -46,14 +46,16 @@ void FlatColor::activate()
       throw std::runtime_error("[TheWeepingHouse::Shaders::FlatColor] Attempting to activate() "
                                "shader before it has been initialized");
    }
-   AllegroFlare::Shader::activate();
+   AllegroFlare::Shaders::Base::activate(); // NOTE: Not sure if this is the preferred way to do this
    return;
 }
 
 void FlatColor::set_flat_color(ALLEGRO_COLOR flat_color)
 {
-   Shader::set_vec3("tint", flat_color.r, flat_color.g, flat_color.b);
-   Shader::set_float("tint_intensity", 1.0);
+   //Shader::set_vec3("tint", flat_color.r, flat_color.g, flat_color.b);
+   //Shader::set_float("tint_intensity", 1.0);
+   set_vec3("tint", flat_color.r, flat_color.g, flat_color.b);
+   set_float("tint_intensity", 1.0);
    return;
 }
 

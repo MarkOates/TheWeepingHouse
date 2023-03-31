@@ -1,9 +1,9 @@
 parent_classes:
 
 
-  - class: AllegroFlare::Shader
+  - class: AllegroFlare::Shaders::Base
     scope: private
-    init_with: "obtain_vertex_source(), obtain_fragment_source()"
+    init_with: '"TheWeepingHouse/Shaders/FlatColor", obtain_vertex_source(), obtain_fragment_source()'
 
 
 properties:
@@ -21,7 +21,7 @@ functions:
     type: void
     guards: [ (!initialized) ]
     body: |
-      AllegroFlare::Shader::initialize();
+      AllegroFlare::Shaders::Base::initialize(); // NOTE: Not sure if this is the preferred way to do this
       initialized = true;
       return;
 
@@ -34,7 +34,7 @@ functions:
          throw std::runtime_error("[TheWeepingHouse::Shaders::FlatColor] Attempting to activate() "
                                   "shader before it has been initialized");
       }
-      AllegroFlare::Shader::activate();
+      AllegroFlare::Shaders::Base::activate(); // NOTE: Not sure if this is the preferred way to do this
       return;
 
 
@@ -44,8 +44,10 @@ functions:
         type: ALLEGRO_COLOR
         default_argument: "{}"
     body: |
-      Shader::set_vec3("tint", flat_color.r, flat_color.g, flat_color.b);
-      Shader::set_float("tint_intensity", 1.0);
+      //Shader::set_vec3("tint", flat_color.r, flat_color.g, flat_color.b);
+      //Shader::set_float("tint_intensity", 1.0);
+      set_vec3("tint", flat_color.r, flat_color.g, flat_color.b);
+      set_float("tint_intensity", 1.0);
       return;
 
 
@@ -101,8 +103,9 @@ functions:
 dependencies:
 
 
-  - symbol: AllegroFlare::Shader
-    headers: [ AllegroFlare/Shader.hpp ]
+  - symbol: AllegroFlare::Shaders::Base
+    headers: [ AllegroFlare/Shaders/Base.hpp ]
   - symbol: ALLEGRO_COLOR
     headers: [ allegro5/allegro.h ]
+
 
