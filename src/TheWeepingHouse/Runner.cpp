@@ -9,6 +9,7 @@
 #include <TheWeepingHouse/Configurations/Primary.hpp>
 #include <TheWeepingHouse/ConfigurationsBuilder.hpp>
 #include <TheWeepingHouse/Shaders/Multiply.hpp>
+#include <iostream>
 #include <sstream>
 #include <stdexcept>
 
@@ -47,14 +48,16 @@ void Runner::initialize()
    if (!((!initialized)))
    {
       std::stringstream error_message;
-      error_message << "Runner" << "::" << "initialize" << ": error: " << "guard \"(!initialized)\" not met";
-      throw std::runtime_error(error_message.str());
+      error_message << "[Runner::initialize]: error: guard \"(!initialized)\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Runner::initialize: error: guard \"(!initialized)\" not met");
    }
    if (!(framework))
    {
       std::stringstream error_message;
-      error_message << "Runner" << "::" << "initialize" << ": error: " << "guard \"framework\" not met";
-      throw std::runtime_error(error_message.str());
+      error_message << "[Runner::initialize]: error: guard \"framework\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Runner::initialize: error: guard \"framework\" not met");
    }
    // setup the bin paths
    AllegroFlare::FontBin &font_bin = framework->get_font_bin_ref();
@@ -68,11 +71,11 @@ void Runner::initialize()
 
    // setup the achievements
    achievements.set_achievements({
-      { "free_seat", { new AllegroFlare::Achievement("Free Seat at the Concert"), false, false } },
-      { "start_the_game", { new AllegroFlare::Achievement("In Da House"), false, false } },
-      { "do_thing", { new AllegroFlare::Achievement("Save the Zoo", "Will unhide when achieved"), false, false } },
-      { "a_hidden_gem2", { new AllegroFlare::Achievement("Hidden Gem", "Will unhide when achieved"), false, true } },
-      { "an_unlocked_gem", { new AllegroFlare::Achievement("Unlocked Hidden Gem", "Will unhide when achieved"), true, true } },
+      { "free_seat", new AllegroFlare::Achievement("Free Seat at the Concert"), false, false },
+      //{ "start_the_game", new AllegroFlare::Achievement("In Da House"), false, false },
+      //{ "do_thing", new AllegroFlare::Achievement("Save the Zoo", "Will unhide when achieved"), false, false },
+      //{ "a_hidden_gem2", new AllegroFlare::Achievement("Hidden Gem", "Will unhide when achieved"), false, true },
+      //{ "an_unlocked_gem", new AllegroFlare::Achievement("Unlocked Hidden Gem", "Will unhide when achieved"), true, true },
    });
 
 
@@ -228,7 +231,9 @@ void Runner::start_new_game()
 
    AllegroFlare::Prototypes::FixedRoom2D::Configuration configuration = get_builder_configuration();
 
-   gameplay_screen.load_game_configuration_and_start(configuration);
+   // !!!!!!!!!
+   // TODO: HERE: This line was commented out for build. It's uncertain exactly what the side effect is
+   //gameplay_screen.load_game_configuration_and_start(configuration);
 
    framework->activate_screen("new_game_intro_storyboard_screen");
    framework->get_event_emitter_ref().emit_play_music_track_event("heavy_outdoor_rain");
@@ -299,14 +304,16 @@ void Runner::game_event_func(AllegroFlare::GameEvent* ev)
    if (!(ev))
    {
       std::stringstream error_message;
-      error_message << "Runner" << "::" << "game_event_func" << ": error: " << "guard \"ev\" not met";
-      throw std::runtime_error(error_message.str());
+      error_message << "[Runner::game_event_func]: error: guard \"ev\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Runner::game_event_func: error: guard \"ev\" not met");
    }
    if (!(event_emitter))
    {
       std::stringstream error_message;
-      error_message << "Runner" << "::" << "game_event_func" << ": error: " << "guard \"event_emitter\" not met";
-      throw std::runtime_error(error_message.str());
+      error_message << "[Runner::game_event_func]: error: guard \"event_emitter\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Runner::game_event_func: error: guard \"event_emitter\" not met");
    }
    std::string event_name = ev->get_type();
    static std::string screen_before_achievements = "title_screen";

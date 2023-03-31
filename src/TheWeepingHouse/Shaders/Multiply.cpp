@@ -14,7 +14,7 @@ namespace Shaders
 
 
 Multiply::Multiply()
-   : AllegroFlare::Shader(obtain_vertex_source(), obtain_fragment_source())
+   : AllegroFlare::Shaders::Base("TheWeepingHouse/Shaders/Multiply", obtain_vertex_source(), obtain_fragment_source())
    , initialized(false)
    , tint(ALLEGRO_COLOR{1, 1, 1, 1})
    , tint_intensity(1.0f)
@@ -56,10 +56,11 @@ void Multiply::initialize()
    if (!((!initialized)))
    {
       std::stringstream error_message;
-      error_message << "Multiply" << "::" << "initialize" << ": error: " << "guard \"(!initialized)\" not met";
-      throw std::runtime_error(error_message.str());
+      error_message << "[Multiply::initialize]: error: guard \"(!initialized)\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Multiply::initialize: error: guard \"(!initialized)\" not met");
    }
-   AllegroFlare::Shader::initialize();
+   AllegroFlare::Shaders::Base::initialize(); // NOTE: I'm not sure if this is the correct way to do this
    initialized = true;
    return;
 }
@@ -71,7 +72,7 @@ void Multiply::activate()
       throw std::runtime_error("[TheWeepingHouse::Shaders::Multiply] Attempting to activate() "
                                "shader before it has been initialized");
    }
-   AllegroFlare::Shader::activate();
+   AllegroFlare::Shaders::Base::activate();
    set_values_to_activated_shader();
    return;
 }

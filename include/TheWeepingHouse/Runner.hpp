@@ -13,7 +13,7 @@
 #include <AllegroFlare/Screens/PauseScreen.hpp>
 #include <AllegroFlare/Screens/Storyboard.hpp>
 #include <AllegroFlare/Screens/TitleScreen.hpp>
-#include <AllegroFlare/Shader.hpp>
+#include <AllegroFlare/Shaders/Base.hpp>
 #include <string>
 
 
@@ -34,7 +34,7 @@ namespace TheWeepingHouse
       AllegroFlare::Screens::Achievements achievements_screen;
       AllegroFlare::Screens::Storyboard* credits_screen;
       AllegroFlare::Color room_shader_color;
-      AllegroFlare::Shader* room_shader;
+      AllegroFlare::Shaders::Base* room_shader;
       bool initialized;
 
    protected:

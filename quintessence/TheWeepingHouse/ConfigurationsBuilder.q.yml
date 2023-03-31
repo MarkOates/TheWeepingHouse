@@ -69,7 +69,7 @@ properties:
 
   - name: starting_in_room_identifier
     type: std::string&
-    init_with: result_configuration.get_starting_in_room_identifier_ref()
+    init_with: result_configuration.get_starting_room_identifier_ref()
 
   - name: room_factory
     type: AllegroFlare::Prototypes::FixedRoom2D::RoomFactory

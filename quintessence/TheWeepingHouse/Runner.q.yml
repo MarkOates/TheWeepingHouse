@@ -62,7 +62,7 @@ properties:
     constructor_arg: true
 
   - name: room_shader
-    type: AllegroFlare::Shader*
+    type: AllegroFlare::Shaders::Base*
     init_with: nullptr
 
   - name: initialized
@@ -88,11 +88,11 @@ functions:
 
       // setup the achievements
       achievements.set_achievements({
-         { "free_seat", { new AllegroFlare::Achievement("Free Seat at the Concert"), false, false } },
-         { "start_the_game", { new AllegroFlare::Achievement("In Da House"), false, false } },
-         { "do_thing", { new AllegroFlare::Achievement("Save the Zoo", "Will unhide when achieved"), false, false } },
-         { "a_hidden_gem2", { new AllegroFlare::Achievement("Hidden Gem", "Will unhide when achieved"), false, true } },
-         { "an_unlocked_gem", { new AllegroFlare::Achievement("Unlocked Hidden Gem", "Will unhide when achieved"), true, true } },
+         { "free_seat", new AllegroFlare::Achievement("Free Seat at the Concert"), false, false },
+         //{ "start_the_game", new AllegroFlare::Achievement("In Da House"), false, false },
+         //{ "do_thing", new AllegroFlare::Achievement("Save the Zoo", "Will unhide when achieved"), false, false },
+         //{ "a_hidden_gem2", new AllegroFlare::Achievement("Hidden Gem", "Will unhide when achieved"), false, true },
+         //{ "an_unlocked_gem", new AllegroFlare::Achievement("Unlocked Hidden Gem", "Will unhide when achieved"), true, true },
       });
 
 
@@ -253,7 +253,9 @@ functions:
 
       AllegroFlare::Prototypes::FixedRoom2D::Configuration configuration = get_builder_configuration();
 
-      gameplay_screen.load_game_configuration_and_start(configuration);
+      // !!!!!!!!!
+      // TODO: HERE: This line was commented out for build. It's uncertain exactly what the side effect is
+      //gameplay_screen.load_game_configuration_and_start(configuration);
 
       framework->activate_screen("new_game_intro_storyboard_screen");
       framework->get_event_emitter_ref().emit_play_music_track_event("heavy_outdoor_rain");
@@ -507,8 +509,8 @@ dependencies:
     headers: [ AllegroFlare/GameEvent.hpp ]
   - symbol: AllegroFlare::Screens::Storyboard
     headers: [ AllegroFlare/Screens/Storyboard.hpp ]
-  - symbol: AllegroFlare::Shader
-    headers: [ AllegroFlare/Shader.hpp ]
+  - symbol: AllegroFlare::Shaders::Base
+    headers: [ AllegroFlare/Shaders/Base.hpp ]
   - symbol: AllegroFlare::Screens::CharacterNameInput
     headers: [ AllegroFlare/Screens/CharacterNameInput.hpp ]
 

@@ -4,6 +4,7 @@
 
 #include <AllegroFlare/Prototypes/FixedRoom2D/RoomFactory.hpp>
 #include <TheWeepingHouse/EntityFactory.hpp>
+#include <iostream>
 #include <sstream>
 #include <stdexcept>
 
@@ -29,26 +30,30 @@ AllegroFlare::Prototypes::FixedRoom2D::Configuration Initial::build(AllegroFlare
    if (!(bitmap_bin))
    {
       std::stringstream error_message;
-      error_message << "Initial" << "::" << "build" << ": error: " << "guard \"bitmap_bin\" not met";
-      throw std::runtime_error(error_message.str());
+      error_message << "[Initial::build]: error: guard \"bitmap_bin\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Initial::build: error: guard \"bitmap_bin\" not met");
    }
    if (!(font_bin))
    {
       std::stringstream error_message;
-      error_message << "Initial" << "::" << "build" << ": error: " << "guard \"font_bin\" not met";
-      throw std::runtime_error(error_message.str());
+      error_message << "[Initial::build]: error: guard \"font_bin\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Initial::build: error: guard \"font_bin\" not met");
    }
    if (!(event_emitter))
    {
       std::stringstream error_message;
-      error_message << "Initial" << "::" << "build" << ": error: " << "guard \"event_emitter\" not met";
-      throw std::runtime_error(error_message.str());
+      error_message << "[Initial::build]: error: guard \"event_emitter\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Initial::build: error: guard \"event_emitter\" not met");
    }
    if (!(entity_collection_helper__this_is_a_hack))
    {
       std::stringstream error_message;
-      error_message << "Initial" << "::" << "build" << ": error: " << "guard \"entity_collection_helper__this_is_a_hack\" not met";
-      throw std::runtime_error(error_message.str());
+      error_message << "[Initial::build]: error: guard \"entity_collection_helper__this_is_a_hack\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Initial::build: error: guard \"entity_collection_helper__this_is_a_hack\" not met");
    }
    const std::string FRONT_PATIO = "front_patio";
    const std::string FRONT_HALLWAY = "front_hallway";
@@ -71,7 +76,7 @@ AllegroFlare::Prototypes::FixedRoom2D::Configuration Initial::build(AllegroFlare
       result.get_entity_room_associations_ref();
    std::map<std::string, AllegroFlare::Prototypes::FixedRoom2D::Script> &script_dictionary =
       result.get_script_dictionary_ref();
-   std::string &starting_in_room_identifier = result.get_starting_in_room_identifier_ref();
+   std::string &starting_in_room_identifier = result.get_starting_room_identifier_ref();
 
 
    TheWeepingHouse::EntityFactory entity_factory(bitmap_bin);

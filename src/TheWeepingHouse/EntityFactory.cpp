@@ -2,6 +2,7 @@
 
 #include <TheWeepingHouse/EntityFactory.hpp>
 
+#include <iostream>
 #include <sstream>
 #include <stdexcept>
 
@@ -47,8 +48,9 @@ AllegroFlare::Prototypes::FixedRoom2D::Entities::Base* EntityFactory::create_bac
    if (!(bitmap_bin))
    {
       std::stringstream error_message;
-      error_message << "EntityFactory" << "::" << "create_background" << ": error: " << "guard \"bitmap_bin\" not met";
-      throw std::runtime_error(error_message.str());
+      error_message << "[EntityFactory::create_background]: error: guard \"bitmap_bin\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("EntityFactory::create_background: error: guard \"bitmap_bin\" not met");
    }
    AllegroFlare::Prototypes::FixedRoom2D::Entities::Base* result = create_entity(
       bitmap_image_identifier, 0, 0, 1.0, "background", on_interact_script_name, 0, 0
@@ -62,8 +64,9 @@ AllegroFlare::Prototypes::FixedRoom2D::Entities::Base* EntityFactory::create_rec
    if (!(bitmap_bin))
    {
       std::stringstream error_message;
-      error_message << "EntityFactory" << "::" << "create_rectangle_hitspot" << ": error: " << "guard \"bitmap_bin\" not met";
-      throw std::runtime_error(error_message.str());
+      error_message << "[EntityFactory::create_rectangle_hitspot]: error: guard \"bitmap_bin\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("EntityFactory::create_rectangle_hitspot: error: guard \"bitmap_bin\" not met");
    }
    ALLEGRO_BITMAP* bitmap = bitmap_bin->auto_get(hitspot_rectangle_bitmap_identifier);
 
@@ -89,8 +92,9 @@ AllegroFlare::Prototypes::FixedRoom2D::Entities::Base* EntityFactory::create_ell
    if (!(bitmap_bin))
    {
       std::stringstream error_message;
-      error_message << "EntityFactory" << "::" << "create_ellipse_hitspot" << ": error: " << "guard \"bitmap_bin\" not met";
-      throw std::runtime_error(error_message.str());
+      error_message << "[EntityFactory::create_ellipse_hitspot]: error: guard \"bitmap_bin\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("EntityFactory::create_ellipse_hitspot: error: guard \"bitmap_bin\" not met");
    }
    ALLEGRO_BITMAP* bitmap = bitmap_bin->auto_get(hitspot_circle_bitmap_identifier);
    int bitmap_natural_width = al_get_bitmap_width(bitmap);
@@ -118,8 +122,9 @@ AllegroFlare::Prototypes::FixedRoom2D::Entities::Base* EntityFactory::create_ent
    if (!(bitmap_bin))
    {
       std::stringstream error_message;
-      error_message << "EntityFactory" << "::" << "create_entity" << ": error: " << "guard \"bitmap_bin\" not met";
-      throw std::runtime_error(error_message.str());
+      error_message << "[EntityFactory::create_entity]: error: guard \"bitmap_bin\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("EntityFactory::create_entity: error: guard \"bitmap_bin\" not met");
    }
    ALLEGRO_BITMAP* bitmap = bitmap_bin->auto_get(bitmap_image_identifier);
 
