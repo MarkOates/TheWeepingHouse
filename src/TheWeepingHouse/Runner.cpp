@@ -231,9 +231,8 @@ void Runner::start_new_game()
 
    AllegroFlare::Prototypes::FixedRoom2D::Configuration configuration = get_builder_configuration();
 
-   // !!!!!!!!!
-   // TODO: HERE: This line was commented out for build. It's uncertain exactly what the side effect is
-   //gameplay_screen.load_game_configuration_and_start(configuration);
+   gameplay_screen.load_configuration(configuration);
+   gameplay_screen.enter_start_room();
 
    framework->activate_screen("new_game_intro_storyboard_screen");
    framework->get_event_emitter_ref().emit_play_music_track_event("heavy_outdoor_rain");
