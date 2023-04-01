@@ -150,6 +150,7 @@ void Runner::initialize()
    achievements_screen.set_event_emitter(&event_emitter);
    achievements_screen.set_achievements(&achievements);
    achievements_screen.initialize();
+   achievements_screen.set_game_event_name_to_emit_on_exit("exit_achievements_screen");
    framework->register_screen("achievements_screen", &achievements_screen);
 
 
@@ -353,8 +354,13 @@ void Runner::game_event_func(AllegroFlare::GameEvent* ev)
    }
    if (event_name == "start_achievements_screen")
    {
-      //screen_before_achievements = 
+      // TODO: Push/pop previous screen
       framework->activate_screen("achievements_screen");
+   }
+   if (event_name == "exit_achievements_screen")
+   {
+      // TODO: Push/pop previous screen
+      framework->activate_screen("title_screen");
    }
    if (event_name == "start_title_screen")
    {
