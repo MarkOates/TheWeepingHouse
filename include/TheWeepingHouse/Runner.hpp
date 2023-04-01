@@ -9,7 +9,6 @@
 #include <AllegroFlare/Prototypes/FixedRoom2D/Screen.hpp>
 #include <AllegroFlare/Screens/Achievements.hpp>
 #include <AllegroFlare/Screens/Base.hpp>
-#include <AllegroFlare/Screens/CharacterNameInput.hpp>
 #include <AllegroFlare/Screens/PauseScreen.hpp>
 #include <AllegroFlare/Screens/Storyboard.hpp>
 #include <AllegroFlare/Screens/TitleScreen.hpp>
@@ -30,7 +29,6 @@ namespace TheWeepingHouse
       AllegroFlare::Screens::PauseScreen pause_screen;
       AllegroFlare::Screens::Storyboard* new_game_intro_storyboard_screen;
       AllegroFlare::Prototypes::FixedRoom2D::Screen gameplay_screen;
-      AllegroFlare::Screens::CharacterNameInput character_name_input_screen;
       AllegroFlare::Screens::Achievements achievements_screen;
       AllegroFlare::Screens::Storyboard* credits_screen;
       AllegroFlare::Color room_shader_color;

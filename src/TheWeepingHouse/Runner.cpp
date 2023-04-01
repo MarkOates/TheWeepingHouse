@@ -28,7 +28,6 @@ Runner::Runner(std::string mode, AllegroFlare::Frameworks::Full* framework, Alle
    , pause_screen({})
    , new_game_intro_storyboard_screen(nullptr)
    , gameplay_screen({})
-   , character_name_input_screen({})
    , achievements_screen({})
    , credits_screen(nullptr)
    , room_shader_color(room_shader_color)
@@ -73,6 +72,11 @@ void Runner::initialize()
    achievements.set_achievements({
       { "stay_through_the_credits",
          new AllegroFlare::Achievement("Stay Through the Credits", "Watch the credits"),
+         false,
+         false,
+      },
+      { "is_anybody_home",
+         new AllegroFlare::Achievement("Is Anybody Home?", "Ring the doorbell"),
          false,
          false,
       },
@@ -125,13 +129,14 @@ void Runner::initialize()
    title_screen.set_title_text("");
    title_screen.set_background_bitmap_name("the_weeping_house_title-02c.png");
    title_screen.set_event_emitter(&event_emitter);
+   title_screen.set_menu_font_name("Benne-Regular.ttf");
    title_screen.set_menu_font_size(-40);
    title_screen.set_menu_position_y(1080/32*19+10);
    title_screen.set_copyright_text("Copyright 2022 - Mark Oates\nCLUBCATT Games - www.clubcatt.com\n");
    title_screen.set_copyright_text_color(AllegroFlare::Color(0x72aedd, 0.4).to_al());
    title_screen.set_copyright_font_size(-26);
    title_screen.set_menu_options({
-      { "Start New Game", "start_name_your_character_screen" },
+      { "Start New Game", "start_new_game" },
       { "Achievements", "start_achievements_screen" },
       { "Credits", "start_credits_screen" },
       { "Quit", "exit_game" },
@@ -161,18 +166,8 @@ void Runner::initialize()
 
 
 
-   // setup the name your character screen
-   AllegroFlare::Screens::CharacterNameInput *character_name_input_screen =
-      new AllegroFlare::Screens::CharacterNameInput;
-   character_name_input_screen->set_font_bin(&font_bin);
-   character_name_input_screen->set_event_emitter(&event_emitter);
-   character_name_input_screen->set_event_to_emit_on_pressing_ok_key("set_character_name_and_start_intro_storyboard");
-   character_name_input_screen->initialize();
-   framework->register_screen("character_name_input_screen", character_name_input_screen);
-
-
-
    // setup the intro storyboards screen
+   // NOTE: This should be converted to a builder pattern rather than factory function
    new_game_intro_storyboard_screen = storyboard_factory.create_advancing_text_storyboard_screen({
          "I found myself here.",
          "Stranded in a rainstorm.",
@@ -184,7 +179,15 @@ void Runner::initialize()
          "I need to find shelter.",
          "It looks like there's a light just up in the woods.",
          "Maybe I can find luck there.",
-      });
+      },
+      -40, // button_font_size
+      400, // page_top_padding
+      400, // page_left_padding
+      400, // page_right_padding
+      AllegroFlare::Elements::StoryboardPages::AdvancingText::DEFAULT_FONT_SIZE, // page_text_font_size
+      AllegroFlare::Elements::StoryboardPages::AdvancingText::DEFAULT_FONT_NAME, // page_text_font_name
+      1.5 // page_text_line_height_multiplier
+   );
    new_game_intro_storyboard_screen->set_event_emitter(&event_emitter);
    new_game_intro_storyboard_screen->set_game_event_name_to_emit_after_completing("activate_gameplay_screen");
    framework->register_screen("new_game_intro_storyboard_screen", new_game_intro_storyboard_screen);
@@ -331,12 +334,6 @@ void Runner::game_event_func(AllegroFlare::GameEvent* ev)
          event_emitter->emit_game_event(AllegroFlare::GameEvent("start_title_screen"));
       }
    }
-   if (event_name == "start_name_your_character_screen")
-   {
-      framework->activate_screen("character_name_input_screen");
-      //std::cout << "AAAAAAAAAA" << std::endl;
-      //event_emitter->emit_post_unlocked_achievement_notification_event("See the logos");
-   }
    if (event_name == "set_character_name_and_start_intro_storyboard")
    {
       // TODO: set character name
@@ -378,7 +375,7 @@ void Runner::game_event_func(AllegroFlare::GameEvent* ev)
    }
    if (event_name == "start_new_game")
    {
-      std::cout << "BBBBBBBBBBBB" << std::endl;
+      //std::cout << "BBBBBBBBBBBB" << std::endl;
       start_new_game();
       //event_emitter->emit_post_unlocked_achievement_notification_event("Start the game");
    }
