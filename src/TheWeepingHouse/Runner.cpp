@@ -71,11 +71,11 @@ void Runner::initialize()
 
    // setup the achievements
    achievements.set_achievements({
-      { "free_seat", new AllegroFlare::Achievement("Free Seat at the Concert"), false, false },
-      //{ "start_the_game", new AllegroFlare::Achievement("In Da House"), false, false },
-      //{ "do_thing", new AllegroFlare::Achievement("Save the Zoo", "Will unhide when achieved"), false, false },
-      //{ "a_hidden_gem2", new AllegroFlare::Achievement("Hidden Gem", "Will unhide when achieved"), false, true },
-      //{ "an_unlocked_gem", new AllegroFlare::Achievement("Unlocked Hidden Gem", "Will unhide when achieved"), true, true },
+      { "stay_through_the_credits",
+         new AllegroFlare::Achievement("Stay Through the Credits", "Watch the credits"),
+         false,
+         false,
+      },
    });
 
 
@@ -374,7 +374,7 @@ void Runner::game_event_func(AllegroFlare::GameEvent* ev)
    if (event_name == "activate_gameplay_screen")
    {
       framework->activate_screen("gameplay_screen");
-      event_emitter->emit_event(ALLEGRO_FLARE_EVENT_UNLOCK_ACHIEVEMENT, intptr_t(new std::string("start_the_game")));
+      //event_emitter->emit_event(ALLEGRO_FLARE_EVENT_UNLOCK_ACHIEVEMENT, intptr_t(new std::string("start_the_game")));
    }
    if (event_name == "start_new_game")
    {
@@ -384,6 +384,10 @@ void Runner::game_event_func(AllegroFlare::GameEvent* ev)
    }
    if (event_name == "finished_credits_screen")
    {
+      event_emitter->emit_event(
+         ALLEGRO_FLARE_EVENT_UNLOCK_ACHIEVEMENT,
+         intptr_t(new std::string("stay_through_the_credits"))
+      );
       framework->activate_screen("title_screen");
    }
    if (event_name == "exit_game")
