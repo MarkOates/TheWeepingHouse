@@ -199,7 +199,8 @@ functions:
          400, // page_left_padding
          400, // page_right_padding
          AllegroFlare::Elements::StoryboardPages::AdvancingText::DEFAULT_FONT_SIZE, // page_text_font_size
-         AllegroFlare::Elements::StoryboardPages::AdvancingText::DEFAULT_FONT_NAME, // page_text_font_name
+         "Benne-Regular.ttf",
+            //AllegroFlare::Elements::StoryboardPages::AdvancingText::DEFAULT_FONT_NAME, // page_text_font_name
          1.5 // page_text_line_height_multiplier
       );
       new_game_intro_storyboard_screen->set_event_emitter(&event_emitter);
