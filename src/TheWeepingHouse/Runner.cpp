@@ -200,6 +200,8 @@ void Runner::initialize()
    gameplay_screen.set_font_bin(&font_bin);
    gameplay_screen.set_event_emitter(&event_emitter);
    gameplay_screen.get_fixed_room_2d_ref().set_room_shader(room_shader);
+   gameplay_screen.get_fixed_room_2d_ref().set_standard_dialog_box_font_name("Benne-Regular.ttf");
+   gameplay_screen.get_fixed_room_2d_ref().set_standard_dialog_box_font_size(-36);
    gameplay_screen.initialize();
    framework->register_screen("gameplay_screen", &gameplay_screen);
 
