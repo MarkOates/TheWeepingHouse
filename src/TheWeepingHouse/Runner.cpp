@@ -23,6 +23,7 @@ Runner::Runner(std::string mode, AllegroFlare::Frameworks::Full* framework, Alle
    , mode(mode)
    , framework(framework)
    , event_emitter(event_emitter)
+   , release_info({})
    , opening_logos_storyboard_screen(nullptr)
    , title_screen({})
    , pause_screen({})
@@ -124,7 +125,10 @@ void Runner::initialize()
    });
 
 
+
    // setup the title screen
+   std::string copyright_text = std::string("Copyright 2023 - Mark Oates - version ") + release_info.get_version()
+                                + "\nCLUBCATT Games - www.clubcatt.com\n";
    title_screen.set_font_bin(&font_bin);
    title_screen.set_bitmap_bin(&bitmap_bin);
    title_screen.set_title_text("");
@@ -133,9 +137,9 @@ void Runner::initialize()
    title_screen.set_menu_font_name("Benne-Regular.ttf");
    title_screen.set_menu_font_size(-40);
    title_screen.set_menu_position_y(1080/32*19+10);
-   title_screen.set_copyright_text("Copyright 2022 - Mark Oates\nCLUBCATT Games - www.clubcatt.com\n");
+   title_screen.set_copyright_text(copyright_text);
    title_screen.set_copyright_text_color(AllegroFlare::Color(0x72aedd, 0.4).to_al());
-   title_screen.set_copyright_font_size(-26);
+   title_screen.set_copyright_font_size(-22);
    title_screen.set_menu_options({
       { "Start New Game", "start_new_game" },
       { "Achievements", "start_achievements_screen" },
@@ -159,6 +163,7 @@ void Runner::initialize()
    // setup the pause screen
    pause_screen.set_font_bin(&font_bin);
    pause_screen.set_bitmap_bin(&bitmap_bin);
+   pause_screen.set_footer_text(release_info.get_version());
    pause_screen.set_event_emitter(&event_emitter);
    pause_screen.set_menu_options({
       { "Resume", "unpause_game" },

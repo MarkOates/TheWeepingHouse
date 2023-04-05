@@ -134,5 +134,8 @@
   ],
   "AllegroFlare/Screens/CharacterNameInput": [
     "TheWeepingHouse/Runner"
+  ],
+  "ReleaseInfo": [
+    "TheWeepingHouse/Runner"
   ]
 }

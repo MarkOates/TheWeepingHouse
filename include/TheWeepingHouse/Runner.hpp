@@ -13,6 +13,7 @@
 #include <AllegroFlare/Screens/Storyboard.hpp>
 #include <AllegroFlare/Screens/TitleScreen.hpp>
 #include <AllegroFlare/Shaders/Base.hpp>
+#include <ReleaseInfo.hpp>
 #include <string>
 
 
@@ -24,6 +25,7 @@ namespace TheWeepingHouse
       std::string mode;
       AllegroFlare::Frameworks::Full* framework;
       AllegroFlare::EventEmitter* event_emitter;
+      ReleaseInfo release_info;
       AllegroFlare::Screens::Storyboard* opening_logos_storyboard_screen;
       AllegroFlare::Screens::TitleScreen title_screen;
       AllegroFlare::Screens::PauseScreen pause_screen;
