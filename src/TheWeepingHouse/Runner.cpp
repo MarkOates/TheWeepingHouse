@@ -127,7 +127,7 @@ void Runner::initialize()
 
 
    // setup the title screen
-   std::string copyright_text = std::string("Copyright 2023 - Mark Oates - version ") + release_info.get_version()
+   std::string copyright_text = std::string("Copyright 2023 - Mark Oates - Version ") + release_info.get_version()
                                 + "\nCLUBCATT Games - www.clubcatt.com\n";
    title_screen.set_font_bin(&font_bin);
    title_screen.set_bitmap_bin(&bitmap_bin);
