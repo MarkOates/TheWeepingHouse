@@ -15,10 +15,11 @@ namespace TheWeepingHouse
 {
 
 
-ConfigurationsBuilder::ConfigurationsBuilder(AllegroFlare::BitmapBin* bitmap_bin, AllegroFlare::FontBin* font_bin, AllegroFlare::EventEmitter* event_emitter, AllegroFlare::Prototypes::FixedRoom2D::EntityCollectionHelper* entity_collection_helper__this_is_a_hack)
+ConfigurationsBuilder::ConfigurationsBuilder(AllegroFlare::BitmapBin* bitmap_bin, AllegroFlare::FontBin* font_bin, AllegroFlare::EventEmitter* event_emitter, std::string assets_folder, AllegroFlare::Prototypes::FixedRoom2D::EntityCollectionHelper* entity_collection_helper__this_is_a_hack)
    : bitmap_bin(bitmap_bin)
    , font_bin(font_bin)
    , event_emitter(event_emitter)
+   , assets_folder(assets_folder)
    , entity_collection_helper__this_is_a_hack(entity_collection_helper__this_is_a_hack)
    , result_configuration()
    , built(false)
@@ -209,11 +210,12 @@ void ConfigurationsBuilder::you_build()
 
 
 
-   std::string tmj_path = "data/configurations/production-configuration-03.tmj";
+   //std::string assets_folder = "";
+   std::string tmj_path = assets_folder + "configurations/production-configuration-03.tmj";
    if (!TheWeepingHouse::FileExistenceChecker(tmj_path).exists())
    {
       // assume this is a local dev or test version (not running from main), so prefix as a hard-coded path
-      tmj_path = "/Users/markoates/Repos/TheWeepingHouse/bin/programs/" + tmj_path;
+      //tmj_path = "/Users/markoates/Repos/TheWeepingHouse/bin/programs/" + tmj_path;
    }
 
    build_from_tmj_source(tmj_path);
@@ -542,6 +544,19 @@ void ConfigurationsBuilder::set_event_emitter(AllegroFlare::EventEmitter* event_
    }
    room_factory.set_event_emitter(event_emitter);
    this->event_emitter = event_emitter;
+   return;
+}
+
+void ConfigurationsBuilder::set_assets_folder(std::string assets_folder)
+{
+   if (!((!built)))
+   {
+      std::stringstream error_message;
+      error_message << "[ConfigurationsBuilder::set_assets_folder]: error: guard \"(!built)\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("ConfigurationsBuilder::set_assets_folder: error: guard \"(!built)\" not met");
+   }
+   this->assets_folder = assets_folder;
    return;
 }
 

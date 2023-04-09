@@ -26,6 +26,7 @@ namespace TheWeepingHouse
       AllegroFlare::BitmapBin* bitmap_bin;
       AllegroFlare::FontBin* font_bin;
       AllegroFlare::EventEmitter* event_emitter;
+      std::string assets_folder;
       AllegroFlare::Prototypes::FixedRoom2D::EntityCollectionHelper* entity_collection_helper__this_is_a_hack;
       AllegroFlare::Prototypes::FixedRoom2D::Configuration result_configuration;
       bool built;
@@ -45,7 +46,7 @@ namespace TheWeepingHouse
 
 
    public:
-      ConfigurationsBuilder(AllegroFlare::BitmapBin* bitmap_bin=nullptr, AllegroFlare::FontBin* font_bin=nullptr, AllegroFlare::EventEmitter* event_emitter=nullptr, AllegroFlare::Prototypes::FixedRoom2D::EntityCollectionHelper* entity_collection_helper__this_is_a_hack=nullptr);
+      ConfigurationsBuilder(AllegroFlare::BitmapBin* bitmap_bin=nullptr, AllegroFlare::FontBin* font_bin=nullptr, AllegroFlare::EventEmitter* event_emitter=nullptr, std::string assets_folder="[unset-assets_folder]", AllegroFlare::Prototypes::FixedRoom2D::EntityCollectionHelper* entity_collection_helper__this_is_a_hack=nullptr);
       ~ConfigurationsBuilder();
 
       std::map<std::string, AllegroFlare::Prototypes::FixedRoom2D::Entities::Base*>& get_entity_dictionary() const;
@@ -70,6 +71,7 @@ namespace TheWeepingHouse
       void set_font_bin(AllegroFlare::FontBin* font_bin=nullptr);
       void set_bitmap_bin(AllegroFlare::BitmapBin* bitmap_bin=nullptr);
       void set_event_emitter(AllegroFlare::EventEmitter* event_emitter=nullptr);
+      void set_assets_folder(std::string assets_folder="[unset-assets_folder]");
       void set_entity_collection_helper__this_is_a_hack(AllegroFlare::Prototypes::FixedRoom2D::EntityCollectionHelper* entity_collection_helper__this_is_a_hack=nullptr);
    };
 }

@@ -19,6 +19,12 @@ properties:
     constructor_arg: true
     setter: false
 
+  - name: assets_folder
+    type: std::string
+    init_with: '"[unset-assets_folder]"'
+    constructor_arg: true
+    setter: false
+
   - name: entity_collection_helper__this_is_a_hack
     type: AllegroFlare::Prototypes::FixedRoom2D::EntityCollectionHelper*
     init_with: nullptr
@@ -242,11 +248,12 @@ functions:
 
 
 
-      std::string tmj_path = "data/configurations/production-configuration-03.tmj";
+      //std::string assets_folder = "";
+      std::string tmj_path = assets_folder + "configurations/production-configuration-03.tmj";
       if (!TheWeepingHouse::FileExistenceChecker(tmj_path).exists())
       {
          // assume this is a local dev or test version (not running from main), so prefix as a hard-coded path
-         tmj_path = "/Users/markoates/Repos/TheWeepingHouse/bin/programs/" + tmj_path;
+         //tmj_path = "/Users/markoates/Repos/TheWeepingHouse/bin/programs/" + tmj_path;
       }
 
       build_from_tmj_source(tmj_path);
@@ -602,6 +609,17 @@ functions:
     body: |
       room_factory.set_event_emitter(event_emitter);
       this->event_emitter = event_emitter;
+      return;
+
+
+  - name: set_assets_folder
+    parameters:
+      - name: assets_folder
+        type: std::string
+        default_argument: '"[unset-assets_folder]"'
+    guards: [ (!built) ]
+    body: |
+      this->assets_folder = assets_folder;
       return;
 
 

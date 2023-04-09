@@ -27,6 +27,7 @@ Runner::Runner(std::string mode, AllegroFlare::Frameworks::Full* framework, Alle
    , opening_logos_storyboard_screen(nullptr)
    , title_screen({})
    , pause_screen({})
+   , pause_screen_background({})
    , new_game_intro_storyboard_screen(nullptr)
    , gameplay_screen({})
    , achievements_screen({})
@@ -82,6 +83,7 @@ void Runner::initialize()
          false,
       },
    });
+
 
 
    // setup the shader
@@ -160,10 +162,14 @@ void Runner::initialize()
 
 
 
+   // setup the background for the pause screen (captures the backbuffer before)
+   pause_screen_background.initialize();
+
    // setup the pause screen
    pause_screen.set_font_bin(&font_bin);
    pause_screen.set_bitmap_bin(&bitmap_bin);
    pause_screen.set_footer_text(release_info.get_version());
+   pause_screen.set_background(&pause_screen_background);
    pause_screen.set_event_emitter(&event_emitter);
    pause_screen.set_menu_options({
       { "Resume", "unpause_game" },
@@ -304,6 +310,7 @@ AllegroFlare::Prototypes::FixedRoom2D::Configuration Runner::get_builder_configu
    configurations_builder.set_bitmap_bin(&bitmap_bin);
    configurations_builder.set_font_bin(&font_bin);
    configurations_builder.set_event_emitter(&event_emitter);
+   configurations_builder.set_assets_folder(framework->get_data_folder_path());
    configurations_builder.set_entity_collection_helper__this_is_a_hack(
       &gameplay_screen.get_fixed_room_2d_ref().get_entity_collection_helper_ref()
    );
