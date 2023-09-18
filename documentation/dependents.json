@@ -140,5 +140,8 @@
   ],
   "AllegroFlare/Elements/Backgrounds/ScreenCapture": [
     "TheWeepingHouse/Runner"
+  ],
+  "AllegroFlare/Elements/Backgrounds/Image": [
+    "TheWeepingHouse/Runner"
   ]
 }

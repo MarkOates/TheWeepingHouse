@@ -2,6 +2,7 @@
 
 
 #include <AllegroFlare/Color.hpp>
+#include <AllegroFlare/Elements/Backgrounds/Image.hpp>
 #include <AllegroFlare/Elements/Backgrounds/ScreenCapture.hpp>
 #include <AllegroFlare/EventEmitter.hpp>
 #include <AllegroFlare/Frameworks/Full.hpp>
@@ -29,6 +30,7 @@ namespace TheWeepingHouse
       ReleaseInfo release_info;
       AllegroFlare::Screens::Storyboard* opening_logos_storyboard_screen;
       AllegroFlare::Screens::TitleScreen title_screen;
+      AllegroFlare::Elements::Backgrounds::Image title_screen_background;
       AllegroFlare::Screens::PauseScreen pause_screen;
       AllegroFlare::Elements::Backgrounds::ScreenCapture pause_screen_background;
       AllegroFlare::Screens::Storyboard* new_game_intro_storyboard_screen;

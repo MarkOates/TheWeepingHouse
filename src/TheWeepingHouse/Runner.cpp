@@ -26,6 +26,7 @@ Runner::Runner(std::string mode, AllegroFlare::Frameworks::Full* framework, Alle
    , release_info({})
    , opening_logos_storyboard_screen(nullptr)
    , title_screen({})
+   , title_screen_background({})
    , pause_screen({})
    , pause_screen_background({})
    , new_game_intro_storyboard_screen(nullptr)
@@ -96,7 +97,11 @@ void Runner::initialize()
 
 
    // setup our helper factories
-   AllegroFlare::StoryboardFactory storyboard_factory(&font_bin, &event_emitter);
+   AllegroFlare::StoryboardFactory storyboard_factory;
+   storyboard_factory.set_bitmap_bin(&bitmap_bin);
+   storyboard_factory.set_model_bin(&model_bin);
+   storyboard_factory.set_font_bin(&font_bin);
+   storyboard_factory.set_event_emitter(&event_emitter);
 
 
    // create the opening logos storyboard screen
@@ -128,13 +133,18 @@ void Runner::initialize()
 
 
 
+   // Background
+   title_screen_background.set_bitmap_bin(&bitmap_bin);
+   title_screen_background.set_image_filename("the_weeping_house_title-02c.png");
+
    // setup the title screen
    std::string copyright_text = std::string("Copyright 2023 - Mark Oates - Version ") + release_info.get_version()
                                 + "\nCLUBCATT Games - www.clubcatt.com\n";
    title_screen.set_font_bin(&font_bin);
    title_screen.set_bitmap_bin(&bitmap_bin);
    title_screen.set_title_text("");
-   title_screen.set_background_bitmap_name("the_weeping_house_title-02c.png");
+   //title_screen.set_background_bitmap_name("the_weeping_house_title-02c.png");
+   title_screen.set_background(&title_screen_background);
    title_screen.set_event_emitter(&event_emitter);
    title_screen.set_menu_font_name("Benne-Regular.ttf");
    title_screen.set_menu_font_size(-40);
